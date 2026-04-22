@@ -1,0 +1,19 @@
+{
+    "name": "linkadevs/sigem",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "Linkadevs\\Sigem\\": "src/",
+            "Controller\\": "Controller/",
+            "Model\\": "Model/"
+        },
+        "files": [
+            "Config/configuration.php"
+        ]
+    },
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=8.0",
+        "ext-mbstring": "*"
+    }
+}
