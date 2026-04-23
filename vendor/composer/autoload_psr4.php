@@ -6,5 +6,7 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
+    'Model\\' => array($baseDir . '/Model'),
     'Linkadevs\\Sigem\\' => array($baseDir . '/src'),
+    'Controller\\' => array($baseDir . '/Controller'),
 );

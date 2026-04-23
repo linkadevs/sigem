@@ -1,0 +1,25 @@
+
+main{
+    height: 100%;
+}
+
+body {
+    height: 100vh;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+
+imagem_de_fundo img {
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    object-fit: cover;
+
+}
+
