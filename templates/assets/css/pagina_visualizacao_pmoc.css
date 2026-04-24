@@ -59,6 +59,7 @@ main {
     padding: 8rem;
     border-radius: 6rem;
     gap: 4.5rem;
+    box-shadow: 0 .4rem 2.56rem 0 rgb(0, 0, 0, 0.88);
 }
 
 h1 {
