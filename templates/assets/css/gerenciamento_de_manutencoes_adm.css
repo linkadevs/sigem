@@ -102,32 +102,6 @@ aside .btn_logout p {
     font-weight: lighter;
 }
 
-/* BOTÃO VOLTAR */
-.voltar {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #FFFFFF;
-    width: 4.5rem;
-    height: 4.5rem;
-    border-radius: 30rem;
-    border: none;
-    padding-left: .5rem;
-    padding-top: .4rem;
-    margin-left: 2rem;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.voltar img {
-    width: 5rem;
-    max-width: 100%;
-}
-
-.voltar:hover {
-    transform: scale(1.05);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
 
 /* MAIN E CONTAINER */
 main {
@@ -692,17 +666,6 @@ input:focus {
         gap: 1rem;
     }
 
-    .voltar {
-        margin-left: 1rem;
-        margin-bottom: 1rem;
-        width: 3rem;
-        height: 3rem;
-    }
-
-    .voltar img {
-        width: 2.5rem;
-    }
-
     .conteudo_superior {
         padding: 1.2rem;
         margin: 0 1rem 1.5rem 1rem;
@@ -929,16 +892,6 @@ input:focus {
         padding: 1rem;
     }
 
-    .voltar {
-        width: 2.5rem;
-        height: 2.5rem;
-        margin-left: 0.5rem;
-    }
-
-    .voltar img {
-        width: 2rem;
-    }
-
     .conteudo_superior {
         padding: 0.8rem;
         margin: 0 0.5rem 1rem 0.5rem;
@@ -1071,15 +1024,6 @@ input:focus {
         padding-top: 0.5rem;
     }
 
-    .voltar {
-        width: 2rem;
-        height: 2rem;
-        margin-left: 0.3rem;
-    }
-
-    .voltar img {
-        width: 1.5rem;
-    }
 
     .conteudo_superior {
         padding: 0.5rem;
