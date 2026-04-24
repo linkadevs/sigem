@@ -9,12 +9,22 @@ figure {
     height: fit-content;
 }
 
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 4rem;
+    background-color: #094C71;
+}
+
 .voltar figure img {
     width: 5.2rem;
 }
 
 header {
     padding: 3.9rem 3.7rem;
+    width: 100%;
+    background-color: #ffffff;
 }
 
 .voltar {
@@ -27,3 +37,83 @@ header {
     font-weight: 700;
 }
 
+main {
+    background-image: url('../../../templates/assets/img/fundo-edicao.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 4rem 0;
+    border-bottom-left-radius: 12rem;
+    border-bottom-right-radius: 12rem;
+}
+
+.fundoPmoc {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    width: 120.6rem;
+    height: auto;
+    padding: 8rem;
+    border-radius: 6rem;
+    gap: 4.5rem;
+}
+
+h1 {
+    font-size: 5rem;
+    font-weight: 700;
+    color: #094C71;
+}
+
+.tituloPmoc {
+    justify-content: space-between;
+    display: flex;
+    width: 100%;
+}
+
+.tituloPmoc p {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #ffffff;
+    background-color: rgba(10, 22, 247, 0.7);
+    padding: 1.6rem 13.5rem;
+    border-radius: 1.5rem;
+}
+
+.titulo {
+    font-size: 2.5rem;
+    color: #094C71;
+    width: 50%;
+    padding-left: 2.7rem;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+}
+
+.conteudo {
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: #488DB2;
+    width: 50%;
+    padding-right: 2.7rem;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+    text-wrap: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.conteudo:hover {
+    text-wrap: wrap;
+    overflow: auto;
+    text-overflow: clip;
+}
+
+.informacao, .informacao2 {
+    display: flex;
+}
+
+.informacao {
+    background-color: #B7E6FF;
+}
