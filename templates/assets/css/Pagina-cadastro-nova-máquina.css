@@ -1,0 +1,30 @@
+@import url('global.css');
+
+body{
+    background-image: url(../img/fundo-desktop-cadastro.png);
+}
+
+header{
+    margin: 0;
+    background-color: white;
+}
+
+.voltar_header{
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    margin: 2rem ;
+}
+
+.voltar_header h1{
+    font-family: 'Inter';
+    font-size: 2rem;
+    color: #094C71;
+    font-weight: bold;
+}
+
+.voltar_header img{
+    height: 4rem;
+    width: 5rem;
+    cursor: pointer;
+}
