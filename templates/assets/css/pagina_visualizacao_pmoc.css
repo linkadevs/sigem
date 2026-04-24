@@ -3,3 +3,27 @@
 figure img {
     display: block;
 }
+
+figure {
+    width: fit-content;
+    height: fit-content;
+}
+
+.voltar figure img {
+    width: 5.2rem;
+}
+
+header {
+    padding: 3.9rem 3.7rem;
+}
+
+.voltar {
+    display: flex;
+    color: #094C71;
+    background-color: transparent;
+    border-style: none;
+    align-items: center;
+    font-size: 3.6rem;
+    font-weight: 700;
+}
+
