@@ -305,7 +305,7 @@ input:focus {
         padding-left: 3rem;
         padding-right: 3rem;
     }
-    
+
     .procurar {
         width: 10rem;
         font-size: 1.2rem;
@@ -318,19 +318,19 @@ input:focus {
         padding-left: 2rem;
         padding-right: 2rem;
     }
-    
+
     .procurar {
         width: 8rem;
         font-size: 1.1rem;
         height: 3.2rem;
     }
-    
+
     input {
         padding-left: 3.5rem;
         height: 3rem;
         font-size: 0.9rem;
     }
-    
+
     .conteudo_superior img {
         width: 1.8rem;
         height: 1.8rem;
@@ -367,13 +367,13 @@ input:focus {
     form {
         gap: 0.8rem;
     }
-    
+
     .procurar {
         width: 7rem;
         font-size: 1rem;
         height: 3rem;
     }
-    
+
     input {
         font-size: 0.85rem;
     }
@@ -389,17 +389,17 @@ input:focus {
         min-height: 38.6rem;
         padding: 1.2rem;
     }
-    
+
     .codigo {
         width: 12rem;
         height: 3.5rem;
         font-size: 1.5rem;
     }
-    
+
     .maquina {
         font-size: 1.5rem;
     }
-    
+
     .manutencao {
         font-size: 1.3rem;
     }
@@ -410,48 +410,48 @@ input:focus {
     .conteudo_superior {
         padding: 1rem;
     }
-    
+
     form {
         gap: 0.6rem;
     }
-    
+
     .procurar {
         width: 6rem;
         font-size: 0.9rem;
         height: 2.8rem;
     }
-    
+
     input {
         padding-left: 3rem;
         font-size: 0.8rem;
         height: 2.8rem;
     }
-    
+
     .conteudo_superior img {
         width: 1.5rem;
         height: 1.5rem;
         left: 1rem;
     }
-    
+
     input::placeholder {
         font-size: 0.75rem;
     }
-    
+
     .card {
         padding: 0.8rem;
     }
-    
+
     .codigo {
         width: 10rem;
         height: 3rem;
         font-size: 1.3rem;
     }
-    
+
     .dados {
         padding: 0 0.5rem;
         gap: 1rem;
     }
-    
+
     .card button {
         width: 9rem;
         height: 2.8rem;
@@ -466,77 +466,79 @@ input:focus {
         margin: 0 0.5rem 1.5rem 0.5rem;
         gap: 1.5rem;
     }
-    
+
     h1 {
         font-size: 1.3rem;
         text-align: center;
     }
-    
+
     form {
         gap: 0.5rem;
     }
-    
+
     .procurar {
         width: 5rem;
         font-size: 0.85rem;
         height: 2.5rem;
     }
-    
+
     input {
         padding-left: 2.5rem;
         font-size: 0.75rem;
         height: 2.5rem;
     }
-    
+
     .conteudo_superior img {
         width: 1.3rem;
         height: 1.3rem;
         left: 0.8rem;
     }
-    
+
     input::placeholder {
         font-size: 0.7rem;
     }
-    
+
     .grid_cards {
         padding: 0 0.5rem;
     }
-    
+
     .card {
         padding: 0.8rem;
         max-width: 100%;
     }
-    
+
     .codigo {
         width: 9rem;
         height: 2.8rem;
         font-size: 1.2rem;
     }
-    
+
     .maquina {
         font-size: 1.3rem;
         margin-bottom: 1rem;
     }
-    
+
     .manutencao {
         font-size: 1.1rem;
         margin-bottom: 1rem;
     }
-    
+
     .dados {
         gap: 0.8rem;
         font-size: 1rem;
     }
-    
-    .informacao, .informacaoazul {
+
+    .informacao,
+    .informacaoazul {
         gap: 0.8rem;
         font-size: 1rem;
     }
-    
-    .informacao p, .informacaoazul p {
+
+    .informacao p,
+    .informacaoazul p {
         font-size: 0.9rem;
     }
-    
+
     .card button {
         width: 8rem;
         height: 2.5rem;
@@ -564,29 +566,29 @@ input:focus {
     h1 {
         font-size: 1.2rem;
     }
-    
+
     form {
         gap: 0.4rem;
     }
-    
+
     .procurar {
         width: 4.5rem;
         font-size: 0.8rem;
         height: 2.3rem;
     }
-    
+
     input {
         padding-left: 2.2rem;
         font-size: 0.7rem;
         height: 2.3rem;
     }
-    
+
     .conteudo_superior img {
         width: 1.2rem;
         height: 1.2rem;
         left: 0.7rem;
     }
-    
+
     input::placeholder {
         font-size: 0.65rem;
     }
@@ -603,26 +605,26 @@ input:focus {
         height: auto;
         padding: 1rem;
     }
-    
+
     .codigo {
         width: 8rem;
         height: 2.5rem;
         font-size: 1.1rem;
     }
-    
+
     .maquina {
         font-size: 1.2rem;
     }
-    
+
     .manutencao {
         font-size: 1rem;
     }
-    
+
     .dados {
         gap: 0.7rem;
         font-size: 0.9rem;
     }
-    
+
     .card button {
         width: 7.5rem;
         height: 2.3rem;
@@ -635,66 +637,67 @@ input:focus {
     .conteudo_superior {
         padding: 0.6rem;
     }
-    
+
     h1 {
         font-size: 1.1rem;
     }
-    
+
     .procurar {
-        width: 4rem;
+        width: 4.8rem;
         font-size: 0.75rem;
         height: 2.2rem;
     }
-    
+
     input {
         padding-left: 2rem;
         font-size: 0.65rem;
         height: 2.2rem;
     }
-    
+
     .conteudo_superior img {
         width: 1rem;
         height: 1rem;
         left: 0.6rem;
     }
-    
+
     .grid_cards {
         padding: 0 0.8rem;
     }
-    
+
     .card {
         padding: 0.8rem;
     }
-    
+
     .codigo {
         width: 7rem;
         height: 2.2rem;
         font-size: 1rem;
     }
-    
+
     .maquina {
         font-size: 1.1rem;
     }
-    
+
     .manutencao {
         font-size: 0.9rem;
     }
-    
+
     .dados {
         gap: 0.6rem;
         font-size: 0.85rem;
     }
-    
-    .informacao p, .informacaoazul p {
+
+    .informacao p,
+    .informacaoazul p {
         font-size: 0.8rem;
     }
-    
+
     .card button {
         width: 6.5rem;
         height: 2rem;
         font-size: 0.7rem;
     }
-    
+
     .botoes {
         gap: 0.4rem;
     }
@@ -730,25 +733,25 @@ input:focus {
     form {
         gap: 0.3rem;
     }
-    
+
     .procurar {
-        width: 3.8rem;
+        width: 4.8rem;
         font-size: 0.7rem;
         height: 2rem;
     }
-    
+
     input {
         padding-left: 1.8rem;
         font-size: 0.6rem;
         height: 2rem;
     }
-    
+
     .conteudo_superior img {
         width: 0.9rem;
         height: 0.9rem;
         left: 0.5rem;
     }
-    
+
     input::placeholder {
         font-size: 0.55rem;
     }
@@ -786,15 +789,17 @@ input:focus {
         padding: 0 0.3rem;
     }
 
-    .informacao, .informacaoazul {
+    .informacao,
+    .informacaoazul {
         gap: 0.5rem;
         font-size: 0.8rem;
     }
 
-    .informacao p, .informacaoazul p {
+    .informacao p,
+    .informacaoazul p {
         font-size: 0.75rem;
     }
-    
+
     .informacaoazul {
         height: auto;
         padding: 0.15rem 0.3rem;
@@ -817,29 +822,29 @@ input:focus {
     .conteudo_superior {
         padding: 0.4rem;
     }
-    
+
     h1 {
         font-size: 0.9rem;
     }
-    
+
     .procurar {
         width: 3.5rem;
         font-size: 0.65rem;
         height: 1.9rem;
     }
-    
+
     input {
         padding-left: 1.6rem;
         font-size: 0.55rem;
         height: 1.9rem;
     }
-    
+
     .conteudo_superior img {
         width: 0.8rem;
         height: 0.8rem;
         left: 0.4rem;
     }
-    
+
     .grid_cards {
         padding: 0 0.3rem;
     }
@@ -863,7 +868,8 @@ input:focus {
         gap: 0.4rem;
     }
 
-    .informacao p, .informacaoazul p {
+    .informacao p,
+    .informacaoazul p {
         font-size: 0.65rem;
     }
 
