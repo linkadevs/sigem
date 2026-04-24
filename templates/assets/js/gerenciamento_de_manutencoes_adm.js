@@ -6,7 +6,7 @@ const manutencoes = document.querySelector('.btn_manutencoes');
 const pecas = document.querySelector('.btn_pecas');
 const tecnicos = document.querySelector('.btn_tecnicos');
 const logout = document.querySelector('.btn_logout');
-const historicos = document.querySelectorAll('.historico');
+const pmocs = document.querySelectorAll('.pmoc');
 
 
 if(perfil){
@@ -34,7 +34,7 @@ if(chamados){
 }
 
 if(manutencoes){
-    manutencoes.addEventListener('clcik', () => {
+    manutencoes.addEventListener('click', () => {
         window.location.href=''
     })
 }
@@ -56,3 +56,11 @@ if(logout){
         window.location.href=''
     })
 }
+
+pmocs.forEach(pmoc => {
+    if (pmoc) {
+        pmoc.addEventListener('click', () => { 
+            window.location.href = '';
+        });
+    }
+});
