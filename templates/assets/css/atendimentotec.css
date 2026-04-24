@@ -1,0 +1,403 @@
+@import 'global.css';
+
+body{
+    background: #ffffff;
+}
+
+main{
+    min-height: 100vh;
+    padding: 2rem;
+    margin: 0 auto;
+    position: relative;
+    max-width: 140rem;
+}
+
+/* =========================
+   TOPO
+========================= */
+.container_chamados{
+    display: grid;
+    grid-template-columns: auto auto 1fr auto auto auto auto;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.8rem 2.4rem;
+    border-radius: 1rem;
+    background: linear-gradient(90deg, #d7c2ef 0%, #c8e7f7 100%);
+}
+
+.container_chamados figure{
+    display: flex;
+    align-items: center;
+}
+
+.container_chamados img{
+    width: clamp(1.8rem, 2vw, 2.6rem);
+}
+
+.container_chamados h1{
+    color: #005c82;
+    font-size: clamp(2.4rem, 3vw, 3.6rem);
+    font-weight: 700;
+}
+
+.icone_perfil{
+    justify-self: end;
+}
+
+.perfil{
+    margin-left: -0.4rem;
+    white-space: nowrap;
+}
+
+.icone_logout{
+    justify-self: end;
+}
+
+.logout{
+    margin-left: -0.4rem;
+    white-space: nowrap;
+}
+
+.container_chamados h3{
+    color: #005c82;
+    font-size: clamp(1.2rem, 1.4vw, 1.6rem);
+    font-weight: 600;
+}
+
+/* =========================
+   PESQUISA
+========================= */
+.container_pesquisa{
+    grid-column: 1 / span 5;
+    display: flex;
+    align-items: center;
+    background: #6f97b7;
+    border-radius: 3rem;
+    padding: 1rem 1.6rem;
+    margin-top: 1.6rem;
+    min-height: 5.2rem;
+}
+
+.container_pesquisa figure img{
+    width: 2rem;
+}
+
+.container_pesquisa input{
+    flex: 1;
+    border: none;
+    outline: none;
+    background: transparent;
+    color: #fff;
+    margin-left: 1rem;
+    font-size: 1.4rem;
+}
+
+.container_pesquisa input::placeholder{
+    color: #fff;
+}
+
+/* =========================
+   BOTÃO
+========================= */
+.btn_procurar{
+    grid-column: 6 / span 2;
+    margin-top: 1.6rem;
+}
+
+.btn_procurar button{
+    width: 100%;
+    min-width: 14rem;
+    height: 5.2rem;
+    border-radius: 0.8rem;
+    border: 0.2rem solid #3fa2db;
+    background: #d8eef8;
+    color: #005c82;
+    font-size: 1.5rem;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+/* =========================
+   CARDS
+========================= */
+.container_blocos{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.bloco{
+    background: #ffffffae;
+    border-radius: 0.8rem;
+    overflow: hidden;
+    box-shadow: 0 0.3rem 1rem rgba(0,0,0,0.08);
+}
+
+.topo_bloco{
+    background: #B7E6FF;
+    padding: 1.5rem;
+}
+
+.topo_bloco h2{
+    color: #005c82;
+    font-size: 1.7rem;
+    font-weight: 700;
+}
+
+.conteudo_bloco{
+    padding: 2rem 1.5rem;
+    min-height: 9rem;
+}
+.bloco{
+    color: #0f8ccf;
+}
+.status{
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.aberto{
+    color: #7f3cff;
+}
+
+/* =========================
+   DESKTOP GRANDE
+========================= */
+@media (min-width: 1201px){
+
+    .container_chamados{
+        padding: 2.4rem 3rem;
+    }
+
+    .container_chamados h1{
+        font-size: 4rem;
+    }
+
+    .container_chamados h3{
+        font-size: 1.8rem;
+    }
+
+    .container_pesquisa{
+        min-height: 6rem;
+    }
+
+    .container_pesquisa input{
+        font-size: 1.6rem;
+    }
+
+    .btn_procurar button{
+        height: 6rem;
+        min-width: 16rem;
+        font-size: 1.6rem;
+    }
+
+    .container_blocos{
+        grid-template-columns: repeat(3, minmax(40rem, 34rem));
+        justify-content: center;
+        gap: 4.4rem;
+    }
+
+    .conteudo_bloco{
+        min-height: 20rem;
+    }
+
+    .topo_bloco h2{
+        font-size: 1.9rem;
+    }
+
+    .status{
+        font-size: 1.6rem;
+    }
+}
+
+
+@media (max-width: 1200px){
+
+    .container_chamados{
+        padding: 2.4rem 3rem;
+    }
+
+    .container_chamados h1{
+        font-size: 4rem;
+    }
+
+    .container_chamados h3{
+        font-size: 1.8rem;
+    }
+
+    .container_pesquisa{
+        min-height: 6rem;
+    }
+
+    .container_pesquisa input{
+        font-size: 1.6rem;
+    }
+
+    .btn_procurar button{
+        height: 6rem;
+        min-width: 16rem;
+        font-size: 1.6rem;
+    }
+
+    .container_blocos{
+        grid-template-columns: repeat(3, minmax(24rem, 28rem));
+        justify-content: center;
+        gap: 2.4rem;
+    }
+
+    .conteudo_bloco{
+        min-height: 12rem;
+    }
+
+    .topo_bloco h2{
+        font-size: 1.9rem;
+    }
+
+    .status{
+        font-size: 1.6rem;
+    }
+}
+
+/* =========================
+   TABLET GRANDE
+========================= */
+@media (max-width: 900px){
+
+    .container_pesquisa input{
+        font-size: 1.2rem;
+    }
+
+    .container_pesquisa{
+        max-width: 82%;
+    }
+
+    .btn_procurar button{
+        min-width: 10rem;
+        font-size: 1.2rem;
+    }
+}
+
+/* =========================
+   TABLET GRANDE
+========================= */
+@media (max-width: 900px){
+
+    .container_pesquisa input{
+        font-size: 1.2rem;
+    }
+
+    .container_pesquisa{
+        max-width: 82%;
+    }
+
+    .btn_procurar button{
+        min-width: 10rem;
+        font-size: 1.2rem;
+    }
+}
+
+
+
+/* =========================
+   TABLET
+========================= */
+@media (max-width: 768px){
+
+    .container_chamados{
+        grid-template-columns: auto 1fr auto auto;
+        padding: 1.2rem;
+    }
+
+    .icone_logout{
+        grid-column: 3;
+        grid-row: 2;
+        margin-top: 1rem;
+    }
+
+    .logout{
+        grid-column: 4;
+        grid-row: 2;
+        margin-top: 1rem;
+    }
+
+    .container_pesquisa{
+        grid-column: 1 / span 3;
+        min-height: 4.2rem;
+        max-width: 78%;
+    }
+
+    .container_pesquisa input{
+        font-size: 1.1rem;
+    }
+
+    .btn_procurar{
+        grid-column: 4;
+    }
+
+    .btn_procurar button{
+        height: 4.2rem;
+    }
+
+    .container_blocos{
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1rem;
+    }
+}
+
+/* =========================
+   CELULAR
+========================= */
+@media (max-width: 480px){
+
+    main{
+        padding: 1rem;
+    }
+
+    .container_pesquisa input{
+        font-size: 0.95rem;
+    }
+
+    .container_pesquisa input::placeholder{
+        font-size: 0.9rem;
+    }
+
+    .btn_procurar button{
+        width: 100%;
+        height: 3.5rem;
+        font-size: 0.9rem;
+    }
+
+    .container_blocos{
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.4rem;
+    }
+
+    .bloco{
+        transform: scale(0.96);
+    }
+
+    .topo_bloco h2{
+        font-size: 1.2rem;
+    }
+
+    .status{
+        font-size: 1.1rem;
+    }
+}
+
+/* =========================
+   330px
+========================= */
+@media (max-width: 330px){
+
+    .perfil,
+    .logout{
+        display: none;
+    }
+
+    .container_blocos{
+        grid-template-columns: 1fr;
+        gap: 1.6rem;
+    }
+}
