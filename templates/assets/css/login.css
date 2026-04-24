@@ -1,25 +1,518 @@
-
-main{
-    height: 100%;
-}
+@import 'global.css';
 
 body {
     height: 100vh;
+    overflow: hidden;
 }
 
+main {
+    height: 100%;
+}
+
+figure {
+    margin: 0;
+}
+
+/* ========== CONTAINER PRINCIPAL ========== */
 .container {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100%;
+    position: relative;
 }
 
-
-imagem_de_fundo img {
-    position: absolute;
+.imagem_de_fundo {
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
-    height: 100vh;
-    object-fit: cover;
-
+    height: 100%;
+    background-image: url('/templates/assets/img/fundo-celular.png');
+    background-size: cover;
+    background-position: center;
+    z-index: 0;
 }
 
+/* Tablet */
+@media (min-width: 768px) {
+    .imagem_de_fundo {
+        background-image: url('/templates/assets/img/fundo-tablet.png');
+    }
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+    .imagem_de_fundo {
+        background-image: url('/templates/assets/img/fundo-desktop.png');
+    }
+}
+
+/* Telas muito grandes */
+@media (min-width: 1920px) {
+    .imagem_de_fundo {
+        background-image: url('/templates/assets/img/fundo-desktop.png');
+    }
+}
+
+/* ========== FORMULÁRIO DE LOGIN ========== */
+.form_login {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.Cform_login {
+    position: relative;
+    width: 52rem;
+    height: 55rem;
+    padding: 2rem;
+    background: #ffff;
+    border-radius: 1rem;
+    box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.15);
+    z-index: 1;
+    margin-bottom: 4rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* ========== SETA VOLTAR ========== */
+.Cform_login > figure:first-child {
+    margin-bottom: 1rem;
+    cursor: pointer;
+    align-self: flex-start;
+}
+
+.Cform_login > figure:first-child img {
+    width: 2.5rem;
+    height: 2.5rem;
+}
+
+/* ========== TÍTULOS ========== */
+.Cform_login h1 {
+    font-size: 2.9rem;
+    color: #094C71;
+    text-align: center;
+    margin-bottom: 1.9rem;
+}
+
+.Cform_login h2 {
+    font-size: 1.9rem;
+    color: #094C71;
+    text-align: center;
+    font-weight: 520;
+    font-style: medium;
+    margin-bottom: 0.9rem;
+    margin-top: 0.9rem;
+}
+
+/* ========== LINHA AZUL ========== */
+.Cform_login > figure:nth-of-type(2) {
+    text-align: center;
+    margin-bottom: 2.0rem;
+}
+
+.Cform_login > figure:nth-of-type(2) img {
+    width: 44rem;
+    max-width: 90%;
+}
+
+.input_cpf,
+.input_senha {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    margin-bottom: 2.9rem;
+    width: 100%;
+    align-items: center;
+}
+
+.input_cpf label,
+.input_senha label {
+    font-size: 1.9rem;
+    font-weight: 600;
+    color: #094C71;
+    width: 40.5rem;
+}
+
+.input_cpf input,
+.input_senha input {
+    width: 40.5rem;
+    height: 4.4rem;
+    border: 0.08rem solid #ccc;
+    border-radius: 1.5rem;
+    padding: 0 3rem 0 1rem;
+    font-size: 1.5rem;
+    margin-top: 0.5rem;
+}
+
+.input_senha {
+    position: relative;
+    align-items: center;
+}
+
+/* Placeholder */
+.input_cpf input::placeholder,
+.input_senha input::placeholder {
+    color: #999999fd;
+}
+
+/* ========== OLHO DA SENHA ========== */
+.input_senha .olho1,
+.input_senha .olho2 {
+    position: absolute;
+    right: calc(50% - 19rem);
+    top: 70%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    z-index: 2;
+}
+
+.olho1 img,
+.olho2 img {
+    width: 2rem;
+    height: auto;
+    opacity: 0.6;
+    transition: opacity 0.3s;
+}
+
+.olho1 img:hover,
+.olho2 img:hover {
+    opacity: 1;
+}
+
+.olho2 {
+    display: none;
+}
+
+/* Ajuste para telas maiores */
+@media screen and (min-width: 1024px) {
+    .input_senha .olho1,
+    .input_senha .olho2 {
+        right: calc(50% - 18rem);
+    }
+}
+
+.btn_login {
+    display: flex;
+    margin-top: 1.5rem;
+    text-align: center;
+    justify-content: center;
+}
+
+.btn_login button {
+    width: 40.5rem;
+    height: 4.4rem;
+    background-color: #094C71;
+    color: white;
+    border: none;
+    border-radius: 1.5rem;
+    font-size: 1.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn_login button:hover {
+    background-color: #1191D7;
+}
+
+/* ========== MEDIA QUERIES ========== */
+
+/* Tablet - 768px a 1026px */
+@media screen and (min-width: 768px) and (max-width: 1026px) {
+    .Cform_login {
+        width: 50rem;
+        height: 57rem;
+    }
+
+    .Cform_login h1 {
+        font-size: 2.0rem;
+    }
+
+    .Cform_login h2 {
+        font-size: 1.5rem;
+    }
+
+    .Cform_login > figure:nth-of-type(2) img {
+        width: 48rem;
+    }
+
+    .input_cpf label,
+    .input_senha label {
+        font-size: 1.6rem;
+        width: 44.5rem;
+    }
+
+    .input_cpf input,
+    .input_senha input {
+        width: 44.5rem;
+    }
+    
+    .input_senha .olho1,
+    .input_senha .olho2 {
+        right: calc(50% - 21rem);
+    }
+
+    .btn_login button {
+        width: 44.5rem;
+        font-size: 1.6rem;
+    }
+}
+
+/* Tablets pequenos - 568px a 768px */
+@media screen and (min-width: 568px) and (max-width: 768px) {
+    .Cform_login {
+        width: 37rem;
+        height: 50rem;
+    }
+
+    .Cform_login h1 {
+        font-size: 1.8rem;
+    }
+
+    .Cform_login h2 {
+        font-size: 1.3rem;
+    }
+
+    .Cform_login > figure:nth-of-type(2) img {
+        width: 32.7rem;
+    }
+
+    .input_cpf label,
+    .input_senha label {
+        font-size: 1.4rem;
+        width: 31.5rem;
+    }
+
+    .input_cpf input,
+    .input_senha input {
+        width: 31.5rem;
+    }
+    
+    .input_senha .olho1,
+    .input_senha .olho2 {
+        right: calc(50% - 15rem);
+        top: 69%;
+    }
+    
+    .olho1 img,
+    .olho2 img {
+        width: 1.8rem;
+    }
+
+    .btn_login button {
+        width: 31.5rem;
+        font-size: 1.4rem;
+    }
+}
+
+/* Mobile grande - 440px a 567px */
+@media screen and (min-width: 440px) and (max-width: 567px) {
+    .Cform_login {
+        width: 29rem;
+        height: 40rem;
+    }
+
+    .Cform_login h1 {
+        font-size: 1.7rem;
+    }
+
+    .Cform_login h2 {
+        font-size: 1.2rem;
+    }
+
+    .Cform_login > figure:nth-of-type(2) img {
+        width: 24.7rem;
+    }
+
+    .input_cpf label,
+    .input_senha label {
+        font-size: 1.2rem;
+        width: 23.5rem;
+    }
+
+    .input_cpf input::placeholder,
+    .input_senha input::placeholder {
+        font-size: 1.0rem;
+    }
+
+    .input_cpf input,
+    .input_senha input {
+        width: 23.5rem;
+        height: 3.4rem;
+    }
+    
+    .input_senha .olho1,
+    .input_senha .olho2 {
+        right: calc(50% - 11rem);
+        top: 68%;
+    }
+    
+    .olho1 img,
+    .olho2 img {
+        width: 1.6rem;
+    }
+
+    .btn_login button {
+        width: 23.5rem;
+        font-size: 1.2rem;
+        height: 3.4rem;
+    }
+}
+
+/* Mobile médio - até 439px */
+@media screen and (max-width: 439px) {
+    .Cform_login {
+        width: 25rem;
+        height: 38rem;
+    }
+
+    .Cform_login h1 {
+        font-size: 1.7rem;
+    }
+
+    .Cform_login h2 {
+        font-size: 1.0rem;
+    }
+
+    .Cform_login > figure:nth-of-type(2) img {
+        width: 21.7rem;
+    }
+
+    .input_cpf label,
+    .input_senha label {
+        font-size: 1.2rem;
+        width: 19.5rem;
+    }
+
+    .input_cpf input::placeholder,
+    .input_senha input::placeholder {
+        font-size: 1.0rem;
+    }
+
+    .input_cpf input,
+    .input_senha input {
+        width: 19.5rem;
+        height: 3rem;
+    }
+    
+    .input_senha .olho1,
+    .input_senha .olho2 {
+        right: calc(50% - 9rem);
+        top: 67%;
+    }
+    
+    .olho1 img,
+    .olho2 img {
+        width: 1.5rem;
+    }
+
+    .btn_login button {
+        width: 19.5rem;
+        font-size: 1rem;
+        height: 3rem;
+    }
+}
+
+/* Mobile pequeno - até 330px */
+@media screen and (max-width: 330px) {
+    .Cform_login {
+        width: 22rem;
+        height: 36rem;
+        padding: 1rem;
+    }
+
+    .Cform_login h1 {
+        font-size: 1.4rem;
+    }
+
+    .Cform_login h2 {
+        font-size: 0.9rem;
+    }
+
+    .Cform_login > figure:nth-of-type(2) img {
+        width: 18rem;
+    }
+
+    .input_cpf label,
+    .input_senha label {
+        font-size: 1rem;
+        width: 17rem;
+    }
+
+    .input_cpf input::placeholder,
+    .input_senha input::placeholder {
+        font-size: 0.85rem;
+    }
+
+    .input_cpf input,
+    .input_senha input {
+        width: 17rem;
+        height: 2.8rem;
+        font-size: 0.9rem;
+    }
+    
+    .input_senha .olho1,
+    .input_senha .olho2 {
+        right: calc(50% - 7.8rem);
+        top: 66%;
+    }
+    
+    .olho1 img,
+    .olho2 img {
+        width: 1.4rem;
+    }
+
+    .btn_login button {
+        width: 17rem;
+        font-size: 0.9rem;
+        height: 2.8rem;
+    }
+}
+
+/* Mobile muito pequeno - até 320px */
+@media screen and (max-width: 320px) {
+    .Cform_login {
+        width: 20rem;
+        height: 34rem;
+        padding: 0.8rem;
+    }
+
+    .Cform_login h1 {
+        font-size: 1.3rem;
+    }
+
+    .Cform_login h2 {
+        font-size: 0.85rem;
+    }
+
+    .Cform_login > figure:nth-of-type(2) img {
+        width: 16rem;
+    }
+
+    .input_cpf input,
+    .input_senha input {
+        width: 15.5rem;
+        height: 2.6rem;
+        font-size: 0.85rem;
+    }
+    
+    .input_senha .olho1,
+    .input_senha .olho2 {
+        right: calc(50% - 7rem);
+    }
+    
+    .olho1 img,
+    .olho2 img {
+        width: 1.3rem;
+    }
+
+    .btn_login button {
+        width: 15.5rem;
+        font-size: 0.85rem;
+        height: 2.6rem;
+    }
+}
