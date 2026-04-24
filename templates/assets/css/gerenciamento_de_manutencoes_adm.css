@@ -336,27 +336,17 @@ input:focus {
     margin-bottom: 1.5rem;
 }
 
-.historico {
+.pmoc {
     background-color: #B7E6FF;
     border: none;
 }
 
-.historico:hover {
+.pmoc:hover {
     background-color: #9dd4f5;
 }
 
-.chamado {
-    border: .1rem solid #8A38F5;
-    background: none;
-}
 
-.chamado:hover {
-    background-color: #8A38F5;
-    color: #FFFFFF;
-}
-
-.historico,
-.chamado {
+.pmoc{
     font-size: 1rem;
     font-weight: 500;
 }
