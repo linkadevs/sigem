@@ -28,3 +28,71 @@ header{
     width: 5rem;
     cursor: pointer;
 }
+
+main{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.form_main{
+    width: 50rem;
+    padding: 4rem 4rem 0 2rem;
+    margin-top: 5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: white;
+    border-radius: 3.6rem;
+    box-shadow: 0 0 2rem black;
+    gap: 2rem;
+}
+
+.form_main h1{
+    margin-left: 1.5rem;
+    font-family: 'Inter';
+    font-size: 2rem;
+    color: #094C71;
+    font-weight: bold;
+}
+
+.form_main p{
+    margin: 1rem 0 0 1.5rem;
+    font-family: 'Inter';
+    font-size: 1.3rem;
+    color: #094C71;
+    font-weight: normal;
+    width: 44rem;
+}
+
+form{
+    height: 30rem;
+    overflow-y: scroll;
+}
+
+form h2{
+    margin: 1rem 0 0 1.5rem;
+    font-weight: 500;
+    font-size: 1.4rem;
+    color: #094C71;
+}
+
+form input {
+    margin-top: .5rem;
+    width: 100%;
+    height: 4rem;
+    border-radius: 5rem;
+    border: none;
+    padding-left: 1.5rem;
+    font-family: 'Inter';
+    color: #A0AAAF;
+    font-weight: 500;
+}
+
+
+.botoes_form{
+    gap: 1rem;
+    display: flex;
+    justify-content: flex-start;
+}
