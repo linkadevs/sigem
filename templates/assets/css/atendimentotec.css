@@ -1,15 +1,13 @@
 @import 'global.css';
 
 body{
-    background: #ffffff;
+    background: #F4F4F4;
 }
 
 main{
-    min-height: 100vh;
     padding: 2rem;
     margin: 0 auto;
     position: relative;
-    max-width: 140rem;
 }
 
 /* =========================
@@ -19,6 +17,7 @@ main{
     display: grid;
     grid-template-columns: auto auto 1fr auto auto auto auto;
     align-items: center;
+    justify-content: center;
     gap: 1rem;
     padding: 1.8rem 2.4rem;
     border-radius: 1rem;
@@ -37,7 +36,8 @@ main{
 .container_chamados h1{
     color: #005c82;
     font-size: clamp(2.4rem, 3vw, 3.6rem);
-    font-weight: 700;
+    font-style: normal;
+    font-weight: 400;
 }
 
 .icone_perfil{
@@ -71,7 +71,7 @@ main{
     grid-column: 1 / span 5;
     display: flex;
     align-items: center;
-    background: #6f97b7;
+    background: #6f97b76e;
     border-radius: 3rem;
     padding: 1rem 1.6rem;
     margin-top: 1.6rem;
@@ -79,7 +79,7 @@ main{
 }
 
 .container_pesquisa figure img{
-    width: 2rem;
+    width: 3rem;
 }
 
 .container_pesquisa input{
@@ -94,6 +94,7 @@ main{
 
 .container_pesquisa input::placeholder{
     color: #fff;
+    font-size: 2.4rem;
 }
 
 /* =========================
@@ -153,7 +154,7 @@ main{
     color: #0f8ccf;
 }
 .status{
-    font-size: 1.5rem;
+    font-size: 1.9rem;
     font-weight: 700;
 }
 
@@ -164,7 +165,60 @@ main{
 /* =========================
    DESKTOP GRANDE
 ========================= */
-@media (min-width: 1201px){
+@media (min-width: 1401px){
+
+    .container_chamados{
+        padding: 3rem 3rem;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .container_chamados h1{
+        font-size: 4rem;
+        font-style: normal;
+
+    }
+
+    .container_chamados h3{
+        font-size: 1.8rem;
+    }
+
+    .container_pesquisa{
+        min-height: 5.0rem;
+    }
+
+    .container_pesquisa input{
+        font-size: 2.6rem;
+    }
+
+    .btn_procurar button{
+        height: 6rem;
+        min-width: 16rem;
+        font-size: 1.6rem;
+    }
+
+    .container_blocos{
+        grid-template-columns: repeat(4, minmax(30rem, 30rem));
+        justify-content: center;
+        gap: 4.4rem;
+    }
+
+    .conteudo_bloco{
+        min-height: 20rem;
+    }
+
+    .topo_bloco h2{
+        font-size: 1.9rem;
+    }
+
+    .status{
+        font-size: 1.9rem;
+    }
+}
+
+
+
+@media (max-width: 1400px){
 
     .container_chamados{
         padding: 2.4rem 3rem;
@@ -179,11 +233,11 @@ main{
     }
 
     .container_pesquisa{
-        min-height: 6rem;
+        min-height: 5.0rem;
     }
 
     .container_pesquisa input{
-        font-size: 1.6rem;
+        font-size: 2.6rem;
     }
 
     .btn_procurar button{
@@ -193,7 +247,7 @@ main{
     }
 
     .container_blocos{
-        grid-template-columns: repeat(3, minmax(40rem, 34rem));
+        grid-template-columns: repeat(4, minmax(24rem, 27rem));
         justify-content: center;
         gap: 4.4rem;
     }
@@ -212,14 +266,15 @@ main{
 }
 
 
-@media (max-width: 1200px){
+
+@media (max-width: 1311px){
 
     .container_chamados{
         padding: 2.4rem 3rem;
     }
 
     .container_chamados h1{
-        font-size: 4rem;
+        font-size: 3.5rem;
     }
 
     .container_chamados h3{
@@ -227,11 +282,60 @@ main{
     }
 
     .container_pesquisa{
-        min-height: 6rem;
+        min-height: 5.0rem;
     }
 
     .container_pesquisa input{
+        font-size: 2.6rem;
+    }
+
+    .btn_procurar button{
+        height: 6rem;
+        min-width: 16rem;
         font-size: 1.6rem;
+    }
+
+    .container_blocos{
+        grid-template-columns: repeat(4, minmax(20rem, 24rem));
+        justify-content: center;
+        gap: 4.4rem;
+    }
+
+    .conteudo_bloco{
+        min-height: 18rem;
+    }
+
+    .topo_bloco h2{
+        font-size: 1.9rem;
+    }
+
+    .status{
+        font-size: 1.6rem;
+    }
+}
+
+
+
+@media (max-width: 1205px){
+
+    .container_chamados{
+        padding: 2.4rem 3rem;
+    }
+
+    .container_chamados h1{
+        font-size: 3.5rem;
+    }
+
+    .container_chamados h3{
+        font-size: 1.8rem;
+    }
+
+    .container_pesquisa{
+        min-height: 5rem;
+    }
+
+    .container_pesquisa input{
+        font-size: 2.6rem;
     }
 
     .btn_procurar button{
@@ -262,19 +366,32 @@ main{
 /* =========================
    TABLET GRANDE
 ========================= */
-@media (max-width: 900px){
+@media (max-width: 990px){
 
     .container_pesquisa input{
-        font-size: 1.2rem;
+        font-size: 2.6rem;
+    }
+    .container_pesquisa input::placeholder{
+        font-size: 1.4rem;
     }
 
     .container_pesquisa{
         max-width: 82%;
     }
+    
 
-    .btn_procurar button{
-        min-width: 10rem;
-        font-size: 1.2rem;
+    .container_blocos{
+        grid-template-columns: repeat(3, minmax(20rem, 24rem));
+        justify-content: center;
+        gap: 2.4rem;
+    }
+
+    .conteudo_bloco{
+        min-height: 12rem;
+    }
+
+      .container_chamados h1{
+        font-size: 2.7rem;
     }
 }
 
@@ -284,6 +401,32 @@ main{
 @media (max-width: 900px){
 
     .container_pesquisa input{
+        font-size: 2.6rem;
+    }
+
+
+    .container_pesquisa{
+        max-width: 82%;
+    }
+
+
+    .container_blocos{
+        grid-template-columns: repeat(3, minmax(18rem, 22rem));
+        justify-content: center;
+        gap: 2.4rem;
+    }
+
+    .conteudo_bloco{
+        min-height: 12rem;
+    }
+}
+
+
+
+
+@media (max-width: 810px){
+
+    .container_pesquisa input{
         font-size: 1.2rem;
     }
 
@@ -291,18 +434,79 @@ main{
         max-width: 82%;
     }
 
-    .btn_procurar button{
-        min-width: 10rem;
-        font-size: 1.2rem;
+    .container_blocos{
+        grid-template-columns: repeat(3, minmax(14rem, 19rem));
+        justify-content: center;
+        gap: 2.4rem;
+    }
+
+    .conteudo_bloco{
+        min-height: 12rem;
     }
 }
+
+
+
+
 
 
 
 /* =========================
    TABLET
 ========================= */
-@media (max-width: 768px){
+@media (max-width: 700px){
+
+    .container_chamados{
+        grid-template-columns: auto 1fr auto auto;
+        padding: 1.2rem;
+    }
+
+    .icone_logout{
+        grid-column: 3;
+        grid-row: 2;
+        margin-top: 1rem;
+    }
+
+    .logout{
+        grid-column: 4;
+        grid-row: 2;
+        margin-top: 1rem;
+    }
+
+    .container_pesquisa{
+        grid-column: 1 / span 3;
+        min-height: 4.2rem;
+        max-width: 78%;
+    }
+
+    .container_pesquisa input{
+        font-size: 1.1rem;
+    }
+
+    .btn_procurar{
+        grid-column: 4;
+    }
+
+     .container_pesquisa input::placeholder{
+        font-size: 0.7rem;
+    }
+    .btn_procurar button{
+        height: 4.2rem;
+    }
+
+    .container_blocos{
+        grid-template-columns: repeat(2, minmax(25rem, 19rem));
+        justify-content: center;
+        gap: 2.4rem;
+    }
+
+    .conteudo_bloco{
+        min-height: 12rem;
+    }
+}
+
+
+@media (max-width: 625px){
 
     .container_chamados{
         grid-template-columns: auto 1fr auto auto;
@@ -339,44 +543,148 @@ main{
         height: 4.2rem;
     }
 
+    .container_pesquisa input::placeholder{
+        font-size: 0.8rem;
+    }
+
     .container_blocos{
-        grid-template-columns: repeat(3, 1fr);
-        gap: 1rem;
+        grid-template-columns: repeat(2, minmax(22rem, 17rem));
+        justify-content: center;
+        gap: 2.4rem;
+    }
+
+    .conteudo_bloco{
+        min-height: 12rem;
     }
 }
+
+
+
+@media (max-width: 540px){
+
+    .container_chamados{
+        grid-template-columns: auto 1fr auto auto;
+        padding: 1.2rem;
+    }
+
+    .icone_logout{
+        grid-column: 3;
+        grid-row: 2;
+        margin-top: 1rem;
+    }
+
+    .logout{
+        grid-column: 4;
+        grid-row: 2;
+        margin-top: 1rem;
+    }
+
+    .container_pesquisa{
+        grid-column: 1 / span 3;
+        min-height: 4.1rem;
+        max-width: 88%;
+    }
+
+    .container_pesquisa input{
+        font-size: 1.1rem;
+    }
+
+    .btn_procurar{
+        grid-column: 4;
+    }
+
+    .btn_procurar button{
+        height: 4.2rem;
+    }
+
+    .container_pesquisa input::placeholder{
+        font-size: 0.7rem;
+    }
+
+    .container_blocos{
+        grid-template-columns: repeat(2, minmax(18rem, 14rem));
+        justify-content: center;
+        gap: 2.4rem;
+    }
+
+    .conteudo_bloco{
+        min-height: 12rem;
+    }
+}
+
+
 
 /* =========================
    CELULAR
 ========================= */
-@media (max-width: 480px){
+@media (max-width: 457px){
 
-    main{
+   main{
         padding: 1rem;
     }
 
+    .container_chamados{
+        grid-template-columns: auto 1fr auto auto;
+        padding: 1rem;
+        column-gap: 0.6rem;
+        row-gap: 0.8rem;
+    }
+
+    .container_pesquisa{
+        grid-column: 1 / span 3;
+        grid-row: 3;
+        min-height: 3.8rem;
+        max-width: 100%;
+        margin-top: 0.8rem;
+        padding: 0.7rem 1rem;
+    }
+
     .container_pesquisa input{
-        font-size: 0.95rem;
+        font-size: 0.85rem;
+        margin-left: 0.6rem;
     }
 
     .container_pesquisa input::placeholder{
-        font-size: 0.9rem;
+        font-size: 0.62rem;
+    }
+
+    .btn_procurar{
+        grid-column: 4;
+        grid-row: 3;
+        margin-top: 0.8rem;
+        align-self: center;
     }
 
     .btn_procurar button{
-        width: 100%;
-        height: 3.5rem;
-        font-size: 0.9rem;
+        width: 8.5rem;
+        min-width: unset;
+        height: 3.8rem;
+        font-size: 0.8rem;
+        padding: 0 0.8rem;
+        border-radius: 0.8rem;
+    }
+
+    .icone_logout{
+        grid-column: 3;
+        grid-row: 2;
+        margin-top: 0.2rem;
+    }
+
+    .logout{
+        grid-column: 4;
+        grid-row: 2;
+        margin-top: 0;
     }
 
     .container_blocos{
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1.4rem;
+        grid-template-columns: repeat(2, minmax(16rem, 12rem));
+        justify-content: center;
+        gap: 2.4rem;
     }
 
-    .bloco{
-        transform: scale(0.96);
+    .conteudo_bloco{
+        min-height: 9rem;
     }
-
     .topo_bloco h2{
         font-size: 1.2rem;
     }
@@ -386,18 +694,86 @@ main{
     }
 }
 
-/* =========================
-   330px
-========================= */
-@media (max-width: 330px){
 
-    .perfil,
-    .logout{
-        display: none;
+@media (max-width: 395px){
+
+    main{
+        padding: 1rem;
     }
 
+    .container_chamados{
+        grid-template-columns: auto 1fr auto auto;
+        padding: 1rem;
+        column-gap: 0.6rem;
+        row-gap: 0.8rem;
+    }
+
+    .container_pesquisa{
+        grid-column: 1 / span 3;
+        grid-row: 3;
+        min-height: 3.8rem;
+        max-width: 100%;
+        margin-top: 0.8rem;
+        padding: 0.7rem 1rem;
+    }
+
+    .container_pesquisa input{
+        font-size: 0.85rem;
+        margin-left: 0.6rem;
+    }
+
+    .container_pesquisa input::placeholder{
+        font-size: 0.62rem;
+    }
+
+    .btn_procurar{
+        grid-column: 4;
+        grid-row: 3;
+        margin-top: 0.8rem;
+        align-self: center;
+    }
+
+    .btn_procurar button{
+        width: 8.5rem;
+        min-width: unset;
+        height: 3.8rem;
+        font-size: 0.8rem;
+        padding: 0 0.8rem;
+        border-radius: 0.8rem;
+    }
+
+    .icone_logout{
+        grid-column: 3;
+        grid-row: 2;
+        margin-top: 0.2rem;
+    }
+
+    .logout{
+        grid-column: 4;
+        grid-row: 2;
+        margin-top: 0;
+    }
+
+
     .container_blocos{
-        grid-template-columns: 1fr;
-        gap: 1.6rem;
+        grid-template-columns: repeat(2, minmax(12rem, 10rem));
+        justify-content: center;
+        gap: 2.4rem;
+    }
+
+    .conteudo_bloco{
+        min-height: 9rem;
+    }
+    .topo_bloco h2{
+        font-size: 1.2rem;
+    }
+
+    .status{
+        font-size: 1.1rem;
+    }
+
+     .perfil,
+    .logout{
+        display: none;
     }
 }
