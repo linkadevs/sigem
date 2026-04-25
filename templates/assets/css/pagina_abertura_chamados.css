@@ -69,8 +69,15 @@ input, textarea {
     border-color: #07A6FE;
     border-width: .1rem;
     font-size: 2.5rem;
-    color: #094C71;
     padding-left: 2.2rem;
+}
+
+input[type="text"], textarea {
+    color: #094C71;
+}
+
+input[type="date"] {
+    color: #A0AAAF;
 }
 
 #botaoFotos {
@@ -82,6 +89,7 @@ input, textarea {
     border-color: #07A6FE;
     border-width: .1rem;
     font-size: 2.5rem;
+    font-weight: 700;
     padding-left: 2.2rem;
     background-color: transparent;
     color: #BFC6C9;
@@ -104,8 +112,7 @@ input::placeholder, textarea::placeholder {
 }
 
 label {
-    padding-left: 2.2rem;
-    font-size: 2rem;
+    font-size: 2.5rem;
     color: #094C71;
 }
 
