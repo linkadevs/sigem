@@ -17,6 +17,45 @@
         <main>
             <form method="POST">
                 <h3>Máquina 001</h3>
+                <h1>Registrar nova manutenção</h1>
+                <p>Nos mantenha informados sobre as manutenções realizadas!</p>
+                <div class="inputs">
+                    <div class="input">
+                        <label for="nome_tecnico">Nome do técnico</label>
+                        <input type="text" id="nome_tecnico" name="nome_tecnico" placeholder="Insira o nome do técnico">
+                    </div>
+                    <div class="input">
+                        <label for="tipo_servico">Tipo de serviço</label>
+                        <select name="tipo_servico" id="tipo_servico">
+                            <option value="placeholder" selected>Insira o tipo de serviço</option>
+                            <option value="instalacao">Instalação</option>
+                            <option value="manutencao_corretiva">Manutenção corretiva</option>
+                            <option value="manutencao_preventiva">Manutenção preventiva</option>
+                            <option value="inspecao">Inspeção</option>
+                        </select>
+                    </div>
+                    <div class="input">
+                        <label for="descricao_servico">Descrição do serviço</label>
+                        <input type="text" id="descricao_servico" name="descricao_servico" placeholder="Insira a descrição do serviço">
+                    </div>
+                    <div class="input">
+                        <label for="pressao">Pressão aferida (PSI)</label>
+                        <input type="number" id="pressao" name="pressao" placeholder="Informe a pressão aferida">
+                    </div>
+                    <div class="input">
+                        <label for="testes_finalizacao">Testes e finalização</label>
+                        <input type="text" id="testes_finalizacao" name="testes_finalizacao" placeholder="Selecione a finalização do serviço">
+                    </div>
+                    <div class="input">
+                        <label for="data_hora">Data e hora</label>
+                        <input type="datetime-local" id="data_hora" name="data_hora" placeholder="Informe a data e hora da manutenção">
+                    </div>
+                    <div class="input">
+                        <label for="fotos">Fotos</label>
+                        <input type="file" id="fotos" name="fotos" placeholder="Selecione fotos da manutenção" multiple>
+                    </div>
+                </div>
+                <button type="submit">enviar</button>
             </form>
         </main>
     </body>
