@@ -43,7 +43,8 @@
                     </div>
                     <div class="input">
                         <label for="pressao">Pressão aferida (PSI)</label>
-                        <input class="inputTexto" type="number" id="pressao" name="pressao" placeholder="Informe a pressão aferida">
+                        <input class="inputTexto" type="text" id="pressao_aferida" name="pressao_aferida" placeholder="Informe a pressão aferida">
+                        <input type="hidden" id="pressao" name="pressao">
                     </div>
                     <div class="input">
                         <label for="testes_finalizacao">Testes e finalização</label>
@@ -56,15 +57,16 @@
                     <div class="input">
                         <label for="fotos">Fotos</label>
                         <button id="botaoFotos" name="botaoFotos">Selecione fotos da manutenção</button>
-                        <input type="file" name="fotos" id="fotos">
+                        <input type="file" name="fotos" id="fotos" accept="image/*" multiple>
                     </div>
                     <div class="grid"></div>
                 </div>
                 <div class="botoes">
                     <button class="cancelar">Cancelar</button>
-                    <button class="enviar" type="submit">Enviar</button>
+                    <button class="enviar" id="enviar" type="submit">Enviar</button>
                 </div>
             </form>
         </main>
+        <script src="../templates/assets/js/registro_nova_manutencao.js"></script>
     </body>
 </html>
