@@ -1,5 +1,9 @@
 @import 'global.css';
 
+figure img {
+    display: block;
+}
+
 header {
     display: flex;
     background-color: #ffffff;
@@ -130,6 +134,7 @@ input::placeholder, select {
     display: flex;
     align-self: flex-end;
     gap: 2.5rem;
+    width: 100%;
 }
 
 .botoes button {
@@ -185,4 +190,88 @@ select {
     height: 100%;
     object-fit: cover;
     border-radius: 1rem;
+}
+
+@media screen and (max-width: 984px) {
+    form {
+        width: 67.9rem;
+    }
+    .botaoVoltar {
+        font-size: 2.3rem;
+    }
+    form h3 {
+        font-size: 2.3rem;
+        padding: .9rem 2.7rem;
+    }
+
+    h1 {
+        font-size: 3rem;
+    }
+
+    form p {
+        font-size: 1.9rem;
+    }
+    label {
+        font-size: 1.9rem;
+    }
+    input, select, #botaoFotos {
+        font-size: 1.8rem;
+    }
+    .botoes button {
+        font-size: 2.3rem;
+        width: 18.1rem;
+    }
+}
+
+@media screen and (max-width: 710px) {
+    header {
+        padding: 1.6rem;
+    }
+    .botaoVoltar {
+        font-size: 1.4rem;
+        gap: 1rem;
+    }
+    nav p {
+        font-size: 1.4rem;
+    }
+    nav {
+        gap: 1rem;
+    }
+
+    main {
+        border-radius: 0;
+    }
+
+    form {
+        width: 35.8rem;
+        padding: 3.6rem 2.5rem;
+    }
+
+    form h3 {
+        font-size: 1.6rem;
+        padding: .9rem 2.7rem;
+    }
+
+    input, select, #botaoFotos {
+        font-size: 1.6rem;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    form p {
+        font-size: 1.6rem;
+    }
+    
+    .botoes button {
+        font-size: 1.6rem;
+        width: 13rem;
+        height: 3.9rem;
+    }
+
+    .botoes {
+        justify-content: space-between;
+        gap: auto;
+    }
 }
