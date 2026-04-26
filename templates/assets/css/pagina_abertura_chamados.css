@@ -78,6 +78,7 @@ input[type="text"], textarea {
 
 input[type="date"] {
     color: #A0AAAF;
+    font-weight: 700;
 }
 
 #botaoFotos {
@@ -150,4 +151,62 @@ label {
     height: 100%;
     object-fit: cover;
     border-radius: 1rem;
+}
+
+@media (max-width: 1800px) {
+    .conteiner figure img {
+        width: 40vw;
+        height: 107.3rem;
+        object-fit: cover;
+    }
+    .conteiner {
+        padding: 3.4rem;
+        width: fit-content;
+    }
+    form {
+        width: fit-content;
+    }
+    .inputs {
+        width: 59rem;
+    }
+    #uf {
+        width: 100%;
+    }
+}
+
+@media (max-width: 1368px) {
+    .conteiner figure {
+        display: none;
+    }
+    .inputs {
+        min-width: 65.8rem;
+        width: 70vw;
+    }
+}
+
+@media (max-width: 760px) {
+    .dataUf {
+        flex-direction: column;
+        gap: 3.9rem;
+    }
+    .inputs {
+        width: 30.1rem;
+        min-width: auto;
+    }
+    input, textarea, #botaoFotos {
+        font-size: 1.6rem;
+    }
+    input, #botaoFotos {
+        height: 6rem;
+    }
+    label {
+        font-size: 1.8rem;
+    }
+    .botaoVoltar {
+        font-size: 2rem;
+        gap: 2rem;
+    }
+    main {
+        padding-top: 0;
+    }
 }
