@@ -1,0 +1,99 @@
+@import 'global.css';
+
+main {
+    display: flex;
+    margin: 0;
+    gap: 10rem;
+}
+
+.voltar {
+    height: auto;
+    width: 2rem;
+    max-width: 100%;
+    position: absolute;
+    top: 3rem;
+    left: 2rem;
+}
+
+.voltar button {
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+.esquerda {
+    width: auto;
+    height: 100%;
+    display: flex;
+    justify-content: flex-start;
+    background-color: #F4F4F4;
+    position: relative;
+    padding-right: 5rem;
+}
+
+.imgprincipal img,
+.imgprincipal figure {
+
+    width: auto;
+    height: 80rem;
+}
+
+.direita {
+    display: flex;
+    flex-direction: column;
+    padding: 4rem;
+    gap: 4.8rem;
+    width: 50%;
+    margin-right: 3rem;
+    height: auto;
+}
+
+h1 {
+    font-weight: 200;
+    font-size: 3rem;
+    color: #094C71;
+}
+
+form{
+    gap: 2rem;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.direita input,
+.direita select{
+    background: none;
+    border-color: #07A6FE;
+    height: 5rem;
+    width: 100%;
+    padding-left: 2rem;
+}
+
+.direita input::placeholder{
+    color: #BFC6C9;
+    font-weight: 300;
+    font-size: 1.5rem;
+}
+
+label{
+    color: #094C71;
+    font-size: 1.8rem;
+}
+
+.entrada{
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+}
+
+.salvar{
+    height: 4rem;
+    background: linear-gradient(to right, #094B6F, #1291D5);
+    font-weight: bold;
+    color: #ffffff;
+    font-size: 1.4rem;
+    border: none;
+    box-shadow: 0 .2rem .4rem rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+}

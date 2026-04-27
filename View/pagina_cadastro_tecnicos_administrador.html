@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de técnicos</title>
+    <link rel="stylesheet" href="/templates/assets/css/pagina_cadastro_tecnicos_administrador.css">
+</head>
+
+<body>
+    <main>
+        <div class="esquerda">
+
+            <div class="voltar">
+                <button>
+                    <figure>
+                        <img src="/templates/assets/img/seta_voltar_semfundo.png" alt="">
+                    </figure>
+                </button>
+
+            </div>
+
+            <div class="imgprincipal">
+                <figure>
+                    <img src="/templates/assets/img/foto-cadastrartec.png" alt="">
+                </figure>
+            </div>
+
+        </div>
+
+        <div class="direita">
+            <h1>Cadastre seu novo colaborador!</h1>
+            <form>
+                <div class="entrada">
+                    <label for="Nome">Nome</label>
+                    <input type="text" id="noeme" placeholder="Insira o nome do colaborador" class="inputnome">
+                </div>
+
+                <div class="entrada">
+                    <label for="cpf">CPF</label>
+                    <input type="text" id="cpf" placeholder="ABC.DEF.GHI-JK" class="inputcpf">
+                </div>
+
+                <div class="entrada">
+                    <label for="funcao">Função</label>
+                    <select name="funcao" id="funcao" class="selectfuncao">
+                        <option value="opcao1">Mecânico</option>
+                        <option value="opcao2">Eletricista</option>
+                        <option value="opcao3">Técnico em refrigeração</option>
+                    </select>
+                </div>
+
+                <div class="entrada">
+                    <label for="senha">Senha</label>
+                    <input type="text" name="senha" id="senha" placeholder="Insira uma senha inicial ">
+                </div>
+
+                <button class="salvar">Salvar</button>
+            </form>
+        </div>
+    </main>
+
+</body>
+
+</html>
