@@ -1,11 +1,5 @@
 @import 'global.css';
 
-/* RESET E CONFIGURAÇÕES BASE */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
 
 body {
     background-color: #F4F4F4;
@@ -483,7 +477,6 @@ input:focus {
         padding: 1rem;
     }
 
-    /* Ajuste do menu */
     aside {
         margin-left: 0;
         padding: 1.5rem;
@@ -569,7 +562,7 @@ input:focus {
         font-size: 1.2rem;
     }
 
-    /* Ajuste da lupa */
+    
     .conteudo_superior img {
         width: 1.8rem;
         height: 1.8rem;
@@ -1133,7 +1126,7 @@ input:focus {
     }
 }
 
-/* 280px - Extremo */
+/* 280px - menor responsividade */
 @media (max-width: 280px) {
     .conteudo_superior {
         padding: 0.4rem;
