@@ -58,11 +58,11 @@ aside p {
     color: #CBCFD1;
 }
 
-aside .btn_manutencoes {
+aside .btn_tecnicos {
     background-color: #EAF7FE;
 }
 
-aside .btn_manutencoes p {
+aside .btn_tecnicos p {
     color: #024265;
 }
 
@@ -116,7 +116,7 @@ main {
 /* CONTEÚDO SUPERIOR */
 .conteudo_superior {
     width: 100%;
-    background: linear-gradient(to right, #FF6BDF, #6500C4);
+    background: linear-gradient(to right, #EAF7FE, #13ACFF);
     color: #FFFFFF;
     gap: 3.3rem;
     border-radius: 1rem;
@@ -124,6 +124,40 @@ main {
     flex-direction: column;
     padding: 1.5rem 6.6rem 1.5rem 6.6rem;
     margin-bottom: 3.4rem;
+}
+
+.conteudo_superior h1{
+    color: #094C71;
+}
+
+.novo_colaborador{
+    display: flex;
+    justify-content: center;
+}
+
+.btn_colaborador{
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    background-color: #FFFFFF;
+    border: none;
+    gap: 1rem;
+    border-radius: 1rem;
+    font-family: 'Inter';
+    color: #8A38F5;
+    box-shadow: 0 0.4rem 0.4rem rgba(0, 0, 0, 0.25);
+    width: 20rem;
+    height: 4rem;
+    cursor: pointer;
+}
+
+.btn_colaborador:hover {
+    transform: scale(1.02);
+}
+
+.btn_colaborador img{
+    width: 2rem;
+    height: 2rem;
 }
 
 form {
@@ -150,11 +184,6 @@ form {
     left: 1rem;
     pointer-events: none;
     z-index: 1;
-}
-
-h1 {
-    font-weight: normal;
-    font-size: 3rem;
 }
 
 input {
@@ -212,8 +241,9 @@ input:focus {
 
 /* GRID DE CARDS */
 .grid_cards {
+    padding-top: 3rem;
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(1, 1fr);
     gap: 1.5rem;
     width: 100%;
     margin: 0 auto;
@@ -226,92 +256,15 @@ input:focus {
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 38.6rem;
+    height: 17rem;
     padding-top: 1.5rem;
     transition: all 0.3s ease;
+    border: 1px solid #A0AAAF;
 }
 
 .card:hover {
     transform: translateY(-5px);
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-}
-
-.maquina {
-    font-size: 1.8rem;
-    font-weight: normal;
-    color: #094C71;
-    margin-bottom: 2rem;
-    text-align: center;
-    padding: 0 0.5rem;
-}
-
-.codigo {
-    background-color: #8A38F5;
-    font-size: 1.8rem;
-    font-weight: bold;
-    color: #FFFFFF;
-    width: 15.5rem;
-    height: 4.1rem;
-    border-radius: 5rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 1rem;
-}
-
-.card hr {
-    border: none;
-    height: .1rem;
-    background: #a0aaaf48;
-    width: 90%;
-    margin: 1rem auto;
-    display: block;
-    margin-bottom: 1rem;
-}
-
-.manutencao {
-    color: #094C71;
-    font-size: 1.5rem;
-    font-weight: normal;
-    margin-bottom: 2.2rem;
-}
-
-.dados {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-    margin-bottom: 2rem;
-    font-size: 1.3rem;
-    color: #094C71;
-    width: 100%;
-    padding: 0 1rem;
-}
-
-.informacao {
-    display: flex;
-    gap: 1.5rem;
-    flex-wrap: wrap;
-}
-
-.informacaoazul {
-    display: flex;
-    gap: 1.5rem;
-    background-color: #EAF7FE;
-    height: 2rem;
-    align-items: center;
-    padding: 0 0.5rem;
-    border-radius: 0.3rem;
-}
-
-.card button {
-    width: 10.5rem;
-    height: 3rem;
-    border-radius: .7rem;
-    cursor: pointer;
-    color: #094C71;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.44);
-    transition: all 0.3s ease;
-    font-size: 1rem;
 }
 
 .card button:hover {
@@ -323,27 +276,96 @@ input:focus {
     transform: translateY(0);
 }
 
-.botoes {
-    display: flex;
-    gap: .6rem;
-    margin-top: auto;
-    margin-bottom: 1.5rem;
+.nome{
+    font-family: 'Inter';
+    font-size: 2.2rem;
+    color: #094C71;
+    font-weight: normal;
 }
 
-.pmoc {
-    background-color: #B7E6FF;
+.informacoes{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.container_informacoes{
+    margin-top: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 2.5rem;
+}
+
+.container_cpf, .container_funcao{
+    font-family: 'Inter';
+    font-size: 2rem;
+    gap: 2rem;
+    display: flex;
+    width: 55rem;
+    height: 3.5rem;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.container_cpf{
+    background-color: #8A38F5;
+    border-radius: 1rem;
     border: none;
 }
 
-.pmoc:hover {
-    background-color: #9dd4f5;
+.cpf h1, .dados_cpf h1{
+    font-family: 'Inter';
+    color: white;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.container_funcao{
+    background-color: #DFC7FF;
+    border-radius: 1rem;
+    border: none;
+}
+
+.funcao h1, .dados_funcao h1{
+    font-family: 'Inter';
+    color: #094C71;
+    font-size: 2.2rem;
+    font-weight: bold;
+}
+
+.btn_card{
+    display: flex;
+    gap: 1.5rem;
+    flex-direction: column;
+}
+
+.excluir, .editar{
+    height: 3.5rem;
+    width: 8rem;
+    border: none;
+    font-family: 'Inter';
+    font-weight: bold;
+    border-radius: 1rem;
+    cursor: pointer;
+}
+
+.excluir:hover, .editar:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+}
+
+.excluir{
+    background-color: #FE9294;
+    color: #A41838;
+}
+
+.editar{
+    background-color: rgba(67, 220, 255, 0.4);
+    color: #199DA2;
 }
 
 
-.pmoc{
-    font-size: 1rem;
-    font-weight: 500;
-}
 
 /* 1280px - Desktop pequeno / Laptop */
 @media (max-width: 1280px) {
@@ -419,7 +441,7 @@ input:focus {
 
     /* Grid de cards */
     .grid_cards {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(2, 1fr);
         gap: 1.3rem;
         padding: 0 0.8rem;
     }
