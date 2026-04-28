@@ -1,11 +1,25 @@
 @import 'global.css';
 
+/* ===== CONFIGURAÇÕES GERAIS ===== */
+html,
+body {
+    height: 100%;
+    min-height: 100vh;
+}
+
+body {
+    background-color: #FFFFFF;
+}
+
 main {
     display: flex;
     margin: 0;
-    gap: 10rem;
+    gap: 0;
+    min-height: 100vh;
+    height: 100%;
 }
 
+/* ===== BOTÃO VOLTAR ===== */
 .voltar {
     height: auto;
     width: 2rem;
@@ -13,87 +27,841 @@ main {
     position: absolute;
     top: 3rem;
     left: 2rem;
+    z-index: 10;
 }
 
 .voltar button {
     border: none;
     background: none;
     cursor: pointer;
+    transition: all 0.3s ease;
 }
 
+.voltar button:hover {
+    transform: scale(1.1);
+}
+
+/* ===== LADO ESQUERDO (IMAGEM) ===== */
 .esquerda {
-    width: auto;
+    width: 50%;
+    height: 100vh;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    background-color: #F4F4F4;
+    position: relative;
+    padding: 0;
+    margin: 0;
+}
+
+.imgprincipal {
+    width: 100%;
     height: 100%;
     display: flex;
     justify-content: flex-start;
-    background-color: #F4F4F4;
-    position: relative;
-    padding-right: 5rem;
+    align-items: flex-start;
 }
 
-.imgprincipal img,
-.imgprincipal figure {
-
+/* Imagem desktop */
+.imgprincipal .img-desktop {
+    display: block;
     width: auto;
-    height: 80rem;
+    height: auto;
+    max-width: 85%;
+    max-height: 85%;
+    object-fit: contain;
+    object-position: top left;
+    margin: 0;
 }
 
+/* Imagens tablet e mobile (ocultas em desktop) */
+.imgprincipal .img-tablet,
+.imgprincipal .img-mobile {
+    display: none;
+}
+
+/* ===== LADO DIREITO (FORMULÁRIO) ===== */
 .direita {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
     padding: 4rem;
     gap: 4.8rem;
     width: 50%;
-    margin-right: 3rem;
-    height: auto;
+    height: 100vh;
+    background-color: #FFFFFF;
+    overflow-y: auto;
 }
 
+/* Título principal */
 h1 {
     font-weight: 200;
     font-size: 3rem;
     color: #094C71;
 }
 
-form{
+/* Formulário */
+form {
     gap: 2rem;
     display: flex;
     flex-direction: column;
     width: 100%;
 }
 
+/* Campos de input e select */
 .direita input,
-.direita select{
+.direita select {
     background: none;
-    border-color: #07A6FE;
+    border: 2px solid #07A6FE;
+    border-radius: 0.5rem;
     height: 5rem;
     width: 100%;
     padding-left: 2rem;
+    font-size: 1.4rem;
+    transition: all 0.3s ease;
 }
 
-.direita input::placeholder{
+.direita input:focus,
+.direita select:focus {
+    outline: none;
+    border-color: #094B6F;
+    box-shadow: 0 0 0 2px rgba(9, 75, 111, 0.2);
+}
+
+.direita input::placeholder {
     color: #BFC6C9;
     font-weight: 300;
     font-size: 1.5rem;
 }
 
-label{
+/* Labels dos campos */
+label {
     color: #094C71;
     font-size: 1.8rem;
+    font-weight: 500;
 }
 
-.entrada{
+/* Container de cada campo */
+.entrada {
     display: flex;
     flex-direction: column;
     gap: .5rem;
+    position: relative;
 }
 
-.salvar{
+/* Ícones de olho (mostrar/ocultar senha) */
+.olhofechado,
+.olhoaberto {
+    position: absolute;
+    right: 1rem;
+    bottom: 1.2rem;
+    top: 4rem;
+    cursor: pointer;
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.olhofechado img,
+.olhoaberto img {
+    width: 100%;
+    height: auto;
+    max-width: 1.8rem;
+}
+
+.olhofechado:hover,
+.olhoaberto:hover {
+    transform: scale(1.1);
+}
+
+.olhoaberto {
+    display: none;
+}
+
+/* Botão salvar */
+.salvar {
     height: 4rem;
     background: linear-gradient(to right, #094B6F, #1291D5);
     font-weight: bold;
     color: #ffffff;
-    font-size: 1.4rem;
+    font-size: 1.6rem;
     border: none;
-    box-shadow: 0 .2rem .4rem rgba(0, 0, 0, 0.4);
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
     cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+}
+
+.salvar:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.salvar:active {
+    transform: translateY(0);
+}
+
+/* ===== RESPONSIVIDADE ===== */
+
+/* 1280px - Desktop pequeno */
+@media (max-width: 1280px) {
+    .direita {
+        padding: 3rem;
+        gap: 3rem;
+    }
+
+    .voltar {
+        width: 3rem;
+        top: 1.5rem;
+        left: 1rem;
+    }
+
+    .voltar img {
+        width: 2.9rem;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    .direita input,
+    .direita select {
+        height: 4.5rem;
+        font-size: 1.3rem;
+    }
+
+    .direita input::placeholder {
+        font-size: 1.3rem;
+    }
+
+    label {
+        font-size: 1.6rem;
+    }
+
+    .salvar {
+        height: 3.8rem;
+        font-size: 1.4rem;
+    }
+
+    .imgprincipal .img-desktop {
+        max-width: 100%;
+        max-height: 100%;
+    }
+
+    .olhofechado,
+    .olhoaberto {
+        bottom: 1rem;
+        right: 0.8rem;
+        top: 4rem;
+    }
+
+    .olhofechado img,
+    .olhoaberto img {
+        max-width: 1.5rem;
+    }
+}
+
+/* 1024px - Tablet */
+@media (max-width: 1024px) {
+    .direita {
+        justify-content: flex-start;
+        padding-top: 18rem;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    .voltar {
+        width: 3rem;
+        top: 1.5rem;
+        left: 1rem;
+    }
+
+    .voltar img {
+        width: 2.5rem;
+    }
+
+    .direita input,
+    .direita select {
+        height: 4rem;
+        font-size: 1.2rem;
+        padding-left: 1.5rem;
+    }
+
+    .direita input::placeholder {
+        font-size: 1.2rem;
+    }
+
+    label {
+        font-size: 1.4rem;
+    }
+
+    .salvar {
+        height: 3.5rem;
+        font-size: 1.3rem;
+    }
+
+    .olhofechado,
+    .olhoaberto {
+        bottom: 0.8rem;
+        right: 0.8rem;
+        top: 3.5rem;
+    }
+
+    .olhofechado img,
+    .olhoaberto img {
+        max-width: 1.3rem;
+    }
+}
+
+/* 900px - Tablet pequeno */
+@media (max-width: 900px) {
+    .direita {
+        justify-content: flex-start;
+        padding-top: 18rem;
+    }
+
+    .voltar {
+        width: 3rem;
+        top: 1.5rem;
+        left: 1rem;
+    }
+
+    .voltar img {
+        width: 2.5rem;
+    }
+
+    .esquerda {
+        width: 50%;
+        height: 100vh;
+        padding: 0;
+    }
+
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    .entrada {
+        gap: 0.3rem;
+    }
+
+    .direita input,
+    .direita select {
+        height: 3.8rem;
+        font-size: 1.1rem;
+    }
+
+    label {
+        font-size: 1.3rem;
+    }
+
+    .voltar {
+        width: 1.8rem;
+        top: 2rem;
+        left: 1.5rem;
+    }
+
+    .olhofechado,
+    .olhoaberto {
+        bottom: 0.7rem;
+        right: 0.8rem;
+        top: 3.2rem;
+    }
+
+    .olhofechado img,
+    .olhoaberto img {
+        max-width: 1.3rem;
+    }
+}
+
+/* 769px a 843px  */
+@media (min-width: 769px) and (max-width: 843px) {
+    main {
+        flex-direction: row;
+        gap: 0;
+    }
+
+
+    .voltar {
+        width: 3rem;
+        top: 1.5rem;
+        left: 1rem;
+    }
+
+    .voltar img {
+        width: 2.5rem;
+    }
+
+    .imgprincipal {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+    }
+
+    .direita {
+        width: 50%;
+        height: 100vh;
+        justify-content: flex-start;
+        padding-top: 18rem;
+    }
+
+    h1 {
+        font-size: 1.6rem;
+        text-align: center;
+    }
+
+    .direita input,
+    .direita select {
+        height: 3.5rem;
+        font-size: 1rem;
+        padding-left: 1.2rem;
+    }
+
+    label {
+        font-size: 1.2rem;
+    }
+
+    .salvar {
+        height: 3.2rem;
+        font-size: 1.1rem;
+    }
+
+    form {
+        gap: 1.2rem;
+    }
+
+    .olhofechado,
+    .olhoaberto {
+        bottom: 0.6rem;
+        right: 0.8rem;
+        top: 3rem;
+    }
+
+    .olhofechado img,
+    .olhoaberto img {
+        max-width: 1.3rem;
+    }
+}
+
+/* 768px - Tablet vertical */
+@media (max-width: 768px) {
+
+    html,
+    body {
+        height: auto;
+        min-height: auto;
+    }
+
+    main {
+        flex-direction: column;
+        gap: 0;
+        min-height: auto;
+        height: auto;
+    }
+
+    /* Lado esquerdo */
+    .esquerda {
+        width: 100%;
+        height: auto;
+        justify-content: center;
+        align-items: center;
+        padding: 2rem;
+    }
+
+    .imgprincipal {
+        width: 100%;
+        height: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    /* Troca para imagem tablet */
+    .imgprincipal .img-desktop {
+        display: none;
+    }
+
+    .imgprincipal .img-tablet {
+        display: block;
+        width: auto;
+        height: auto;
+        max-width: 80%;
+        max-height: 40vh;
+        object-fit: contain;
+        object-position: center;
+        margin: 0 auto;
+    }
+
+    /* Lado direito */
+    .direita {
+        width: 100%;
+        padding: 2rem;
+        gap: 1.5rem;
+        min-height: auto;
+        height: auto;
+    }
+
+    h1 {
+        font-size: 1.8rem;
+        text-align: center;
+    }
+
+    /* Botão voltar fixo */
+    .voltar {
+        position: fixed;
+        top: 1rem;
+        left: 1rem;
+        background: transparent !important;
+        border-radius: 50%;
+        padding: 0.5rem;
+        z-index: 100;
+    }
+
+    .voltar img {
+        width: 2rem;
+        filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+    }
+
+    .salvar {
+        margin-bottom: 2rem;
+    }
+
+    .olhofechado,
+    .olhoaberto {
+        bottom: 0.9rem;
+        right: 1rem;
+    }
+
+    .olhofechado img,
+    .olhoaberto img {
+        max-width: 1.3rem;
+    }
+}
+
+/* 650px - Troca para imagem mobile */
+@media (max-width: 650px) {
+    .esquerda {
+        padding: 1.5rem;
+    }
+
+    /* Troca para imagem mobile */
+    .imgprincipal .img-tablet {
+        display: none;
+    }
+
+    .imgprincipal .img-mobile {
+        display: block;
+        width: auto;
+        height: auto;
+        max-width: 70%;
+        max-height: 35vh;
+        object-fit: contain;
+        object-position: center;
+        margin: 0 auto;
+    }
+
+    .direita {
+        padding: 1.5rem;
+    }
+
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    .direita input,
+    .direita select {
+        height: 3.5rem;
+        font-size: 1rem;
+        padding-left: 1.2rem;
+    }
+
+    .direita input::placeholder {
+        font-size: 1rem;
+    }
+
+    label {
+        font-size: 1.2rem;
+    }
+
+    .salvar {
+        height: 3.2rem;
+        font-size: 1.2rem;
+    }
+
+    form {
+        gap: 1.2rem;
+    }
+
+    .olhofechado,
+    .olhoaberto {
+        bottom: 0.7rem;
+        right: 0.8rem;
+        top: 3rem;
+    }
+
+    .olhofechado img,
+    .olhoaberto img {
+        max-width: 1.3rem;
+    }
+}
+
+/* 550px - Mobile pequeno */
+@media (max-width: 550px) {
+    .imgprincipal .img-mobile {
+        max-width: 65%;
+        max-height: 35vh;
+    }
+
+    .esquerda {
+        padding: 1rem;
+    }
+
+    .direita {
+        padding: 1.2rem;
+    }
+
+    h1 {
+        font-size: 1.4rem;
+    }
+
+    .voltar {
+        top: 0.8rem;
+        left: 0.8rem;
+    }
+}
+
+/* 480px - Celular médio */
+@media (max-width: 480px) {
+    .imgprincipal .img-mobile {
+        max-width: 60%;
+        max-height: 30vh;
+    }
+
+    .esquerda {
+        padding: 0.8rem;
+    }
+
+    .direita {
+        padding: 1rem;
+    }
+
+    h1 {
+        font-size: 1.3rem;
+    }
+
+    .direita input,
+    .direita select {
+        height: 3.2rem;
+        font-size: 0.9rem;
+        padding-left: 1rem;
+    }
+
+    .direita input::placeholder {
+        font-size: 0.9rem;
+    }
+
+    label {
+        font-size: 1.1rem;
+    }
+
+    .salvar {
+        height: 3rem;
+        font-size: 1.1rem;
+    }
+
+    form {
+        gap: 1rem;
+    }
+
+    .entrada {
+        gap: 0.2rem;
+    }
+
+    .voltar img {
+        width: 1.5rem;
+    }
+
+    .olhofechado,
+    .olhoaberto {
+        bottom: 0.6rem;
+        right: 0.7rem;
+        top: 2.5rem;
+    }
+
+    .olhofechado img,
+    .olhoaberto img {
+        max-width: 1.3rem;
+    }
+}
+
+/* 400px - Celular pequeno */
+@media (max-width: 400px) {
+    .imgprincipal .img-mobile {
+        max-width: 55%;
+        max-height: 28vh;
+    }
+
+    .esquerda {
+        padding: 0.5rem;
+    }
+
+    .direita {
+        padding: 0.8rem;
+    }
+
+    h1 {
+        font-size: 1.2rem;
+    }
+
+    .direita input,
+    .direita select {
+        height: 3rem;
+        font-size: 0.85rem;
+    }
+
+    .direita input::placeholder {
+        font-size: 0.85rem;
+    }
+
+    label {
+        font-size: 1rem;
+    }
+
+    .salvar {
+        height: 2.8rem;
+        font-size: 1rem;
+    }
+
+    .olhofechado,
+    .olhoaberto {
+        bottom: 0.5rem;
+        right: 0.6rem;
+        top: 2.3rem;
+    }
+}
+
+/* 340px - Celular extra pequeno */
+@media (max-width: 340px) {
+    .imgprincipal .img-mobile {
+        max-width: 50%;
+        max-height: 25vh;
+    }
+
+    .esquerda {
+        padding: 0.3rem;
+    }
+
+    .direita {
+        padding: 0.5rem;
+    }
+
+    h1 {
+        font-size: 1rem;
+    }
+
+    .direita input,
+    .direita select {
+        height: 2.8rem;
+        font-size: 0.8rem;
+        padding-left: 0.8rem;
+        border-width: 1.5px;
+    }
+
+    .direita input::placeholder {
+        font-size: 0.8rem;
+    }
+
+    label {
+        font-size: 0.9rem;
+    }
+
+    .salvar {
+        height: 2.6rem;
+        font-size: 0.9rem;
+    }
+
+    form {
+        gap: 0.8rem;
+    }
+
+    .entrada {
+        gap: 0.1rem;
+    }
+
+    .voltar {
+        top: 0.5rem;
+        left: 0.5rem;
+    }
+
+    .voltar img {
+        width: 1.2rem;
+    }
+
+    .olhofechado,
+    .olhoaberto {
+        bottom: 0.4rem;
+        right: 0.5rem;
+        top: 2.2rem;
+    }
+
+    .olhofechado img,
+    .olhoaberto img {
+        max-width: 1.3rem;
+    }
+}
+
+/* 280px - Extremo */
+@media (max-width: 280px) {
+    .imgprincipal .img-mobile {
+        max-width: 45%;
+        max-height: 22vh;
+    }
+
+    .esquerda {
+        padding: 0.2rem;
+    }
+
+    .direita {
+        padding: 0.3rem;
+    }
+
+    h1 {
+        font-size: 0.9rem;
+    }
+
+    .direita input,
+    .direita select {
+        height: 2.5rem;
+        font-size: 0.7rem;
+    }
+
+    label {
+        font-size: 0.8rem;
+    }
+
+    .salvar {
+        height: 2.3rem;
+        font-size: 0.8rem;
+    }
+
+    .olhofechado,
+    .olhoaberto {
+        bottom: 0.3rem;
+        right: 0.4rem;
+        top: 2rem;
+    }
+
+    .olhofechado img,
+    .olhoaberto img {
+        max-width: 1rem;
+    }
 }

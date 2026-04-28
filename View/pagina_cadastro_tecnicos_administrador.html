@@ -11,30 +11,41 @@
 <body>
     <main>
         <div class="esquerda">
-
             <div class="voltar">
                 <button>
                     <figure>
-                        <img src="/templates/assets/img/seta_voltar_semfundo.png" alt="">
+                        <img src="/templates/assets/img/seta_voltar_semfundo.png" alt="Voltar">
                     </figure>
                 </button>
-
             </div>
 
             <div class="imgprincipal">
+                <!-- Imagem para DESKTOP-->
                 <figure>
-                    <img src="/templates/assets/img/foto-cadastrartec.png" alt="">
+                    <img class="img-desktop" src="/templates/assets/img/foto-cadastrartec.png"
+                        alt="Cadastro de técnicos">
+                </figure>
+
+                <!-- Imagem para TABLET -->
+                <figure>
+                    <img class="img-tablet" src="/templates/assets/img/foto-cadastrartec-tablet.png"
+                        alt="Cadastro de técnicos - Tablet">
+                </figure>
+
+                <!-- Imagem para MOBILE-->
+                <figure>
+                    <img class="img-mobile" src="/templates/assets/img/foto-cadastrartec-mobile.png"
+                        alt="Cadastro de técnicos - Mobile">
                 </figure>
             </div>
-
         </div>
 
         <div class="direita">
             <h1>Cadastre seu novo colaborador!</h1>
             <form>
                 <div class="entrada">
-                    <label for="Nome">Nome</label>
-                    <input type="text" id="noeme" placeholder="Insira o nome do colaborador" class="inputnome">
+                    <label for="nome">Nome</label>
+                    <input type="text" id="nome" placeholder="Insira o nome do colaborador" class="inputnome">
                 </div>
 
                 <div class="entrada">
@@ -45,22 +56,29 @@
                 <div class="entrada">
                     <label for="funcao">Função</label>
                     <select name="funcao" id="funcao" class="selectfuncao">
-                        <option value="opcao1">Mecânico</option>
-                        <option value="opcao2">Eletricista</option>
-                        <option value="opcao3">Técnico em refrigeração</option>
+                        <option value="mecanico">Mecânico</option>
+                        <option value="eletricista">Eletricista</option>
+                        <option value="tecnico_refrigeracao">Técnico em refrigeração</option>
                     </select>
                 </div>
 
                 <div class="entrada">
                     <label for="senha">Senha</label>
-                    <input type="text" name="senha" id="senha" placeholder="Insira uma senha inicial ">
+                    <input type="password" name="senha" id="senha" placeholder="Insira uma senha inicial">
+                    <figure class="olhofechado">
+                        <img src="/templates/assets/img/olho_fechado.png" alt="">
+                    </figure>
+
+                    <figure class="olhoaberto">
+                        <img src="/templates/assets/img/olho_aberto.png" alt="">
+                    </figure>
                 </div>
 
                 <button class="salvar">Salvar</button>
             </form>
         </div>
     </main>
-
+    <script src="/templates/assets/js/pagina_cadastro_tecnicos_administrador.js"></script>
 </body>
 
 </html>
