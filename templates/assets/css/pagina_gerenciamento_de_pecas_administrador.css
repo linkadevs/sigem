@@ -534,7 +534,7 @@ input:focus {
 
     .conteudo_superior {
         padding: 1.2rem;
-        margin: 0 1rem 1.5rem 1rem;
+        
     }
 
     h1 {
@@ -717,6 +717,7 @@ input:focus {
     .topico {
         width: 100%;
         min-width: unset;
+        gap: .2rem;
     }
     
     .lado-direito {
@@ -799,6 +800,10 @@ input:focus {
 
     .bloco {
         padding: 0.8rem;
+    }
+
+    .topico{
+        gap: .2rem;
     }
 
     .titulo {
