@@ -13,7 +13,7 @@ body{
 .background{
     position: absolute;
     z-index: 1;
-    top: -15rem;
+    top: -12rem;
 }
 
 .background img{
@@ -192,7 +192,7 @@ footer{
     }
     
     .background {
-        top: -8rem;
+        top: 0;
         width: 100%;
         overflow: hidden;
     }
@@ -231,10 +231,9 @@ footer{
     }
     
     .card_main {
-        width: 90%;
-        max-width: 55rem;
+        max-width: 45rem;
         height: auto;
-        min-height: 50rem;
+        min-height: 45rem;
         padding: 3rem 3rem 2rem 3rem;
         margin-top: 2rem;
         gap: 1.5rem;
@@ -255,7 +254,6 @@ footer{
         margin: 0.5rem 0 0 0;
         width: 100%;
         font-size: 1.2rem;
-        text-align: center;
     }
     
     .botoes_card {
