@@ -225,7 +225,7 @@ input:focus {
     grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
     justify-content: space-between;
     row-gap: 2rem;
-    height: 22rem;
+    max-height: 22rem;
     overflow: hidden;
     overflow-y: scroll;
 }
