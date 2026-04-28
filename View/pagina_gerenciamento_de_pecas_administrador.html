@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solicitações de peças</title>
+    <link rel="stylesheet" href="/templates/assets/css/pagina_gerenciamento_de_pecas_administrador.css">
+</head>
+
+<body>
+    <aside class="menu_lateral">
+        <nav>
+            <div class="menu_perfil">
+                <button class="btn_perfil">
+                    <div class="circuloperfil">
+                        <figure>
+                            <img src="/templates/assets/img/menu-perfil.png" alt="Imagem circular de um usuário
+                     genérico para simbolizar o perfil">
+                        </figure>
+                    </div>
+                    <p>Administrador</p>
+                </button>
+            </div>
+
+            <div class="menu_home">
+                <button class="btn_home">
+                    <figure>
+                        <img src="/templates/assets/img/menu-home.png" alt="casa azul claro">
+                    </figure>
+                    <p>Home</p>
+                </button>
+            </div>
+
+            <div class="menu_maquinas">
+                <button class="btn_maquinas">
+                    <figure>
+                        <img src="/templates/assets/img/menu-maquinas.png" alt="Máquina cinza ilustrativa">
+                    </figure>
+                    <p>Máquinas</p>
+                </button>
+            </div>
+
+            <div class="menu_clientes">
+                <button class="btn_clientes">
+                    <figure>
+                        <img src="/templates/assets/img/menu-clientes.png" alt="Imagem ilustrativa de uma medalha
+                         em torno do ícone de um cliente">
+                    </figure>
+                    <p>Clientes</p>
+                </button>
+            </div>
+
+            <div class="menu_chamados">
+                <button class="btn_chamados">
+                    <figure>
+                        <img src="/templates/assets/img/menu-chamados.png" alt="Imagem ilustrativa de um telefone">
+                    </figure>
+                    <p>Chamados</p>
+                </button>
+            </div>
+
+            <div class="menu_manutencoes">
+                <button class="btn_manutencoes">
+                    <figure>
+                        <img src="/templates/assets/img/menu-manutencao.png"
+                            alt="Imagem ilustrativa de uma engrenagem ao lado de uma ferramenta">
+                    </figure>
+                    <p>Manutenções</p>
+                </button>
+            </div>
+
+            <div class="menu_pecas">
+                <button class="btn_pecas">
+                    <figure>
+                        <img src="/templates/assets/img/menu-pecasazul.png"
+                            alt="Imagem ilustrativa de uma ciaxa de ferramenta">
+                    </figure>
+                    <p>Solicitações de peças</p>
+                </button>
+            </div>
+
+            <div class="menu_tecnicos">
+                <button class="btn_tecnicos">
+                    <figure>
+                        <img src="/templates/assets/img/menu-tecnico.png"
+                            alt="Imagem ilustrativa de um homem com um capacete de EPI">
+                    </figure>
+                    <p>Técnicos</p>
+                </button>
+            </div>
+
+            <div class="menu_logout">
+                <button class="btn_logout">
+                    <figure>
+                        <img src="/templates/assets/img/menu-logout.png" alt="Imagem ilustrativade uma porta aberta 
+                        com uma seta indicando a saída">
+                    </figure>
+                    <p>Logout</p>
+                </button>
+            </div>
+        </nav>
+    </aside>
+
+    <main>
+        <div class="container">
+            <div class="conteudo_superior">
+                <h1>Solicitações de peças</h1>
+                <form>
+                    <div class="input-container">
+                        <figure>
+                            <img src="/templates/assets/img/lupa_branca.png" alt="">
+                        </figure>
+                        <input type="text" class="pesquisar" placeholder="Busque por uma data ou nome específico!">
+                    </div>
+                    <button class="procurar">Procurar</button>
+                </form>
+            </div>
+
+            <div class="conteudo_principal">
+                <!-- Bloco 1 -->
+                <div class="bloco">
+                    <div class="inforcentro">
+                        <div class="topo">
+                            <div class="topico">
+                                <p class="titulo">Peça</p>
+                                <p class="infor">Parafuso</p>
+                            </div>
+                            <div class="topico">
+                                <p class="titulo">Status</p>
+                                <p class="infor">Em aberto</p>
+                            </div>
+                            <div class="topico">
+                                <p class="titulo">Técnico</p>
+                                <p class="infor">José Silva de Jesus</p>
+                            </div>
+                        </div>
+                        <div class="descricao">
+                            <p>Parafuso M12 x 60 mm. Classe de resistência 8.8.
+                                Acabamento zincado (proteção contra corrosão). Padrão métrico (rosca MA).</p>
+                        </div>
+                    </div>
+                    <div class="lado-direito">
+                        <div class="data">
+                            <p>12/03/26</p>
+                        </div>
+                        <div class="grupo-botoes">
+                            <button class="cancelar">Cancelar</button>
+                            <button class="concluir">Concluir</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bloco 2 -->
+                <div class="bloco">
+                    <div class="inforcentro">
+                        <div class="topo">
+                            <div class="topico">
+                                <p class="titulo">Peça</p>
+                                <p class="infor">Porca</p>
+                            </div>
+                            <div class="topico">
+                                <p class="titulo">Status</p>
+                                <p class="infor">Em andamento</p>
+                            </div>
+                            <div class="topico">
+                                <p class="titulo">Técnico</p>
+                                <p class="infor">Maria Santos Oliveira</p>
+                            </div>
+                        </div>
+                        <div class="descricao">
+                            <p>Porca M12 galvanizada. Resistência à corrosão. Padrão métrico para aplicações industriais.</p>
+                        </div>
+                    </div>
+                    <div class="lado-direito">
+                        <div class="data">
+                            <p>13/03/26</p>
+                        </div>
+                        <div class="grupo-botoes">
+                            <button class="cancelar">Cancelar</button>
+                            <button class="concluir">Concluir</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bloco 3 -->
+                <div class="bloco">
+                    <div class="inforcentro">
+                        <div class="topo">
+                            <div class="topico">
+                                <p class="titulo">Peça</p>
+                                <p class="infor">Arruela</p>
+                            </div>
+                            <div class="topico">
+                                <p class="titulo">Status</p>
+                                <p class="infor">Em aberto</p>
+                            </div>
+                            <div class="topico">
+                                <p class="titulo">Técnico</p>
+                                <p class="infor">Carlos Eduardo Pereira</p>
+                            </div>
+                        </div>
+                        <div class="descricao">
+                            <p>Arruela de pressão M12. Aço carbono com tratamento anticorrosivo. Espessura 2mm.</p>
+                        </div>
+                    </div>
+                    <div class="lado-direito">
+                        <div class="data">
+                            <p>14/03/26</p>
+                        </div>
+                        <div class="grupo-botoes">
+                            <button class="cancelar">Cancelar</button>
+                            <button class="concluir">Concluir</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bloco 4 -->
+                <div class="bloco">
+                    <div class="inforcentro">
+                        <div class="topo">
+                            <div class="topico">
+                                <p class="titulo">Peça</p>
+                                <p class="infor">Rolamento</p>
+                            </div>
+                            <div class="topico">
+                                <p class="titulo">Status</p>
+                                <p class="infor">Em aberto</p>
+                            </div>
+                            <div class="topico">
+                                <p class="titulo">Técnico</p>
+                                <p class="infor">Ana Paula Costa</p>
+                            </div>
+                        </div>
+                        <div class="descricao">
+                            <p>Rolamento rígido de esferas 6204. Vedação em aço. Para altas rotações.</p>
+                        </div>
+                    </div>
+                    <div class="lado-direito">
+                        <div class="data">
+                            <p>15/03/26</p>
+                        </div>
+                        <div class="grupo-botoes">
+                            <button class="cancelar">Cancelar</button>
+                            <button class="concluir">Concluir</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="/templates/assets/js/pagina_gerenciamento_de_pecas_administrador.js"></script>
+</body>
+
+</html>
