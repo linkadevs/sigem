@@ -4,57 +4,75 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../templates/assets/css/Página-visualização-do-código.css">
-    <title>Cadastro de Máquina</title>
+    <title>Home</title>
 </head>
 <body>
-    <div class="background">
-        <figure>
-            <img src="../templates/assets/img/fundo-desktop-cadastro.png" alt="">
-        </figure>
-    </div>
-
     <header>
-        <div class="voltar_header">
-            <figure>
-                <img src="../templates/assets/img/seta_voltar.png" alt="Voltar">
+        <div class="container_header">
+            <div class="logout">
+                <figure>
+                    <img src="../templates/assets/img/menu-logout.png" alt="Logout">
+                </figure>
+                <h1>Logout</h1>
+            </div>
+
+            <div class="perfil">
+                <figure>
+                    <img src="../templates/assets/img/perfiltec.png" alt="Perfil">
+                </figure>
+                <h1>Perfil</h1>
+            </div>
+
+            <figure class="startech">
+                <img src="../templates/assets/img/logo-startech.png" alt="StarTech">
             </figure>
-            
-            <h1>Voltar</h1>
         </div>
     </header>
-        
-    <main>
-        <div class="card_main">
-            <div class="titulo_card">
-                <h1>Código da máquina</h1>
-                <p>Copie e salve o QR code abaixo da sua nova máquina (Você poderá acessar o código da máquina posteriormente na página de gerenciamento de máquinas)</p>
-            </div>
-            
-            <figure class="qrcode">
-                <img src="../templates/assets/img/qr-code.png" alt="QR Code" id="qrCodeImage">
-            </figure>
-            <div class="codigo_maquina">
-                <h1 id="textoParaCopiar">001</h1>
 
+
+    <main>
+        <div class="container">
+            <div class="container_informacoes">
+                <div class="titulo_seta">
+                    <h1>Acompanhe os seus chamados em andamento</h1>
+                    
+                    <figure>
+                        <img src="../templates/assets/img/seta-lado.png" alt="Seta para o lado">
+                    </figure>
+                </div>
+
+                <div class="botoes">    
+                    <button class="consultar">Consultar</button>
+                    <button class="maquinas">Minhas máquinas</button>
+                </div>
+
+            </div>
+
+            <div class="container_imagem">
                 <figure>
-                    <img src="../templates/assets/img/copiar.png" alt="Copie Aqui!" id="feedbackIcone" onclick="copiar()">
-                    <img src="../templates/assets/img/icone-check.png" alt="Texto copiado!" id="iconeCheck" style="display: none;">
+                    <img src="../templates/assets/img/icone-main-principal-cliente.png" alt="">
                 </figure>
             </div>
-
-            <p class="textoCopiado" style="display: none;  width: 100% ;margin: 0; text-align: center;">Texto Copiado!</p>
-            
-            <div class="botoes_card">
-                <button class="sair">Sair</button>
-                <button type="submit" class="salvar" onclick="baixarQR()">Salvar QR Code</button>
-            </div>
-            
         </div>
-        </main>
-        
-        <footer>
-            
-        </footer>
-        <script src="../templates/assets/js/Página-visualização-do-código.js"></script>
-    </body>
+    </main>
+
+    <footer>
+        <div class="container_footer">
+                <h3>O primeiro passo foi seu. O próximo a <span>StarTech</span> te mostra!</h3>
+
+            <div class="card_dica">
+                <div class="dicas_importantes">
+                    <h2>Dicas importantes</h2>
+                </div>
+
+                <div class="texto_card">
+                    <h1>⚡ O chamado será atendido em até 48 horas </h1>
+                    <h1>⚡ Acompanhe o status do chamado</h1>
+                    <h1>⚡ Para mais informações, acesse o histórico de manuntenções</h1>
+                </div>
+                
+            </div>
+        </div>
+    </footer>
+</body>
 </html>
