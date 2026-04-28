@@ -29,3 +29,39 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 });
+
+
+/*redicionamento para a pagina de registro de manutenção e  a página de ver historico da maquina*/
+document.addEventListener("DOMContentLoaded", function () {
+    const caixa1 = document.querySelector(".caixa_bloqueada1");
+    const caixa2 = document.querySelector(".caixa_bloqueada2");
+
+    caixa2.addEventListener("click", function () {
+        window.location.href = "/registro_manutencao";
+    });
+
+    caixa1.addEventListener("click", function () {
+        window.location.href = "/historico_maquina";
+    });
+
+});
+
+/*redirecionamento para a página de cadastro de máquina*/
+document.addEventListener("DOMContentLoaded", function () {
+    const text2 = document.querySelector(".texto2");
+
+    text2.addEventListener("click", function () {
+        window.location.href = "/cadastro_maquina";
+    });
+});
+
+/*redirecionamento para novo chamado*/
+document.addEventListener("DOMContentLoaded", function () { 
+    const btn_chamado = document.querySelector(".btn_abrir_chamado");
+
+    btn_chamado.addEventListener("click", function () {
+        window.location.href = "/novo_chamado";
+    });
+});
+
+
