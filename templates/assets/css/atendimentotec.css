@@ -366,8 +366,9 @@ input:focus {
         gap: 1.5rem;
     }
 
-    .tecnico {
-        font-size: 1.1rem;
+    .tecnico,
+    .titulo {
+        font-size: 1.3rem;
     }
 
     .nome {
@@ -449,7 +450,7 @@ input:focus {
     }
 
     .tecnico {
-        font-size: 1rem;
+        font-size: 1.2rem;
     }
 
     .nome {
@@ -517,7 +518,7 @@ input:focus {
     }
 
     .tecnico {
-        font-size: 0.95rem;
+        font-size: 1rem;
     }
 
     .nome {
@@ -562,7 +563,7 @@ input:focus {
     }
 
     h1 {
-        font-size: 1.2rem;
+        font-size: 1.3rem;
         margin-bottom: 0.8rem;
     }
 
@@ -613,7 +614,7 @@ input:focus {
     }
 
     .tecnico {
-        font-size: 1rem;
+        font-size: 1.1rem;
     }
 
     .nome {
@@ -641,7 +642,7 @@ input:focus {
     }
 
     h1 {
-        font-size: 1rem;
+        font-size: 1.2rem;
     }
 
     .procurar {
@@ -678,7 +679,7 @@ input:focus {
     }
 
     .tecnico {
-        font-size: 0.9rem;
+        font-size: 1rem;
     }
 
     .nome {
@@ -749,16 +750,13 @@ input:focus {
         font-size: 1rem;
     }
 
+    .tecnico,
     .titulo {
-        font-size: 0.9rem;
+        font-size: 1rem;
     }
 
     .status {
         font-size: 1rem;
-    }
-
-    .tecnico {
-        font-size: 0.85rem;
     }
 
     .nome {
