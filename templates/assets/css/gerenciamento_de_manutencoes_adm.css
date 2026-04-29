@@ -168,7 +168,7 @@ input {
 
 input::placeholder {
     color: #FFFFFF;
-    opacity: 0.8;
+    font-size: 1.2rem;
 }
 
 input:focus {
@@ -693,7 +693,7 @@ input:focus {
 }
 
 /* 768px */
-@media (max-width: 768px) {
+@media (max-width: 768px) { 
     body {
         padding-top: 1rem;
         gap: 1rem;
@@ -723,6 +723,9 @@ input:focus {
         height: 2.5rem;
         padding-left: 2.5rem;
     }
+    input::placeholder {
+    font-size: 1rem;
+}
 
     .conteudo_superior img {
         width: 1.2rem;
@@ -940,6 +943,10 @@ input:focus {
     .dados p{
         font-size: 0.8rem;
     }
+
+    input::placeholder {
+    font-size: .9rem;
+}
 }
 
 /* 480px */
@@ -1129,6 +1136,10 @@ input:focus {
         font-size: 0.6rem;
         height: 1.9rem;
     }
+
+    input::placeholder {
+    font-size: .8rem;
+}
 
     .conteudo_superior img {
         width: 0.9rem;
