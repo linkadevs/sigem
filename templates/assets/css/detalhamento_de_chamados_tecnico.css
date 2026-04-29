@@ -114,6 +114,7 @@ h1 {
 .cnpj,
 .uf,
 .localizacao,
+.cidade,
 .contato,
 .nomemaquina,
 .codigo {
@@ -128,6 +129,7 @@ h1 {
 .linha:nth-child(odd) .cnpj,
 .linha:nth-child(odd) .uf,
 .linha:nth-child(odd) .localizacao,
+.linha:nth-child(odd) .cidade,
 .linha:nth-child(odd) .contato,
 .linha:nth-child(odd) .nomemaquina,
 .linha:nth-child(odd) .codigo {
@@ -140,6 +142,7 @@ h1 {
 .linha:nth-child(even) .cnpj,
 .linha:nth-child(even) .uf,
 .linha:nth-child(even) .localizacao,
+.linha:nth-child(even) .cidade,
 .linha:nth-child(even) .contato,
 .linha:nth-child(even) .nomemaquina,
 .linha:nth-child(even) .codigo {
@@ -152,6 +155,7 @@ h1 {
 .linha:hover .cnpj,
 .linha:hover .uf,
 .linha:hover .localizacao,
+.linha:hover .cidade,
 .linha:hover .contato,
 .linha:hover .nomemaquina,
 .linha:hover .codigo {
@@ -356,6 +360,7 @@ h1 {
         transform: scale(0.8);
         opacity: 0;
     }
+
     to {
         transform: scale(1);
         opacity: 1;
@@ -431,6 +436,7 @@ h1 {
     .cnpj,
     .uf,
     .localizacao,
+    .cidade,
     .contato,
     .nomemaquina,
     .codigo {
@@ -499,6 +505,7 @@ h1 {
 }
 
 @media (max-width: 900px) {
+
     .titulo,
     .titulo_descricao {
         font-size: 1.3rem;
@@ -516,6 +523,7 @@ h1 {
     .cnpj,
     .uf,
     .localizacao,
+    .cidade,
     .contato,
     .nomemaquina,
     .codigo {
@@ -578,6 +586,7 @@ h1 {
     .cnpj,
     .uf,
     .localizacao,
+    .cidade,
     .contato,
     .nomemaquina,
     .codigo {
@@ -606,6 +615,7 @@ h1 {
     .linha:nth-child(odd) .cnpj,
     .linha:nth-child(odd) .uf,
     .linha:nth-child(odd) .localizacao,
+    .linha:nth-child(odd) .cidade,
     .linha:nth-child(odd) .contato,
     .linha:nth-child(odd) .nomemaquina,
     .linha:nth-child(odd) .codigo,
@@ -615,6 +625,7 @@ h1 {
     .linha:nth-child(even) .cnpj,
     .linha:nth-child(even) .uf,
     .linha:nth-child(even) .localizacao,
+    .linha:nth-child(even) .cidade,
     .linha:nth-child(even) .contato,
     .linha:nth-child(even) .nomemaquina,
     .linha:nth-child(even) .codigo {
@@ -627,6 +638,7 @@ h1 {
     .linha:hover .cnpj,
     .linha:hover .uf,
     .linha:hover .localizacao,
+    .linha:hover .cidade,
     .linha:hover .contato,
     .linha:hover .nomemaquina,
     .linha:hover .codigo {
@@ -639,6 +651,7 @@ h1 {
     .cnpj,
     .uf,
     .localizacao,
+    .cidade,
     .contato,
     .nomemaquina,
     .codigo {
@@ -651,6 +664,7 @@ h1 {
     .linha:last-child .cnpj,
     .linha:last-child .uf,
     .linha:last-child .localizacao,
+    .linha:last-child .cidade,
     .linha:last-child .contato,
     .linha:last-child .nomemaquina,
     .linha:last-child .codigo {
@@ -713,6 +727,7 @@ h1 {
     .cnpj,
     .uf,
     .localizacao,
+    .cidade,
     .contato,
     .nomemaquina,
     .codigo {
@@ -778,6 +793,7 @@ h1 {
     .cnpj,
     .uf,
     .localizacao,
+    .cidade,
     .contato,
     .nomemaquina,
     .codigo {
@@ -834,6 +850,7 @@ h1 {
 }
 
 @media (max-width: 400px) {
+
     .perfil,
     .logout {
         font-size: 0.8rem;
@@ -925,6 +942,7 @@ h1 {
     .cnpj,
     .uf,
     .localizacao,
+    .cidade,
     .contato,
     .nomemaquina,
     .codigo {
