@@ -41,7 +41,7 @@ nav p {
 
 main {
     display: flex;
-    background-image: url('../../assets/img/fundo-edicao.png');
+    background-image: url('../../assets/img/fundo-edicao.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     border-bottom-right-radius: 26rem;
