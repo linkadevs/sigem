@@ -1,0 +1,197 @@
+@import 'global.css';
+
+figure img {
+    display: block;
+}
+
+header {
+    display: flex;
+    padding: 2rem;
+    justify-content: space-between;
+    position: relative;
+}
+
+.logoutDiv {
+    display: flex;
+    align-items: center;
+    gap: 2.2rem;
+}
+
+.logout img {
+    width: 3.6rem;
+}
+
+.logoutDiv p{
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #094C71;
+}
+
+.logo {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -25%)
+}
+
+.btn_cadastrar_nv_maquina {
+    display: flex;
+    gap: 4.8rem;
+}
+
+.btn_cadastrar_nv_maquina button{
+    background-color: transparent;
+    display: flex;
+}
+
+.cadastrarBtn {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    border-style: solid;
+    border-radius: 1rem;
+    border-color: #094C71;
+    color: #094C71;
+    padding: .5rem;
+    font-size: 2.5rem;
+    font-weight: 700;
+    background-color: #FBFBFB;
+}
+
+.perfilBtn {
+    border-style: none;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    color: #094C71;
+    font-size: 2.5rem;
+    font-weight: 700;
+}
+
+.texto_e_fotohomem {
+    padding-top: 4rem;
+    display: flex;
+    align-items: center;
+    padding-right: 7.1rem;
+    padding-left: 5.7rem;
+    justify-content: space-between;
+}
+
+.decoracao_seta img {
+    width: 11.2rem;
+}
+
+.textoCima h1 {
+    font-size: 4rem;
+    color: #094C71;
+    font-weight: 400;
+    max-width: 48.6rem;
+}
+
+.textoCima {
+    display: flex;
+    align-items: center;
+    gap: 2.4rem;
+}
+
+.decoracao_consulta {
+    display: flex;
+    flex-direction: column;
+    gap: 2.3rem;
+    align-items: end;
+}
+
+.decoracao_consulta button {
+    width: 34rem;
+    height: 7rem;
+    background-color: #8A38F5;
+    font-size: 2.9rem;
+    color: #FFFFFF;
+    font-weight: 700;
+    padding: 1.7rem 9.8rem;
+    border-style: none;
+    border-radius: 1rem;
+    box-shadow: 0 .4rem .4rem 0 rgba(0, 0, 0, 0.25);
+    margin-right: 15rem;
+}
+
+.containertextos_e_dicas {
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+    gap: 1rem;
+}
+
+.padding {
+    padding-left: 4rem;
+}
+
+.padding h3 {
+    font-size: 3rem;
+    font-weight: 400;
+    color: #094C71;
+    padding: 1.5rem 13.1rem;
+    background-color: #EAF7FE;
+    border-radius: 1rem;
+}
+
+.caixa_roxa {
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(#8A38F5, #51218F);
+    gap: 5.1rem;
+    padding: 2.8rem 5.8rem;
+    border-radius: 8rem;
+    transform: translateX(-4rem);
+    z-index: 1;
+}
+
+.dica {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    width: 100%;
+    border-style: solid;
+    border-color: #E46CFF;
+    border-radius: 5rem;
+    padding: 2.9rem 2.1rem;
+    border-width: .1rem;
+}
+
+.dica p {
+    font-size: 3rem;
+    font-weight: 400;
+    color: #FFFFFF;
+}
+
+.dica figure img {
+    width: 4.5rem;
+}
+
+.caixas {
+    display: flex;
+    align-items: center;
+}
+
+.texto h2 {
+    font-size: 4.5rem;
+    font-weight: 700;
+    width: 57.3rem;
+    color: #FFFFFF;
+}
+
+.texto h2 span {
+    color: #BE8CFF;
+}
+
+.texto {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10rem 2.7rem;
+    background-color: #002C65;
+    height: fit-content;
+    border-top-right-radius: 1.5rem;
+    border-bottom-right-radius: 1.5rem;
+    transform: translateX(-5rem);
+    z-index: 0;
+}
