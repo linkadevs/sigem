@@ -171,22 +171,27 @@ h1 {
 }
 
 @media screen and (max-width: 764px) {
+    header {
+        padding: 2rem;
+    }
     .tituloPmoc h1{
-        font-size: 2rem;
+        font-size: 1.4rem;
+        display: flex;
+        align-items: center;
     }
     .tituloPmoc p {
         font-size: 1.5rem;
         padding: .8rem 1.6rem;
     }
     .titulo {
-        font-size: 1.1rem;
+        font-size: 1rem;
         padding-left: .5rem;
         padding-top: 0;
         padding-bottom: 0;
         align-self: center;
     }
     .conteudo {
-        font-size: 1.1rem;
+        font-size: 1rem;
         padding-top: 0;
         padding-bottom: 0;
         align-self: center;
@@ -196,7 +201,7 @@ h1 {
         padding: 1rem 0;
     }
     .fundoPmoc {
-        width: 35.8rem;
+        width: 32rem;
         padding: 2.5rem;
         border-radius: 3.6rem;
     }
