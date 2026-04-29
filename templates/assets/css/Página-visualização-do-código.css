@@ -6,28 +6,15 @@ html, body{
     padding: 0;
 }
 
-body{
-    position: relative;
-}
-
-.background{
-    position: absolute;
-    z-index: 1;
-    top: -12rem;
-}
-
-.background img{
-    width: 100%;
-    height: 100%;
-    border-bottom-right-radius: 20rem;
-    border-bottom-left-radius: 20rem;
+body {
+    background-color: #094C71;
+    padding-bottom: 5.9rem;
 }
 
 header{
     margin: 0;
     background-color: white;
     position: absolute;
-    z-index: 4;
     width: 100%;
     height: 6rem;
 }
@@ -53,16 +40,15 @@ header{
 }
 
 main{
-    position: absolute;
-    z-index: 3;
     display: flex;
-    flex-direction: column;
+    background-image: url('../../assets/img/fundo-edicao.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-bottom-right-radius: 26rem;
+    border-bottom-left-radius: 26rem;
+    padding-top: 5%;
+    padding-bottom: 15%;
     justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
 }
 
 .card_main{
@@ -174,35 +160,7 @@ main{
     border: none;
 }
 
-footer{
-    background-color: #094C71;
-    position: fixed;
-    z-index: 0;
-    width: 100%;
-    height: 100%;
-    bottom: 0;
-    left: 0;
-}
-
 @media screen and (min-width: 481px) and (max-width: 1024px) {
-    
-    html, body {
-        height: auto;
-        min-height: 100vh;
-    }
-    
-    .background {
-        top: 0;
-        width: 100%;
-        overflow: hidden;
-    }
-    
-    .background img {
-        width: 100%;
-        height: auto;
-        border-bottom-right-radius: 10rem;
-        border-bottom-left-radius: 10rem;
-    }
     
     header {
         height: 5rem;
@@ -221,13 +179,6 @@ footer{
     .voltar_header img {
         height: 3rem;
         width: 3.5rem;
-    }
-    
-    main {
-        position: relative;
-        min-height: 100vh;
-        padding: 7rem 2rem 4rem 2rem;
-        justify-content: flex-start;
     }
     
     .card_main {
@@ -277,31 +228,6 @@ footer{
 
 @media screen and (max-width: 480px) {
     
-    html, body {
-        height: auto;
-        min-height: 100vh;
-    }
-    
-    body {
-        background-color: #f5f7f9;
-    }
-    
-    .background {
-        position: fixed;
-        top: 0;
-        width: 100%;
-        height: 25rem;
-        overflow: hidden;
-    }
-    
-    .background img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        border-bottom-right-radius: 5rem;
-        border-bottom-left-radius: 5rem;
-    }
-    
     header {
         position: fixed;
         top: 0;
@@ -329,16 +255,8 @@ footer{
         width: 3rem;
     }
     
-    main {
-        position: relative;
-        padding: 7rem 1.2rem 3rem 1.2rem;
-        min-height: 100vh;
-        justify-content: flex-start;
-    }
-    
     .card_main {
-        width: 100%;
-        max-width: 100%;
+        width: 30rem;
         height: auto;
         padding: 2rem 1.5rem 1.5rem 1.5rem;
         margin-top: 0;
@@ -406,6 +324,10 @@ footer{
     
     .card_main h1 {
         font-size: 1.4rem;
+    }
+
+    .card_main p {
+        font-size: .9rem;
     }
     
     .botoes_card button {
