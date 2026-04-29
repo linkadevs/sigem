@@ -1,8 +1,5 @@
 @import 'global.css';
 
-* {
-    box-sizing: border-box;
-}
 
 body {
     background-color: #F4F4F4;
