@@ -8,7 +8,12 @@ html, body{
 
 body {
     background-color: #094C71;
+    background-color: #094C71;
     padding-bottom: 5.9rem;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
 }
 
 header{
@@ -41,21 +46,22 @@ header{
 
 main{
     display: flex;
-    background-image: url('../../assets/img/fundo-edicao.jpg');
+    flex-direction: column;
+    align-items: center; /* Centraliza horizontalmente */
+    justify-content: center; /* Centraliza verticalmente */
+    min-height: 100vh; /* Garante que o main ocupe toda a altura da tela */
+    background-image: url('../img/fundo-edicao.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     border-bottom-right-radius: 26rem;
     border-bottom-left-radius: 26rem;
-    padding-top: 5%;
-    padding-bottom: 15%;
-    justify-content: center;
+    padding: 0; /* Remove padding desnecessário */
 }
 
 .card_main{
     height: 48rem;
     width: 50rem;
-    padding: 0 4rem 0 2rem;
-    margin-top: 6rem;
+    padding: 4rem 4rem 0 2rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
