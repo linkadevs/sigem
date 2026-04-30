@@ -20,7 +20,7 @@ body {
 .botaoVoltar {
     display: flex;
     gap: 3.5rem;
-    font-size: 2.5rem;
+    font-size: 2rem;
     color: #094C71;
     font-weight: 700;
     background-color: transparent;
@@ -35,7 +35,7 @@ nav {
 
 nav p {
     color: #488DB2;
-    font-size: 2.5rem;
+    font-size: 2rem;
     font-weight: 700;
 }
 
@@ -197,7 +197,15 @@ select {
         width: 67.9rem;
     }
     .botaoVoltar {
-        font-size: 2.3rem;
+        font-size: 1.8rem;
+    }
+
+    .voltarFigure img {
+        width: 3rem;
+    }
+
+    header p {
+        font-size: 1.8rem;
     }
     form h3 {
         font-size: 2.3rem;
@@ -224,15 +232,21 @@ select {
 }
 
 @media screen and (max-width: 710px) {
+    .voltarFigure img {
+        width: 2rem;
+    }
+
     header {
         padding: 1.6rem;
     }
     .botaoVoltar {
-        font-size: 1.4rem;
+        font-size: 1.2rem;
         gap: 1rem;
+        display: flex;
+        align-items: center;
     }
     nav p {
-        font-size: 1.4rem;
+        font-size: 1.2rem;
     }
     nav {
         gap: 1rem;
@@ -240,10 +254,11 @@ select {
 
     main {
         border-radius: 0;
+        padding-top: 4rem;
     }
 
     form {
-        width: 35.8rem;
+        width: 32rem;
         padding: 3.6rem 2.5rem;
     }
 
@@ -273,5 +288,9 @@ select {
     .botoes {
         justify-content: space-between;
         gap: auto;
+    }
+
+    select {
+        background-size: 2rem;
     }
 }
