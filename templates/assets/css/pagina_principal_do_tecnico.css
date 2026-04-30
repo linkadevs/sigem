@@ -21,7 +21,7 @@ header {
     width: 3.6rem;
 }
 
-.logoutDiv p{
+.logoutDiv p {
     font-size: 2.5rem;
     font-weight: 700;
     color: #094C71;
@@ -38,7 +38,7 @@ header {
     gap: 4.8rem;
 }
 
-.btn_cadastrar_nv_maquina button{
+.btn_cadastrar_nv_maquina button {
     background-color: transparent;
     display: flex;
 }
@@ -204,14 +204,23 @@ header {
     .dica p {
         font-size: 2rem;
     }
+
     .texto h2 {
         font-size: 3rem;
         width: 37rem;
     }
 
-    .fundoPng img{
-        width: 50rem;
+    .decoracao_seta img {
+        width: 9.8rem;
+    }
+
+    .fundoPng img {
+        width: 55rem;
         object-fit: cover;
+    }
+
+    .logo img {
+        width: 20rem;
     }
 
     .textoCima h1 {
@@ -223,10 +232,11 @@ header {
     }
 }
 
-@media screen and (max-width: 1280px) {
+@media screen and (max-width: 1310px) {
     .containertextos_e_dicas {
         display: none;
     }
+
     .containertextos_e_dicas2 {
         display: flex;
         flex-direction: column;
@@ -235,6 +245,7 @@ header {
         gap: 4rem;
         padding: 4rem 0;
     }
+
     .containertextos_e_dicas2 h2 {
         font-size: 4.5rem;
         font-weight: 700;
@@ -245,6 +256,7 @@ header {
     .containertextos_e_dicas2 h2 span {
         color: #BE8CFF;
     }
+
     .containertextos_e_dicas2 h3 {
         font-size: 2.8rem;
         font-weight: 400;
@@ -254,28 +266,42 @@ header {
         border-radius: 1rem;
         width: fit-content;
     }
+
     .caixa_roxa {
         width: fit-content;
         transform: translateX(0);
     }
+
     .texto_e_fotohomem {
         padding-bottom: 4rem;
         flex-direction: column-reverse;
     }
+
     .fundoPng img {
         width: 70rem;
     }
+
     .logo {
         left: 30%;
+    }
+
+    .logo img {
+        width: 17rem;
     }
 }
 
 @media screen and (max-width: 948px) {
-    .logo img{
-        width: 20rem;
+    .logo img {
+        width: 16rem;
     }
-    header p, header button{
+
+    header p,
+    header button {
         font-size: 1.6rem !important;
+    }
+
+    .decoracao_seta img {
+        width: 7.5rem;
     }
 
     .dica figure img {
@@ -286,92 +312,187 @@ header {
         font-size: 1rem;
         font-weight: 700;
     }
+
     .dica {
         padding: 1rem;
     }
+
     .caixa_roxa {
         border-radius: 4rem;
         gap: 2rem;
     }
+
     .containertextos_e_dicas2 h3 {
         font-size: 1.6rem;
         padding: 1rem 4rem;
     }
+
     .containertextos_e_dicas2 h2 {
         font-size: 3rem;
         width: 40rem;
     }
+
     .fundoPng img {
         width: 40rem;
     }
+
     .textoCima h1 {
         font-size: 2rem;
     }
+
     .textoCima figure img {
         width: 6rem;
     }
+
     .decoracao_consulta button {
         margin: 0;
+        width: 15rem;
+        height: 5rem;
+        font-size: 1.9rem;
+        padding: 1rem 3rem;
+
     }
+
     .decoracao_consulta {
         align-items: center;
     }
 }
 
+
+@media screen and (max-width: 790px) {
+
+    .logo img {
+        width: 15rem;
+    }
+
+
+    .decoracao_consulta button {
+        margin: 0;
+        width: 15rem;
+        height: 5rem;
+        font-size: 1.6rem;
+        padding: 1rem 3rem;
+
+    }
+
+    .decoracao_consulta {
+        align-items: center;
+    }
+
+}
+
 @media screen and (max-width: 700px) {
-    header p, header button {
+
+    header p,
+    header button {
         font-size: 1rem !important;
     }
-    .cadastrarBtn img, .perfilBtn figure img, .logout img {
+
+    .cadastrarBtn img,
+    .perfilBtn figure img,
+    .logout img {
         width: 2rem !important;
     }
+
     .logo img {
         width: 12rem;
     }
+
     .textoCima h1 {
         font-size: 1.4rem;
-        width: 18rem;
+        width: 24rem;
     }
+
     .decoracao_consulta button {
         width: fit-content;
         height: fit-content;
         padding: 1rem 3rem;
+        font-size: 1.7rem;
     }
+
     .fundoPng img {
         width: 25rem;
     }
+
     .containertextos_e_dicas2 h2 {
         font-size: 2rem;
         width: 30rem;
     }
+
     .caixa_roxa {
         padding: 2rem;
         border-radius: 3rem;
     }
+
     .dica p {
         font-size: .8rem;
     }
+
+     .decoracao_seta img {
+        width: 5.5rem;
+    }
+}
+
+@media screen and (max-width: 590px) {
+
+    .logo img {
+        width: 9rem;
+    }
+
+    .decoracao_consulta button {
+        width: fit-content;
+        height: fit-content;
+        padding: 1rem 3rem;
+        font-size: 1.4rem;
+    }
+
 }
 
 @media screen and (max-width: 485px) {
-    .btn_cadastrar_nv_maquina, .logoutDiv {
+
+    .btn_cadastrar_nv_maquina,
+    .logoutDiv {
         gap: 1rem;
     }
+
     header {
         font-size: .9rem !important;
         padding: 1rem;
     }
+
     .logo img {
         width: 10rem;
     }
+
     .logo {
         left: 20%;
         transform: translate(-0.5rem) !important;
     }
+
     .cadastrarBtn {
         width: 11.5rem;
     }
-    .cadastrarBtn img, .perfilBtn figure img, .logout img {
+
+    .cadastrarBtn img,
+    .perfilBtn figure img,
+    .logout img {
         width: 1.5rem !important;
     }
+
+     .textoCima h1 {
+        font-size: 1.3rem;
+        width: 20rem;
+    }
+    
+}
+
+
+
+@media screen and (max-width: 390px) {
+
+    .logo img {
+        width: 7rem;
+        margin-right: -3rem;
+    }
+
 }
