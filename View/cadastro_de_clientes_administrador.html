@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Cliente</title>
+    <link rel="stylesheet" href="/templates/assets/css/cadastro_de_clientes_administrador.css">
+</head>
+<body>
+    <main class="container_cadastro">
+        
+        <!-- LADO ESQUERDO: ILUSTRAÇÃO -->
+        <section class="secao_imagem">
+            <button class="btn_voltar">
+                <figure>
+                    <img src="/templates/assets/img/seta_voltar.png" alt="Seta para voltar">
+                </figure>
+            </button>
+            <figure class="ilustracao_cadastro">
+                <img src="/templates/assets/img/ilustracao_mulher.png" alt="Ilustração de mulher fazendo cadastro">
+            </figure>
+        </section>
+
+        <!-- LADO DIREITO: FORMULÁRIO -->
+        <section class="secao_formulario">
+            <div class="conteudo_formulario">
+                <h1 class="titulo_formulario">Cadastre seu novo cliente!</h1>
+                
+                <form class="grade_formulario">
+                    
+                    <div class="grupo_input">
+                        <label>Nome</label>
+                        <input type="text" placeholder="Nome do cliente">
+                    </div>
+
+                    <div class="grupo_input">
+                        <label>CNPJ</label>
+                        <input type="text" placeholder="AB.123.CDE/0001-XY">
+                    </div>
+
+                    <div class="grupo_input">
+                        <label>Acompanhante</label>
+                        <input type="text" placeholder="Nome do responsável">
+                    </div>
+
+                    <div class="grupo_input">
+                        <label>CPF</label>
+                        <input type="text" placeholder="ABC.DEF.GHI-JK">
+                    </div>
+
+                    <div class="grupo_input">
+                        <label>UF</label>
+                        <select class="input_select">
+                            <option value="" disabled selected>Estado</option>
+                            <option value="BA">Bahia</option>
+                            <option value="SP">São Paulo</option>
+                            <!-- Pode adicionar os outros depois -->
+                        </select>
+                    </div>
+
+                    <div class="grupo_input">
+                        <label>Cidade</label>
+                        <select class="input_select">
+                            <option value="" disabled selected>Cidade</option>
+                            <option value="camacari">Camaçari</option>
+                            <option value="salvador">Salvador</option>
+                        </select>
+                    </div>
+
+                    <div class="grupo_input">
+                        <label>E-mail</label>
+                        <input type="email" placeholder="Exemplo@gmail.com">
+                    </div>
+
+                    <div class="grupo_input">
+                        <label>Número de contato</label>
+                        <input type="tel" placeholder="+55 (DDD) 9XXXX-YYYY">
+                    </div>
+
+                    <!-- Input que ocupa a linha toda -->
+                    <div class="grupo_input largura_total">
+                        <label>Senha</label>
+                        <input type="password" placeholder="Insira uma senha inicial">
+                    </div>
+
+                    <button type="button" class="btn_salvar">Salvar</button>
+                </form>
+            </div>
+        </section>
+
+    </main>
+
+    <script src="/templates/assets/js/cadastro_de_clientes_adm.js"></script>
+</body>
+</html>
