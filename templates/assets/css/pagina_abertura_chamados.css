@@ -63,7 +63,8 @@ form {
     width: 100%;
 }
 
-input, textarea {
+input,
+textarea {
     height: 7.3rem;
     border-style: solid;
     border-color: #07A6FE;
@@ -72,7 +73,8 @@ input, textarea {
     padding-left: 2.2rem;
 }
 
-input[type="text"], textarea {
+input[type="text"],
+textarea {
     color: #094C71;
 }
 
@@ -101,7 +103,8 @@ textarea {
     height: 14rem;
 }
 
-input::placeholder, textarea::placeholder {
+input::placeholder,
+textarea::placeholder {
     color: #BFC6C9;
     font-weight: 600;
 }
@@ -159,16 +162,20 @@ label {
         height: 107.3rem;
         object-fit: cover;
     }
+
     .conteiner {
         padding: 3.4rem;
         width: fit-content;
     }
+
     form {
         width: fit-content;
     }
+
     .inputs {
         width: 59rem;
     }
+
     #uf {
         width: 100%;
     }
@@ -178,35 +185,158 @@ label {
     .conteiner figure {
         display: none;
     }
+
     .inputs {
         min-width: 65.8rem;
         width: 70vw;
     }
+
+    .voltarImg {
+        width: 7.6rem;
+        height: 5.5rem;
+    }
 }
 
-@media (max-width: 760px) {
-    .dataUf {
-        flex-direction: column;
-        gap: 3.9rem;
+@media (max-width: 780px) {
+    header {
+        padding: 2rem 1.6rem;
     }
-    .inputs {
-        width: 30.1rem;
-        min-width: auto;
+
+      .voltarImg {
+        width: 3.6rem;
+        height: 3rem;
     }
-    input, textarea, #botaoFotos {
-        font-size: 1.6rem;
-    }
-    input, #botaoFotos {
-        height: 6rem;
-    }
-    label {
-        font-size: 1.8rem;
-    }
+
     .botaoVoltar {
         font-size: 2rem;
-        gap: 2rem;
+        gap: 1.2rem;
     }
+
     main {
-        padding-top: 0;
+        padding: 0 1.2rem 4rem;
+        border-bottom-right-radius: 8rem;
+        border-bottom-left-radius: 8rem;
+    }
+
+    .conteiner {
+        width: 92%;
+        max-width: 52rem;
+        margin: 0 auto;
+        padding: 2rem 1.6rem;
+        border-radius: 2rem;
+    }
+
+    form {
+        width: 100%;
+    }
+
+    .inputs {
+        width: 100%;
+        min-width: auto;
+        gap: 2.4rem;
+    }
+
+    .dataUf {
+        flex-direction: column;
+        gap: 2.4rem;
+    }
+
+    .input {
+        gap: 1rem;
+    }
+
+    input,
+    textarea,
+    #botaoFotos {
+        width: 100%;
+        font-size: 1.6rem;
+        padding-left: 1.4rem;
+    }
+
+    input,
+    #botaoFotos {
+        height: 5.4rem;
+    }
+
+    textarea {
+        height: 12rem;
+        padding-top: 1.4rem;
+    }
+
+    label {
+        font-size: 1.7rem;
+    }
+
+    .enviar {
+        height: 5.4rem;
+        font-size: 1.8rem;
+    }
+
+    .grid {
+        grid-template-columns: repeat(auto-fit, minmax(6rem, 1fr));
+        grid-auto-rows: 6rem;
+        gap: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    header {
+        padding: 1.6rem 1rem;
+    }
+
+    .botaoVoltar {
+        font-size: 1.7rem;
+        gap: 0.8rem;
+    }
+
+    .conteiner {
+        padding: 1.6rem 1rem;
+    }
+
+    input,
+    textarea,
+    #botaoFotos {
+        font-size: 1.4rem;
+    }
+
+    label {
+        font-size: 1.5rem;
+    }
+
+    .enviar {
+        font-size: 1.6rem;
+        height: 5rem;
+    }
+
+    .grid {
+        grid-template-columns: repeat(auto-fit, minmax(5rem, 1fr));
+        grid-auto-rows: 5rem;
+    }
+}
+
+@media (max-width: 330px) {
+    .botaoVoltar {
+        font-size: 1.5rem;
+    }
+
+    input,
+    textarea,
+    #botaoFotos {
+        font-size: 1.3rem;
+        padding-left: 1rem;
+    }
+
+    label {
+        font-size: 1.4rem;
+    }
+
+    .enviar {
+        font-size: 1.4rem;
+        height: 4.6rem;
+    }
+
+    .grid {
+        grid-template-columns: repeat(4, 1fr);
+        grid-auto-rows: 4.5rem;
     }
 }
