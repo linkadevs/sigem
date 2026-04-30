@@ -1,5 +1,9 @@
 @import 'global.css';
 
+figure img {
+    display: block;
+}
+
 header {
     display: flex;
     width: 100%;
@@ -156,7 +160,7 @@ label {
     border-radius: 1rem;
 }
 
-@media (max-width: 1800px) {
+@media screen and (max-width: 1800px) {
     .conteiner figure img {
         width: 40vw;
         height: 107.3rem;
@@ -181,7 +185,7 @@ label {
     }
 }
 
-@media (max-width: 1368px) {
+@media screen and (max-width: 1368px) {
     .conteiner figure {
         display: none;
     }
@@ -197,9 +201,10 @@ label {
     }
 }
 
-@media (max-width: 780px) {
-    header {
-        padding: 2rem 1.6rem;
+@media screen and (max-width: 760px) {
+    .dataUf {
+        flex-direction: column;
+        gap: 3.9rem;
     }
 
       .voltarImg {
@@ -216,14 +221,6 @@ label {
         padding: 0 1.2rem 4rem;
         border-bottom-right-radius: 8rem;
         border-bottom-left-radius: 8rem;
-    }
-
-    .conteiner {
-        width: 92%;
-        max-width: 52rem;
-        margin: 0 auto;
-        padding: 2rem 1.6rem;
-        border-radius: 2rem;
     }
 
     form {
@@ -289,10 +286,6 @@ label {
         gap: 0.8rem;
     }
 
-    .conteiner {
-        padding: 1.6rem 1rem;
-    }
-
     input,
     textarea,
     #botaoFotos {
@@ -312,9 +305,31 @@ label {
         grid-template-columns: repeat(auto-fit, minmax(5rem, 1fr));
         grid-auto-rows: 5rem;
     }
+
+    .conteiner {
+        padding: 4rem 2rem;
+        border-radius: 2rem;
+    }
 }
 
-@media (max-width: 330px) {
+
+@media screen and (max-width: 390px) {
+    .conteiner {
+        padding: 4rem 2rem;
+        border-radius: 2rem;
+    }
+    .botaoVoltar {
+        font-size: 1.4rem;
+    }
+    .voltarImg {
+        width: 4.5rem;
+    }
+    header {
+        padding: 2rem;
+    }
+}
+
+@media screen and (max-width: 330px) {
     .botaoVoltar {
         font-size: 1.5rem;
     }
