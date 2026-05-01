@@ -16,12 +16,12 @@ body {
 .secao_imagem {
     flex: 1;
     background-color: #F8F9FA; 
-    
-    background-image: url('../img/orbes_de_fundo.png');
-    
+    background-image: url('/img/orbes_de_fundo.png');
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
+    justify-content: center;
+    align-items: flex-end;
     position: relative;
     overflow: hidden;
 }
@@ -63,7 +63,6 @@ body {
 }
 
 .ilustracao_cadastro img {
-    /* Ajuste essa porcentagem se quiser ela ainda maior (tipo 90% ou 95%) */
     width: 85%; 
     max-width: 85rem; 
     height: auto;
