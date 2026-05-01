@@ -1,0 +1,280 @@
+@import 'global.css';
+
+body {
+    background-color: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.container_fundo {
+    flex: 1;
+    background-image: url('../img/fundo-industria.png'); 
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 4rem 2rem;
+}
+
+/* CARD PRINCIPAL */
+.card_principal {
+    background-color: #FFFFFF;
+    border-radius: 1.5rem;
+    width: 100%;
+    max-width: 85rem;
+    padding: 4rem 5rem;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.2);
+}
+
+/* CABEÇALHO */
+.cabecalho_historico {
+    display: flex;
+    align-items: flex-start;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.btn_voltar {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    margin-top: 0.5rem;
+}
+
+.btn_voltar figure img {
+    width: 2.4rem;
+    height: auto;
+}
+
+.textos_cabecalho {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.titulo_card {
+    font-size: 3.2rem;
+    color: #024265;
+    font-weight: 700;
+}
+
+.subtitulo_card {
+    font-size: 1.6rem;
+    color: #024265;
+    font-weight: 400;
+}
+
+.linha_divisoria {
+    border: none;
+    border-top: 1px solid #E0E0E0;
+    margin-bottom: 3rem;
+}
+
+/* PESQUISA */
+.container_pesquisa {
+    display: flex;
+    align-items: center;
+    border: 1px solid #B0B9BE;
+    border-radius: 3rem;
+    padding: 0.5rem;
+    margin-bottom: 3rem;
+    background-color: #FFFFFF;
+}
+
+.input_wrapper {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    padding-left: 1.5rem;
+    gap: 1rem;
+}
+
+.icone_lupa img {
+    width: 2.4rem;
+}
+
+.input_pesquisa {
+    border: none;
+    outline: none;
+    width: 100%;
+    font-size: 1.6rem;
+    color: #333;
+    background-color: transparent;
+}
+
+.input_pesquisa::placeholder {
+    color: #B0B9BE;
+}
+
+.btn_pesquisar {
+    background-color: #024265;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 2.5rem;
+    padding: 1.2rem 3rem;
+    font-size: 1.6rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+/* LISTA MANUTENÇÕES */
+.lista_manutencoes {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    max-height: 50vh;
+    overflow-y: auto;
+    padding-right: 1rem;
+}
+
+.lista_manutencoes::-webkit-scrollbar {
+    width: 0.8rem;
+}
+
+.lista_manutencoes::-webkit-scrollbar-thumb {
+    background-color: #B0B9BE;
+    border-radius: 1rem;
+}
+
+/* CARD DE MANUTENÇÃO */
+.card_manutencao {
+    background-color: #F0F9FF;
+    border-radius: 0.8rem;
+    display: flex;
+    align-items: center;
+    padding: 2rem;
+    gap: 3rem;
+    box-shadow: 0 0.2rem 0.5rem rgba(0,0,0,0.05);
+}
+
+.coluna_icone {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-right: 2rem;
+    border-right: 1px solid #D1D5DB;
+}
+
+.coluna_icone img {
+    width: 6rem;
+}
+
+.coluna_dados {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.linha_dado {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.rotulo_dado {
+    font-size: 1.6rem;
+    color: #024265;
+    font-weight: 400;
+    width: 14rem;
+}
+
+.tag_dado {
+    background-color: #16567C;
+    color: #FFFFFF;
+    font-size: 1.4rem;
+    padding: 0.6rem 2rem;
+    border-radius: 2rem;
+    min-width: 22rem;
+    text-align: center;
+}
+
+.coluna_data {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-left: 2rem;
+}
+
+.data_manutencao {
+    font-size: 1.6rem;
+    color: #024265;
+    font-weight: 400;
+}
+
+/* MEDIA QUERIES */
+
+@media (max-width: 900px) {
+    .card_manutencao {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1.5rem;
+    }
+
+    .coluna_icone {
+        border-right: none;
+        padding-right: 0;
+        border-bottom: 1px solid #D1D5DB;
+        padding-bottom: 1rem;
+        width: 100%;
+        justify-content: flex-start;
+    }
+
+    .coluna_data {
+        padding-left: 0;
+        width: 100%;
+        justify-content: flex-start;
+    }
+}
+
+@media (max-width: 600px) {
+    .card_principal {
+        padding: 3rem 2rem;
+    }
+
+    .titulo_card {
+        font-size: 2.4rem;
+    }
+
+    .subtitulo_card {
+        font-size: 1.4rem;
+    }
+
+    .container_pesquisa {
+        flex-direction: column;
+        border: none;
+        background: transparent;
+        gap: 1rem;
+    }
+
+    .input_wrapper {
+        width: 100%;
+        border: 1px solid #B0B9BE;
+        border-radius: 3rem;
+        background-color: #FFFFFF;
+        padding: 1rem 1.5rem;
+    }
+
+    .btn_pesquisar {
+        width: 100%;
+    }
+
+    .linha_dado {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+
+    .rotulo_dado {
+        width: auto;
+    }
+
+    .tag_dado {
+        min-width: 100%;
+    }
+}
