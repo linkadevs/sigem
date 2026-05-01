@@ -45,17 +45,17 @@
             <form>
                 <div class="entrada">
                     <label for="nome">Nome</label>
-                    <input type="text" id="nome" placeholder="Insira o nome do colaborador" class="inputnome">
+                    <input type="text" required id="nome" placeholder="Insira o nome do colaborador" class="inputnome">
                 </div>
 
                 <div class="entrada">
                     <label for="cpf">CPF</label>
-                    <input type="text" id="cpf" placeholder="ABC.DEF.GHI-JK" class="inputcpf">
+                    <input type="text" required id="cpf" placeholder="ABC.DEF.GHI-JK" class="inputcpf">
                 </div>
 
                 <div class="entrada">
                     <label for="funcao">Função</label>
-                    <select name="funcao" id="funcao" class="selectfuncao">
+                    <select name="funcao" required id="funcao" class="selectfuncao">
                         <option value="mecanico">Mecânico</option>
                         <option value="eletricista">Eletricista</option>
                         <option value="tecnico_refrigeracao">Técnico em refrigeração</option>
@@ -64,7 +64,7 @@
 
                 <div class="entrada">
                     <label for="senha">Senha</label>
-                    <input type="password" name="senha" id="senha" placeholder="Insira uma senha inicial">
+                    <input type="password" required name="senha" id="senha" placeholder="Insira uma senha inicial">
                     <figure class="olhofechado">
                         <img src="/templates/assets/img/olho_fechado.png" alt="">
                     </figure>

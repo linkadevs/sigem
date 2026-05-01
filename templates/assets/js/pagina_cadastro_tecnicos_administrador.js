@@ -1,7 +1,6 @@
 const olhofechado = document.querySelector('.olhofechado')
 const olhoaberto = document.querySelector('.olhoaberto')
 const voltar = document.querySelector('.voltar')
-const salvar = document.querySelector('.salvar')
 const camposenha = document.querySelector('#senha')
 
 
@@ -11,11 +10,7 @@ if (voltar) {
     })
 }
 
-if (salvar) {
-    salvar.addEventListener('click', () => {
-        window.location.href = ''
-    })
-}
+
 
 function versenha() {
     if (camposenha.type === 'password') {
