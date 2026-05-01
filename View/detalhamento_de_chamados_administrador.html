@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhamento de Chamados</title>
+    <link rel="stylesheet" href="/templates/assets/css/detalhamento_de_chamados_administrador.css">
+</head>
+
+<body>
+    <!-- MENU LATERAL PADRÃO -->
+    <aside class="menu_lateral">
+        <nav>
+            <div class="menu_perfil">
+                <button class="btn_perfil">
+                    <div class="circuloperfil">
+                        <figure><img src="/templates/assets/img/menu-perfil.png" alt="Perfil"></figure>
+                    </div>
+                    <p>Administrador</p>
+                </button>
+            </div>
+            <div class="menu_home">
+                <button class="btn_home">
+                    <figure><img src="/templates/assets/img/menu-home.png" alt="Home"></figure>
+                    <p>Home</p>
+                </button>
+            </div>
+            <div class="menu_maquinas">
+                <button class="btn_maquinas">
+                    <figure><img src="/templates/assets/img/menu-maquinas.png" alt="Máquinas"></figure>
+                    <p>Máquinas</p>
+                </button>
+            </div>
+            <div class="menu_clientes">
+                <button class="btn_clientes">
+                    <figure><img src="/templates/assets/img/menu-clientes.png" alt="Clientes"></figure>
+                    <p>Clientes</p>
+                </button>
+            </div>
+            <!-- ATIVO AQUI -->
+            <div class="menu_chamados">
+                <button class="btn_chamados ativo">
+                    <figure><img src="/templates/assets/img/menu-chamados.png" alt="Chamados"></figure>
+                    <p>Chamados</p>
+                </button>
+            </div>
+            <div class="menu_manutencoes">
+                <button class="btn_manutencoes">
+                    <figure><img src="/templates/assets/img/menu-manutencao.png" alt="Manutenções"></figure>
+                    <p>Manutenções</p>
+                </button>
+            </div>
+            <div class="menu_pecas">
+                <button class="btn_pecas">
+                    <figure><img src="/templates/assets/img/menu-pecas.png" alt="Peças"></figure>
+                    <p>Solicitações de peças</p>
+                </button>
+            </div>
+            <div class="menu_tecnicos">
+                <button class="btn_tecnicos">
+                    <figure><img src="/templates/assets/img/menu-tecnico.png" alt="Técnicos"></figure>
+                    <p>Técnicos</p>
+                </button>
+            </div>
+            <div class="menu_logout">
+                <button class="btn_logout">
+                    <figure><img src="/templates/assets/img/menu-logout.png" alt="Logout"></figure>
+                    <p>Logout</p>
+                </button>
+            </div>
+        </nav>
+    </aside>
+
+    <main>
+        <div class="container">
+            <!-- 1. HEADER CHAMADOS -->
+            <div class="conteudo_superior">
+                <h1>Chamados</h1>
+                <form>
+                    <div class="input-container">
+                        <figure>
+                            <img src="/templates/assets/img/lupa_branca.png" alt="Lupa">
+                        </figure>
+                        <input type="text" class="pesquisar" placeholder="Busque por um Cliente, UF, CNPJ ou Código da Máquina!">
+                    </div>
+                    <button class="procurar">Procurar</button>
+                </form>
+            </div>
+
+            <!-- 2. INFO CLIENTE (AZUL) -->
+            <section class="card_info info_cliente">
+                <div class="linha_info">
+                    <p class="label">Cliente:</p>
+                    <!-- Input com borda azul para o nome do cliente, como no design -->
+                    <div class="valor valor_destaque">UNEB</div>
+                </div>
+                
+                <div class="linha_dupla">
+                    <div class="info_metade">
+                        <p class="label">Status:</p>
+                        <div class="valor">Em aberto</div>
+                    </div>
+                    <div class="info_metade">
+                        <p class="label">Data:</p>
+                        <div class="valor">14/04/2026</div>
+                    </div>
+                </div>
+
+                <div class="linha_dupla">
+                    <div class="info_metade">
+                        <p class="label">CNPJ:</p>
+                        <div class="valor">AB.123.CDE/0001-XY</div>
+                    </div>
+                    <div class="info_metade">
+                        <p class="label">UF:</p>
+                        <div class="valor">BA</div>
+                    </div>
+                </div>
+
+                <div class="linha_info">
+                    <p class="label">Cidade (Localização do Chamado):</p>
+                    <div class="valor">Salvador</div>
+                </div>
+
+                <div class="linha_info" style="justify-content: flex-start; gap: 1rem;">
+                    <p class="label">Contato:</p>
+                    <div class="valor" style="width: auto; min-width: 20rem;">(71) 97726-5052</div>
+                </div>
+            </section>
+
+            <!-- 3. INFO MÁQUINA (ROSA) -->
+            <section class="card_info info_maquina">
+                <div class="linha_dupla">
+                    <div class="info_metade">
+                        <p class="label rosa">Nome da<br>Máquina:</p>
+                        <div class="valor valor_rosa" style="flex:1">Ar condicionado</div>
+                    </div>
+                    <div class="info_metade" style="justify-content: flex-end;">
+                        <p class="label rosa">Código da<br>Máquina:</p>
+                        <div class="valor valor_rosa" style="width: 8rem; text-align: center;">001</div>
+                    </div>
+                </div>
+
+                <div class="linha_descricao">
+                    <p class="label rosa">Descrição do Problema:</p>
+                    <div class="valor_descricao">
+                        A máquina está apresentando falhas durante o funcionamento, com interrupções inesperadas no processo e ruídos incomuns.
+                    </div>
+                </div>
+            </section>
+
+            <!-- 4. GALERIA DE FOTOS -->
+            <section class="card_galeria">
+                <!-- Como você não mandou as fotos do ar condicionado, usei placeholders. Depois você substitui pelas imagens certas. -->
+                <figure><img src="/templates/assets/img/ar_condicionado1.png" alt="Ar condicionado 1"></figure>
+                <figure><img src="/templates/assets/img/ar_condicionado2.png" alt="Ar condicionado 2"></figure>
+                <figure><img src="/templates/assets/img/ar_condicionado3.png" alt="Ar condicionado 3"></figure>
+                <figure><img src="/templates/assets/img/ar_condicionado4.png" alt="Ar condicionado 4"></figure>
+                <figure><img src="/templates/assets/img/ar_condicionado5.png" alt="Ar condicionado 5"></figure>
+                <figure><img src="/templates/assets/img/ar_condicionado6.png" alt="Ar condicionado 6"></figure>
+            </section>
+
+        </div>
+    </main>
+
+    <script src="/templates/assets/js/detalhamento_de_chamados_administrador.js"></script>
+</body>
+
+</html>
