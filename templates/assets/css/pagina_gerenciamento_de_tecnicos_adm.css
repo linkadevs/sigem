@@ -1,0 +1,1235 @@
+@import 'global.css';
+
+/* ============================================
+   CONFIGURAÇÕES GERAIS DO CORPO DA PÁGINA
+   ============================================ */
+body {
+    background-color: #F4F4F4;
+    display: flex;
+    gap: 3.7rem;
+    padding-top: 2rem;
+    padding-bottom: 4.2rem;
+    min-height: 100vh;
+    align-items: stretch;
+}
+
+/* ============================================
+   MENU LATERAL (PADRÃO DESKTOP)
+   ============================================ */
+aside {
+    background-color: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    margin-left: 2.6rem;
+    padding-top: 5.4rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    border-radius: 1.5rem;
+    height: auto;
+    align-self: stretch;
+}
+
+aside img {
+    height: 4rem;
+    width: 4rem;
+}
+
+/* Botões do menu lateral */
+aside button {
+    width: 35.5rem;
+    height: 6.2rem;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    padding-left: 1.3rem;
+    padding-bottom: 1rem;
+    padding-top: 1rem;
+    margin-bottom: 1.5rem;
+    background-color: #FFFFFF;
+    border: none;
+    border-radius: .8rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+aside button:hover {
+    transform: translateX(5px);
+    background-color: #f8f8f8;
+}
+
+/* Texto dos botões do menu */
+aside p {
+    font-size: 2rem;
+    font-weight: normal;
+    color: #CBCFD1;
+}
+
+/* Botão Técnicos - estado ativo */
+aside .btn_tecnicos {
+    background-color: #EAF7FE;
+}
+
+aside .btn_tecnicos p {
+    color: #024265;
+}
+
+/* Botão Perfil */
+aside .btn_perfil {
+    margin-bottom: 4rem;
+}
+
+aside .btn_perfil p {
+    color: #094C71;
+    font-weight: lighter;
+}
+
+aside .btn_perfil img {
+    height: 3.5rem;
+    width: 3.5rem;
+}
+
+/* Círculo do perfil */
+aside .circuloperfil {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 5rem;
+    width: 5rem;
+    background-color: #EAF7FE;
+    border-radius: 50rem;
+}
+
+/* Botão Logout */
+aside .btn_logout p {
+    color: #094C71;
+    font-weight: lighter;
+}
+
+/* ============================================
+   MAIN E CONTAINER PRINCIPAL
+   ============================================ */
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: auto;
+    padding: 0 1rem;
+    flex: 1;
+}
+
+.container {
+    gap: 3rem;
+    width: 100%;
+    max-width: 1400px;
+}
+
+/* ============================================
+   CONTEÚDO SUPERIOR (BARRA DE PESQUISA E TÍTULO)
+   ============================================ */
+.conteudo_superior {
+    width: 100%;
+    background: linear-gradient(to right, #EAF7FE, #13ACFF);
+    color: #FFFFFF;
+    gap: 3.3rem;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem 6.6rem 1.5rem 6.6rem;
+    margin-bottom: 3.4rem;
+}
+
+.conteudo_superior h1 {
+    color: #094C71;
+    font-weight: normal;
+    font-size: 3rem;
+}
+
+/* Botão de novo colaborador */
+.novo_colaborador {
+    display: flex;
+    justify-content: center;
+}
+
+.btn_colaborador {
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    background-color: #FFFFFF;
+    border: none;
+    gap: 1rem;
+    border-radius: 1rem;
+    font-family: 'Inter';
+    color: #8A38F5;
+    box-shadow: 0 0.4rem 0.4rem rgba(0, 0, 0, 0.25);
+    width: 20rem;
+    height: 4rem;
+    cursor: pointer;
+}
+
+.btn_colaborador:hover {
+    transform: scale(1.02);
+}
+
+.btn_colaborador img {
+    width: 2rem;
+    height: 2rem;
+}
+
+/* Formulário de busca */
+form {
+    position: relative;
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+}
+
+.input-container {
+    position: relative;
+    flex: 1;
+    min-width: 0;
+}
+
+/* Ícone da lupa dentro do input */
+.conteudo_superior img {
+    width: 2.2rem;
+    height: 2.2rem;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 1rem;
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Campo de pesquisa */
+input {
+    background-color: #094d7170;
+    border: none;
+    border-radius: 4rem;
+    width: 100%;
+    height: 3.3rem;
+    padding-left: 3.5rem;
+    padding-right: 1rem;
+    color: #FFFFFF;
+    transition: all 0.3s ease;
+}
+
+input::placeholder {
+    color: #FFFFFF;
+}
+
+input:focus {
+    outline: none;
+    background-color: #094d7180;
+}
+
+/* Botão de procurar */
+.procurar {
+    background: none;
+    border: none;
+    border-radius: 10%;
+    position: relative;
+    width: 15rem;
+    height: 3.5rem;
+    color: #FFFFFF;
+    font-weight: bold;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+}
+
+.procurar:hover {
+    transform: scale(1.02);
+}
+
+/* Borda gradiente do botão procurar */
+.procurar::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    padding: 3px;
+    background: linear-gradient(to right, #12ACFF, #0B6799);
+    border-radius: inherit;
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    pointer-events: none;
+}
+
+/* ============================================
+   GRADE DE CARDS (2 COLUNAS)
+   ============================================ */
+.grid_cards {
+    padding-top: 2rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.2rem;
+    width: 100%;
+    margin: 0 auto;
+}
+
+/* ============================================
+   CARD DE COLABORADOR (ESTILO COMPACTO)
+   ============================================ */
+.card {
+    background-color: #FFFFFF;
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: auto;
+    height: auto;
+    padding: 1.2rem;
+    transition: all 0.3s ease;
+    border: 1px solid #A0AAAF;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.card button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+}
+
+.card button:active {
+    transform: translateY(0);
+}
+
+/* Nome do colaborador */
+.nome {
+    font-family: 'Inter';
+    font-size: 1.4rem;
+    color: #094C71;
+    font-weight: normal;
+    text-align: center;
+    word-wrap: break-word;
+    margin-bottom: 0.5rem;
+}
+
+/* Container das informações */
+.informacoes {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.7rem;
+    width: 100%;
+}
+
+.container_informacoes {
+    margin-top: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+/* Bloco de CPF e Função */
+.container_cpf,
+.container_funcao {
+    font-family: 'Inter';
+    gap: 1rem;
+    display: flex;
+    min-width: auto;
+    height: 2.8rem;
+    align-items: center;
+    justify-content: space-around;
+    padding: 0 0.8rem;
+}
+
+.container_cpf {
+    background-color: #8A38F5;
+    border-radius: 1rem;
+    border: none;
+}
+
+.cpf h1,
+.dados_cpf h1 {
+    font-family: 'Inter';
+    color: white;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.container_funcao {
+    background-color: #DFC7FF;
+    border-radius: 1rem;
+    border: none;
+}
+
+.funcao h1,
+.dados_funcao h1 {
+    font-family: 'Inter';
+    color: #094C71;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+/* Botões de ação do card */
+.btn_card {
+    display: flex;
+    gap: 1rem;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 0.8rem;
+}
+
+.excluir,
+.editar {
+    height: 2.8rem;
+    width: 6.5rem;
+    border: none;
+    font-family: 'Inter';
+    font-weight: bold;
+    border-radius: 1rem;
+    cursor: pointer;
+}
+
+.excluir:hover,
+.editar:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+}
+
+.excluir {
+    background-color: #FE9294;
+    color: #A41838;
+}
+
+.editar {
+    background-color: rgba(67, 220, 255, 0.4);
+    color: #199DA2;
+}
+
+/* ============================================
+   RESPONSIVIDADE - BREAKPOINTS
+   ============================================ */
+
+/* 1280px - Desktop pequeno / Laptop */
+@media (max-width: 1280px) {
+    body {
+        gap: 2rem;
+        padding: 1.5rem;
+    }
+
+    aside {
+        margin-left: 1.5rem;
+        padding: 1.5rem;
+        min-width: 220px;
+    }
+
+    aside button {
+        width: 100%;
+        height: 5rem;
+        gap: 1.2rem;
+        padding-left: 1rem;
+    }
+
+    aside p {
+        font-size: 1.6rem;
+    }
+
+    aside img {
+        height: 3rem;
+        width: 3rem;
+    }
+
+    aside .circuloperfil {
+        height: 4rem;
+        width: 4rem;
+    }
+
+    aside .btn_perfil img {
+        height: 2.5rem;
+        width: 2.5rem;
+    }
+
+    .container {
+        max-width: 1100px;
+    }
+
+    .conteudo_superior {
+        padding-left: 4rem;
+        padding-right: 4rem;
+    }
+
+    .conteudo_superior h1 {
+        font-size: 2.5rem;
+    }
+
+    .procurar {
+        width: 12rem;
+        font-size: 1.3rem;
+        height: 3.3rem;
+    }
+
+    input {
+        height: 3.1rem;
+        font-size: 0.95rem;
+    }
+
+    .conteudo_superior img {
+        width: 2rem;
+        height: 2rem;
+        left: 1rem;
+    }
+
+    .grid_cards {
+        gap: 1rem;
+        padding: 2rem 0.8rem;
+    }
+
+    .nome {
+        font-size: 1.3rem;
+    }
+
+    .cpf h1, .dados_cpf h1,
+    .funcao h1, .dados_funcao h1 {
+        font-size: 1.1rem;
+    }
+
+    .container_cpf, .container_funcao {
+        height: 2.6rem;
+        padding: 0 0.7rem;
+    }
+
+    .excluir, .editar {
+        height: 2.6rem;
+        width: 6rem;
+        font-size: 0.85rem;
+    }
+}
+
+/* 1200px - Ajuste de padding */
+@media (max-width: 1200px) {
+    .conteudo_superior {
+        padding-left: 3rem;
+        padding-right: 3rem;
+    }
+}
+
+/* 1024px - Tablet */
+@media (max-width: 1024px) {
+    body {
+        gap: 1.5rem;
+        padding: 1rem;
+    }
+
+    aside {
+        margin-left: 0;
+        padding: 1.5rem;
+        min-width: 180px;
+    }
+
+    aside button {
+        width: 100%;
+        height: 4rem;
+        gap: 1rem;
+        padding-left: 1rem;
+    }
+
+    aside p {
+        font-size: 1rem;
+    }
+
+    aside img {
+        height: 2rem;
+        width: 2rem;
+    }
+
+    aside .circuloperfil {
+        height: 3rem;
+        width: 3rem;
+    }
+
+    aside .btn_perfil img {
+        height: 1.8rem;
+        width: 1.8rem;
+    }
+
+    .grid_cards {
+        padding: 2rem 0.5rem;
+        gap: 1rem;
+    }
+
+    .conteudo_superior {
+        padding-left: 3rem;
+        padding-right: 3rem;
+    }
+
+    .procurar {
+        width: 10rem;
+        font-size: 1.2rem;
+    }
+
+    .conteudo_superior img {
+        width: 1.8rem;
+        height: 1.8rem;
+        left: 1rem;
+    }
+
+    input {
+        padding-left: 3rem;
+    }
+
+    .nome {
+        font-size: 1.2rem;
+    }
+
+    .cpf h1, .dados_cpf h1,
+    .funcao h1, .dados_funcao h1 {
+        font-size: 1rem;
+    }
+
+    .container_cpf, .container_funcao {
+        height: 2.4rem;
+        gap: 0.8rem;
+    }
+
+    .excluir, .editar {
+        height: 2.4rem;
+        width: 5.5rem;
+        font-size: 0.8rem;
+    }
+}
+
+/* 900px - Tablet médio */
+@media (max-width: 900px) {
+    .grid_cards {
+        padding: 2rem 0.5rem;
+        gap: 0.9rem;
+    }
+
+    .nome {
+        font-size: 1.1rem;
+    }
+
+    .cpf h1, .dados_cpf h1,
+    .funcao h1, .dados_funcao h1 {
+        font-size: 0.9rem;
+    }
+
+    .container_cpf, .container_funcao {
+        height: 2.2rem;
+        gap: 0.6rem;
+        padding: 0 0.6rem;
+    }
+}
+
+/* 850px - Tablet pequeno */
+@media (max-width: 850px) {
+    .conteudo_superior {
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+
+    .procurar {
+        width: 8rem;
+        font-size: 1.1rem;
+        height: 3.2rem;
+    }
+
+    input {
+        padding-left: 3rem;
+        height: 3rem;
+        font-size: 0.9rem;
+    }
+
+    .conteudo_superior img {
+        width: 1.6rem;
+        height: 1.6rem;
+        left: 0.9rem;
+    }
+
+    .btn_colaborador {
+        width: 16rem;
+        height: 3.5rem;
+        font-size: 1rem;
+    }
+
+    .btn_colaborador img {
+        width: 1.6rem;
+        height: 1.6rem;
+    }
+}
+
+/* 768px - Menu lateral apenas ícones, cards ainda em 2 colunas */
+@media (max-width: 768px) {
+    body {
+        padding-top: 1rem;
+        gap: 1rem;
+    }
+
+    /* Menu lateral - modo ícones */
+    aside {
+        margin-left: 0;
+        padding: 1rem 0.6rem;
+        min-width: auto;
+        width: auto;
+    }
+
+    aside p {
+        display: none;
+    }
+
+    aside button {
+        width: auto;
+        height: auto;
+        padding: 0.7rem;
+        margin-bottom: 0.8rem;
+        gap: 0;
+        justify-content: center;
+        border-radius: 0.8rem;
+    }
+
+    aside img {
+        height: 1.8rem;
+        width: 1.8rem;
+        margin: 0;
+    }
+
+    aside .btn_perfil {
+        margin-bottom: 1rem;
+        padding: 0.4rem;
+    }
+
+    aside .circuloperfil {
+        height: 2.5rem;
+        width: 2.5rem;
+        padding-left: 0;
+    }
+
+    aside .btn_perfil img {
+        height: 1.5rem;
+        width: 1.5rem;
+    }
+
+    /* Conteúdo superior */
+    .conteudo_superior {
+        padding: 1.2rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .conteudo_superior h1 {
+        font-size: 1.5rem;
+    }
+
+    form {
+        gap: 0.8rem;
+    }
+
+    .procurar {
+        width: 7rem;
+        font-size: 1rem;
+        height: 2.8rem;
+    }
+
+    input {
+        font-size: 0.85rem;
+        height: 2.8rem;
+        padding-left: 2.8rem;
+    }
+
+    .conteudo_superior img {
+        width: 1.4rem;
+        height: 1.4rem;
+        left: 0.8rem;
+    }
+
+    /* Grid cards - 2 colunas */
+    .grid_cards {
+        gap: 0.9rem;
+        padding: 1.5rem 0 0 0;
+    }
+
+    .card {
+        padding: 1rem;
+    }
+
+    .btn_colaborador {
+        width: 14rem;
+        height: 3rem;
+        font-size: 0.9rem;
+    }
+
+    .nome {
+        font-size: 1rem;
+    }
+
+    .cpf h1, .dados_cpf h1,
+    .funcao h1, .dados_funcao h1 {
+        font-size: 0.85rem;
+    }
+
+    .container_cpf, .container_funcao {
+        height: 2rem;
+        gap: 0.5rem;
+        padding: 0 0.5rem;
+    }
+
+    .excluir, .editar {
+        height: 2rem;
+        width: 5rem;
+        font-size: 0.7rem;
+    }
+    
+    .btn_card {
+        gap: 0.7rem;
+    }
+}
+
+/* 650px - Mudança para 1 coluna */
+@media (max-width: 650px) {
+    .grid_cards {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        padding: 1.5rem 0 0 0;
+    }
+    
+    .card {
+        padding: 1.2rem;
+    }
+    
+    .nome {
+        font-size: 1.3rem;
+    }
+    
+    .container_cpf, .container_funcao {
+        height: 2.8rem;
+        min-width: 200px;
+        gap: 1rem;
+    }
+    
+    .cpf h1, .dados_cpf h1,
+    .funcao h1, .dados_funcao h1 {
+        font-size: 1.2rem;
+    }
+    
+    .excluir, .editar {
+        height: 2.8rem;
+        width: 6.5rem;
+        font-size: 0.85rem;
+    }
+}
+
+/* 600px - Celular grande */
+@media (max-width: 600px) {
+    .btn_colaborador {
+        width: 13rem;
+        height: 2.8rem;
+        font-size: 0.85rem;
+    }
+
+    .btn_colaborador img {
+        width: 1.4rem;
+        height: 1.4rem;
+    }
+
+    .conteudo_superior {
+        padding: 1rem;
+    }
+
+    .procurar {
+        width: 6rem;
+        font-size: 0.9rem;
+        height: 2.5rem;
+    }
+
+    input {
+        padding-left: 2.5rem;
+        font-size: 0.8rem;
+        height: 2.5rem;
+    }
+
+    .conteudo_superior img {
+        width: 1.2rem;
+        height: 1.2rem;
+        left: 0.7rem;
+    }
+    
+    .card {
+        padding: 1rem;
+    }
+    
+    .nome {
+        font-size: 1.2rem;
+    }
+    
+    .container_cpf, .container_funcao {
+        height: 2.5rem;
+    }
+    
+    .cpf h1, .dados_cpf h1,
+    .funcao h1, .dados_funcao h1 {
+        font-size: 1rem;
+    }
+}
+
+/* 520px - Celular médio */
+@media (max-width: 520px) {
+    .grid_cards {
+        gap: 0.9rem;
+    }
+    
+    .card {
+        padding: 0.9rem;
+    }
+    
+    .nome {
+        font-size: 1.1rem;
+    }
+    
+    .container_informacoes {
+        gap: 0.7rem;
+    }
+    
+    .container_cpf, .container_funcao {
+        height: 2.2rem;
+        gap: 0.6rem;
+        padding: 0 0.6rem;
+    }
+    
+    .cpf h1, .dados_cpf h1,
+    .funcao h1, .dados_funcao h1 {
+        font-size: 0.9rem;
+    }
+    
+    .excluir, .editar {
+        height: 2.2rem;
+        width: 5.5rem;
+        font-size: 0.75rem;
+    }
+}
+
+/* 480px - Celular */
+@media (max-width: 480px) {
+    .grid_cards {
+        gap: 0.8rem;
+        padding: 1rem 0 0 0;
+    }
+
+    .card {
+        padding: 0.9rem;
+    }
+
+    .btn_colaborador {
+        width: 12rem;
+        height: 2.6rem;
+        font-size: 0.8rem;
+        gap: 0.6rem;
+    }
+
+    .btn_colaborador img {
+        width: 1.3rem;
+        height: 1.3rem;
+    }
+
+    .conteudo_superior {
+        padding: 0.8rem;
+        margin-bottom: 1rem;
+    }
+
+    .conteudo_superior h1 {
+        font-size: 1.2rem;
+    }
+
+    .procurar {
+        width: 5rem;
+        font-size: 0.85rem;
+        height: 2.3rem;
+    }
+
+    input {
+        padding-left: 2.2rem;
+        font-size: 0.75rem;
+        height: 2.3rem;
+    }
+
+    .conteudo_superior img {
+        width: 1.1rem;
+        height: 1.1rem;
+        left: 0.6rem;
+    }
+
+    .nome {
+        font-size: 1rem;
+    }
+
+    .cpf h1, .dados_cpf h1,
+    .funcao h1, .dados_funcao h1 {
+        font-size: 0.85rem;
+    }
+    
+    .container_cpf, .container_funcao {
+        height: 2rem;
+    }
+    
+    .excluir, .editar {
+        height: 2rem;
+        width: 5rem;
+        font-size: 0.7rem;
+    }
+
+    /* Menu lateral - mobile */
+    aside {
+        padding: 0.6rem 0.4rem;
+    }
+
+    aside button {
+        padding: 0.5rem;
+        margin-bottom: 0.6rem;
+    }
+
+    aside img {
+        height: 1.5rem;
+        width: 1.5rem;
+    }
+
+    aside .circuloperfil {
+        height: 2.2rem;
+        width: 2.2rem;
+    }
+
+    aside .btn_perfil img {
+        height: 1.3rem;
+        width: 1.3rem;
+    }
+}
+
+/* 400px - Celular pequeno */
+@media (max-width: 400px) {
+    .btn_colaborador {
+        width: 11rem;
+        height: 2.4rem;
+        font-size: 0.75rem;
+    }
+
+    .procurar {
+        width: 4.5rem;
+        font-size: 0.8rem;
+        height: 2.2rem;
+    }
+
+    input {
+        padding-left: 2rem;
+        font-size: 0.7rem;
+        height: 2.2rem;
+    }
+
+    .conteudo_superior img {
+        width: 1rem;
+        height: 1rem;
+        left: 0.5rem;
+    }
+
+    .nome {
+        font-size: 0.95rem;
+    }
+    
+    .cpf h1, .dados_cpf h1,
+    .funcao h1, .dados_funcao h1 {
+        font-size: 0.8rem;
+    }
+    
+    .container_cpf, .container_funcao {
+        height: 1.8rem;
+        gap: 0.4rem;
+        padding: 0 0.4rem;
+    }
+    
+    .excluir, .editar {
+        height: 1.8rem;
+        width: 4.5rem;
+        font-size: 0.65rem;
+    }
+}
+
+/* 340px - Celular extra pequeno */
+@media (max-width: 340px) {
+    body {
+        padding-top: 0.5rem;
+        gap: 0.8rem;
+    }
+
+    .conteudo_superior {
+        padding: 0.5rem;
+        margin-bottom: 0.8rem;
+        border-radius: 0.8rem;
+    }
+
+    .conteudo_superior h1 {
+        font-size: 1rem;
+    }
+
+    form {
+        gap: 0.5rem;
+    }
+
+    .procurar {
+        width: 4rem;
+        font-size: 0.7rem;
+        height: 2rem;
+    }
+
+    input {
+        padding-left: 1.8rem;
+        font-size: 0.65rem;
+        height: 2rem;
+    }
+
+    .conteudo_superior img {
+        width: 0.9rem;
+        height: 0.9rem;
+        left: 0.45rem;
+    }
+
+    .btn_colaborador {
+        width: 10rem;
+        height: 2.2rem;
+        font-size: 0.7rem;
+    }
+
+    .btn_colaborador img {
+        width: 1.1rem;
+        height: 1.1rem;
+    }
+
+    .grid_cards {
+        gap: 0.8rem;
+        padding: 1rem 0 0 0;
+    }
+
+    .card {
+        padding: 0.7rem;
+        border-radius: 0.8rem;
+    }
+
+    .nome {
+        font-size: 0.9rem;
+    }
+
+    .container_informacoes {
+        margin-top: 0.5rem;
+        gap: 0.5rem;
+    }
+
+    .container_cpf, .container_funcao {
+        height: 1.6rem;
+        gap: 0.3rem;
+        padding: 0 0.4rem;
+    }
+
+    .cpf h1, .dados_cpf h1,
+    .funcao h1, .dados_funcao h1 {
+        font-size: 0.7rem;
+    }
+
+    .btn_card {
+        gap: 0.5rem;
+        margin-top: 0.5rem;
+    }
+
+    .excluir, .editar {
+        width: 3.5rem;
+        height: 1.6rem;
+        font-size: 0.6rem;
+        border-radius: 0.6rem;
+    }
+
+    /* Menu lateral - extra pequeno */
+    aside {
+        padding: 0.5rem 0.3rem;
+        border-radius: 0.6rem;
+    }
+
+    aside button {
+        padding: 0.4rem;
+        margin-bottom: 0.5rem;
+        border-radius: 0.5rem;
+    }
+
+    aside img {
+        height: 1.3rem;
+        width: 1.3rem;
+    }
+
+    aside .circuloperfil {
+        height: 2rem;
+        width: 2rem;
+    }
+
+    aside .btn_perfil img {
+        height: 1.2rem;
+        width: 1.2rem;
+    }
+}
+
+/* 280px - Menor resolução suportada */
+@media (max-width: 280px) {
+    .conteudo_superior {
+        padding: 0.4rem;
+    }
+
+    .conteudo_superior h1 {
+        font-size: 0.9rem;
+    }
+
+    .procurar {
+        width: 3.5rem;
+        font-size: 0.65rem;
+        height: 1.8rem;
+    }
+
+    input {
+        font-size: 0.55rem;
+        height: 1.8rem;
+        padding-left: 1.6rem;
+    }
+
+    .conteudo_superior img {
+        width: 0.8rem;
+        height: 0.8rem;
+        left: 0.4rem;
+    }
+
+    .btn_colaborador {
+        width: 9rem;
+        height: 2rem;
+        font-size: 0.65rem;
+    }
+
+    .nome {
+        font-size: 0.85rem;
+    }
+
+    .cpf h1, .dados_cpf h1,
+    .funcao h1, .dados_funcao h1 {
+        font-size: 0.65rem;
+    }
+    
+    .container_cpf, .container_funcao {
+        min-width: 70px;
+        height: 1.5rem;
+    }
+    
+    .excluir, .editar {
+        width: 3rem;
+        height: 1.5rem;
+        font-size: 0.55rem;
+    }
+
+    aside img {
+        height: 1.1rem;
+        width: 1.1rem;
+    }
+
+    aside .circuloperfil {
+        height: 1.8rem;
+        width: 1.8rem;
+    }
+}
