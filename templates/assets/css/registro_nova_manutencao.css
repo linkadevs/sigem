@@ -263,8 +263,9 @@ select {
     }
 
     form {
-        width: 32rem;
+        width: 85%;
         padding: 3.6rem 2.5rem;
+        min-width: 32rem;
     }
 
     form h3 {
@@ -297,5 +298,14 @@ select {
 
     select {
         background-size: 2rem;
+    }
+}
+
+@media screen and (max-width: 416px) {
+    input {
+        padding-right: 0;
+    }
+    input, select, #botaoFotos {
+        font-size: 1.3rem;
     }
 }
