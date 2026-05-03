@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <!-- MENU LATERAL PADRÃO -->
+    <!-- MENU LATERAL PADRÃO ADMINISTRADOR -->
     <aside class="menu_lateral">
         <nav>
             <div class="menu_perfil">
@@ -38,10 +38,10 @@
                     <p>Clientes</p>
                 </button>
             </div>
-            <!-- ATIVO AQUI -->
+            <!-- ATIVO AQUI: CHAMADOS -->
             <div class="menu_chamados">
                 <button class="btn_chamados ativo">
-                    <figure><img src="/templates/assets/img/menu-chamados.png" alt="Chamados"></figure>
+                    <figure><img src="/templates/assets/img/menu-chamadosazul.png" alt="Chamados"></figure>
                     <p>Chamados</p>
                 </button>
             </div>
@@ -74,92 +74,116 @@
 
     <main>
         <div class="container">
-            <!-- 1. HEADER CHAMADOS -->
+            <!-- 1. HEADER (Botão Voltar e Título) -->
             <div class="conteudo_superior">
-                <h1>Chamados</h1>
-                <form>
-                    <div class="input-container">
+                <div class="topo">
+                    <button class="voltar">
                         <figure>
-                            <img src="/templates/assets/img/lupa_branca.png" alt="Lupa">
+                            <img src="/templates/assets/img/seta_voltar_semfundo.png" alt="Seta voltar">
                         </figure>
-                        <input type="text" class="pesquisar" placeholder="Busque por um Cliente, UF, CNPJ ou Código da Máquina!">
-                    </div>
-                    <button class="procurar">Procurar</button>
-                </form>
+                    </button>
+                </div>
+                <div class="titulo_chamados">
+                    <h1>Chamados</h1>
+                </div>
             </div>
 
-            <!-- 2. INFO CLIENTE (AZUL) -->
-            <section class="card_info info_cliente">
-                <div class="linha_info">
-                    <p class="label">Cliente:</p>
-                    <!-- Input com borda azul para o nome do cliente, como no design -->
-                    <div class="valor valor_destaque">UNEB</div>
-                </div>
-                
-                <div class="linha_dupla">
-                    <div class="info_metade">
-                        <p class="label">Status:</p>
-                        <div class="valor">Em aberto</div>
-                    </div>
-                    <div class="info_metade">
-                        <p class="label">Data:</p>
-                        <div class="valor">14/04/2026</div>
-                    </div>
-                </div>
+            <!-- 2. TABELA DE INFORMAÇÕES (PADRÃO TÉCNICO LISTRADO) -->
+            <div class="informacoes">
+                <div class="sobreochamado">
 
-                <div class="linha_dupla">
-                    <div class="info_metade">
-                        <p class="label">CNPJ:</p>
-                        <div class="valor">AB.123.CDE/0001-XY</div>
+                    <div class="linha">
+                        <div class="cliente">
+                            <p class="titulo">Cliente:</p>
+                            <p class="campo">UNEB</p>
+                        </div>
+                        <div class="cnpj">
+                            <p class="titulo">CNPJ:</p>
+                            <p class="campo">AB.123.CDE/0001-XY</p>
+                        </div>
                     </div>
-                    <div class="info_metade">
-                        <p class="label">UF:</p>
-                        <div class="valor">BA</div>
+
+                    <div class="linha">
+                        <div class="nomemaquina">
+                            <p class="titulo">Nome da máquina:</p>
+                            <p class="campo">Ar condicionado</p>
+                        </div>
+                        <div class="codigo">
+                            <p class="titulo">Código da Máquina:</p>
+                            <p class="campo">001</p>
+                        </div>
+                    </div>
+
+                    <div class="linha">
+                        <div class="uf">
+                            <p class="titulo">UF:</p>
+                            <p class="campo">BA</p>
+                        </div>
+                        <div class="cidade">
+                            <p class="titulo">Cidade:</p>
+                            <p class="campo">Salvador</p>
+                        </div>
+                    </div>
+
+                    <div class="linha">
+                        <div class="localizacao">
+                            <p class="titulo">Localização</p>
+                            <p class="campo">Sala da recepção</p>
+                        </div>
+                        <div class="contato">
+                            <p class="titulo">Contato:</p>
+                            <p class="campo">(71) 97726-5052</p>
+                        </div>
+                    </div>
+
+                    <div class="linha">
+                        <div class="status">
+                            <p class="titulo">Status:</p>
+                            <p class="campo">Em aberto</p>
+                        </div>
+                        <div class="data">
+                            <p class="titulo">Data:</p>
+                            <p class="campo">14/04/2026</p>
+                        </div>
+                    </div>
+
+                    <div class="linha_descricao">
+                        <div class="descricao">
+                            <p class="titulo_descricao">Descrição do problema:</p>
+                            <p class="campodescricao">A máquina está apresentando falhas durante o funcionamento, com
+                                interrupções inesperadas no processo e ruídos incomuns.</p>
+                        </div>
                     </div>
                 </div>
+            </div>
 
-                <div class="linha_info">
-                    <p class="label">Cidade (Localização do Chamado):</p>
-                    <div class="valor">Salvador</div>
-                </div>
-
-                <div class="linha_info" style="justify-content: flex-start; gap: 1rem;">
-                    <p class="label">Contato:</p>
-                    <div class="valor" style="width: auto; min-width: 20rem;">(71) 97726-5052</div>
-                </div>
-            </section>
-
-            <!-- 3. INFO MÁQUINA (ROSA) -->
-            <section class="card_info info_maquina">
-                <div class="linha_dupla">
-                    <div class="info_metade">
-                        <p class="label rosa">Nome da<br>Máquina:</p>
-                        <div class="valor valor_rosa" style="flex:1">Ar condicionado</div>
-                    </div>
-                    <div class="info_metade" style="justify-content: flex-end;">
-                        <p class="label rosa">Código da<br>Máquina:</p>
-                        <div class="valor valor_rosa" style="width: 8rem; text-align: center;">001</div>
-                    </div>
-                </div>
-
-                <div class="linha_descricao">
-                    <p class="label rosa">Descrição do Problema:</p>
-                    <div class="valor_descricao">
-                        A máquina está apresentando falhas durante o funcionamento, com interrupções inesperadas no processo e ruídos incomuns.
-                    </div>
-                </div>
-            </section>
-
-            <!-- 4. GALERIA DE FOTOS -->
-            <section class="card_galeria">
-                <!-- Como você não mandou as fotos do ar condicionado, usei placeholders. Depois você substitui pelas imagens certas. -->
-                <figure><img src="/templates/assets/img/ar_condicionado1.png" alt="Ar condicionado 1"></figure>
-                <figure><img src="/templates/assets/img/ar_condicionado2.png" alt="Ar condicionado 2"></figure>
-                <figure><img src="/templates/assets/img/ar_condicionado3.png" alt="Ar condicionado 3"></figure>
-                <figure><img src="/templates/assets/img/ar_condicionado4.png" alt="Ar condicionado 4"></figure>
-                <figure><img src="/templates/assets/img/ar_condicionado5.png" alt="Ar condicionado 5"></figure>
-                <figure><img src="/templates/assets/img/ar_condicionado6.png" alt="Ar condicionado 6"></figure>
-            </section>
+            <!-- 3. GALERIA DE FOTOS -->
+            <div class="fotos">
+                <figure>
+                    <img src="/templates/assets/img/img-chamado1.png" alt="Foto 1">
+                </figure>
+                <figure>
+                    <img src="/templates/assets/img/img-chamado2.png" alt="Foto 2">
+                </figure>
+                <figure>
+                    <img src="/templates/assets/img/img-chamado3.png" alt="Foto 3">
+                </figure>
+                <figure>
+                    <img src="/templates/assets/img/img-chamado4.png" alt="Foto 4">
+                </figure>
+                <figure>
+                    <img src="/templates/assets/img/img-chamado5.png" alt="Foto 5">
+                </figure>
+                <figure>
+                    <img src="/templates/assets/img/img-chamado6.png" alt="Foto 6">
+                </figure>
+            </div>
+            
+            <!-- 4. MODAL PARA AMPLIAR IMAGEM -->
+            <div class="modal" id="imageModal">
+                <button class="modal-close" id="closeModal">&times;</button>
+                <img class="modal-img" id="modalImg" src="" alt="Imagem ampliada">
+            </div>
 
         </div>
     </main>

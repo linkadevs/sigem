@@ -16,10 +16,11 @@ body {
 .secao_imagem {
     flex: 1;
     background-color: #F8F9FA; 
-    background-image: url('/img/orbes_de_fundo.png');
+    background-image: url('../img/orbes_de_fundo.png');
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
+    display: flex;
     justify-content: center;
     align-items: flex-end;
     position: relative;
@@ -46,7 +47,7 @@ body {
 }
 
 .btn_voltar img {
-    width: 5rem;
+    width: 3rem;
     height: auto;
 }
 
@@ -79,7 +80,6 @@ body {
     align-items: center;
     padding: 4rem;
 }
-
 
 .conteudo_formulario {
     width: 100%;
@@ -116,8 +116,8 @@ body {
     width: 100%;
     height: 4.8rem;
     padding: 0 1.5rem;
-    border: 1px solid #75B0CB; /* Aquele azul claro da borda */
-    border-radius: 0.4rem; /* No figma a borda é bem pontuda */
+    border: 1px solid #75B0CB; 
+    border-radius: 0.4rem; 
     font-size: 1.5rem;
     color: #333333;
     background-color: transparent;
@@ -126,7 +126,7 @@ body {
 }
 
 .grupo_input input::placeholder {
-    color: #B0B9BE; /* Cinza claro do placeholder */
+    color: #B0B9BE; 
 }
 
 .grupo_input input:focus,
@@ -148,6 +148,13 @@ body {
     color: #B0B9BE;
 }
 
+/* Select desabilitado antes de escolher o Estado */
+.input_select:disabled {
+    background-color: #F8F9FA;
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
 .largura_total {
     grid-column: span 2;
 }
@@ -156,7 +163,7 @@ body {
     grid-column: span 2;
     margin-top: 1.5rem;
     height: 5.5rem;
-    background: linear-gradient(to right, #12ACFF, #0B6799); /* Usando o gradiente azul padrão de vocês */
+    background: linear-gradient(to right, #12ACFF, #0B6799);
     color: #FFFFFF;
     border: none;
     border-radius: 0.6rem;
@@ -171,10 +178,6 @@ body {
     box-shadow: 0 4px 12px rgba(11, 103, 153, 0.3);
 }
 
-/* ========================================================
-   MEDIA QUERIES (Responsividade)
-======================================================== */
-
 @media (max-width: 1024px) {
     .titulo_formulario {
         font-size: 2.8rem;
@@ -187,10 +190,6 @@ body {
 }
 
 @media (max-width: 900px) {
-    .btn_voltar img {
-        width: 3rem;
-    }
-
     .container_cadastro {
         flex-direction: column;
     }
@@ -214,7 +213,7 @@ body {
 
 @media (max-width: 600px) {
     .grade_formulario {
-        grid-template-columns: 1fr; /* Tudo em 1 coluna no celular */
+        grid-template-columns: 1fr; 
         gap: 2rem;
     }
     

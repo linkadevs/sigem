@@ -285,6 +285,39 @@ input:focus {
     color: #024265;
 }
 
+.card_maquina {
+    background-color: #F4FFFF; 
+    border-radius: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+    padding: 1.5rem 2rem;
+    transition: all 0.3s ease;
+    cursor: pointer; /* DEIXA COM A MÃOZINHA (CLICÁVEL) */
+}
+
+.card_maquina:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+.badge_maquina {
+    background-color: #C1F0FB; 
+    color: #024265; 
+    padding: 1rem 2rem;
+    border-radius: 0.8rem;
+    font-size: 1.8rem;
+    font-weight: bold;
+    min-width: 18rem;
+    text-align: center;
+}
+
+.descricao_maquina {
+    font-size: 1.8rem;
+    color: #024265;
+}
+
+
 /* ========================================================
    MEDIA QUERIES (ADAPTADOS DO PADRÃO PARA MÁQUINAS) 
 ======================================================== */

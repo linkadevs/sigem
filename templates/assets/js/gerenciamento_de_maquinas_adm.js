@@ -8,6 +8,36 @@ const pecas = document.querySelector('.btn_pecas')
 const tecnicos = document.querySelector('.btn_tecnicos')
 const logout = document.querySelector('.btn_logout')
 
+// Redirecionamento ao clicar no card da máquina
+const cardsMaquinas = document.querySelectorAll('.card_maquina')
+
+if(cardsMaquinas.length > 0){
+    cardsMaquinas.forEach(card => {
+        card.addEventListener('click', () => {
+            // Substitua com a URL correta na arquitetura MVC do PHP depois
+            window.location.href = 'detalhamento_de_chamados_administrador.html'
+        })
+    })
+}
+
+// Botão de Nova Máquina
+const btnNovaMaquina = document.querySelector('.btn_nova_maquina')
+
+if(btnNovaMaquina){
+    btnNovaMaquina.addEventListener('click', () => {
+        // window.location.href = 'cadastro_nova_maquina.html'
+    })
+}
+
+// Botões do Menu Lateral
+const botoesMenu = document.querySelectorAll('aside button')
+
+botoesMenu.forEach(botao => {
+    botao.addEventListener('click', () => {
+        // window.location.href = ''
+    })
+})
+
 if(perfil){
     perfil.addEventListener('click', () => {
         window.location.href = ''

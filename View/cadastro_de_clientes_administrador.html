@@ -26,54 +26,61 @@
             <div class="conteudo_formulario">
                 <h1 class="titulo_formulario">Cadastre seu novo cliente!</h1>
                 
-                <form class="grade_formulario">
+                <form class="grade_formulario" id="form_cadastro">
                     
                     <div class="grupo_input">
                         <label>Nome</label>
-                        <input type="text" placeholder="Nome do cliente">
+                        <input type="text" placeholder="Nome do cliente" required>
                     </div>
 
                     <div class="grupo_input">
                         <label>CNPJ</label>
-                        <input type="text" placeholder="AB.123.CDE/0001-XY">
+                        <input type="text" placeholder="AB.123.CDE/0001-XY" required>
+                    </div>
+
+                    <div class="grupo_input">
+                        <label>Acompanhante</label>
+                        <input type="text" placeholder="Nome do responsável" required>
+                    </div>
+
+                    <div class="grupo_input">
+                        <label>CPF</label>
+                        <input type="text" placeholder="ABC.DEF.GHI-JK" required>
                     </div>
 
                     <div class="grupo_input">
                         <label>UF</label>
-                        <select class="input_select">
+                        <select class="input_select" id="uf" required>
                             <option value="" disabled selected>Estado</option>
-                            <option value="BA">Bahia</option>
-                            <option value="SP">São Paulo</option>
-                            <!-- Pode adicionar os outros depois -->
+                            <!-- API IBGE PREENCHE AQUI -->
                         </select>
                     </div>
 
                     <div class="grupo_input">
                         <label>Cidade</label>
-                        <select class="input_select">
+                        <select class="input_select" id="cidade" disabled required>
                             <option value="" disabled selected>Cidade</option>
-                            <option value="camacari">Camaçari</option>
-                            <option value="salvador">Salvador</option>
+                            <!-- API IBGE PREENCHE AQUI -->
                         </select>
                     </div>
 
                     <div class="grupo_input">
                         <label>E-mail</label>
-                        <input type="email" placeholder="Exemplo@gmail.com">
+                        <input type="email" placeholder="Exemplo@gmail.com" required>
                     </div>
 
                     <div class="grupo_input">
                         <label>Número de contato</label>
-                        <input type="tel" placeholder="+55 (DDD) 9XXXX-YYYY">
+                        <input type="tel" placeholder="+55 (DDD) 9XXXX-YYYY" required>
                     </div>
 
-                    <!-- Input que ocupa a linha toda -->
                     <div class="grupo_input largura_total">
                         <label>Senha</label>
-                        <input type="password" placeholder="Insira uma senha inicial">
+                        <input type="password" placeholder="Insira uma senha inicial" required>
                     </div>
 
-                    <button type="button" class="btn_salvar">Salvar</button>
+                    <!-- Type submit para validar os requireds -->
+                    <button type="submit" class="btn_salvar">Salvar</button>
                 </form>
             </div>
         </section>
