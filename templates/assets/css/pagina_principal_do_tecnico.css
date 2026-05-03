@@ -45,6 +45,10 @@ button:hover,
     transform: translate(-50%, -25%)
 }
 
+.logo img {
+    width: 16rem;
+}
+
 .btn_cadastrar_nv_maquina {
     display: flex;
     gap: 4.8rem;
@@ -244,7 +248,7 @@ button:hover,
     }
 
     .logo img {
-        width: 20rem;
+        width: 15rem;
     }
 
     .textoCima h1 {
@@ -316,17 +320,20 @@ button:hover,
     }
 
     .logo {
-        left: 30%;
+        left: 50%;
     }
 
     .logo img {
-        width: 17rem;
+        width: 14rem;
     }
 }
 
 @media screen and (max-width: 948px) {
+    .logo {
+        left: 30%;
+    }
     .logo img {
-        width: 16rem;
+        width: 14rem;
     }
 
     header p,
@@ -396,7 +403,7 @@ button:hover,
 @media screen and (max-width: 790px) {
 
     .logo img {
-        width: 15rem;
+        width: 13rem;
     }
 
 
@@ -495,7 +502,7 @@ button:hover,
     }
 
     .logo img {
-        width: 10rem;
+        width: 9rem;
     }
 
     .logo {
@@ -521,10 +528,12 @@ button:hover,
 }
 
 @media screen and (max-width: 390px) {
+    .logo {
+        left: 25%;
+    }
 
     .logo img {
         width: 7rem;
-        margin-right: -3rem;
     }
 
 }
