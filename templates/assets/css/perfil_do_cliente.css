@@ -1,6 +1,11 @@
 @import 'global.css';
 
+figure img {
+    display: block;
+}
+
 body {
+    
     background-color: #FFFFFF;
     display: flex;
     flex-direction: column;
@@ -28,8 +33,8 @@ body {
 }
 
 .btn_voltar figure img {
-    width: 2.4rem;
-    height: auto;
+    width: 4rem;
+    height: 100%;
 }
 
 .btn_voltar span {

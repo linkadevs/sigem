@@ -6,6 +6,9 @@ body {
     padding-top: 2rem;
     overflow-x: hidden;
     padding-bottom: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
 }
 
 .voltar {
@@ -525,6 +528,10 @@ input:focus {
 }
 
 @media (max-width: 600px) {
+    body {
+        gap: 0rem;
+    }
+
     .conteudo_superior {
         padding: 1rem;
     }

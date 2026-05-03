@@ -420,6 +420,11 @@ figure {
 
 /* Mobile pequeno - até 330px */
 @media screen and (max-width: 330px) {
+    .Cform_login > figure:first-child img {
+        width: 2rem;
+        height: 2rem;
+    }
+
     .Cform_login {
         width: 22rem;
         height: 36rem;

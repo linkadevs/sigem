@@ -46,7 +46,7 @@ body {
 }
 
 .btn_voltar img {
-    width: 3rem;
+    width: 5rem;
     height: auto;
 }
 
@@ -187,6 +187,10 @@ body {
 }
 
 @media (max-width: 900px) {
+    .btn_voltar img {
+        width: 3rem;
+    }
+
     .container_cadastro {
         flex-direction: column;
     }
