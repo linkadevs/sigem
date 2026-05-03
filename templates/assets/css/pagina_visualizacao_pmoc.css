@@ -1,5 +1,9 @@
 @import 'global.css';
 
+:root {
+    font-size: 45% !important;
+}
+
 figure img {
     display: block;
 }
@@ -129,7 +133,7 @@ h1 {
     background-color: #B7E6FF;
 }
 
-@media screen and (max-width: 1367px) {
+@media screen and (max-width: 1067px) {
     .voltar {
         font-size: 2.3rem;
     }
@@ -170,7 +174,7 @@ h1 {
     }
 }
 
-@media screen and (max-width: 764px) {
+@media screen and (max-width: 604px) {
     .voltar {
         gap: 2rem;
     }
