@@ -26,15 +26,27 @@ function copiar() {
     });
 }
 
-function baixarQR() {
-    const qrImage = document.getElementById('qrCodeImage').src;
+function baixarComTexto() {
+    const canvas = document.createElement('canvas');
+    const ctx = canvas.getContext('2d');
+    const img = document.getElementById('qrCodeImage');
+    const texto = document.getElementById('textoParaCopiar').innerText;
 
+    canvas.width = 400; 
+    canvas.height = 450; 
+
+    ctx.fillStyle = "white";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    ctx.drawImage(img, 50, 20, 300, 300);
+
+    ctx.fillStyle = "black";
+    ctx.font = "bold 24px Arial";
+    ctx.textAlign = "center";
+    ctx.fillText(texto, canvas.width / 2, 380);
+    
     const link = document.createElement('a');
-    link.href = qrImage;
-    
-    link.download = 'qrcode.png';
-    
-    document.body.appendChild(link);
+    link.download = `qrcode-${texto}.png`;
+    link.href = canvas.toDataURL('image/png');
     link.click();
-    document.body.removeChild(link);
 }
