@@ -96,7 +96,7 @@ form h2{
 }
 
 form input {
-    margin: .5rem 0 0 1rem;
+    margin: .5rem 0 0 .5rem;
     width: 95%;
     height: 4rem;
     border-radius: 5rem;
@@ -307,7 +307,7 @@ form input {
     }
     
     form input {
-        margin-top: 0.4rem;
+        margin: 0.4rem 0 0 .4rem;
         height: 4rem;
         font-size: 1.2rem;
         padding-left: 1.2rem;
