@@ -95,8 +95,8 @@ form h2{
 }
 
 form input {
-    margin-top: .5rem;
-    width: 100%;
+    margin: .5rem 0 0 1rem;
+    width: 95%;
     height: 4rem;
     border-radius: 5rem;
     border: none;
@@ -236,7 +236,7 @@ form input {
     form input {
         height: 3.8rem;
         font-size: 1.2rem;
-        width: 100%;
+        width: 95%;
     }
     
     .botoes_form {
