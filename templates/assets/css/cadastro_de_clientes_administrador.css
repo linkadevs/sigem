@@ -6,25 +6,22 @@ body {
     min-height: 100vh;
 }
 
-.container_cadastro {
+.container_edicao {
     display: flex;
     width: 100%;
     min-height: 100vh;
 }
 
-/* LADO ESQUERDO - IMAGEM E ORBES */
+/* =======================================
+   LADO ESQUERDO E POSICIONAMENTO DAS ORBES
+======================================= */
 .secao_imagem {
     flex: 1;
     background-color: #F8F9FA; 
-    background-image: url('../img/orbes_de_fundo.png');
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
     position: relative;
     overflow: hidden;
+    display: flex;
+    justify-content: center;
 }
 
 .btn_voltar {
@@ -37,41 +34,39 @@ body {
     transition: transform 0.2s ease;
     z-index: 10;
     padding: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
-.btn_voltar:hover {
-    transform: translateX(-0.5rem);
+.btn_voltar:hover { transform: translateX(-0.5rem); }
+.btn_voltar img { width: 3rem; height: auto; }
+
+/* Configuração base para todas as orbes */
+.orbe {
+    position: absolute;
+    z-index: 1;
+    /* Adicione mix-blend-mode se quiser que as cores se misturem */
+    mix-blend-mode: multiply; 
 }
 
-.btn_voltar img {
-    width: 3rem;
-    height: auto;
-}
+/* Posicionamento individual */
+.orbe1 { top: 0%; left: -25%; width: 55%; }
+.orbe2 { top: 20%; right: 10%; width: 50%; }
+.orbe3 { top: 25%; left: 10%; width: 45%; z-index: 2; }
+.orbe4 { bottom: 20%; right: 30%; width: 40%; }
+.orbe5 { bottom: 10%; left: -10%; width: 45%; }
 
-/* A MULHER */
-.ilustracao_cadastro {
+.mulher_ilustracao {
     position: absolute;
     bottom: 0;
-    left: 0;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    margin: 0; 
-    padding: 0;
-}
-
-.ilustracao_cadastro img {
-    width: 85%; 
-    max-width: 85rem; 
+    width: 75%;
+    max-width: 65rem;
     height: auto;
     object-fit: contain;
-    vertical-align: bottom; 
+    z-index: 5;
 }
 
-/* LADO DIREITO - FORMULÁRIO */
+/* =======================================
+   LADO DIREITO - FORMULÁRIO
+======================================= */
 .secao_formulario {
     flex: 1.1; 
     background-color: #FFFFFF;
@@ -79,6 +74,7 @@ body {
     justify-content: center;
     align-items: center;
     padding: 4rem;
+    z-index: 10;
 }
 
 .conteudo_formulario {
@@ -125,16 +121,11 @@ body {
     transition: border-color 0.3s ease;
 }
 
-.grupo_input input::placeholder {
-    color: #B0B9BE; 
-}
-
 .grupo_input input:focus,
 .grupo_input select:focus {
     border-color: #094C71;
 }
 
-/* Faz o select ficar com cara de input (tira o visual padrão do SO) */
 .input_select {
     appearance: none;
     background-image: url('data:image/svg+xml;charset=US-ASCII,<svg xmlns="http://www.w3.org/2000/svg" width="14" height="8" fill="none"><path stroke="%23B0B9BE" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="m1 1 6 6 6-6"/></svg>');
@@ -143,23 +134,11 @@ body {
     cursor: pointer;
 }
 
-.input_select:invalid,
-.input_select option[value=""] {
-    color: #B0B9BE;
-}
-
-/* Select desabilitado antes de escolher o Estado */
-.input_select:disabled {
-    background-color: #F8F9FA;
-    cursor: not-allowed;
-    opacity: 0.6;
-}
-
 .largura_total {
     grid-column: span 2;
 }
 
-.btn_salvar {
+.btn_editar {
     grid-column: span 2;
     margin-top: 1.5rem;
     height: 5.5rem;
@@ -173,60 +152,27 @@ body {
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.btn_salvar:hover {
+.btn_editar:hover {
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(11, 103, 153, 0.3);
 }
 
+/* Responsividade Formulário */
 @media (max-width: 1024px) {
-    .titulo_formulario {
-        font-size: 2.8rem;
-        margin-bottom: 3.5rem;
-    }
-    
-    .secao_formulario {
-        padding: 3rem;
-    }
+    .titulo_formulario { font-size: 2.8rem; margin-bottom: 3.5rem; }
+    .secao_formulario { padding: 3rem; }
 }
 
 @media (max-width: 900px) {
-    .container_cadastro {
-        flex-direction: column;
-    }
-    
-    .secao_imagem {
-        flex: none;
-        height: 30vh;
-        align-items: center;
-    }
-    
-    .ilustracao_cadastro img {
-        height: 100%;
-        width: auto;
-    }
-    
-    .secao_formulario {
-        flex: none;
-        padding: 4rem 2rem;
-    }
+    .container_edicao { flex-direction: column; }
+    .secao_imagem { flex: none; height: 35vh; align-items: center; }
+    .mulher_ilustracao { width: auto; height: 90%; }
+    .secao_formulario { flex: none; padding: 4rem 2rem; }
 }
 
 @media (max-width: 600px) {
-    .grade_formulario {
-        grid-template-columns: 1fr; 
-        gap: 2rem;
-    }
-    
-    .largura_total {
-        grid-column: span 1;
-    }
-    
-    .btn_salvar {
-        grid-column: span 1;
-    }
-
-    .titulo_formulario {
-        font-size: 2.4rem;
-        text-align: center;
-    }
+    .grade_formulario { grid-template-columns: 1fr; gap: 2rem; }
+    .largura_total { grid-column: span 1; }
+    .btn_editar { grid-column: span 1; }
+    .titulo_formulario { font-size: 2.4rem; text-align: center; }
 }
