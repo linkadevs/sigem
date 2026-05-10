@@ -3,16 +3,15 @@
 namespace Model;
 
 use Model\Connection;
-use PDOException;
 use PDO;
 
-require_once __DIR__ . 'Connection.php';
+require_once __DIR__ . '/Connection.php';
 
 class Maquina {
-    private $maquina;
+    private $db;
 
     public function __construct() {
-        $this->maquina = Connection::getInstance();
+        $this->db = Connection::getInstance();
     }
 
     public function criarMaquina(
@@ -37,7 +36,7 @@ class Maquina {
         :capacidade_termica_de_refrigeracao,
         :id_cliente_fk)';
 
-        $stmt = $this->maquina->prepare($sql);
+        $stmt = $this->db->prepare($sql);
 
         return $stmt->execute([
             ':cod_maquina' => $cod_maquina,
@@ -58,19 +57,18 @@ class Maquina {
         string $marca,
         string $modelo,
         string $fluido_refrigerante,
-        int $capacidade_termica_de_refrigeracao,
-        int $id_cliente_fk
+        int $capacidade_termica_de_refrigeracao
     ) {
         $sql = 'UPDATE maquina SET
         nome_maquina = :nome_maquina,
         localizacao = :localizacao,
-        marca = :marca
-        modelo = :modelo
+        marca = :marca,
+        modelo = :modelo,
         fluido_refrigerante = :fluido_refrigerante,
         capacidade_termica_de_refrigeracao = :capacidade_termica_de_refrigeracao
         WHERE cod_maquina = :cod_maquina';
 
-        $stmt = $this->maquina->prepare($sql);
+        $stmt = $this->db->prepare($sql);
 
         return $stmt->execute([
             ':nome_maquina' => $nome_maquina,
@@ -88,7 +86,7 @@ class Maquina {
     ) {
         $sql = 'DELETE FROM maquina WHERE cod_maquina = :cod_maquina';
 
-        $stmt = $this->maquina->prepare($sql);
+        $stmt = $this->db->prepare($sql);
         
         return $stmt->execute([
             ':cod_maquina' => $cod_maquina
@@ -98,7 +96,7 @@ class Maquina {
     public function verMaquinas () {
         $sql = 'SELECT * FROM maquina';
 
-        $result = $this->maquina->query($sql);
+        $result = $this->db->query($sql);
 
         return $result->fetchAll(PDO::FETCH_ASSOC);
     }
@@ -108,11 +106,13 @@ class Maquina {
     ) {
         $sql = 'SELECT * FROM maquina WHERE id_cliente_fk = :id_cliente_fk';
 
-        $stmt = $this->maquina->prepare($sql);
+        $stmt = $this->db->prepare($sql);
 
-        return $stmt->execute([
+        $stmt->execute([
             ':id_cliente_fk' => $id_cliente_fk
         ]);
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 }
 
