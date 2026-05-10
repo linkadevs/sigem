@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Página Principal</title>
-    <link rel="stylesheet" href="/templates/assets/css/pagina_principal_adm.css">
+    <link rel="stylesheet" href="../templates/assets/css/pagina_principal_adm.css">
 </head>
 
 <body>
@@ -16,7 +16,7 @@
             <button class="btn_perfil">
                 <div class="circuloperfil">
                     <figure>
-                        <img src="/templates/assets/img/menu-perfil.png" alt="Imagem circular de um usuário
+                        <img src="../templates/assets/img/menu-perfil.png" alt="Imagem circular de um usuário
                      genérico para simbolizar o perfil">
                     </figure>
                 </div>
@@ -30,7 +30,7 @@
             <button class="btn_home">
 
                 <figure>
-                    <img src="/templates/assets/img/menu-homeazul.png" alt="casa azul claro">
+                    <img src="../templates/assets/img/menu-homeazul.png" alt="casa azul claro">
                 </figure>
 
                 <p>Home</p>
@@ -42,7 +42,7 @@
             <button class="btn_maquinas">
 
                 <figure>
-                    <img src="/templates/assets/img/menu-maquinas.png" alt="Máquina cinza ilustrativa">
+                    <img src="../templates/assets/img/menu-maquinas.png" alt="Máquina cinza ilustrativa">
                 </figure>
 
                 <p>Máquinas</p>
@@ -53,7 +53,7 @@
             <button class="btn_clientes">
 
                 <figure>
-                    <img src="/templates/assets/img/menu-clientes.png" alt="Imagem ilustrativa de uma medalha
+                    <img src="../templates/assets/img/menu-clientes.png" alt="Imagem ilustrativa de uma medalha
                          em torno do ícone de um cliente">
                 </figure>
 
@@ -65,7 +65,7 @@
             <button class="btn_chamados">
 
                 <figure>
-                    <img src="/templates/assets/img/menu-chamados.png" alt="Imagem ilustrativa de um telefone">
+                    <img src="../templates/assets/img/menu-chamados.png" alt="Imagem ilustrativa de um telefone">
                 </figure>
 
                 <p>Chamados</p>
@@ -76,7 +76,7 @@
             <button class="btn_manutencoes">
 
                 <figure>
-                    <img src="/templates/assets/img/menu-manutencao.png"
+                    <img src="../templates/assets/img/menu-manutencao.png"
                         alt="Imagem ilustrativa de uma engrenagem ao lado de uma ferramenta">
                 </figure>
 
@@ -87,7 +87,7 @@
 
             <button class="btn_pecas">
                 <figure>
-                    <img src="/templates/assets/img/menu-pecas.png" alt="Imagem ilustrativa de uma ciaxa de ferramenta">
+                    <img src="../templates/assets/img/menu-pecas.png" alt="Imagem ilustrativa de uma ciaxa de ferramenta">
                 </figure>
 
                 <p>Solicitações de peças</p>
@@ -98,7 +98,7 @@
             <button class="btn_tecnicos">
 
                 <figure>
-                    <img src="/templates/assets/img/menu-tecnico.png"
+                    <img src="../templates/assets/img/menu-tecnico.png"
                         alt="Imagem ilustrativa de um homem com um capacete de EPI">
                 </figure>
 
@@ -110,7 +110,7 @@
             <button class="btn_logout">
 
                 <figure>
-                    <img src="/templates/assets/img/menu-logout.png" alt="Imagem ilustrativade uma porta aberta 
+                    <img src="../templates/assets/img/menu-logout.png" alt="Imagem ilustrativade uma porta aberta 
                         com uma seta indicando a saída">
                 </figure>
 
@@ -125,7 +125,7 @@
 
         <div class="mainimg">
         <figure>
-            <img src="/templates/assets/img/principal-adm-img.png" alt="">
+            <img src="../templates/assets/img/principal-adm-img.png" alt="">
         </figure>
         </div>
 
@@ -156,7 +156,7 @@
         </div>
     </div>
     </main>
-<script src="/templates/assets/js/pagina_principal_adm.js"></script>
+<script src="../templates/assets/js/pagina_principal_adm.js"></script>
 </body>
 
 </html>

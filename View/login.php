@@ -15,14 +15,14 @@
             <div class="Cform_login">
 
                 <figure class="seta_voltar">
-                <img src=" ../templates/assets/img/seta_voltar_semfundo.png" alt="seta azul">
+                <img src="../templates/assets/img/seta_voltar_semfundo.png" alt="seta azul">
                </figure>
 
                 <h1>Login</h1>
                 <h2>Realize o login para identificarmos você!</h2>
                 
                  <figure>
-                <img src=" ../templates/assets/img/linha_azul.png" alt="linha azul no form">
+                <img src="../templates/assets/img/linha_azul.png" alt="linha azul no form">
                 </figure>
 
                 <form class = form_>

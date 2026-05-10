@@ -80,7 +80,7 @@
                 <h2 class="subtitulo">Identifique a máquina que deseja consultar</h2>
 
                 <figure class="linha_azul">
-                    <img src=" ../templates/assets/img/linha_azul.png" alt="linha azul no form">
+                    <img src="../templates/assets/img/linha_azul.png" alt="linha azul no form">
                 </figure>
 
                 <form class="form">

@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gerenciamento de Técnicos</title>
-    <link rel="stylesheet" href="/templates/assets/css/pagina_gerenciamento_de_tecnicos_adm.css">
+    <link rel="stylesheet" href="../templates/assets/css/pagina_gerenciamento_de_tecnicos_adm.css">
 </head>
 
 <body>
@@ -16,7 +16,7 @@
                 <button class="btn_perfil">
                     <div class="circuloperfil">
                         <figure>
-                            <img src="/templates/assets/img/menu-perfil.png" alt="Imagem circular de um usuário
+                            <img src="../templates/assets/img/menu-perfil.png" alt="Imagem circular de um usuário
                      genérico para simbolizar o perfil">
                         </figure>
                     </div>
@@ -28,7 +28,7 @@
                 <button class="btn_home">
 
                     <figure>
-                        <img src="/templates/assets/img/menu-home.png" alt="casa azul claro">
+                        <img src="../templates/assets/img/menu-home.png" alt="casa azul claro">
                     </figure>
 
                     <p>Home</p>
@@ -40,7 +40,7 @@
                 <button class="btn_maquinas">
 
                     <figure>
-                        <img src="/templates/assets/img/menu-maquinas.png" alt="Máquina cinza ilustrativa">
+                        <img src="../templates/assets/img/menu-maquinas.png" alt="Máquina cinza ilustrativa">
                     </figure>
 
                     <p>Máquinas</p>
@@ -51,7 +51,7 @@
                 <button class="btn_clientes">
 
                     <figure>
-                        <img src="/templates/assets/img/menu-clientes.png" alt="Imagem ilustrativa de uma medalha
+                        <img src="../templates/assets/img/menu-clientes.png" alt="Imagem ilustrativa de uma medalha
                          em torno do ícone de um cliente">
                     </figure>
 
@@ -63,7 +63,7 @@
                 <button class="btn_chamados">
 
                     <figure>
-                        <img src="/templates/assets/img/menu-chamados.png" alt="Imagem ilustrativa de um telefone">
+                        <img src="../templates/assets/img/menu-chamados.png" alt="Imagem ilustrativa de um telefone">
                     </figure>
 
                     <p>Chamados</p>
@@ -74,7 +74,7 @@
                 <button class="btn_manutencoes">
 
                     <figure>
-                        <img src="/templates/assets/img/menu-manuntencao.png"
+                        <img src="../templates/assets/img/menu-manuntencao.png"
                             alt="Imagem ilustrativa de uma engrenagem ao lado de uma ferramenta">
                     </figure>
 
@@ -85,7 +85,7 @@
             <div class="menu_pecas">
                 <button class="btn_pecas">
                     <figure>
-                        <img src="/templates/assets/img/menu-pecas.png"
+                        <img src="../templates/assets/img/menu-pecas.png"
                             alt="Imagem ilustrativa de uma ciaxa de ferramenta">
                     </figure>
 
@@ -97,7 +97,7 @@
                 <button class="btn_tecnicos">
 
                     <figure>
-                        <img src="/templates/assets/img/menu-tecnicoazul.png"
+                        <img src="../templates/assets/img/menu-tecnicoazul.png"
                             alt="Imagem ilustrativa de um homem com um capacete de EPI">
                     </figure>
 
@@ -109,7 +109,7 @@
                 <button class="btn_logout">
 
                     <figure>
-                        <img src="/templates/assets/img/menu-logout.png" alt="Imagem ilustrativade uma porta aberta 
+                        <img src="../templates/assets/img/menu-logout.png" alt="Imagem ilustrativade uma porta aberta 
                         com uma seta indicando a saída">
                     </figure>
 
@@ -127,7 +127,7 @@
                 <form>
                     <div class="input-container">
                         <figure>
-                            <img src="/templates/assets/img/lupa_branca.png" alt="">
+                            <img src="../templates/assets/img/lupa_branca.png" alt="">
                         </figure>
                         <input type="text" class="pesquisar"
                             placeholder="Busque por uma data, um nome ou função específica!">
@@ -320,7 +320,7 @@
         </div>
 
     </main>
-<script src="/templates/assets/js/pagina_gerenciamento_de_tecnicos_adm.js"></script>
+<script src="../templates/assets/js/pagina_gerenciamento_de_tecnicos_adm.js"></script>
 </body>
 
 </html>

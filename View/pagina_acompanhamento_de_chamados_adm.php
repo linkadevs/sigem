@@ -111,7 +111,7 @@
                 <form>
                     <div class="input-container">
                         <figure>
-                            <img src="/templates/assets/img/lupa_branca.png" alt="">
+                            <img src="../templates/assets/img/lupa_branca.png" alt="">
                         </figure>
                         <input type="text" class="pesquisar"
                             placeholder="Busque por um Cliente, UF, CNPJ ou Código da Máquina!">
