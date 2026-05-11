@@ -93,79 +93,70 @@ if (formularioPesquisa) {
 
 concluirbtn.forEach(botao => {
 
-    botao.onclick = async () => {
+    botao.addEventListener('click', async () => {
 
-        const idSolicitacao =
-            botao.dataset.id;
+        try {
 
+            const idSolicitacao = botao.dataset.id;
 
-        const resposta = await fetch(
+            const resposta = await fetch(
+            '../Controller/PecasController.php',
+                {
+                    method: 'POST',
 
-            '../app/controller/AtualizarStatusSolicitacaoController.php',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
 
-            {
-                method: 'POST',
+                    body: JSON.stringify({
+                        id: idSolicitacao,
+                        status: 'concluído'
+                    })
+                }
+            );
 
-                headers: {
-                    'Content-Type': 'application/json'
-                },
+const texto = await resposta.text();
 
-                body: JSON.stringify({
+console.log(texto);
 
-                    id: idSolicitacao,
+const dados = JSON.parse(texto);
+            
 
-                    status: 'concluido'
+            if (dados.sucesso) {
 
-                })
+                const bloco = botao.closest('.bloco');
 
-            }
+                const statusTexto =
+                    bloco.querySelector('.status-texto');
 
-        );
+                const cancelar =
+                    bloco.querySelector('.cancelar');
 
+                statusTexto.textContent = 'Concluído';
 
-        const dados =
-            await resposta.json();
+                botao.disabled = true;
 
+                botao.textContent = 'Concluído';
 
-        if (dados.sucesso) {
+                if (cancelar) {
+                    cancelar.style.display = 'none';
+                }
 
-            const bloco =
-                botao.closest('.bloco');
+            } else {
 
-
-            const statusTexto =
-                bloco.querySelector('.status-texto');
-
-
-            const cancelar =
-                bloco.querySelector('.cancelar');
-
-
-            // altera status
-            statusTexto.textContent =
-                'Concluído';
-
-
-            // botão concluir desabilitado
-            botao.disabled = true;
-
-
-            // muda texto botão
-            botao.textContent =
-                'Concluído';
-
-
-            // remove botão cancelar
-            if (cancelar) {
-
-                cancelar.style.display =
-                    'none';
+                alert('Erro ao atualizar status');
 
             }
+
+        } catch (erro) {
+
+            console.error(erro);
+
+            alert('Erro no servidor');
 
         }
 
-    };
+    });
 
 });
 
@@ -186,7 +177,7 @@ cancelarbtn.forEach(botao => {
 
         const resposta = await fetch(
 
-            '../app/controller/AtualizarStatusSolicitacaoController.php',
+            '../Controller/PecasController.php',
 
             {
                 method: 'POST',
@@ -199,7 +190,7 @@ cancelarbtn.forEach(botao => {
 
                     id: idSolicitacao,
 
-                    status: 'cancelado'
+                    status: 'em_aberto'
 
                 })
 
@@ -208,9 +199,11 @@ cancelarbtn.forEach(botao => {
         );
 
 
-        const dados =
-            await resposta.json();
+ const texto = await resposta.text();
 
+console.log(texto);
+
+const dados = JSON.parse(texto);
 
         if (dados.sucesso) {
 

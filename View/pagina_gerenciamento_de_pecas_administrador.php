@@ -107,7 +107,7 @@
         <div class="container">
             <div class="conteudo_superior">
                 <h1>Solicitações de peças</h1>
-                <form method="GET" action="">
+                <form method="GET" action="" class="formulario-pesquisa">
                     <div class="input-container">
                         <figure><img src="../templates/assets/img/lupa_branca.png" alt="Lupa"></figure>
                         <input type="text" name="busca" class="pesquisar"
@@ -156,7 +156,7 @@
                                 </div>
                             </div>
                         </div>
-                    <?php
+                        <?php
                     endforeach;
 
                 else:
@@ -172,7 +172,7 @@
                                     </div>
                                     <div class="topico">
                                         <p class="titulo">Status</p>
-                                        <p class="infor">Em aberto</p>
+                                        <p class="infor status-texto">Em aberto</p>
                                     </div>
                                     <div class="topico">
                                         <p class="titulo">Técnico solicitante</p>
@@ -189,8 +189,8 @@
                                     <p>12/03/26</p>
                                 </div>
                                 <div class="grupo-botoes">
-                                    <button class="cancelar">Cancelar</button>
-                                    <button class="concluir">Concluir</button>
+                                    <button class="cancelar" data-id="1">Cancelar</button>
+                                    <button class="concluir" data-id="1">Concluir</button>
                                 </div>
                             </div>
                         </div>
@@ -205,7 +205,7 @@
                                     </div>
                                     <div class="topico">
                                         <p class="titulo">Status</p>
-                                        <p class="infor">Em andamento</p>
+                                        <p class="infor status-texto">Em aberto</p>
                                     </div>
                                     <div class="topico">
                                         <p class="titulo">Técnico solicitante</p>
@@ -222,8 +222,8 @@
                                     <p>13/03/26</p>
                                 </div>
                                 <div class="grupo-botoes">
-                                    <button class="cancelar">Cancelar</button>
-                                    <button class="concluir">Concluir</button>
+                                    <button class="cancelar" data-id="4">Cancelar</button>
+                                    <button class="concluir" data-id="4">Concluir</button>
                                 </div>
                             </div>
                         </div>
@@ -238,7 +238,7 @@
                                     </div>
                                     <div class="topico">
                                         <p class="titulo">Status</p>
-                                        <p class="infor">Em aberto</p>
+                                        <p class="infor status-texto">Em aberto</p>
                                     </div>
                                     <div class="topico">
                                         <p class="titulo">Técnico solicitante</p>
@@ -254,8 +254,8 @@
                                     <p>14/03/26</p>
                                 </div>
                                 <div class="grupo-botoes">
-                                    <button class="cancelar">Cancelar</button>
-                                    <button class="concluir">Concluir</button>
+                                    <button class="cancelar" data-id="2">Cancelar</button>
+                                    <button class="concluir" data-id="2">Concluir</button>
                                 </div>
                             </div>
                         </div>
@@ -270,7 +270,7 @@
                                     </div>
                                     <div class="topico">
                                         <p class="titulo">Status</p>
-                                        <p class="infor">Em aberto</p>
+                                        <p class="infor status-texto">Em aberto</p>
                                     </div>
                                     <div class="topico">
                                         <p class="titulo">Técnico solicitante</p>
@@ -286,8 +286,8 @@
                                     <p>15/03/26</p>
                                 </div>
                                 <div class="grupo-botoes">
-                                    <button class="cancelar">Cancelar</button>
-                                    <button class="concluir">Concluir</button>
+                                    <button class="cancelar" data-id="3">Cancelar</button>
+                                    <button class="concluir" data-id="3">Concluir</button>
                                 </div>
                             </div>
                         </div>
