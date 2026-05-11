@@ -103,151 +103,197 @@
     </aside>
 
     <main>
+
         <div class="container">
             <div class="conteudo_superior">
                 <h1>Solicitações de peças</h1>
-                <form>
+                <form method="GET" action="">
                     <div class="input-container">
-                        <figure>
-                            <img src="../templates/assets/img/lupa_branca.png" alt="">
-                        </figure>
-                        <input type="text" class="pesquisar" placeholder="Busque por uma data ou nome específico!">
+                        <figure><img src="../templates/assets/img/lupa_branca.png" alt="Lupa"></figure>
+                        <input type="text" name="busca" class="pesquisar"
+                            placeholder="Busque por uma data ou nome específico!"
+                            value="<?= isset($_GET['busca']) ? $_GET['busca'] : '' ?>">
                     </div>
-                    <button class="procurar">Procurar</button>
+                    <button type="submit" class="procurar">Procurar</button>
                 </form>
             </div>
 
             <div class="conteudo_principal">
-                <!-- Bloco 1 -->
-                <div class="bloco">
-                    <div class="inforcentro">
-                        <div class="topo">
-                            <div class="topico">
-                                <p class="titulo">Peça</p>
-                                <p class="infor">Parafuso</p>
+                <?php
+                // VERIFICAÇÃO DINÂMICA: Se a variável $lista não estiver vazia, mostre o banco
+                if (!empty($lista)):
+                    foreach ($lista as $item):
+                        ?>
+                        <div class="bloco">
+                            <div class="inforcentro">
+                                <div class="topo">
+                                    <div class="topico">
+                                        <p class="titulo">Peça</p>
+                                        <p class="infor"><?= $item['nome_peca'] ?></p>
+                                    </div>
+                                    <div class="topico">
+                                        <p class="titulo">Status</p>
+                                        <p class="infor status-texto">
+                                            <?= ucfirst(str_replace('_', ' ', $item['status'])) ?>
+                                        </p>
+                                    </div>
+                                    <div class="topico">
+                                        <p class="titulo">Técnico solicitante</p>
+                                        <p class="infor"><?= $item['id_tecnico_fk'] ?> (ID)</p>
+                                    </div>
+                                </div>
+                                <div class="descricao">
+                                    <p><?= $item['descricao'] ?></p>
+                                </div>
                             </div>
-                            <div class="topico">
-                                <p class="titulo">Status</p>
-                                <p class="infor">Em aberto</p>
+                            <div class="lado-direito">
+                                <div class="data">
+                                    <p><?= date('d/m/y', strtotime($item['data'])) ?></p>
+                                </div>
+                                <div class="grupo-botoes">
+                                    <button class="cancelar" data-id="<?= $item['id_solicitacao_pecas'] ?>">Cancelar</button>
+                                    <button class="concluir" data-id="<?= $item['id_solicitacao_pecas'] ?>">Concluir</button>
+                                </div>
                             </div>
-                            <div class="topico">
-                                <p class="titulo">Técnico solicitante</p>
-                                <p class="infor">José Silva de Jesus</p>
-                            </div>
                         </div>
-                        <div class="descricao">
-                            <p>Parafuso M12 x 60 mm. Classe de resistência 8.8.
-                                Acabamento zincado (proteção contra corrosão). Padrão métrico (rosca MA).</p>
-                        </div>
-                    </div>
-                    <div class="lado-direito">
-                        <div class="data">
-                            <p>12/03/26</p>
-                        </div>
-                        <div class="grupo-botoes">
-                            <button class="cancelar">Cancelar</button>
-                            <button class="concluir">Concluir</button>
-                        </div>
-                    </div>
-                </div>
+                    <?php
+                    endforeach;
 
-                <!-- Bloco 2 -->
-                <div class="bloco">
-                    <div class="inforcentro">
-                        <div class="topo">
-                            <div class="topico">
-                                <p class="titulo">Peça</p>
-                                <p class="infor">Porca</p>
+                else:
+                    ?>
+                    <div class="conteudo_principal">
+                        <!-- Bloco 1 -->
+                        <div class="bloco">
+                            <div class="inforcentro">
+                                <div class="topo">
+                                    <div class="topico">
+                                        <p class="titulo">Peça</p>
+                                        <p class="infor">Parafuso</p>
+                                    </div>
+                                    <div class="topico">
+                                        <p class="titulo">Status</p>
+                                        <p class="infor">Em aberto</p>
+                                    </div>
+                                    <div class="topico">
+                                        <p class="titulo">Técnico solicitante</p>
+                                        <p class="infor">José Silva de Jesus</p>
+                                    </div>
+                                </div>
+                                <div class="descricao">
+                                    <p>Parafuso M12 x 60 mm. Classe de resistência 8.8.
+                                        Acabamento zincado (proteção contra corrosão). Padrão métrico (rosca MA).</p>
+                                </div>
                             </div>
-                            <div class="topico">
-                                <p class="titulo">Status</p>
-                                <p class="infor">Em andamento</p>
+                            <div class="lado-direito">
+                                <div class="data">
+                                    <p>12/03/26</p>
+                                </div>
+                                <div class="grupo-botoes">
+                                    <button class="cancelar">Cancelar</button>
+                                    <button class="concluir">Concluir</button>
+                                </div>
                             </div>
-                            <div class="topico">
-                                <p class="titulo">Técnico solicitante</p>
-                                <p class="infor">Maria Santos Oliveira</p>
-                            </div>
                         </div>
-                        <div class="descricao">
-                            <p>Porca M12 galvanizada. Resistência à corrosão. Padrão métrico para aplicações industriais.</p>
-                        </div>
-                    </div>
-                    <div class="lado-direito">
-                        <div class="data">
-                            <p>13/03/26</p>
-                        </div>
-                        <div class="grupo-botoes">
-                            <button class="cancelar">Cancelar</button>
-                            <button class="concluir">Concluir</button>
-                        </div>
-                    </div>
-                </div>
 
-                <!-- Bloco 3 -->
-                <div class="bloco">
-                    <div class="inforcentro">
-                        <div class="topo">
-                            <div class="topico">
-                                <p class="titulo">Peça</p>
-                                <p class="infor">Arruela</p>
+                        <!-- Bloco 2 -->
+                        <div class="bloco">
+                            <div class="inforcentro">
+                                <div class="topo">
+                                    <div class="topico">
+                                        <p class="titulo">Peça</p>
+                                        <p class="infor">Porca</p>
+                                    </div>
+                                    <div class="topico">
+                                        <p class="titulo">Status</p>
+                                        <p class="infor">Em andamento</p>
+                                    </div>
+                                    <div class="topico">
+                                        <p class="titulo">Técnico solicitante</p>
+                                        <p class="infor">Maria Santos Oliveira</p>
+                                    </div>
+                                </div>
+                                <div class="descricao">
+                                    <p>Porca M12 galvanizada. Resistência à corrosão. Padrão métrico para aplicações
+                                        industriais.</p>
+                                </div>
                             </div>
-                            <div class="topico">
-                                <p class="titulo">Status</p>
-                                <p class="infor">Em aberto</p>
+                            <div class="lado-direito">
+                                <div class="data">
+                                    <p>13/03/26</p>
+                                </div>
+                                <div class="grupo-botoes">
+                                    <button class="cancelar">Cancelar</button>
+                                    <button class="concluir">Concluir</button>
+                                </div>
                             </div>
-                            <div class="topico">
-                                <p class="titulo">Técnico solicitante</p>
-                                <p class="infor">Carlos Eduardo Pereira</p>
-                            </div>
                         </div>
-                        <div class="descricao">
-                            <p>Arruela de pressão M12. Aço carbono com tratamento anticorrosivo. Espessura 2mm.</p>
-                        </div>
-                    </div>
-                    <div class="lado-direito">
-                        <div class="data">
-                            <p>14/03/26</p>
-                        </div>
-                        <div class="grupo-botoes">
-                            <button class="cancelar">Cancelar</button>
-                            <button class="concluir">Concluir</button>
-                        </div>
-                    </div>
-                </div>
 
-                <!-- Bloco 4 -->
-                <div class="bloco">
-                    <div class="inforcentro">
-                        <div class="topo">
-                            <div class="topico">
-                                <p class="titulo">Peça</p>
-                                <p class="infor">Rolamento</p>
+                        <!-- Bloco 3 -->
+                        <div class="bloco">
+                            <div class="inforcentro">
+                                <div class="topo">
+                                    <div class="topico">
+                                        <p class="titulo">Peça</p>
+                                        <p class="infor">Arruela</p>
+                                    </div>
+                                    <div class="topico">
+                                        <p class="titulo">Status</p>
+                                        <p class="infor">Em aberto</p>
+                                    </div>
+                                    <div class="topico">
+                                        <p class="titulo">Técnico solicitante</p>
+                                        <p class="infor">Carlos Eduardo Pereira</p>
+                                    </div>
+                                </div>
+                                <div class="descricao">
+                                    <p>Arruela de pressão M12. Aço carbono com tratamento anticorrosivo. Espessura 2mm.</p>
+                                </div>
                             </div>
-                            <div class="topico">
-                                <p class="titulo">Status</p>
-                                <p class="infor">Em aberto</p>
+                            <div class="lado-direito">
+                                <div class="data">
+                                    <p>14/03/26</p>
+                                </div>
+                                <div class="grupo-botoes">
+                                    <button class="cancelar">Cancelar</button>
+                                    <button class="concluir">Concluir</button>
+                                </div>
                             </div>
-                            <div class="topico">
-                                <p class="titulo">Técnico solicitante</p>
-                                <p class="infor">Ana Paula Costa</p>
+                        </div>
+
+                        <!-- Bloco 4 -->
+                        <div class="bloco">
+                            <div class="inforcentro">
+                                <div class="topo">
+                                    <div class="topico">
+                                        <p class="titulo">Peça</p>
+                                        <p class="infor">Rolamento</p>
+                                    </div>
+                                    <div class="topico">
+                                        <p class="titulo">Status</p>
+                                        <p class="infor">Em aberto</p>
+                                    </div>
+                                    <div class="topico">
+                                        <p class="titulo">Técnico solicitante</p>
+                                        <p class="infor">Ana Paula Costa</p>
+                                    </div>
+                                </div>
+                                <div class="descricao">
+                                    <p>Rolamento rígido de esferas 6204. Vedação em aço. Para altas rotações.</p>
+                                </div>
+                            </div>
+                            <div class="lado-direito">
+                                <div class="data">
+                                    <p>15/03/26</p>
+                                </div>
+                                <div class="grupo-botoes">
+                                    <button class="cancelar">Cancelar</button>
+                                    <button class="concluir">Concluir</button>
+                                </div>
                             </div>
                         </div>
-                        <div class="descricao">
-                            <p>Rolamento rígido de esferas 6204. Vedação em aço. Para altas rotações.</p>
-                        </div>
-                    </div>
-                    <div class="lado-direito">
-                        <div class="data">
-                            <p>15/03/26</p>
-                        </div>
-                        <div class="grupo-botoes">
-                            <button class="cancelar">Cancelar</button>
-                            <button class="concluir">Concluir</button>
-                        </div>
-                    </div>
+                    <?php endif; ?>
                 </div>
             </div>
-        </div>
     </main>
 
     <script src="../templates/assets/js/pagina_gerenciamento_de_pecas_administrador.js"></script>
