@@ -9,7 +9,7 @@ body {
 
 .container_fundo {
     flex: 1;
-    background-image: url('../img/fundo-industria.png'); 
+    background-image: url('../templates/assets/img/fundo-industria.png'); 
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Histórico de Manutenções</title>
-    <link rel="stylesheet" href="/templates/assets/css/historico_manutencoes.css">
+    <link rel="stylesheet" href="../templates/assets/css/historico_manutencoes.css">
 </head>
 <body>
 
@@ -13,7 +13,7 @@
             
             <header class="cabecalho_historico">
                 <button class="btn_voltar">
-                    <figure><img src="/templates/assets/img/seta_voltar.png" alt="Seta Voltar"></figure>
+                    <figure><img src="../templates/assets/img/seta_voltar.png" alt="Seta Voltar"></figure>
                 </button>
                 <div class="textos_cabecalho">
                     <h1 class="titulo_card">Histórico de manutenções</h1>
@@ -25,7 +25,7 @@
 
             <form class="container_pesquisa">
                 <div class="input_wrapper">
-                    <figure class="icone_lupa"><img src="/templates/assets/img/lupa_branca.png" alt="Lupa"></figure>
+                    <figure class="icone_lupa"><img src="../templates/assets/img/lupa_branca.png" alt="Lupa"></figure>
                     <input type="text" class="input_pesquisa" placeholder="Busque por uma data, nome ou serviço específico!">
                 </div>
                 <button type="button" class="btn_pesquisar">Pesquisar</button>
@@ -36,7 +36,7 @@
                 <!-- CARD 1 -->
                 <article class="card_manutencao">
                     <div class="coluna_icone">
-                        <figure><img src="/templates/assets/img/engrenagens.png" alt="Engrenagens"></figure>
+                        <figure><img src="../templates/assets/img/engrenagens.png" alt="Engrenagens"></figure>
                     </div>
                     <div class="coluna_dados">
                         <div class="linha_dado">
@@ -56,7 +56,7 @@
                 <!-- CARD 2 -->
                 <article class="card_manutencao">
                     <div class="coluna_icone">
-                        <figure><img src="/templates/assets/img/engrenagens.png" alt="Engrenagens"></figure>
+                        <figure><img src="../templates/assets/img/engrenagens.png" alt="Engrenagens"></figure>
                     </div>
                     <div class="coluna_dados">
                         <div class="linha_dado">
@@ -76,7 +76,7 @@
                 <!-- CARD 3 -->
                 <article class="card_manutencao">
                     <div class="coluna_icone">
-                        <figure><img src="/templates/assets/img/engrenagens.png" alt="Engrenagens"></figure>
+                        <figure><img src="../templates/assets/img/engrenagens.png" alt="Engrenagens"></figure>
                     </div>
                     <div class="coluna_dados">
                         <div class="linha_dado">
@@ -98,6 +98,6 @@
         </section>
     </main>
 
-    <script src="/templates/assets/js/historico_manutencoes.js"></script>
+    <script src="../templates/assets/js/historico_manutencoes.js"></script>
 </body>
 </html>
