@@ -10,7 +10,7 @@
 
 <body>
     <div class="imagem_de_fundo"></div>
-    
+
     <main>
         <div class="container">
             <div class="container_bloque_imagem">
@@ -44,21 +44,7 @@
                         </div>
                     </div>
                 </div>
-                
-                <div class="maquina_encontrada" style="display: none;">
-                    <h2>Máquina encontrada!</h2>
-                    <h3 class="subtitulo_maquina">Essas são as informações da última manutenção realizada</h3>
-                    <div class="maquina-info">
-                        <p><strong>Máquina 001</strong></p>
-                        <p><strong>Tipo de serviço:</strong> Manutenção corretiva</p>
-                        <p><strong>Nome do técnico:</strong> José Silva de Jesus</p>
-                        <p><strong>Data:</strong> 30/04/2026</p>
-                    </div>
-                    <button class="btn_abrir_chamado" id="btnabrirchamado">Abrir novo chamado</button>
-                    <figure class="logo2">
-                        <img src="/sigem/templates/assets/img/logo2.png" alt="Logo">
-                    </figure>
-                </div>
+
             </div>
 
             <div class="Cform">
@@ -68,12 +54,14 @@
                     <img src="/sigem/templates/assets/img/linha_azul.png" alt="linha azul no form">
                 </figure>
 
-                <form class="form">
+                <form class="form" method="POST" action="./resultado_manutencao.php">
                     <div class="input_codigo">
                         <label for="Codigo">Código de Identificação</label>
-                        <input type="text" id="Codigo" name="Codigo"
+                        <input type="text" id="Codigo" name="cod_maquina"
+                            value=""
                             placeholder="Insira o número de identificação da máquina" required>
                     </div>
+
                     <div class="btn_envio">
                         <button type="submit">Enviar!</button>
                     </div>
@@ -94,7 +82,7 @@
                 </div>
             </div>
         </div>
-        
+
         <div class="botoes">
             <div class="btn_nova_manutencao">
                 <button type="button" class="btnNovaManutencao">
@@ -110,7 +98,7 @@
             </div>
         </div>
     </main>
-    
+
     <script src="/sigem/templates/assets/js/pagina_inicial.js"></script>
 </body>
 

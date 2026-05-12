@@ -358,6 +358,11 @@ h1 {
     height: 4rem
 }
 
+.pagina-resultado .caixa_bloqueada1 img,
+.pagina-resultado .caixa_bloqueada2 img {
+    display: none;
+}
+
 .caixa_bloqueada1 h3,
 .caixa_bloqueada2 h3 {
     color: white;

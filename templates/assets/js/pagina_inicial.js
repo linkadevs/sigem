@@ -17,36 +17,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const cadeadoMobile1 = document.querySelector(".cadeado_nova_manutencao");
     const cadeadoMobile2 = document.querySelector(".cadeado_historico");
 
-    let desbloqueado = false;
-
-    form.addEventListener("submit", function (e) {
-        e.preventDefault();
-
-        const codigo = inputCodigo.value.trim();
-
-        if (codigo !== "") {
-            desbloqueado = true;
-
-            cForm.innerHTML = "";
-            cForm.appendChild(maquinaEncontrada);
-
-            maquinaEncontrada.style.display = "flex";
-
-            // desktop
-            if (cadeado1) cadeado1.style.opacity = "0";
-            if (cadeado2) cadeado2.style.opacity = "0";
-
-            // mobile
-            if (cadeadoMobile1) cadeadoMobile1.style.opacity = "0";
-            if (cadeadoMobile2) cadeadoMobile2.style.opacity = "0";
-
-            if (caixa1) caixa1.style.cursor = "pointer";
-            if (caixa2) caixa2.style.cursor = "pointer";
-
-            if (btnNova) btnNova.style.cursor = "pointer";
-            if (btnHistorico) btnHistorico.style.cursor = "pointer";
-        }
-    });
+    let desbloqueado = Boolean(maquinaEncontrada);
 
     // caixas desktop
     if (caixa2) {
