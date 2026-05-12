@@ -111,6 +111,16 @@ body {
     align-items: center;
 }
 
+.linha_senha{
+    display: flex;
+}
+
+.senha{
+    display: flex;
+    align-items: center;
+    gap: 16rem;
+}
+
 .rotulo {
     font-size: 1.6rem;
     color: #094C71;
@@ -204,6 +214,11 @@ body {
         font-size: 2.4rem;
     }
 
+    .senha{
+        gap: 7rem;
+    }
+
+
     .btn_voltar span {
         display: none;
     }
@@ -229,6 +244,10 @@ body {
 @media (max-width: 480px) {
     .titulo_cabecalho {
         font-size: 2rem;
+    }
+
+    .senha{
+        gap: 5rem;
     }
 
     .titulo_card {
