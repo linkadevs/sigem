@@ -1422,6 +1422,15 @@ h1 {
 }
 
 
+@media (max-width: 1200px) {
+
+    .maquina_encontrada h2 {
+        font-size: 4rem;
+    }
+
+}
+
+
 @media (max-width: 1024px) {
 
     .Cform {
