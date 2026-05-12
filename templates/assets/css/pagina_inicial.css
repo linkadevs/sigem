@@ -1422,6 +1422,38 @@ h1 {
 }
 
 
+@media (max-width: 1300px) and (min-width: 1000px) {
+
+    .maquina_encontrada {
+        padding: 2rem 2rem;
+        gap: 1rem;
+    }
+
+    .maquina_encontrada h2 {
+        font-size: 4rem;
+        margin-bottom: 1rem;
+    }
+
+    .subtitulo_maquina {
+        margin-bottom: 1rem;
+        padding-bottom: 1rem;
+    }
+
+    .maquina-info {
+        margin-bottom: 2rem;
+    }
+
+    .maquina-info p {
+        margin-bottom: 1rem;
+    }
+
+    .maquina-info strong {
+        margin-bottom: 0.5rem;
+    }
+
+}
+
+
 @media (max-width: 1200px) {
 
     .maquina_encontrada h2 {
@@ -1442,6 +1474,10 @@ h1 {
         text-align: center;
         padding: 4rem 2rem;
         margin: 0;
+    }
+
+    .container {
+        gap: 1rem;
     }
 
     .maquina_encontrada {
@@ -1479,6 +1515,10 @@ h1 {
         width: 12rem;
         height: 5rem;
         margin-top: 2rem;
+    }
+
+    .botoes {
+        margin-top: -2rem;
     }
 }
 
@@ -1533,6 +1573,10 @@ h1 {
     .Cform {
         width: 100%;
         height: auto;
+    }
+
+    .container {
+        gap: 0.5rem;
     }
 }
 
