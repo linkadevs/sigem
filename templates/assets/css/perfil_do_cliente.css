@@ -38,6 +38,18 @@ body {
     font-weight: 700;
 }
 
+
+.btn_cancelar:hover, .btn_salvar:hover {
+    background-color: #f5f5f5;
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+  }
+  
+  .btn_cancelar:active, .btn_salvar:active {
+    transform: translateY(0) scale(0.98);
+    box-shadow: 0 5px 10px rgba(0,0,0,0.15);
+  }
+
 .titulo_cabecalho {
     font-size: 3.2rem;
     color: #094C71;
