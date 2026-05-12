@@ -331,6 +331,7 @@ h1 {
     min-height: 12rem;
     width: 28rem;
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+    cursor: pointer;
 }
 
 
@@ -427,20 +428,20 @@ h1 {
 
 .maquina-info p {
     color: #333;
-    font-size: 2.2rem;
+    font-size: 2.4rem;
     margin-bottom: 1.5rem;
 }
 
 .maquina-info strong {
     display: block;
     color: #094C71;
-    font-size: 2.4rem;
+    font-size: 2.6rem;
     font-weight: 700;
     margin-bottom: 1rem;
 }
 
 .maquina-info p:first-child strong {
-    font-size: 2.8rem;
+    font-size: 3rem;
     margin-bottom: 2rem;
 }
 
@@ -1475,6 +1476,11 @@ h1 {
 
 @media (max-width: 1024px) {
 
+    main {
+        height: auto;
+        padding: 2rem 1.5rem;
+    }
+
     .Cform {
         width: 90%;
         display: flex;
@@ -1497,7 +1503,7 @@ h1 {
     }
 
     .maquina_encontrada h2 {
-        font-size: 3.5rem;
+        font-size: 4.5rem;
         margin-bottom: 2rem;
     }
 
@@ -1512,12 +1518,12 @@ h1 {
     }
 
     .maquina-info p {
-        font-size: 1.8rem;
+        font-size: 2rem;
         margin-bottom: 2rem;
     }
 
     .maquina-info strong {
-        font-size: 2.2rem;
+        font-size: 2.4rem;
         padding: 0.7rem;
     }
 
@@ -1528,7 +1534,7 @@ h1 {
     }
 
     .botoes {
-        margin-top: 3rem;
+        margin-top: 1rem;
     }
 }
 
@@ -1564,7 +1570,7 @@ h1 {
 @media (max-width: 630px) {
 
     .maquina_encontrada h2 {
-        font-size: 2.5rem;
+        font-size: 3rem;
     }
 
     .subtitulo_maquina {
@@ -1572,11 +1578,11 @@ h1 {
     }
 
     .maquina-info p {
-        font-size: 1.5rem;
+        font-size: 2rem;
     }
 
     .maquina-info strong {
-        font-size: 1.8rem;
+        font-size: 2.2rem;
         padding: 0.5rem;
     }
 
@@ -1592,7 +1598,7 @@ h1 {
 
 @media (max-width: 590px) {
     .maquina_encontrada h2 {
-        font-size: 2.2rem;
+        font-size: 2.5rem;
         margin-bottom: 1rem;
     }
 
@@ -1603,12 +1609,12 @@ h1 {
     }
 
     .maquina-info p {
-        font-size: 1.3rem;
+        font-size: 1.8rem;
         margin-bottom: 1rem;
     }
 
     .maquina-info strong {
-        font-size: 1.6rem;
+        font-size: 2rem;
     }
 
     .btn_abrir_chamado {
@@ -1640,7 +1646,24 @@ h1 {
     }
 
     .maquina_encontrada h2 {
-        font-size: 2rem;
+        font-size: 2.2rem;
+    }
+
+    .maquina-info p {
+        font-size: 1.6rem;
+    }
+
+    .maquina-info strong {
+        font-size: 1.8rem;
+    }
+
+    .btn_voltar_responsive {
+        font-size: 1.6rem;
+    }
+
+    .seta_voltar {
+        width: 1.4rem;
+        height: 1.4rem;
     }
 
     .subtitulo_maquina {
@@ -1658,6 +1681,49 @@ h1 {
 @media (max-width: 416px) {
     .input_codigo input::placeholder {
         font-size: 1.01rem;
+    }
+}
+
+.btn_voltar_responsive {
+    position: absolute;
+    top: 2rem;
+    left: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 2rem;
+    font-weight: 600;
+    z-index: 10;
+}
+
+.seta_voltar {
+    width: 2rem;
+    height: 2rem;
+}
+
+@media (max-width: 1024px) {
+    .btn_voltar_responsive {
+        font-size: 1.8rem;
+    }
+
+    .seta_voltar {
+        width: 1.8rem;
+        height: 1.8rem;
+    }
+}
+
+@media (max-width: 640px) {
+    .btn_voltar_responsive {
+        font-size: 1.8rem;
+        top: 1.5rem;
+        left: 1.5rem;
+    }
+
+    .seta_voltar {
+        width: 1.8rem;
+        height: 1.8rem;
     }
 }
 

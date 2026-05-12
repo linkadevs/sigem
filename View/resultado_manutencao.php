@@ -51,6 +51,11 @@ if (!empty($ultimamanutencao_dados['data_e_hora'])) {
 <body class="pagina-resultado">
     <div class="imagem_de_fundo"></div>
 
+    <a href="pagina_inicial.php" class="btn_voltar_responsive">
+        <img src="/sigem/templates/assets/img/seta_voltar.png" alt="Voltar" class="seta_voltar">
+        Voltar
+    </a>
+
     <main>
         <div class="container">
             <div class="container_bloque_imagem">
@@ -71,9 +76,6 @@ if (!empty($ultimamanutencao_dados['data_e_hora'])) {
                         </div>
                         <div class="caixa_bloqueada2" id="caixaRegistrar">
                             <h3>Registrar nova manutenção</h3>
-                            <figure class="chave">
-                                <img src="/sigem/templates/assets/img/chave_de_fenda.png" alt="chave de fenda">
-                            </figure>
                         </div>
                     </div>
                 </div>
@@ -130,13 +132,11 @@ if (!empty($ultimamanutencao_dados['data_e_hora'])) {
         <div class="btn_nova_manutencao">
             <button type="button" class="btnNovaManutencao">
                 Registrar nova manutenção
-                <img src="/sigem/templates/assets/img/cadeadoone.png" alt="botão" class="cadeado_nova_manutencao">
             </button>
         </div>
         <div class="btn_historico">
             <button type="button" class="btnHistorico">
                 Histórico de Manutenções
-                <img src="/sigem/templates/assets/img/cadeadotwo.png" alt="botão" class="cadeado_historico">
             </button>
         </div>
     </div>
