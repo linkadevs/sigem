@@ -68,15 +68,9 @@ if (!empty($ultimamanutencao_dados['data_e_hora'])) {
                     <div class="caixas_bloqueadas">
                         <div class="caixa_bloqueada1" id="caixaHistorico">
                             <h3>Histórico de manutenções</h3>
-                            <figure class="cadeado1">
-                                <img src="/sigem/templates/assets/img/cadeado1.png" alt="cadeado">
-                            </figure>
                         </div>
                         <div class="caixa_bloqueada2" id="caixaRegistrar">
                             <h3>Registrar nova manutenção</h3>
-                            <figure class="cadeado2">
-                                <img src="/sigem/templates/assets/img/cadeado2.png" alt="cadeado">
-                            </figure>
                             <figure class="chave">
                                 <img src="/sigem/templates/assets/img/chave_de_fenda.png" alt="chave de fenda">
                             </figure>
@@ -86,11 +80,13 @@ if (!empty($ultimamanutencao_dados['data_e_hora'])) {
             </div>
 
             <div class="Cform">
-                <h1>Bem-vindo!</h1>
-                <h2 class="subtitulo">Identifique a máquina que deseja consultar</h2>
-                <figure class="linha_azul">
-                    <img src="/sigem/templates/assets/img/linha_azul.png" alt="linha azul no form">
-                </figure>
+                <?php if (!$ultimamanutencao_dados): ?>
+                    <h1>Bem-vindo!</h1>
+                    <h2 class="subtitulo">Identifique a máquina que deseja consultar</h2>
+                    <figure class="linha_azul">
+                        <img src="/sigem/templates/assets/img/linha_azul.png" alt="linha azul no form">
+                    </figure>
+                <?php endif; ?>
 
                 <?php if ($erro): ?>
                     <div class="erro-mensagem"><?php echo htmlspecialchars($erro, ENT_QUOTES, 'UTF-8'); ?></div>
