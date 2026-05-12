@@ -1422,7 +1422,7 @@ h1 {
 }
 
 
-@media (max-width: 1300px) and (min-width: 1000px) {
+@media (max-width: 1500px) and (min-width: 1000px) {
 
     .maquina_encontrada {
         padding: 2rem 2rem;
@@ -1430,7 +1430,7 @@ h1 {
     }
 
     .maquina_encontrada h2 {
-        font-size: 4rem;
+        font-size: 4.2rem;
         margin-bottom: 1rem;
     }
 
@@ -1518,7 +1518,7 @@ h1 {
     }
 
     .botoes {
-        margin-top: -2rem;
+        margin-top: 3rem;
     }
 }
 
