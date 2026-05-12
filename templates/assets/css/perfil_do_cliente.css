@@ -51,7 +51,7 @@ body {
 /* MAIN E BACKGROUND */
 .container_fundo {
     flex: 1;
-    background-image: url('../img/fundo-industria.png'); /* Nome sugerido */
+    background-image: url('../img/fundo-edicao.jpg'); /* Nome sugerido */
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -128,7 +128,6 @@ body {
 
 .inputs_senha input {
     border: none;
-    border-bottom: 1px solid #E5E7EB;
     padding: 1rem 0;
     font-size: 1.6rem;
     color: #374151;
@@ -201,12 +200,12 @@ body {
     }
 
     .linha_info {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr 1fr;
         gap: 0.5rem;
     }
 
     .inputs_senha {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr 1fr;
     }
 }
 
@@ -222,6 +221,15 @@ body {
     .botoes_acao {
         flex-direction: column;
         width: 100%;
+    }
+
+    .linha_info {
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
+    }
+
+    .inputs_senha {
+        grid-template-columns: 1fr;
     }
 
     .btn_cancelar,
