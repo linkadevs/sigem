@@ -21,7 +21,7 @@ class Maquina {
         string $marca,
         string $modelo,
         string $fluido_refrigerante,
-        int $capacidade_termica_de_refrigeracao,
+        string $capacidade_termica_de_refrigeracao,
         int $id_cliente_fk
     ) {
         $sql = 'INSERT INTO maquina
@@ -113,6 +113,18 @@ class Maquina {
         ]);
 
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function verMaquinaPorCodigo ($cod_maquina) {
+        $sql = 'SELECT * FROM maquina WHERE cod_maquina = :cod_maquina';
+
+        $stmt = $this->db->prepare($sql);
+
+        $stmt->execute([
+            ':cod_maquina' => $cod_maquina
+        ]);
+
+        return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 }
 

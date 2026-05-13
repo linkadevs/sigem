@@ -15,16 +15,25 @@ class MaquinaController {
     }
 
     public function criarMaquina(
-        string $cod_maquina,
         string $nome_maquina,
         string $localizacao,
         string $marca,
         string $modelo,
         string $fluido_refrigerante,
-        int $capacidade_termica_de_refrigeracao,
+        string $capacidade_termica_de_refrigeracao,
         int $id_cliente_fk
     ) {
         try {
+            // Criação do código da máquina
+
+            $chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+            do {
+                $cod_maquina = '';
+                for ($i = 0; $i < 4; $i++) {
+                    $cod_maquina .= $chars[random_int(0, strlen($chars) - 1)];
+                }
+            } while ($this->maquinaModel->verMaquinaPorCodigo($cod_maquina));
+            
             // Sanitização (Nesse caso estamos apenas removendo espaços desnecessários, ex: '    Diogo Maia    ' => 'Diogo Maia')
     
             $cod_maquina = trim($cod_maquina);
@@ -35,30 +44,29 @@ class MaquinaController {
             $fluido_refrigerante = trim($fluido_refrigerante);
     
             // Validação
-    
             $erros = [];
     
-            if (empty($cod_maquina)) {
+            if ($cod_maquina === null || $cod_maquina === '') {
                 $erros['cod_maquina'] = 'Erro interno, por favor, recarregue a página e tente novamente.';
             }
     
-            if (empty($nome_maquina)) {
+            if ($nome_maquina === null || $nome_maquina === '') {
                 $erros['nome_maquina'] = 'Insira o nome da máquina';
             }
     
-            if (empty($localizacao)) {
+            if ($localizacao === null || $localizacao === '') {
                 $erros['localizacao'] = 'Insira a localizacao';
             }
     
-            if (empty($marca)) {
+            if ($marca === null || $marca === '') {
                 $erros['marca'] = 'Insira a marca';
             }
     
-            if (empty($modelo)) {
+            if ($modelo === null || $modelo === '') {
                 $erros['modelo'] = 'Insira o modelo';
             }
     
-            if (empty($fluido_refrigerante)) {
+            if ($fluido_refrigerante === null || $fluido_refrigerante === '') {
                 $erros['fluido_refrigerante'] = 'Insira o fluido refrigerante';
             }
     
@@ -101,7 +109,7 @@ class MaquinaController {
                 'sucesso' => true
             ];
         } catch (Exception $e) {
-            throw new Exception('Erro interno grave, por favor, reinicie a página e tente novamente');
+            throw new Exception('Erro interno grave, por favor, reinicie a página e tente novamente ' . $e);
         }
     }
 

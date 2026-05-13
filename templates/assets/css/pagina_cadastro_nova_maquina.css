@@ -22,6 +22,11 @@ body {
     margin: 0;
 }
 
+.erro {
+    color: rgb(255, 0, 0) !important;
+    font-size: 1.2rem !important;
+    text-align: left;
+}
 
 header{
     margin: 0;
@@ -95,7 +100,7 @@ form h2{
     color: #094C71;
 }
 
-form input {
+form input, form select {
     margin: .5rem 0 0 .5rem;
     width: 95%;
     height: 4rem;
@@ -105,6 +110,7 @@ form input {
     font-family: 'Inter';
     color: #A0AAAF;
     font-weight: 500;
+    background-color: #F9F9F9;
 }
 
 .botoes_form{
@@ -153,6 +159,10 @@ form input {
     main{
         padding-bottom: 7%;
     }
+    .erro {
+        font-size: 1.6rem !important;
+        text-align: left;
+    }
 
     .form_main{
         height: 60rem;
@@ -173,7 +183,7 @@ form input {
         font-size: 2rem;
     }
 
-    form input{
+    form input, form select{
         font-size: 1.8rem;
     }
 }
@@ -186,6 +196,11 @@ form input {
         top: 0;
     }
     
+    .erro {
+        font-size: .8rem !important;
+        text-align: left !important;
+    }
+
     .voltar_header {
         margin: 0.5rem 0 0 1.5rem;
     }
@@ -234,7 +249,7 @@ form input {
         font-size: 1.3rem;
     }
     
-    form input {
+    form input, form select {
         height: 3.8rem;
         font-size: 1.2rem;
         width: 95%;
@@ -306,7 +321,7 @@ form input {
         font-weight: 600;
     }
     
-    form input {
+    form input, form select {
         margin: 0.4rem 0 0 .4rem;
         height: 4rem;
         font-size: 1.2rem;
@@ -316,7 +331,7 @@ form input {
         border: 1px solid #e0e4e8;
     }
     
-    form input:focus {
+    form input:focus, form select:focus {
         outline: none;
         border-color: #1291D5;
         background-color: white;
