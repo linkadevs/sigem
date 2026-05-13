@@ -128,9 +128,12 @@ body {
 }
 
 .valor {
+    font-family: 'Inter';
     font-size: 1.6rem;
     color: #9CA3AF;
     font-weight: 400;
+    height: 2.5rem;
+    border: none;
 }
 
 /* SENHA */
