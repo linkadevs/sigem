@@ -1,3 +1,18 @@
+<?php
+// 1. IMPORTAÇÃO DA MODEL (Ajuste o caminho se necessário)
+require_once __DIR__ . '/../Controller/GerenciamentoTecController.php';
+use Controller\GerenciamentoTecController;
+
+$controller = new GerenciamentoTecController();
+
+// 2. LÓGICA DE BUSCA
+$busca = isset($_GET['busca']) ? $_GET['busca'] : '';
+
+$tecnicos = $controller->pesquisarTecnicos($busca);
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -124,12 +139,12 @@
 
             <div class="conteudo_superior">
                 <h1>Técnicos</h1>
-                <form>
+                <form method="GET" action="pagina_gerenciamento_de_tecnicos_adm.php">
                     <div class="input-container">
                         <figure>
                             <img src="../templates/assets/img/lupa_branca.png" alt="">
                         </figure>
-                        <input type="text" class="pesquisar"
+                        <input type="text" class="pesquisar" name="busca" id="busca"
                             placeholder="Busque por uma data, um nome ou função específica!">
                     </div>
                     <button class="procurar">Procurar</button>
@@ -141,186 +156,56 @@
                     <figure>
                         <img src="../templates/assets/img/sinal-de-adicao.png" alt="">
                     </figure>
-                    Novo colaborador</button>
+                    Novo colaborador
+                </button>
             </div>
 
             <div class="grid_cards">
-                <div class="card">
-                    <h2 class="nome">José Silva de Jesus</h2>
-                    
-                    <div class="container_informacoes">
-                        <div class="informacoes">
-                            <div class="container_cpf">
-                                <div class="cpf">
-                                    <h1>CPF:</h1>
-                                </div>
-                                
-                                <div class="dados_cpf">
-                                    <h1>055.897.234-09</h1>
-                                </div> 
-                            </div>
-                            
-                            
-                            <div class="container_funcao">
-                                <div class="funcao">
-                                    <h1>Função:</h1>
-                                </div>
-                                
-                                <div class="dados_funcao">
-                                    <h1>Mecânico</h1>
-                                </div> 
-                        </div>
-                    </div>
-                    
-                    <div class="btn_card">
-                        <button class="excluir">Excluir</button>
-                        <button class="editar">Editar</button>
-                    </div>
-                </div>
-                </div>
 
-                <div class="card">
-                    <h2 class="nome">José Silva de Jesus</h2>
-                    
-                    <div class="container_informacoes">
-                        <div class="informacoes">
-                            <div class="container_cpf">
-                                <div class="cpf">
-                                    <h1>CPF:</h1>
-                                </div>
-                                
-                                <div class="dados_cpf">
-                                    <h1>055.897.234-09</h1>
-                                </div> 
-                            </div>
-                            
-                            
-                            <div class="container_funcao">
-                                <div class="funcao">
-                                    <h1>Função:</h1>
-                                </div>
-                                
-                                <div class="dados_funcao">
-                                    <h1>Mecânico</h1>
-                                </div> 
-                        </div>
-                    </div>
-                    
-                    <div class="btn_card">
-                        <button class="excluir">Excluir</button>
-                        <button class="editar">Editar</button>
-                    </div>
-                </div>
-                </div>
-                
-                <div class="card">
-                    <h2 class="nome">José Silva de Jesus</h2>
-                    
-                    <div class="container_informacoes">
-                        <div class="informacoes">
-                            <div class="container_cpf">
-                                <div class="cpf">
-                                    <h1>CPF:</h1>
-                                </div>
-                                
-                                <div class="dados_cpf">
-                                    <h1>055.897.234-09</h1>
-                                </div> 
-                            </div>
-                            
-                            
-                            <div class="container_funcao">
-                                <div class="funcao">
-                                    <h1>Função:</h1>
-                                </div>
-                                
-                                <div class="dados_funcao">
-                                    <h1>Mecânico</h1>
-                                </div> 
-                        </div>
-                    </div>
-                    
-                    <div class="btn_card">
-                        <button class="excluir">Excluir</button>
-                        <button class="editar">Editar</button>
-                    </div>
-                </div>
-                </div>
+                <?php if (isset($tecnicos) && !empty($tecnicos)): ?>
+                    <?php foreach ($tecnicos as $tecnico): ?>
+                        <div class="card">
+                            <h2 class="nome"><?php echo htmlspecialchars($tecnico['nome']); ?></h2>
 
-                <div class="card">
-                    <h2 class="nome">José Silva de Jesus</h2>
-                    
-                    <div class="container_informacoes">
-                        <div class="informacoes">
-                            <div class="container_cpf">
-                                <div class="cpf">
-                                    <h1>CPF:</h1>
-                                </div>
-                                
-                                <div class="dados_cpf">
-                                    <h1>055.897.234-09</h1>
-                                </div> 
-                            </div>
-                            
-                            
-                            <div class="container_funcao">
-                                <div class="funcao">
-                                    <h1>Função:</h1>
-                                </div>
-                                
-                                <div class="dados_funcao">
-                                    <h1>Mecânico</h1>
-                                </div> 
-                        </div>
-                    </div>
-                    
-                    <div class="btn_card">
-                        <button class="excluir">Excluir</button>
-                        <button class="editar">Editar</button>
-                    </div>
-                </div>
-                </div>
+                            <div class="container_informacoes">
+                                <div class="informacoes">
+                                    <div class="container_cpf">
+                                        <div class="cpf">
+                                            <h1>CPF:</h1>
+                                        </div>
 
-                <div class="card">
-                    <h2 class="nome">José Silva de Jesus</h2>
-                    
-                    <div class="container_informacoes">
-                        <div class="informacoes">
-                            <div class="container_cpf">
-                                <div class="cpf">
-                                    <h1>CPF:</h1>
-                                </div>
-                                
-                                <div class="dados_cpf">
-                                    <h1>055.897.234-09</h1>
-                                </div> 
-                            </div>
-                            
-                            
-                            <div class="container_funcao">
-                                <div class="funcao">
-                                    <h1>Função:</h1>
-                                </div>
-                                
-                                <div class="dados_funcao">
-                                    <h1>Mecânico</h1>
-                                </div> 
-                        </div>
-                    </div>
-                    
-                    <div class="btn_card">
-                        <button class="excluir">Excluir</button>
-                        <button class="editar">Editar</button>
-                    </div>
-                </div>
-                </div>
+                                        <div class="dados_cpf">
+                                            <h1><?php echo htmlspecialchars($tecnico['cpf']); ?></h1>
+                                        </div>
+                                    </div>
 
-                </div>
+                                    <div class="container_funcao">
+                                        <div class="funcao">
+                                            <h1>Função:</h1>
+                                        </div>
+                                        <div class="dados_funcao">
+                                            <h1><?php echo htmlspecialchars($tecnico['funcao']); ?></h1>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="btn_card">
+                                <div class="btn_card">
+                                    <button class="excluir" data-id="<?php echo $tecnico['id_tecnico']; ?>">Excluir</button>
+                                    <button class="editar" data-id="<?php echo $tecnico['id_tecnico']; ?>">Editar</button>
+                                </div>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                <?php else: ?>
+                    <p><strong>Nenhum técnico encontrado.</strong></p>
+                <?php endif; ?>
+
             </div>
         </div>
-
     </main>
-<script src="../templates/assets/js/pagina_gerenciamento_de_tecnicos_adm.js"></script>
+    <script src="../templates/assets/js/pagina_gerenciamento_de_tecnicos_adm.js"></script>
 </body>
 
 </html>

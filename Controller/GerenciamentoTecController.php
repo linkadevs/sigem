@@ -1,271 +1,181 @@
 <?php
 
-/* =========================================================
-   IMPORTA O MODEL
-========================================================= */
+// DEFINE O NAMESPACE
+namespace Controller;
 
-require_once '../Model/GerenciamentoTec.php';
+// IMPORTA O MODEL
+require_once __DIR__ . '/../Model/GerenciamentoTec.php';
 
+// USA O MODEL
 use Model\GerenciamentoTec;
 
-/* =========================================================
-   INSTÂNCIA DO MODEL
-========================================================= */
+// CLASSE CONTROLLER
+class GerenciamentoTecController
+{
 
-$model = new GerenciamentoTec();
+    // ATRIBUTO PRIVADO
+    private $gerenciamentoTec;
 
-/* =========================================================
-   RECEBE A AÇÃO
-========================================================= */
+    // CONSTRUTOR
+    public function __construct()
+    {
 
-$acao = $_POST['acao'] ?? $_GET['acao'] ?? '';
-
-/* =========================================================
-   EXCLUIR TÉCNICO
-========================================================= */
-
-if ($acao === 'excluir') {
-
-    $id = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
-
-    if (!$id) {
-
-        header("Location: ../View/pagina_gerenciamento_de_tecnicos_adm.php?erro=idinvalido");
-        exit;
+        // INSTANCIA O MODEL
+        $this->gerenciamentoTec =
+            new GerenciamentoTec();
     }
 
-    $resultado = $model->deleteTec($id);
+    // ====================================
+    // LISTAR TODOS OS TÉCNICOS
+    // ====================================
+    public function listarTecnicos()
+    {
 
-    if ($resultado) {
-
-        header("Location: ../View/pagina_gerenciamento_de_tecnicos_adm.php?sucesso=excluido");
-
-    } else {
-
-        header("Location: ../View/pagina_gerenciamento_de_tecnicos_adm.php?erro=delete");
+        // RETORNA TODOS OS TÉCNICOS
+        return $this->gerenciamentoTec
+            ->getAllTecs();
     }
 
-    exit;
-}
-
-/* =========================================================
-   CADASTRAR TÉCNICO
-========================================================= */
-
-if ($acao === 'cadastrar') {
-
-    $nome = trim($_POST['nome'] ?? '');
-    $cpf = trim($_POST['cpf'] ?? '');
-    $funcao = trim($_POST['funcao'] ?? '');
-    $email = trim($_POST['email'] ?? '');
-    $senha = trim($_POST['senha'] ?? '');
-
-    if (
-        empty($nome) ||
-        empty($cpf) ||
-        empty($funcao) ||
-        empty($email) ||
-        empty($senha)
-    ) {
-
-        header("Location: ../View/pagina_cadastro_tecnico.php?erro=camposvazios");
-        exit;
-    }
-
-    /* =========================
-       VERIFICA EMAIL DUPLICADO
-    ========================= */
-
-    $emailExistente = $model->getTecByEmail($email);
-
-    if ($emailExistente) {
-
-        header("Location: ../View/pagina_cadastro_tecnico.php?erro=emailexistente");
-        exit;
-    }
-
-    $resultado = $model->createTec(
-        $nome,
-        $cpf,
-        $funcao,
-        $email,
-        $senha
-    );
-
-    if ($resultado) {
-
-        header("Location: ../View/pagina_gerenciamento_de_tecnicos_adm.php?sucesso=cadastrado");
-
-    } else {
-
-        header("Location: ../View/pagina_cadastro_tecnico.php?erro=cadastro");
-    }
-
-    exit;
-}
-
-/* =========================================================
-   EDITAR TÉCNICO
-========================================================= */
-
-if ($acao === 'editar') {
-
-    $id_tecnico = filter_input(INPUT_POST, 'id_tecnico', FILTER_VALIDATE_INT);
-
-    $nome = trim($_POST['nome'] ?? '');
-    $cpf = trim($_POST['cpf'] ?? '');
-    $funcao = trim($_POST['funcao'] ?? '');
-    $email = trim($_POST['email'] ?? '');
-    $senha = trim($_POST['senha'] ?? '');
-
-    if (
-        !$id_tecnico ||
-        empty($nome) ||
-        empty($cpf) ||
-        empty($funcao) ||
-        empty($email)
-    ) {
-
-        header("Location: ../View/pagina_cadastro_tecnico.php?erro=camposinvalidos");
-        exit;
-    }
-
-    $resultado = $model->updateTec(
-        $id_tecnico,
-        $nome,
-        $cpf,
-        $funcao,
-        $email,
-        $senha
-    );
-
-    if ($resultado) {
-
-        header("Location: ../View/pagina_gerenciamento_de_tecnicos_adm.php?sucesso=editado");
-
-    } else {
-
-        header("Location: ../View/pagina_cadastro_tecnico.php?erro=update");
-    }
-
-    exit;
-}
-
-/* =========================================================
-   BUSCAR POR ID
-========================================================= */
-
-if ($acao === 'buscarPorId') {
-
-    $id = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
-
-    if (!$id) {
-
-        echo json_encode([
-            'sucesso' => false,
-            'mensagem' => 'ID inválido'
-        ]);
-
-        exit;
-    }
-
-    $tecnico = $model->getTecById($id);
-
-    echo json_encode($tecnico);
-
-    exit;
-}
-
-/* =========================================================
-   BUSCAR POR EMAIL
-========================================================= */
-
-if ($acao === 'buscarPorEmail') {
-
-    $email = trim($_GET['email'] ?? '');
-
-    if (empty($email)) {
-
-        echo json_encode([
-            'sucesso' => false,
-            'mensagem' => 'Email inválido'
-        ]);
-
-        exit;
-    }
-
-    $tecnico = $model->getTecByEmail($email);
-
-    echo json_encode($tecnico);
-
-    exit;
-}
-
-/* =========================================================
-   BUSCAR POR FUNÇÃO
-========================================================= */
-
-if ($acao === 'buscarPorFuncao') {
-
-    $funcao = trim($_GET['funcao'] ?? '');
-
-    if (empty($funcao)) {
-
-        echo json_encode([
-            'sucesso' => false,
-            'mensagem' => 'Função inválida'
-        ]);
-
-        exit;
-    }
-
-    $tecnicos = $model->getTecByFuncao($funcao);
-
-    echo json_encode($tecnicos);
-
-    exit;
-}
-
-/* =========================================================
-   LISTAR TODOS
-========================================================= */
-
-if ($acao === 'listarTodos') {
-
-    $todosTecnicos = $model->getAllTecs();
-
-    echo json_encode($todosTecnicos);
-
-    exit;
-}
-
-/* =========================================================
-   PESQUISA
-========================================================= */
-
-$busca = trim($_GET['busca'] ?? '');
-
-$todosTecnicos = $model->getAllTecs();
-
-if (!empty($busca)) {
-
-    $todosTecnicos = array_filter(
-        $todosTecnicos,
-        function ($tec) use ($busca) {
-
-            return
-                stripos($tec['nome'], $busca) !== false ||
-                stripos($tec['cpf'], $busca) !== false ||
-                stripos($tec['funcao'], $busca) !== false ||
-                stripos($tec['email'], $busca) !== false;
+    // ====================================
+    // BUSCAR TÉCNICO POR ID
+    // ====================================
+    public function buscarTecnicoPorId($id_tecnico)
+    {
+
+        // VERIFICA SE O ID EXISTE
+        if (empty($id_tecnico)) {
+
+            return null;
         }
-    );
+
+        // RETORNA O TÉCNICO
+        return $this->gerenciamentoTec
+            ->getTecById($id_tecnico);
+    }
+
+    // ====================================
+    // EXCLUIR TÉCNICO
+    // ====================================
+    public function excluirTecnico($id_tecnico)
+    {
+
+        // VERIFICA SE O ID EXISTE
+        if (empty($id_tecnico)) {
+
+            echo "
+            <script>
+                alert('ID do técnico inválido.');
+                window.history.back();
+            </script>
+            ";
+
+            exit;
+        }
+
+        // EXCLUI O TÉCNICO
+        $resultado =
+            $this->gerenciamentoTec
+            ->deleteTec($id_tecnico);
+
+        // VERIFICA RESULTADO
+        if ($resultado) {
+
+            echo "
+            <script>
+                alert('Técnico excluído com sucesso.');
+
+                window.location.href =
+                '../View/pagina_gerenciamento_de_tecnicos_adm.php';
+            </script>
+            ";
+
+        } else {
+
+            echo "
+            <script>
+                alert('Erro ao excluir técnico.');
+
+                window.history.back();
+            </script>
+            ";
+        }
+    }
+
+    // ====================================
+    // BUSCAR TÉCNICO POR EMAIL
+    // ====================================
+    public function buscarTecnicoPorEmail($email)
+    {
+
+        // VERIFICA SE O EMAIL EXISTE
+        if (empty($email)) {
+
+            return false;
+        }
+
+        // RETORNA O RESULTADO
+        return $this->gerenciamentoTec
+            ->getTecByEmail($email);
+    }
+
+    // ====================================
+    // BUSCAR TÉCNICO POR FUNÇÃO
+    // ====================================
+    public function buscarTecnicoPorFuncao($funcao)
+    {
+
+        // VERIFICA SE A FUNÇÃO EXISTE
+        if (empty($funcao)) {
+
+            return [];
+        }
+
+        // RETORNA RESULTADO
+        return $this->gerenciamentoTec
+            ->getTecByFuncao($funcao);
+    }
+
+    // ====================================
+    // PESQUISAR TÉCNICOS
+    // ====================================
+    public function pesquisarTecnicos($busca)
+    {
+
+        // SE NÃO EXISTIR PESQUISA
+        if (empty($busca)) {
+
+            // RETORNA TODOS
+            return $this->gerenciamentoTec
+                ->getAllTecs();
+        }
+        // RETORNA PESQUISA
+        return $this->gerenciamentoTec
+            ->searchTec($busca);
+    }
 }
 
-/* =========================================================
-   ENVIA PARA A VIEW
-========================================================= */
+// INSTANCIA O CONTROLLER
+$controller =
+    new GerenciamentoTecController();
 
-require_once '../View/pagina_gerenciamento_de_tecnicos_adm.php';
+// AÇÃO EXCLUIR
+if (isset($_GET['acao'])) {
+
+    // RECEBE A AÇÃO
+    $acao = $_GET['acao'];
+
+    // VERIFICA SE É EXCLUIR
+    if ($acao == 'excluir') {
+
+        // RECEBE O ID
+        $id_tecnico =
+            $_GET['id_tecnico'] ?? null;
+
+        // CHAMA A FUNÇÃO
+        $controller->excluirTecnico(
+            $id_tecnico
+        );
+    }
+}
 
 ?>

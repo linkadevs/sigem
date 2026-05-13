@@ -14,9 +14,7 @@ const btnColaborador = document.querySelector('.btn_colaborador');
 const formPesquisa = document.querySelector('.conteudo_superior form');
 const inputPesquisa = document.querySelector('.pesquisar');
 
-/* =========================================================
-   ROTAS DO CONTROLLER
-========================================================= */
+
 
 const controller = '../Controller/GerenciamentoTecController.php';
 
@@ -54,7 +52,6 @@ if (chamados) {
 }
 
 if (manutencoes) {
-    
     manutencoes.addEventListener('click', () => {
         window.location.href = 'gerenciamento_de_manutencoes_adm.php';
     });
@@ -63,7 +60,6 @@ if (manutencoes) {
 if (pecas) {
 
     pecas.addEventListener('click', () => {
-
         window.location.href = 'pagina_gerenciamento_de_pecas_administrador.php';
     });
 }
@@ -71,7 +67,6 @@ if (pecas) {
 if (tecnicos) {
 
     tecnicos.addEventListener('click', () => {
-
         window.location.href = 'pagina_gerenciamento_de_tecnicos_adm.php';
     });
 }
@@ -84,161 +79,69 @@ if (logout) {
     });
 }
 
-/* =========================================================
-   NOVO COLABORADOR
-========================================================= */
+
+// NOVO COLABORADOR
 
 if (btnColaborador) {
 
     btnColaborador.addEventListener('click', () => {
-
-        window.location.href = 'pagina_cadastro_tecnico.php';
+        window.location.href = 'pagina_cadastro_tecnicos_administrador.php';
     });
 }
 
-/* =========================================================
-   PESQUISA
-========================================================= */
+//PESQUISA
+// if (formPesquisa) {
+//   formPesquisa.addEventListener('submit', (event) => {
+//        event.preventDefault();
+//        const busca = inputPesquisa.value.trim();
 
-if (formPesquisa) {
+//          Em vez de mandar para o Controller, manda para a própria página que exibe os técnicos
+//         window.location.href = `pagina_gerenciamento_de_tecnicos_adm.php?busca=${encodeURIComponent(busca)}`;
+//     });
+// }
 
-    formPesquisa.addEventListener('submit', (event) => {
 
-        event.preventDefault();
-
-        const busca = inputPesquisa.value.trim();
-
-        /* =========================
-           ENVIA PARA O CONTROLLER
-        ========================= */
-
-        window.location.href =
-            `${controller}?busca=${encodeURIComponent(busca)}`;
-    });
-}
-
-/* =========================================================
-   EDITAR E EXCLUIR
-========================================================= */
 
 document.addEventListener('click', (event) => {
 
-    /* =====================================================
-       BOTÃO EXCLUIR
-    ===================================================== */
-
+    // BOTÃO EXCLUIR
     if (event.target.classList.contains('excluir')) {
 
+        // PEGA O ID DO TÉCNICO
         const id = event.target.dataset.id;
 
+        // VERIFICA SE O ID EXISTE
         if (!id) {
-
             alert('ID do técnico não encontrado.');
             return;
         }
 
-        const confirmar = confirm(
-            'Deseja realmente excluir este técnico?'
-        );
+        // CONFIRMAÇÃO COM OPÇÃO DE CANCELAR
+        // confirm() retorna true para OK e false para Cancelar
+        const confirmacao = confirm('Tem certeza que deseja excluir este técnico? Esta ação não pode ser desfeita.');
 
-        if (confirmar) {
-
-            /* =============================================
-               ENVIA PARA O CONTROLLER
-            ============================================= */
-
-            window.location.href =
-                `${controller}?acao=excluir&id=${id}`;
+        if (confirmacao) {
+            // Se clicou em OK, ENVIA PARA O CONTROLLER
+            window.location.href = `${controller}?acao=excluir&id_tecnico=${id}`;
+        } else {
+            // Se clicou em Cancelar, apenas fecha o aviso
+            console.log('Exclusão cancelada pelo usuário.');
         }
     }
 
-    /* =====================================================
-       BOTÃO EDITAR
-    ===================================================== */
 
+    // BOTÃO EDITAR
     if (event.target.classList.contains('editar')) {
-
         const id = event.target.dataset.id;
 
         if (!id) {
-
             alert('ID do técnico não encontrado.');
             return;
         }
 
-        /* =============================================
-           REDIRECIONA PARA O FORMULÁRIO
-           COM O ID DO TÉCNICO
-        ============================================= */
-
-        window.location.href =
-            `${controller}?acao=buscarPorId&id=${id}`;
+        // REDIRECIONA PARA A PÁGINA DE CADASTRO PASSANDO O ID
+        // Certifique-se de que o nome do arquivo abaixo é exatamente o que você usa para cadastrar/editar
+        window.location.href = `pagina_cadastro_tecnicos_administrador.php?id=${id}`;
     }
+
 });
-
-/* =========================================================
-   ALERTAS DE SUCESSO E ERRO
-========================================================= */
-
-const parametros = new URLSearchParams(window.location.search);
-
-const sucesso = parametros.get('sucesso');
-const erro = parametros.get('erro');
-
-/* =========================================================
-   SUCESSOS
-========================================================= */
-
-if (sucesso === 'cadastrado') {
-
-    alert('Técnico cadastrado com sucesso!');
-}
-
-if (sucesso === 'editado') {
-
-    alert('Técnico atualizado com sucesso!');
-}
-
-if (sucesso === 'excluido') {
-
-    alert('Técnico excluído com sucesso!');
-}
-
-/* =========================================================
-   ERROS
-========================================================= */
-
-if (erro === 'delete') {
-
-    alert('Erro ao excluir técnico.');
-}
-
-if (erro === 'cadastro') {
-
-    alert('Erro ao cadastrar técnico.');
-}
-
-if (erro === 'update') {
-
-    alert('Erro ao atualizar técnico.');
-}
-
-if (erro === 'camposvazios') {
-
-    alert('Preencha todos os campos.');
-}
-
-if (erro === 'camposinvalidos') {
-
-    alert('Campos inválidos.');
-}
-
-if (erro === 'idinvalido') {
-
-    alert('ID inválido.');
-}
-
-if (erro === 'emailexistente') {
-
-    alert('Este email já está cadastrado.');
-}
