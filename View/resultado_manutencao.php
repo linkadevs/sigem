@@ -7,7 +7,7 @@ ini_set('display_errors', '1');
 $erro = null;
 $ultimamanutencao_dados = null;
 $cod_maquina = '';
-$maquina_valida = false; // Nova variável para controlar se a máquina é válida
+$maquina_valida = false;
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $cod_maquina = trim($_POST['cod_maquina'] ?? '');
@@ -76,7 +76,8 @@ if (!empty($ultimamanutencao_dados['data_e_hora'])) {
                     </div>
 
                     <div class="caixas_bloqueadas">
-                        <div class="caixa_bloqueada1" id="caixaHistorico" data-bloqueada="<?php echo $maquina_valida ? 'false' : 'true'; ?>">
+                        <div class="caixa_bloqueada1" id="caixaHistorico"
+                            data-bloqueada="<?php echo $maquina_valida ? 'false' : 'true'; ?>">
                             <h3>Histórico de manutenções</h3>
                             <?php if (!$maquina_valida): ?>
                                 <figure class="cadeado1">
@@ -84,7 +85,8 @@ if (!empty($ultimamanutencao_dados['data_e_hora'])) {
                                 </figure>
                             <?php endif; ?>
                         </div>
-                        <div class="caixa_bloqueada2" id="caixaRegistrar" data-bloqueada="<?php echo $maquina_valida ? 'false' : 'true'; ?>">
+                        <div class="caixa_bloqueada2" id="caixaRegistrar"
+                            data-bloqueada="<?php echo $maquina_valida ? 'false' : 'true'; ?>">
                             <h3>Registrar nova manutenção</h3>
                             <?php if (!$maquina_valida): ?>
                                 <figure class="cadeado2">
@@ -110,7 +112,6 @@ if (!empty($ultimamanutencao_dados['data_e_hora'])) {
 
                 <?php if ($erro): ?>
                     <div class="erro-mensagem"><?php echo htmlspecialchars($erro, ENT_QUOTES, 'UTF-8'); ?></div>
-                    <!-- Mostrar o formulário novamente quando houver erro -->
                     <h1>Bem-vindo!</h1>
                     <h2 class="subtitulo">Identifique a máquina que deseja consultar</h2>
                     <figure class="linha_azul">
@@ -141,10 +142,18 @@ if (!empty($ultimamanutencao_dados['data_e_hora'])) {
                         <h2>Máquina encontrada!</h2>
                         <h3 class="subtitulo_maquina">Essas são as informações da última manutenção realizada</h3>
                         <div class="maquina-info">
-                            <p><strong>Máquina</strong> <?php echo htmlspecialchars($ultimamanutencao_dados['cod_maquina_fk'], ENT_QUOTES, 'UTF-8'); ?></p>
-                            <p><strong>Tipo de serviço</strong> <?php echo htmlspecialchars($ultimamanutencao_dados['tipo_de_servico'], ENT_QUOTES, 'UTF-8'); ?></p>
-                            <p><strong>Nome do técnico</strong> <?php echo htmlspecialchars($ultimamanutencao_dados['nome_tecnico'], ENT_QUOTES, 'UTF-8'); ?></p>
-                            <p><strong>Data e Hora</strong> <?php echo htmlspecialchars($dataHoraFormatada ?? $ultimamanutencao_dados['data_e_hora'], ENT_QUOTES, 'UTF-8'); ?></p>
+                            <p><strong>Máquina</strong>
+                                <?php echo htmlspecialchars($ultimamanutencao_dados['cod_maquina_fk'], ENT_QUOTES, 'UTF-8'); ?>
+                            </p>
+                            <p><strong>Tipo de serviço</strong>
+                                <?php echo htmlspecialchars($ultimamanutencao_dados['tipo_de_servico'], ENT_QUOTES, 'UTF-8'); ?>
+                            </p>
+                            <p><strong>Nome do técnico</strong>
+                                <?php echo htmlspecialchars($ultimamanutencao_dados['nome_tecnico'], ENT_QUOTES, 'UTF-8'); ?>
+                            </p>
+                            <p><strong>Data e Hora</strong>
+                                <?php echo htmlspecialchars($dataHoraFormatada ?? $ultimamanutencao_dados['data_e_hora'], ENT_QUOTES, 'UTF-8'); ?>
+                            </p>
                         </div>
                         <button class="btn_abrir_chamado" id="btnabrirchamado" type="button">Abrir chamado</button>
                         <figure class="logo2">
@@ -152,7 +161,6 @@ if (!empty($ultimamanutencao_dados['data_e_hora'])) {
                         </figure>
                     </div>
                 <?php else: ?>
-                    <!-- Caso não tenha dados e não tenha erro (primeiro acesso) -->
                     <h1>Bem-vindo!</h1>
                     <h2 class="subtitulo">Identifique a máquina que deseja consultar</h2>
                     <figure class="linha_azul">
@@ -202,68 +210,112 @@ if (!empty($ultimamanutencao_dados['data_e_hora'])) {
         </div>
     </div>
 
-    <script src="/sigem/templates/assets/js/pagina_inicial.js"></script>
     <script>
-        // Script para controlar o comportamento dos botões
-        document.addEventListener('DOMContentLoaded', function() {
+        // Script para controlar o comportamento dos botões e redirecionamentos
+        document.addEventListener('DOMContentLoaded', function () {
             const maquinaValida = <?php echo json_encode($maquina_valida); ?>;
+            const codMaquina = <?php echo json_encode($cod_maquina); ?>;
+
             const btnNovaManutencao = document.querySelector('.btnNovaManutencao');
             const btnHistorico = document.querySelector('.btnHistorico');
             const caixaHistorico = document.getElementById('caixaHistorico');
             const caixaRegistrar = document.getElementById('caixaRegistrar');
-            
-            if (!maquinaValida) {
-                // Se a máquina não é válida, os botões devem estar desabilitados
-                if (btnNovaManutencao) btnNovaManutencao.disabled = true;
-                if (btnHistorico) btnHistorico.disabled = true;
-                
-                // Adiciona evento de clique para as caixas bloqueadas na lateral
-                if (caixaHistorico && caixaHistorico.getAttribute('data-bloqueada') === 'true') {
-                    caixaHistorico.style.cursor = 'not-allowed';
-                    caixaHistorico.addEventListener('click', function(e) {
+            const btnAbrirChamado = document.querySelector('.btn_abrir_chamado');
+
+            // ========== FUNÇÕES DE REDIRECIONAMENTO ==========
+            function redirecionarParaHistorico() {
+                if (maquinaValida && codMaquina) {
+                    window.location.href = 'login.php?cod_maquina=' + encodeURIComponent(codMaquina);
+                } else {
+                    alert('Para acessar o histórico, primeiro consulte uma máquina válida!');
+                }
+            }
+
+            function redirecionarParaRegistro() {
+                if (maquinaValida && codMaquina) {
+                    window.location.href = 'login.php?cod_maquina=' + encodeURIComponent(codMaquina);
+                } else {
+                    alert('Para registrar uma nova manutenção, primeiro consulte uma máquina válida!');
+                }
+            }
+
+            function redirecionarParaChamado() {
+                if (maquinaValida && codMaquina) {
+                    window.location.href = 'login.php?cod_maquina=' + encodeURIComponent(codMaquina);
+                } else {
+                    alert('Não foi possível abrir o chamado. Máquina não identificada!');
+                }
+            }
+
+            // ========== CONFIGURAÇÃO DAS CAIXAS LATERAIS ==========
+            if (caixaHistorico) {
+                const novoCaixaHistorico = caixaHistorico.cloneNode(true);
+                caixaHistorico.parentNode.replaceChild(novoCaixaHistorico, caixaHistorico);
+
+                if (maquinaValida) {
+                    novoCaixaHistorico.style.cursor = 'pointer';
+                    novoCaixaHistorico.addEventListener('click', redirecionarParaHistorico);
+                } else {
+                    novoCaixaHistorico.style.cursor = 'not-allowed';
+                    novoCaixaHistorico.addEventListener('click', function (e) {
                         e.preventDefault();
                         alert('Para acessar o histórico, primeiro consulte uma máquina válida!');
                     });
                 }
-                
-                if (caixaRegistrar && caixaRegistrar.getAttribute('data-bloqueada') === 'true') {
-                    caixaRegistrar.style.cursor = 'not-allowed';
-                    caixaRegistrar.addEventListener('click', function(e) {
+            }
+
+            if (caixaRegistrar) {
+                const novoCaixaRegistrar = caixaRegistrar.cloneNode(true);
+                caixaRegistrar.parentNode.replaceChild(novoCaixaRegistrar, caixaRegistrar);
+
+                if (maquinaValida) {
+                    novoCaixaRegistrar.style.cursor = 'pointer';
+                    novoCaixaRegistrar.addEventListener('click', redirecionarParaRegistro);
+                } else {
+                    novoCaixaRegistrar.style.cursor = 'not-allowed';
+                    novoCaixaRegistrar.addEventListener('click', function (e) {
                         e.preventDefault();
                         alert('Para registrar uma nova manutenção, primeiro consulte uma máquina válida!');
                     });
                 }
-            } else {
-                // Se a máquina é válida, os botões devem estar habilitados
-                if (btnNovaManutencao) {
+            }
+
+            // ========== CONFIGURAÇÃO DOS BOTÕES INFERIORES ==========
+            if (btnNovaManutencao) {
+                if (!maquinaValida) {
+                    btnNovaManutencao.disabled = true;
+                } else {
                     btnNovaManutencao.disabled = false;
-                    btnNovaManutencao.addEventListener('click', function() {
-                        window.location.href = 'cadastro_manutencao.php?cod_maquina=<?php echo urlencode($cod_maquina); ?>';
-                    });
+                    btnNovaManutencao.removeEventListener('click', redirecionarParaRegistro);
+                    btnNovaManutencao.addEventListener('click', redirecionarParaRegistro);
                 }
-                if (btnHistorico) {
+            }
+
+            if (btnHistorico) {
+                if (!maquinaValida) {
+                    btnHistorico.disabled = true;
+                } else {
                     btnHistorico.disabled = false;
-                    btnHistorico.addEventListener('click', function() {
-                        window.location.href = 'historico_manutencao.php?cod_maquina=<?php echo urlencode($cod_maquina); ?>';
-                    });
+                    btnHistorico.removeEventListener('click', redirecionarParaHistorico);
+                    btnHistorico.addEventListener('click', redirecionarParaHistorico);
                 }
-                
-                // Remove os cadeados das caixas laterais quando a máquina é válida
-                if (caixaHistorico) {
-                    const cadeado = caixaHistorico.querySelector('.cadeado1');
-                    if (cadeado) cadeado.style.display = 'none';
-                    caixaHistorico.style.cursor = 'pointer';
-                    caixaHistorico.removeAttribute('data-bloqueada');
-                }
-                
-                if (caixaRegistrar) {
-                    const cadeado2 = caixaRegistrar.querySelector('.cadeado2');
-                    const chave = caixaRegistrar.querySelector('.chave');
-                    if (cadeado2) cadeado2.style.display = 'none';
-                    if (chave) chave.style.display = 'none';
-                    caixaRegistrar.style.cursor = 'pointer';
-                    caixaRegistrar.removeAttribute('data-bloqueada');
-                }
+            }
+
+            // ========== BOTÃO "ABRIR CHAMADO" ==========
+            if (btnAbrirChamado) {
+                btnAbrirChamado.removeEventListener('click', redirecionarParaChamado);
+                btnAbrirChamado.addEventListener('click', redirecionarParaChamado);
+            }
+
+            // ========== CONTROLE DE CADEADOS ==========
+            if (maquinaValida) {
+                const cadeadoHistorico = document.querySelector('#caixaHistorico .cadeado1');
+                const cadeadoRegistrar = document.querySelector('#caixaRegistrar .cadeado2');
+                const chave = document.querySelector('#caixaRegistrar .chave');
+
+                if (cadeadoHistorico) cadeadoHistorico.style.display = 'none';
+                if (cadeadoRegistrar) cadeadoRegistrar.style.display = 'none';
+                if (chave) chave.style.display = 'none';
             }
         });
     </script>

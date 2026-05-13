@@ -4,9 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Histórico de Manutenções</title>
-    <link rel="stylesheet" href="../templates/assets/css/historico_manutencoes.css">
+    <link rel="stylesheet" href="../templates/assets/css/historico_adm_manutencoes.css">
 </head>
 <body>
+    
+    <div class="imagem_de_fundo">
+        <figure>
+            <img src="../templates/assets/img/fundo-desktop-cadastro.png" alt="">
+        </figure>
+    </div>
 
     <main class="container_fundo">
         <section class="card_principal">
@@ -50,6 +56,7 @@
                     </div>
                     <div class="coluna_data">
                         <span class="data_manutencao">30/04/2026</span>
+                        <button class="btn_pmoc">Ver PMOC</button>
                     </div>
                 </article>
 
@@ -70,6 +77,7 @@
                     </div>
                     <div class="coluna_data">
                         <span class="data_manutencao">30/04/2026</span>
+                        <button class="btn_pmoc">Ver PMOC</button>
                     </div>
                 </article>
 
@@ -90,6 +98,49 @@
                     </div>
                     <div class="coluna_data">
                         <span class="data_manutencao">30/04/2026</span>
+                        <button class="btn_pmoc">Ver PMOC</button>
+                    </div>
+                </article>
+
+                <!-- CARD 4 -->
+                <article class="card_manutencao">
+                    <div class="coluna_icone">
+                        <figure><img src="../templates/assets/img/engrenagens.png" alt="Engrenagens"></figure>
+                    </div>
+                    <div class="coluna_dados">
+                        <div class="linha_dado">
+                            <span class="rotulo_dado">Nome do técnico:</span>
+                            <span class="tag_dado">Maria Santos Oliveira</span>
+                        </div>
+                        <div class="linha_dado">
+                            <span class="rotulo_dado">Tipo de serviço:</span>
+                            <span class="tag_dado">Manutenção preventiva</span>
+                        </div>
+                    </div>
+                    <div class="coluna_data">
+                        <span class="data_manutencao">15/03/2026</span>
+                        <button class="btn_pmoc">Ver PMOC</button>
+                    </div>
+                </article>
+
+                <!-- CARD 5 -->
+                <article class="card_manutencao">
+                    <div class="coluna_icone">
+                        <figure><img src="../templates/assets/img/engrenagens.png" alt="Engrenagens"></figure>
+                    </div>
+                    <div class="coluna_dados">
+                        <div class="linha_dado">
+                            <span class="rotulo_dado">Nome do técnico:</span>
+                            <span class="tag_dado">Carlos Alberto Ferreira</span>
+                        </div>
+                        <div class="linha_dado">
+                            <span class="rotulo_dado">Tipo de serviço:</span>
+                            <span class="tag_dado">Manutenção emergencial</span>
+                        </div>
+                    </div>
+                    <div class="coluna_data">
+                        <span class="data_manutencao">22/02/2026</span>
+                        <button class="btn_pmoc">Ver PMOC</button>
                     </div>
                 </article>
 

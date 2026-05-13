@@ -57,8 +57,7 @@
                 <form class="form" method="POST" action="./resultado_manutencao.php">
                     <div class="input_codigo">
                         <label for="Codigo">Código de Identificação</label>
-                        <input type="text" id="Codigo" name="cod_maquina"
-                            value=""
+                        <input type="text" id="Codigo" name="cod_maquina" value=""
                             placeholder="Insira o número de identificação da máquina" required>
                     </div>
 
@@ -100,37 +99,45 @@
 
     <script src="/sigem/templates/assets/js/pagina_inicial.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             // Bloquear as caixas laterais na página inicial
             const caixaHistorico = document.querySelector('.caixa_bloqueada1');
-            const caixaRegistrar = document.querySelector('.caixa_bloqueada2');
-            
+            const caixaRegistrar = document.querySelector('.caixa_bloqueada2'); 
+            const login = document.querySelector('.btn_login');
+
+
             if (caixaHistorico) {
                 caixaHistorico.style.cursor = 'not-allowed';
-                caixaHistorico.addEventListener('click', function(e) {
+                caixaHistorico.addEventListener('click', function (e) {
                     e.preventDefault();
                     alert('Para acessar o histórico, primeiro consulte uma máquina válida!');
                 });
             }
-            
+
             if (caixaRegistrar) {
                 caixaRegistrar.style.cursor = 'not-allowed';
-                caixaRegistrar.addEventListener('click', function(e) {
+                caixaRegistrar.addEventListener('click', function (e) {
                     e.preventDefault();
                     alert('Para registrar uma nova manutenção, primeiro consulte uma máquina válida!');
                 });
             }
-            
+
             // Garantir que os botões inferiores estejam desabilitados
             const btnNovaManutencao = document.querySelector('.btnNovaManutencao');
             const btnHistorico = document.querySelector('.btnHistorico');
-            
+
             if (btnNovaManutencao) {
                 btnNovaManutencao.disabled = true;
             }
-            
+
             if (btnHistorico) {
                 btnHistorico.disabled = true;
+            }
+
+            if (login) {
+                login.addEventListener('click', () => {
+                    window.location.href = 'login.php';
+                })
             }
         });
     </script>
