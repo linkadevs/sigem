@@ -7,6 +7,7 @@ ini_set('display_errors', '1');
 $erro = null;
 $ultimamanutencao_dados = null;
 $cod_maquina = '';
+$maquina_valida = false; // Nova variável para controlar se a máquina é válida
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $cod_maquina = trim($_POST['cod_maquina'] ?? '');
@@ -23,9 +24,13 @@ if ($cod_maquina === '') {
 
         if (!$ultimamanutencao_dados) {
             $erro = 'Máquina não encontrada ou sem manutenção registrada para este código.';
+            $maquina_valida = false;
+        } else {
+            $maquina_valida = true;
         }
     } catch (Exception $e) {
         $erro = 'Erro ao consultar manutenção: ' . $e->getMessage();
+        $maquina_valida = false;
     }
 }
 
@@ -71,18 +76,31 @@ if (!empty($ultimamanutencao_dados['data_e_hora'])) {
                     </div>
 
                     <div class="caixas_bloqueadas">
-                        <div class="caixa_bloqueada1" id="caixaHistorico">
+                        <div class="caixa_bloqueada1" id="caixaHistorico" data-bloqueada="<?php echo $maquina_valida ? 'false' : 'true'; ?>">
                             <h3>Histórico de manutenções</h3>
+                            <?php if (!$maquina_valida): ?>
+                                <figure class="cadeado1">
+                                    <img src="/sigem/templates/assets/img/cadeado1.png" alt="cadeado">
+                                </figure>
+                            <?php endif; ?>
                         </div>
-                        <div class="caixa_bloqueada2" id="caixaRegistrar">
+                        <div class="caixa_bloqueada2" id="caixaRegistrar" data-bloqueada="<?php echo $maquina_valida ? 'false' : 'true'; ?>">
                             <h3>Registrar nova manutenção</h3>
+                            <?php if (!$maquina_valida): ?>
+                                <figure class="cadeado2">
+                                    <img src="/sigem/templates/assets/img/cadeado2.png" alt="cadeado">
+                                </figure>
+                                <figure class="chave">
+                                    <img src="/sigem/templates/assets/img/chave_de_fenda.png" alt="chave de fenda">
+                                </figure>
+                            <?php endif; ?>
                         </div>
                     </div>
                 </div>
             </div>
 
             <div class="Cform">
-                <?php if (!$ultimamanutencao_dados): ?>
+                <?php if (!$ultimamanutencao_dados && !$erro): ?>
                     <h1>Bem-vindo!</h1>
                     <h2 class="subtitulo">Identifique a máquina que deseja consultar</h2>
                     <figure class="linha_azul">
@@ -92,6 +110,32 @@ if (!empty($ultimamanutencao_dados['data_e_hora'])) {
 
                 <?php if ($erro): ?>
                     <div class="erro-mensagem"><?php echo htmlspecialchars($erro, ENT_QUOTES, 'UTF-8'); ?></div>
+                    <!-- Mostrar o formulário novamente quando houver erro -->
+                    <h1>Bem-vindo!</h1>
+                    <h2 class="subtitulo">Identifique a máquina que deseja consultar</h2>
+                    <figure class="linha_azul">
+                        <img src="/sigem/templates/assets/img/linha_azul.png" alt="linha azul no form">
+                    </figure>
+                    <form class="form" method="POST" action="./resultado_manutencao.php">
+                        <div class="input_codigo">
+                            <label for="Codigo">Código de Identificação</label>
+                            <input type="text" id="Codigo" name="cod_maquina"
+                                value="<?php echo htmlspecialchars($cod_maquina, ENT_QUOTES, 'UTF-8'); ?>"
+                                placeholder="Insira o número de identificação da máquina" required>
+                        </div>
+                        <div class="btn_envio">
+                            <button type="submit">Enviar!</button>
+                        </div>
+                    </form>
+                    <figure class="logo">
+                        <img src="/sigem/templates/assets/img/logo.png" alt="Logo">
+                    </figure>
+                    <div class="btn_login">
+                        <button type="button" onclick="window.location.href='login.html'">
+                            Login
+                            <img src="/sigem/templates/assets/img/seta_login.png" alt="seta" class="seta_login">
+                        </button>
+                    </div>
                 <?php elseif ($ultimamanutencao_dados): ?>
                     <div class="maquina_encontrada">
                         <h2>Máquina encontrada!</h2>
@@ -102,21 +146,32 @@ if (!empty($ultimamanutencao_dados['data_e_hora'])) {
                             <p><strong>Nome do técnico</strong> <?php echo htmlspecialchars($ultimamanutencao_dados['nome_tecnico'], ENT_QUOTES, 'UTF-8'); ?></p>
                             <p><strong>Data e Hora</strong> <?php echo htmlspecialchars($dataHoraFormatada ?? $ultimamanutencao_dados['data_e_hora'], ENT_QUOTES, 'UTF-8'); ?></p>
                         </div>
-                        <button class="btn_abrir_chamado" id="btnabrirchamado" type="button">Abrir novo chamado</button>
+                        <button class="btn_abrir_chamado" id="btnabrirchamado" type="button">Abrir chamado</button>
                         <figure class="logo2">
                             <img src="/sigem/templates/assets/img/logo2.png" alt="Logo">
                         </figure>
                     </div>
-                <?php endif; ?>
-
-                <?php if (!$ultimamanutencao_dados): ?>
-                    <p class="texto1">A máquina ainda não foi cadastrada?</p>
-                    <p class="texto2">Realize o cadastro!</p>
-
+                <?php else: ?>
+                    <!-- Caso não tenha dados e não tenha erro (primeiro acesso) -->
+                    <h1>Bem-vindo!</h1>
+                    <h2 class="subtitulo">Identifique a máquina que deseja consultar</h2>
+                    <figure class="linha_azul">
+                        <img src="/sigem/templates/assets/img/linha_azul.png" alt="linha azul no form">
+                    </figure>
+                    <form class="form" method="POST" action="./resultado_manutencao.php">
+                        <div class="input_codigo">
+                            <label for="Codigo">Código de Identificação</label>
+                            <input type="text" id="Codigo" name="cod_maquina"
+                                value="<?php echo htmlspecialchars($cod_maquina, ENT_QUOTES, 'UTF-8'); ?>"
+                                placeholder="Insira o número de identificação da máquina" required>
+                        </div>
+                        <div class="btn_envio">
+                            <button type="submit">Enviar!</button>
+                        </div>
+                    </form>
                     <figure class="logo">
                         <img src="/sigem/templates/assets/img/logo.png" alt="Logo">
                     </figure>
-
                     <div class="btn_login">
                         <button type="button" onclick="window.location.href='login.html'">
                             Login
@@ -130,19 +185,88 @@ if (!empty($ultimamanutencao_dados['data_e_hora'])) {
 
     <div class="botoes">
         <div class="btn_nova_manutencao">
-            <button type="button" class="btnNovaManutencao">
+            <button type="button" class="btnNovaManutencao" <?php echo !$maquina_valida ? 'disabled' : ''; ?>>
                 Registrar nova manutenção
+                <?php if (!$maquina_valida): ?>
+                    <img src="/sigem/templates/assets/img/cadeadoone.png" alt="botao" class="cadeado_nova_manutencao">
+                <?php endif; ?>
             </button>
         </div>
         <div class="btn_historico">
-            <button type="button" class="btnHistorico">
+            <button type="button" class="btnHistorico" <?php echo !$maquina_valida ? 'disabled' : ''; ?>>
                 Histórico de Manutenções
+                <?php if (!$maquina_valida): ?>
+                    <img src="/sigem/templates/assets/img/cadeadotwo.png" alt="botao" class="cadeado_historico">
+                <?php endif; ?>
             </button>
         </div>
     </div>
 
     <script src="/sigem/templates/assets/js/pagina_inicial.js"></script>
+    <script>
+        // Script para controlar o comportamento dos botões
+        document.addEventListener('DOMContentLoaded', function() {
+            const maquinaValida = <?php echo json_encode($maquina_valida); ?>;
+            const btnNovaManutencao = document.querySelector('.btnNovaManutencao');
+            const btnHistorico = document.querySelector('.btnHistorico');
+            const caixaHistorico = document.getElementById('caixaHistorico');
+            const caixaRegistrar = document.getElementById('caixaRegistrar');
+            
+            if (!maquinaValida) {
+                // Se a máquina não é válida, os botões devem estar desabilitados
+                if (btnNovaManutencao) btnNovaManutencao.disabled = true;
+                if (btnHistorico) btnHistorico.disabled = true;
+                
+                // Adiciona evento de clique para as caixas bloqueadas na lateral
+                if (caixaHistorico && caixaHistorico.getAttribute('data-bloqueada') === 'true') {
+                    caixaHistorico.style.cursor = 'not-allowed';
+                    caixaHistorico.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        alert('Para acessar o histórico, primeiro consulte uma máquina válida!');
+                    });
+                }
+                
+                if (caixaRegistrar && caixaRegistrar.getAttribute('data-bloqueada') === 'true') {
+                    caixaRegistrar.style.cursor = 'not-allowed';
+                    caixaRegistrar.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        alert('Para registrar uma nova manutenção, primeiro consulte uma máquina válida!');
+                    });
+                }
+            } else {
+                // Se a máquina é válida, os botões devem estar habilitados
+                if (btnNovaManutencao) {
+                    btnNovaManutencao.disabled = false;
+                    btnNovaManutencao.addEventListener('click', function() {
+                        window.location.href = 'cadastro_manutencao.php?cod_maquina=<?php echo urlencode($cod_maquina); ?>';
+                    });
+                }
+                if (btnHistorico) {
+                    btnHistorico.disabled = false;
+                    btnHistorico.addEventListener('click', function() {
+                        window.location.href = 'historico_manutencao.php?cod_maquina=<?php echo urlencode($cod_maquina); ?>';
+                    });
+                }
+                
+                // Remove os cadeados das caixas laterais quando a máquina é válida
+                if (caixaHistorico) {
+                    const cadeado = caixaHistorico.querySelector('.cadeado1');
+                    if (cadeado) cadeado.style.display = 'none';
+                    caixaHistorico.style.cursor = 'pointer';
+                    caixaHistorico.removeAttribute('data-bloqueada');
+                }
+                
+                if (caixaRegistrar) {
+                    const cadeado2 = caixaRegistrar.querySelector('.cadeado2');
+                    const chave = caixaRegistrar.querySelector('.chave');
+                    if (cadeado2) cadeado2.style.display = 'none';
+                    if (chave) chave.style.display = 'none';
+                    caixaRegistrar.style.cursor = 'pointer';
+                    caixaRegistrar.removeAttribute('data-bloqueada');
+                }
+            }
+        });
+    </script>
 </body>
 
 </html>
-

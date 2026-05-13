@@ -67,8 +67,7 @@
                     </div>
                 </form>
 
-                <p class="texto1">A máquina ainda não foi cadastrada?</p>
-                <p class="texto2">Realize o cadastro!</p>
+
 
                 <figure class="logo">
                     <img src="/sigem/templates/assets/img/logo.png" alt="Logo">
@@ -85,13 +84,13 @@
 
         <div class="botoes">
             <div class="btn_nova_manutencao">
-                <button type="button" class="btnNovaManutencao">
+                <button type="button" class="btnNovaManutencao" disabled>
                     Registrar nova manutenção
                     <img src="/sigem/templates/assets/img/cadeadoone.png" alt="botao" class="cadeado_nova_manutencao">
                 </button>
             </div>
             <div class="btn_historico">
-                <button type="button" class="btnHistorico">
+                <button type="button" class="btnHistorico" disabled>
                     Histórico de Manutenções
                     <img src="/sigem/templates/assets/img/cadeadotwo.png" alt="botao" class="cadeado_historico">
                 </button>
@@ -100,6 +99,41 @@
     </main>
 
     <script src="/sigem/templates/assets/js/pagina_inicial.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Bloquear as caixas laterais na página inicial
+            const caixaHistorico = document.querySelector('.caixa_bloqueada1');
+            const caixaRegistrar = document.querySelector('.caixa_bloqueada2');
+            
+            if (caixaHistorico) {
+                caixaHistorico.style.cursor = 'not-allowed';
+                caixaHistorico.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    alert('Para acessar o histórico, primeiro consulte uma máquina válida!');
+                });
+            }
+            
+            if (caixaRegistrar) {
+                caixaRegistrar.style.cursor = 'not-allowed';
+                caixaRegistrar.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    alert('Para registrar uma nova manutenção, primeiro consulte uma máquina válida!');
+                });
+            }
+            
+            // Garantir que os botões inferiores estejam desabilitados
+            const btnNovaManutencao = document.querySelector('.btnNovaManutencao');
+            const btnHistorico = document.querySelector('.btnHistorico');
+            
+            if (btnNovaManutencao) {
+                btnNovaManutencao.disabled = true;
+            }
+            
+            if (btnHistorico) {
+                btnHistorico.disabled = true;
+            }
+        });
+    </script>
 </body>
 
 </html>
