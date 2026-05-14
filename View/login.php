@@ -47,7 +47,7 @@ unset($_SESSION['erro']);
                 </figure>
 
                     <!-- Avisar a Fred para adicionar no dele até a parte do form também, 
-                     eu vou chamar o controller dele de validação do
+                     eu vou chamar o controller de validação do
                       login dentro do meu arquivo chamado processa_login para segmentar o 
                       acesso a abertura de chamados, histórico e tal
                       , então deixa o action assim -->

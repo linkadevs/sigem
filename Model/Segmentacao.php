@@ -55,9 +55,9 @@ class Segmentacao
             // verifica administrador
             $sql = "SELECT id_administrador as id, nome, 'administrador' as tipo
              FROM administrador
-             WHERE cnpj = :cnpj AND senha = :senha";
+             WHERE cpf = :cpf AND senha = :senha";
              $stmt = $this->db->prepare($sql);
-             $stmt->bindParam(":cnpj", $cpf_cnpj, PDO::PARAM_STR);
+             $stmt->bindParam(":cpf", $cpf_cnpj, PDO::PARAM_STR);
              $stmt->bindParam(":senha", $senha, PDO::PARAM_STR);
              $stmt->execute();
              $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
