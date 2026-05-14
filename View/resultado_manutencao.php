@@ -225,7 +225,7 @@ if (!empty($ultimamanutencao_dados['data_e_hora'])) {
             // ========== FUNÇÕES DE REDIRECIONAMENTO ==========
             function redirecionarParaHistorico() {
                 if (maquinaValida && codMaquina) {
-                    window.location.href = 'login.php?cod_maquina=' + encodeURIComponent(codMaquina);
+                    window.location.href = 'login.php?objetivo=1&cod_maquina=' + encodeURIComponent(codMaquina);
                 } else {
                     alert('Para acessar o histórico, primeiro consulte uma máquina válida!');
                 }
@@ -233,7 +233,7 @@ if (!empty($ultimamanutencao_dados['data_e_hora'])) {
 
             function redirecionarParaRegistro() {
                 if (maquinaValida && codMaquina) {
-                    window.location.href = 'login.php?cod_maquina=' + encodeURIComponent(codMaquina);
+                    window.location.href = 'login.php?objetivo=2&cod_maquina=' + encodeURIComponent(codMaquina);
                 } else {
                     alert('Para registrar uma nova manutenção, primeiro consulte uma máquina válida!');
                 }
@@ -241,7 +241,7 @@ if (!empty($ultimamanutencao_dados['data_e_hora'])) {
 
             function redirecionarParaChamado() {
                 if (maquinaValida && codMaquina) {
-                    window.location.href = 'login.php?cod_maquina=' + encodeURIComponent(codMaquina);
+                    window.location.href = 'login.php?objetivo=3&cod_maquina=' + encodeURIComponent(codMaquina);
                 } else {
                     alert('Não foi possível abrir o chamado. Máquina não identificada!');
                 }

@@ -96,8 +96,6 @@
             </div>
         </div>
     </main>
-
-    <script src="/sigem/templates/assets/js/pagina_inicial.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             // Bloquear as caixas laterais na página inicial
