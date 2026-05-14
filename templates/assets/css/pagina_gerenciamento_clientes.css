@@ -14,6 +14,12 @@ body {
     align-items: stretch;
 }
 
+ strong{
+    font-size: 2.4rem;
+    width: 2rem;
+    height: 2rem;
+}
+
 /* MENU LATERAL (padrão desktop) */
 aside {
     background-color: #FFFFFF;
@@ -261,7 +267,8 @@ input:focus {
     color: #FFFFFF;
 }
 
-.dado, .dadoCFundo {
+.dado,
+.dadoCFundo {
     font-size: 2.5rem;
     color: #FFFFFF;
 }
@@ -309,6 +316,12 @@ input:focus {
     body {
         gap: 2rem;
         padding: 1.5rem;
+    }
+
+    strong {
+        font-size: 2.1rem !important;
+        width: 2rem;
+        height: 2rem;
     }
 
     /* Ajuste do menu lateral */
@@ -380,19 +393,28 @@ input:focus {
         font-size: 2rem;
     }
 
-    .dado, .dadoCFundo {
+    .dado,
+    .dadoCFundo {
         font-size: 2rem;
     }
+
     .botoes button {
         font-size: 2rem;
         padding: 0.8rem 2.5rem;
     }
 }
+
 /* 1200px - Desktop pequeno */
 @media (max-width: 1200px) {
     .conteudo_superior {
         padding-left: 3rem;
         padding-right: 3rem;
+    }
+
+    strong {
+        font-size: 1.8rem;
+        width: 2rem;
+        height: 2rem;
     }
 }
 
@@ -401,6 +423,12 @@ input:focus {
     body {
         gap: 1.5rem;
         padding: 1rem;
+    }
+
+    strong {
+        font-size: 1.6rem;
+        width: 2rem;
+        height: 2rem;
     }
 
     aside {
@@ -450,7 +478,7 @@ input:focus {
         font-size: 1.2rem;
     }
 
-    
+
     .conteudo_superior img {
         width: 1.8rem;
         height: 1.8rem;
@@ -468,9 +496,17 @@ input:focus {
         font-size: 2rem;
     }
 
-    .dado, .dadoCFundo {
+    strong {
+        font-size: 1.25rem;
+        width: 2rem;
+        height: 2rem;
+    }
+
+    .dado,
+    .dadoCFundo {
         font-size: 1.7rem;
     }
+
     .botoes button {
         font-size: 1.7rem;
         padding: 0.7rem 2.2rem;
@@ -506,9 +542,11 @@ input:focus {
         font-size: 1.4rem;
     }
 
-    .dado, .dadoCFundo {
+    .dado,
+    .dadoCFundo {
         font-size: 1.4rem;
     }
+
     .botoes button {
         font-size: 1.4rem;
         padding: 0.6rem 2rem;
@@ -520,6 +558,12 @@ input:focus {
     body {
         padding-top: 1rem;
         gap: 1rem;
+    }
+
+    strong {
+        font-size: 1.1rem;
+        width: 2rem;
+        height: 2rem;
     }
 
     .conteudo_superior {
@@ -563,7 +607,7 @@ input:focus {
         align-self: stretch;
     }
 
-   
+
     aside p {
         display: none;
     }
@@ -608,6 +652,12 @@ input:focus {
         padding: 1rem;
     }
 
+    strong {
+        font-size: 0.9rem;
+        width: 2rem;
+        height: 2rem;
+    }
+
     .procurar {
         width: 6rem;
         font-size: 0.9rem;
@@ -634,6 +684,12 @@ input:focus {
         font-size: 1.4rem;
     }
 
+    strong {
+        font-size: 0.8rem;
+        width: 2rem;
+        height: 2rem;
+    }
+
     .criarCliente figure img {
         width: 1.6rem;
         height: 1.6rem;
@@ -647,9 +703,11 @@ input:focus {
         font-size: 1.2rem;
     }
 
-    .dado, .dadoCFundo {
+    .dado,
+    .dadoCFundo {
         font-size: 1.2rem;
     }
+
     .botoes button {
         font-size: 1.2rem;
         padding: 0.4rem 1.6rem;
@@ -661,6 +719,11 @@ input:focus {
     .conteudo_superior {
         padding: 0.8rem;
         margin: 0 0.5rem 1rem 0.5rem;
+    }
+    strong {
+        font-size: 0.7rem;
+        width: 2rem;
+        height: 2rem;
     }
 
     h1 {
@@ -714,14 +777,16 @@ input:focus {
         font-size: 1rem;
     }
 
-    .dado, .dadoCFundo {
+    .dado,
+    .dadoCFundo {
         font-size: 1rem;
     }
+
     .botoes button {
         font-size: 1rem;
         padding: 0.4rem 1.6rem;
     }
-    
+
     .informacao {
         gap: 1rem;
     }
@@ -753,13 +818,15 @@ input:focus {
         font-size: .8rem;
     }
 
-    .dado, .dadoCFundo {
+    .dado,
+    .dadoCFundo {
         font-size: .8rem;
     }
+
     .botoes button {
         font-size: .8rem;
     }
-    
+
     .informacao {
         gap: .8rem;
     }
