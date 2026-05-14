@@ -94,7 +94,7 @@ class MaquinaController {
     
             // Salvar no banco de dados
     
-            $this->maquinaModel->criarMaquina(
+            $dados = $this->maquinaModel->criarMaquina(
                 $cod_maquina,
                 $nome_maquina,
                 $localizacao,
@@ -106,7 +106,8 @@ class MaquinaController {
             );
     
             return [
-                'sucesso' => true
+                'sucesso' => true,
+                'dados' => $dados
             ];
         } catch (Exception $e) {
             throw new Exception('Erro interno grave, por favor, reinicie a página e tente novamente ' . $e);
@@ -255,6 +256,57 @@ class MaquinaController {
             $dados = $this->maquinaModel->verMaquinasPorCliente(
                 $id_cliente_fk
             );
+
+            return [
+                'sucesso' => true,
+                'dados' => $dados
+            ];
+        } catch (Exception $e) {
+            throw new Exception('Erro interno grave, por favor, reinicie a página e tente novamente');
+        }
+    }
+
+    public function verMaquinasPorCodigo (
+        string $cod_maquina
+    ) {
+        try {
+            // Validação
+            
+            $erros = [];
+
+            if ($cod_maquina === null || $cod_maquina === '') {
+                $erros['cod_maquina'] = 'Erro interno, por favor, recarregue a página e tente novamente';
+            }
+            
+            if (!empty($erros)) {
+                return [
+                    'sucesso' => false,
+                    'erros' => $erros
+                ];
+            }
+
+            $dados = $this->maquinaModel->verMaquinaPorCodigo(
+                $cod_maquina
+            );
+
+            return [
+                'sucesso' => true,
+                'dados' => $dados
+            ];
+        } catch (Exception $e) {
+            throw new Exception('Erro interno grave, por favor, reinicie a página e tente novamente');
+        }
+    }
+
+    public function pesquisarMaquina (
+        string $pesquisa
+    ) {
+        try {
+            if($pesquisa === null || $pesquisa === ''){
+                $dados = $this->maquinaModel->verMaquinas();
+            } else {
+                $dados = $this->maquinaModel->pesquisarMaquina($pesquisa);
+            }
 
             return [
                 'sucesso' => true,

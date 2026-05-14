@@ -1,9 +1,42 @@
 <?php
 
+
+session_start();
 use Controller\MaquinaController;
 require_once __DIR__ . '/../Controller/MaquinaController.php';
 $maquinaController = new MaquinaController();
-$maquinas = $maquinaController->verMaquinas();
+
+if(isset($_GET['search']) && !empty($_GET['search']) && $_GET['search'] != ''){
+    $pesquisa = trim($_GET['search']);
+    $array = $maquinaController->pesquisarMaquina($pesquisa);
+    $maquinas = $array['dados'];
+} else {
+    $maquinas = $maquinaController->verMaquinas();
+}
+
+if($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if(isset($_POST['criar'])){
+        $_SESSION['cod_maquina'] = null;
+        header('Location: pagina_cadastro_nova_maquina.php');
+        exit();
+    }
+    if(isset($_POST['editar'])){
+        $_SESSION['cod_maquina'] = $_POST['editar'];
+        header('Location: pagina_cadastro_nova_maquina.php');
+        exit();
+    }
+    if(isset($_POST['historico'])){
+        $_SESSION['cod_maquina'] = $_POST['historico'];
+        header('Location: historico_manutencoes.php');
+        exit();
+    }
+    if(isset($_POST['apagar'])){
+        $cod_maquina = $_POST['apagar'];
+        $maquinaController->deletarMaquina($cod_maquina);
+        header('Location: gerenciamento_de_maquinas_adm.php');
+        exit();
+    }
+}
 
 ?>
 
@@ -110,35 +143,125 @@ $maquinas = $maquinaController->verMaquinas();
         <div class="container">
             <div class="conteudo_superior">
                 <h1>Máquinas</h1>
-                <form>
+                <form class="pesquisa" method="GET">
                     <div class="input-container">
                         <figure>
                             <img src="/sigem/templates/assets/img/lupa_branca.png" alt="Ícone de lupa">
                         </figure>
-                        <input type="text" class="pesquisar" placeholder="Busque por uma data, um código ou máquina específica!">
+                        <input name="search" id="search" type="text" class="pesquisar" placeholder="Busque por um nome da máquina, um código ou cliente específico!">
                     </div>
                     <button class="procurar">Procurar</button>
                 </form>
             </div>
 
             <div class="container_nova_maquina">
-                <button class="btn_nova_maquina">
-                    <span class="icone_mais">+</span>
-                    <span class="texto_nova_maquina">Nova máquina</span>
-                </button>
+                <form method="POST">
+                    <button class="btn_nova_maquina" name="criar" value="1">
+                        <span class="icone_mais">+</span>
+                        <span class="texto_nova_maquina">Nova máquina</span>
+                    </button>
+                </form>
             </div>
 
             <div class="lista_maquinas">
                 <?php
                 foreach ($maquinas as $maquina) {
                     echo '
-                        <div class="card_maquina">
-                            <div class="badge_maquina">Máquina '. $maquina['cod_maquina'] .'</div>
-                            <p class="descricao_maquina">' . $maquina['nome_maquina'] . '</p>
+                        <div class="card_maquina" id="'. htmlspecialchars($maquina['cod_maquina']) .'">
+                            <p class="badge_maquina">Máquina '. htmlspecialchars($maquina['cod_maquina']) .'</p>
+                            <p class="descricao_maquina">' . htmlspecialchars($maquina['nome_maquina']) . '</p>
+                        </div>
+
+                        <div class="card_informacao" id="info-'. htmlspecialchars($maquina['cod_maquina']) .'" style="display: none;">
+                            <div class="titulo">
+                                <strong><p class="codigo">'. htmlspecialchars($maquina['cod_maquina']) .'</p></strong>
+                                <strong><p class="nomeP">'. htmlspecialchars($maquina['nome_maquina']) .'</p></strong>
+                                <form method="POST"><button class="lixeiraBotao" name="apagar" value="'. htmlspecialchars($maquina['cod_maquina']) .'"><figure class="lixeira"><img src="/sigem/templates/assets/img/lixeira.png" alt="Trash bin icon for deleting machine records"></figure></button></form>
+                            </div>
+                            <div class="informacoes">
+                                <div class="linha">
+                                    <p class="cliente">Cliente</p>
+                                    <p class="clienteNome">UNEB</p>
+                                </div>
+                                <div class="linha">
+                                    <p class="localizacao">Localização</p>
+                                    <p class="localizacaoNome">'. htmlspecialchars($maquina['localizacao']) .'</p>
+                                </div>
+                                <div class="linha2">
+                                    <div class="linha">
+                                        <p class="modelo">Modelo</p>
+                                        <p class="modeloNome">'. htmlspecialchars($maquina['modelo']) .'</p>
+                                    </div>
+                                    <div class="linha">
+                                        <p class="marca">Marca</p>
+                                        <p class="marcaNome">'. htmlspecialchars($maquina['marca']) .'</p>
+                                    </div>
+                                </div>
+                                <div class="linha2 linha3">
+                                    <div class="linha">
+                                        <p class="fluidoRefrigerante">Fluido refrigerante</p>
+                                        <p class="fluidoRefrigeranteNome">'. htmlspecialchars($maquina['fluido_refrigerante']) .'</p>
+                                    </div>
+                                    <div class="linha">
+                                        <p class="capacidadeTermica">Capacidade termica</p>
+                                        <p class="capacidadeTermicaNome">'. htmlspecialchars($maquina['capacidade_termica_de_refrigeracao']) .' BTUs</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="botoes">
+                                <form class="botoes" method="POST">
+                                    <button name="editar" value="'. htmlspecialchars($maquina['cod_maquina']) .'" class="editarButton"><strong>Editar informacoes</strong></button>
+                                    <button name="historico" value="'. htmlspecialchars($maquina['cod_maquina']) .'" class="historicoButton"><strong>Ver histórico de manutenções</strong></button>                                
+                                </form>
+                            </div>
                         </div>
                     ';
                 }
                 ?>
+                <!-- <div class="card_informacao">
+                    <div class="titulo">
+                        <p class="codigo"></p>
+                        <div class="nome">
+                            <p class="nomeP"></p>
+                            <p class="data"></p>
+                        </div>
+                        <figure class="lixeira"><img src="/sigem/templates/assets/img/lixeira.png" alt="Trash bin icon for deleting machine records"></figure>
+                    </div>
+                    <div class="informacoes">
+                        <div class="linha">
+                            <p class="cliente"></p>
+                            <p class="clienteNome"></p>
+                        </div>
+                        <div class="linha">
+                            <p class="localizacao"></p>
+                            <p class="localizacaoNome"></p>
+                        </div>
+                        <div class="linha2">
+                            <div class="linha">
+                                <p class="modelo"></p>
+                                <p class="modeloNome"></p>
+                            </div>
+                            <div class="linha">
+                                <p class="marca"></p>
+                                <p class="marcaNome"></p>
+                            </div>
+                        </div>
+                        <div class="linha2">
+                            <div class="linha">
+                                <p class="fluidoRefrigerante"></p>
+                                <p class="fluidoRefrigeranteNome"></p>
+                            </div>
+                            <div class="linha">
+                                <p class="capacidadeTermica"></p>
+                                <p class="capacidadeTermicaNome"></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="botoes">
+                        <button class="editarButton">Editar informacoes</button>
+                        <button class="historicoButton">Ver histórico de manutenções</button>
+                    </div>
+                </div> -->
 
                 <!-- CARDS AGORA SÃO CLICÁVEIS -->
                 <!-- <div class="card_maquina">

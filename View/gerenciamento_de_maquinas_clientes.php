@@ -46,8 +46,8 @@ $maquinas = $maquinaController->verMaquinasPorCliente(2);
                     foreach ($maquinas['dados'] as $maquina) {
                         echo '
                             <div class="card">
-                                <h2 class="maquina">'. $maquina['nome_maquina'] .'</h2>
-                                <P class="codigo">'. $maquina['cod_maquina'] .'</P>
+                                <h2 class="maquina">'. htmlspecialchars($maquina['nome_maquina']) .'</h2>
+                                <P class="codigo">'. htmlspecialchars($maquina['cod_maquina']) .'</P>
                                 <hr>
                                 <h3 class="manutencao">Última manutenção</h3>
                                 <div class="dados">

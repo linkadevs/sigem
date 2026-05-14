@@ -1,3 +1,55 @@
+<?php
+session_start();
+
+
+require_once __DIR__ . '/../vendor/autoload.php';
+
+use Endroid\QrCode\QrCode;
+use Endroid\QrCode\Writer\PngWriter;
+
+use Controller\MaquinaController;
+require_once __DIR__ . '/../Controller/MaquinaController.php';
+$maquinaController = new MaquinaController();
+
+if($_SESSION['nome_maquina'] === null) {
+    header('Location: gerenciamento_de_maquinas_adm.php');
+    exit();
+}
+
+$nome_maquina = $_SESSION['nome_maquina'];
+$localizacao = $_SESSION['localizacao'];
+$marca = $_SESSION['marca'];
+$modelo = $_SESSION['modelo'];
+$fluido_refrigerante = $_SESSION['fluido_refrigerante'];
+$capacidade_termica_de_refrigeracao = $_SESSION['capacidade_termica'];
+$id_cliente_fk = $_SESSION['id_cliente'];
+
+$result = $maquinaController->criarMaquina(
+    $nome_maquina,
+    $localizacao,
+    $marca,
+    $modelo,
+    $fluido_refrigerante,
+    $capacidade_termica_de_refrigeracao,
+    $id_cliente_fk
+);
+
+$qrCode = new QrCode($result['dados']);
+
+$writer = new PngWriter();
+
+$img = $writer->write($qrCode);
+
+$_SESSION['nome_maquina'] = null;
+$_SESSION['localizacao'] = null;
+$_SESSION['marca'] = null;
+$_SESSION['modelo'] = null;
+$_SESSION['fluido_refrigerante'] = null;
+$_SESSION['capacidade_termica'] = null;
+$_SESSION['id_cliente'] = null;
+
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -25,10 +77,10 @@
             </div>
             
             <figure class="qrcode">
-                <img src="../templates/assets/img/qr-code.png" alt="QR Code" id="qrCodeImage">
+                <img src="data:image/png;base64,<?php echo base64_encode($img->getString());?>" alt="QR Code" id="qrCodeImage">
             </figure>
             <div class="codigo_maquina">
-                <h1 id="textoParaCopiar">001</h1>
+                <h1 id="textoParaCopiar"><?php echo htmlspecialchars($result['dados']);?></h1>
 
                 <figure>
                     <img src="../templates/assets/img/copiar.png" alt="Copie Aqui!" id="feedbackIcone" onclick="copiar()">

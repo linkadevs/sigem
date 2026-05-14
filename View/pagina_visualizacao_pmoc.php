@@ -4,13 +4,13 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>PMOC - 001</title>
-        <link rel="stylesheet" href="../templates/assets/css/pagina_visualizacao_pmoc.css">
+        <link rel="stylesheet" href="/sigem/templates/assets/css/pagina_visualizacao_pmoc.css">
     </head>
     <body>
         <header>
             <button class="voltar">
                 <figure class="voltarFigure">
-                    <img class="voltarImg" src="../templates/assets/img/seta_voltar_semfundo.png" alt="">
+                    <img class="voltarImg" src="/sigem/templates/assets/img/seta_voltar_semfundo.png" alt="">
                 </figure>
                 Voltar
             </button>

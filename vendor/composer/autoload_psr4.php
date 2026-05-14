@@ -8,5 +8,8 @@ $baseDir = dirname($vendorDir);
 return array(
     'Model\\' => array($baseDir . '/Model'),
     'Linkadevs\\Sigem\\' => array($baseDir . '/src'),
+    'Endroid\\QrCode\\' => array($vendorDir . '/endroid/qr-code/src'),
+    'DASPRiD\\Enum\\' => array($vendorDir . '/dasprid/enum/src'),
     'Controller\\' => array($baseDir . '/Controller'),
+    'BaconQrCode\\' => array($vendorDir . '/bacon/bacon-qr-code/src'),
 );

@@ -38,7 +38,7 @@ class Maquina {
 
         $stmt = $this->db->prepare($sql);
 
-        return $stmt->execute([
+        $stmt->execute([
             ':cod_maquina' => $cod_maquina,
             ':nome_maquina' => $nome_maquina,
             ':localizacao' => $localizacao,
@@ -48,6 +48,8 @@ class Maquina {
             ':capacidade_termica_de_refrigeracao' => $capacidade_termica_de_refrigeracao,
             ':id_cliente_fk' => $id_cliente_fk
         ]);
+
+        return $cod_maquina;
     }
 
     public function editarMaquina(
@@ -125,6 +127,30 @@ class Maquina {
         ]);
 
         return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
+    public function pesquisarMaquina ($pesquisa) {
+        $pesquisaFormatada = '%'.$pesquisa.'%'; 
+        $sql = 'SELECT maquina.cod_maquina,
+                maquina.nome_maquina,
+                maquina.localizacao,
+                maquina.marca,
+                maquina.modelo,
+                maquina.fluido_refrigerante,
+                maquina.capacidade_termica_de_refrigeracao
+                FROM maquina
+                INNER JOIN cliente
+                ON maquina.id_cliente_fk = cliente.id_cliente
+                WHERE maquina.cod_maquina LIKE :pesquisa1
+                OR maquina.nome_maquina LIKE :pesquisa2
+                OR cliente.nome LIKE :pesquisa3;';
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute([
+            ':pesquisa1' => $pesquisaFormatada,
+            ':pesquisa2' => $pesquisaFormatada,
+            ':pesquisa3' => $pesquisaFormatada
+        ]);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 }
 
