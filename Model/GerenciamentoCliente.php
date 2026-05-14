@@ -78,7 +78,7 @@ class GerenciamentoCliente
 
 
     // DELETE - Remover CLiente
-    public function deleteCLiente($id_cliente)
+    public function deleteCliente($id_cliente)
     {
         try {
             $sql = "DELETE FROM cliente WHERE id_cliente = :id_cliente";
@@ -92,39 +92,38 @@ class GerenciamentoCliente
     }
 
 
+public function searchCliente($busca)
+{
+    try {
 
-    public function searchCliente($busca)
-    {
-        try {
+        $sql = "SELECT * FROM cliente
+                WHERE nome LIKE :nome
+                OR cnpj LIKE :cnpj
+                OR uf LIKE :uf
+                OR cidade LIKE :cidade
+                OR contato LIKE :contato
+                OR email LIKE :email";
 
-            $sql = "SELECT * FROM cliente
-                WHERE nome LIKE :busca
-                OR cnpj LIKE :busca
-                OR uf LIKE :busca
-                OR cidade LIKE :busca
-                OR contato LIKE :busca
-                OR email LIKE :busca";
+        $stmt = $this->db->prepare($sql);
 
-            $stmt = $this->db->prepare($sql);
+        $busca = '%' . trim($busca) . '%';
 
-            $busca = "%{$busca}%";
+        $stmt->bindValue(':nome', $busca, PDO::PARAM_STR);
+        $stmt->bindValue(':cnpj', $busca, PDO::PARAM_STR);
+        $stmt->bindValue(':uf', $busca, PDO::PARAM_STR);
+        $stmt->bindValue(':cidade', $busca, PDO::PARAM_STR);
+        $stmt->bindValue(':contato', $busca, PDO::PARAM_STR);
+        $stmt->bindValue(':email', $busca, PDO::PARAM_STR);
 
-            $stmt->bindValue(':busca', $busca, PDO::PARAM_STR);
+        $stmt->execute();
 
-            $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    } catch (PDOException $e) {
 
-        } catch (PDOException $e) {
-
-            error_log(
-                'Erro na pesquisa: ' .
-                $e->getMessage()
-            );
-
-            return [];
-        }
+        die($e->getMessage());
     }
+}
 }
 
 

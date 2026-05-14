@@ -1,3 +1,26 @@
+<?php
+
+require_once __DIR__ . '/../Controller/GerenciamentoClienteController.php';
+
+use Controller\GerenciamentoClienteController;
+
+// INSTANCIA O CONTROLLER
+$controller = new GerenciamentoClienteController();
+
+// VERIFICA SE EXISTE PESQUISA
+$busca = trim($_GET['busca'] ?? '');
+// SE TIVER PESQUISA
+if (!empty($busca)) {
+
+    $clientes = $controller->pesquisarClientes($busca);
+
+} else {
+
+    // LISTA TODOS OS CLIENTES
+    $clientes = $controller->listarClientes();
+}
+
+?>
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -30,8 +53,6 @@
                 </button>
             </div>
 
-
-
             <div class="menu_home">
                 <button type="button" class="btn_home">
 
@@ -43,8 +64,6 @@
 
                 </button>
             </div>
-
-
 
             <div class="menu_maquinas">
                 <button type="button" class="btn_maquinas">
@@ -58,8 +77,6 @@
                 </button>
             </div>
 
-
-
             <div class="menu_clientes">
                 <button type="button" class="btn_clientes">
 
@@ -71,8 +88,6 @@
 
                 </button>
             </div>
-
-
 
             <div class="menu_chamados">
                 <button type="button" class="btn_chamados">
@@ -86,8 +101,6 @@
                 </button>
             </div>
 
-
-
             <div class="menu_manutencoes">
                 <button type="button" class="btn_manutencoes">
 
@@ -99,8 +112,6 @@
 
                 </button>
             </div>
-
-
 
             <div class="menu_pecas">
                 <button type="button" class="btn_pecas">
@@ -114,8 +125,6 @@
                 </button>
             </div>
 
-
-
             <div class="menu_tecnicos">
                 <button type="button" class="btn_tecnicos">
 
@@ -127,8 +136,6 @@
 
                 </button>
             </div>
-
-
 
             <div class="menu_logout">
                 <button type="button" class="btn_logout">
@@ -146,10 +153,6 @@
 
     </aside>
 
-
-
-
-
     <main>
 
         <div class="container">
@@ -158,19 +161,30 @@
 
                 <h1>Clientes</h1>
 
-                 <form method="GET" action="pagina_gerenciamento_clientes.php">
+                <form method="GET" action="pagina_gerenciamento_clientes.php">
+
                     <div class="input-container">
+
                         <figure>
                             <img src="../templates/assets/img/lupa_branca.png" alt="">
                         </figure>
-                        <input type="text" class="pesquisar" name="busca" id="busca"
-                            placeholder="Busque por uma data, um nome ou email específico!">
+
+                        <input
+                            type="text"
+                            class="pesquisar"
+                            name="busca"
+                            id="busca"
+                            placeholder="Busque por um nome, CNPJ, UF, cidade, contato ou email específico!">
+
                     </div>
-                    <button class="procurar">Procurar</button>
+
+                    <button class="procurar" type="submit">
+                        Procurar
+                    </button>
+
                 </form>
+
             </div>
-
-
 
             <button type="button" class="criarCliente">
 
@@ -182,14 +196,8 @@
 
             </button>
 
-
-
-
-
             <div class="cards">
-
-                <?php if (!empty($clientes)) : ?>
-
+                <?php if (isset($clientes) && !empty($clientes)): ?>
                     <?php foreach ($clientes as $cliente) : ?>
 
                         <div class="card">
@@ -197,44 +205,41 @@
                             <div class="informacao">
 
                                 <p class="titulo">Nome</p>
+
                                 <p class="dado">
-                                    <?= $cliente['nome'] ?>
+                                    <?= htmlspecialchars($cliente['nome']) ?>
                                 </p>
 
                                 <p class="titulo">UF</p>
+
                                 <p class="dadoCFundo">
-                                    <?= $cliente['uf'] ?>
+                                    <?= htmlspecialchars($cliente['uf']) ?>
                                 </p>
 
                             </div>
-
-
-
-
 
                             <div class="informacao">
 
                                 <p class="titulo">CNPJ</p>
+
                                 <p class="dado">
-                                    <?= $cliente['cnpj'] ?>
+                                    <?= htmlspecialchars($cliente['cnpj']) ?>
                                 </p>
 
                                 <p class="titulo">Cidade</p>
+
                                 <p class="dadoCFundo">
-                                    <?= $cliente['cidade'] ?>
+                                    <?= htmlspecialchars($cliente['cidade']) ?>
                                 </p>
 
                             </div>
 
-
-
-
-
                             <div class="informacao">
 
                                 <p class="titulo">E-mail</p>
+
                                 <p class="dado">
-                                    <?= $cliente['email'] ?>
+                                    <?= htmlspecialchars($cliente['email']) ?>
                                 </p>
 
                                 <div class="botoes">
@@ -242,7 +247,7 @@
                                     <button
                                         type="button"
                                         class="editar"
-                                        data-id="<?= $cliente['id_cliente'] ?>">
+                                        data-id="<?= htmlspecialchars($cliente['id_cliente']) ?>">
 
                                         Editar
 
@@ -251,7 +256,7 @@
                                     <button
                                         type="button"
                                         class="excluir"
-                                        data-id="<?= $cliente['id_cliente'] ?>">
+                                        data-id="<?= htmlspecialchars($cliente['id_cliente']) ?>">
 
                                         Excluir
 
@@ -267,7 +272,10 @@
 
                 <?php else : ?>
 
-                    <p ><strong>Nenhum cliente encontrado.</strong></p> 
+                    <p>
+                        <strong>Nenhum cliente encontrado.</strong>
+                    </p>
+
                 <?php endif; ?>
 
             </div>
@@ -275,6 +283,7 @@
         </div>
 
     </main>
+
     <script src="../templates/assets/js/pagina_gerenciamento_de_clientes_adm.js"></script>
 
 </body>

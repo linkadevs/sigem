@@ -1,5 +1,5 @@
 <?php
-// 1. IMPORTAÇÃO DA MODEL (Ajuste o caminho se necessário)
+// 1. IMPORTAÇÃO DO CONTROLLER
 require_once __DIR__ . '/../Controller/GerenciamentoTecController.php';
 use Controller\GerenciamentoTecController;
 
