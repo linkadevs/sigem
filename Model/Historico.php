@@ -23,7 +23,7 @@ class Historico
     {
         try {
             //BUSCA TODAS AS MANUTENÇÕES DA MÁQUINA
-            $sql = "SELECT tipo_de_servico, data_e_hora, id_tecnico_fk
+            $sql = "SELECT id_manutencao, tipo_de_servico, data_e_hora, id_tecnico_fk
         FROM manutencao
         WHERE cod_maquina_fk= :cod_maquina_fk";
             $stmt = $this->db->prepare($sql);
@@ -61,7 +61,7 @@ public function barra_de_Pesquisa($cod_maquina, $filtro)
         $filtro_busca = '%' . $filtro . '%';
         
       
-        $sql = "SELECT tipo_de_servico, data_e_hora, id_tecnico_fk
+        $sql = "SELECT id_manutencao, tipo_de_servico, data_e_hora, id_tecnico_fk
                 FROM manutencao
                 WHERE cod_maquina_fk = :cod_maquina_fk
                 AND (
