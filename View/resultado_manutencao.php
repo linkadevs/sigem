@@ -7,7 +7,7 @@ ini_set('display_errors', '1');
 $erro = null;
 $ultimamanutencao_dados = null;
 $cod_maquina = '';
-$maquina_valida = false;
+$maquina_valida = false;  // Indica se a máquina existe
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $cod_maquina = trim($_POST['cod_maquina'] ?? '');
@@ -19,15 +19,33 @@ if ($cod_maquina === '') {
     $erro = 'Código de máquina não informado. Volte e tente novamente.';
 } else {
     try {
-        $controller = new Controller\PaginainicialController();
-        $ultimamanutencao_dados = $controller->consultar_ultima_manutencao($cod_maquina);
-
-        if (!$ultimamanutencao_dados) {
-            $erro = 'Máquina não encontrada ou sem manutenção registrada para este código.';
+        // ==============================================
+        // 1. VERIFICAR SE A MÁQUINA EXISTE (usando o mesmo Model)
+        // ==============================================
+        $model = new Model\PaginainicialModel();
+        $maquina_existe = $model->verificarMaquinaExiste($cod_maquina);
+        
+        if (!$maquina_existe) {
+            $erro = 'Máquina não encontrada no sistema. Verifique o código digitado.';
             $maquina_valida = false;
         } else {
+            // ==============================================
+            // 2. MÁQUINA EXISTE - HABILITA OS BOTÕES
+            // ==============================================
             $maquina_valida = true;
+            
+            // ==============================================
+            // 3. BUSCA A ÚLTIMA MANUTENÇÃO (se houver)
+            // ==============================================
+            $controller = new Controller\PaginainicialController();
+            $ultimamanutencao_dados = $controller->consultar_ultima_manutencao($cod_maquina);
+            
+            // Se não tem manutenção, não é erro - apenas não mostra dados
+            if (!$ultimamanutencao_dados) {
+                // $ultimamanutencao_dados continua null, mas sem erro
+            }
         }
+        
     } catch (Exception $e) {
         $erro = 'Erro ao consultar manutenção: ' . $e->getMessage();
         $maquina_valida = false;
@@ -102,15 +120,8 @@ if (!empty($ultimamanutencao_dados['data_e_hora'])) {
             </div>
 
             <div class="Cform">
-                <?php if (!$ultimamanutencao_dados && !$erro): ?>
-                    <h1>Bem-vindo!</h1>
-                    <h2 class="subtitulo">Identifique a máquina que deseja consultar</h2>
-                    <figure class="linha_azul">
-                        <img src="/sigem/templates/assets/img/linha_azul.png" alt="linha azul no form">
-                    </figure>
-                <?php endif; ?>
-
-                <?php if ($erro): ?>
+                <!-- CASO: MÁQUINA NÃO ENCONTRADA - mostra formulário para tentar novamente -->
+                <?php if ($erro && !$maquina_valida): ?>
                     <div class="erro-mensagem"><?php echo htmlspecialchars($erro, ENT_QUOTES, 'UTF-8'); ?></div>
                     <h1>Bem-vindo!</h1>
                     <h2 class="subtitulo">Identifique a máquina que deseja consultar</h2>
@@ -132,11 +143,13 @@ if (!empty($ultimamanutencao_dados['data_e_hora'])) {
                         <img src="/sigem/templates/assets/img/logo.png" alt="Logo">
                     </figure>
                     <div class="btn_login">
-                        <button type="button" onclick="window.location.href='login.html'">
+                        <button type="button" onclick="window.location.href='login.php?objetivo=4'">
                             Login
                             <img src="/sigem/templates/assets/img/seta_login.png" alt="seta" class="seta_login">
                         </button>
                     </div>
+                
+                <!-- CASO: MÁQUINA ENCONTRADA COM MANUTENÇÃO - mostra os dados -->
                 <?php elseif ($ultimamanutencao_dados): ?>
                     <div class="maquina_encontrada">
                         <h2>Máquina encontrada!</h2>
@@ -146,7 +159,13 @@ if (!empty($ultimamanutencao_dados['data_e_hora'])) {
                                 <?php echo htmlspecialchars($ultimamanutencao_dados['cod_maquina_fk'], ENT_QUOTES, 'UTF-8'); ?>
                             </p>
                             <p><strong>Tipo de serviço</strong>
-                                <?php echo htmlspecialchars($ultimamanutencao_dados['tipo_de_servico'], ENT_QUOTES, 'UTF-8'); ?>
+                                <?php 
+                                $tipo = $ultimamanutencao_dados['tipo_de_servico'] ?? '';
+                                if ($tipo === 'instalacao') echo 'Instalação';
+                                elseif ($tipo === 'manutencao_corretiva') echo 'Manutenção corretiva';
+                                elseif ($tipo === 'manutencao_preventiva') echo 'Manutenção preventiva';
+                                else echo htmlspecialchars($tipo, ENT_QUOTES, 'UTF-8');
+                                ?>
                             </p>
                             <p><strong>Nome do técnico</strong>
                                 <?php echo htmlspecialchars($ultimamanutencao_dados['nome_tecnico'], ENT_QUOTES, 'UTF-8'); ?>
@@ -160,31 +179,19 @@ if (!empty($ultimamanutencao_dados['data_e_hora'])) {
                             <img src="/sigem/templates/assets/img/logo2.png" alt="Logo">
                         </figure>
                     </div>
-                <?php else: ?>
-                    <h1>Bem-vindo!</h1>
-                    <h2 class="subtitulo">Identifique a máquina que deseja consultar</h2>
-                    <figure class="linha_azul">
-                        <img src="/sigem/templates/assets/img/linha_azul.png" alt="linha azul no form">
-                    </figure>
-                    <form class="form" method="POST" action="./resultado_manutencao.php">
-                        <div class="input_codigo">
-                            <label for="Codigo">Código de Identificação</label>
-                            <input type="text" id="Codigo" name="cod_maquina"
-                                value="<?php echo htmlspecialchars($cod_maquina, ENT_QUOTES, 'UTF-8'); ?>"
-                                placeholder="Insira o número de identificação da máquina" required>
+                
+                <!-- CASO: MÁQUINA ENCONTRADA SEM MANUTENÇÃO - mostra mensagem e botões habilitados -->
+                <?php elseif ($maquina_valida && !$ultimamanutencao_dados): ?>
+                    <div class="maquina_encontrada">
+                        <h2>Máquina encontrada!</h2>
+                        <h3 class="subtitulo_maquina">Ainda não há manutenções registradas para esta máquina.</h3>
+                        <div class="maquina-info">
+                            <p><strong>Código da Máquina:</strong> <?php echo htmlspecialchars($cod_maquina, ENT_QUOTES, 'UTF-8'); ?></p>
+                            <p><strong>Status:</strong> Sem manutenções registradas</p>
                         </div>
-                        <div class="btn_envio">
-                            <button type="submit">Enviar!</button>
-                        </div>
-                    </form>
-                    <figure class="logo">
-                        <img src="/sigem/templates/assets/img/logo.png" alt="Logo">
-                    </figure>
-                    <div class="btn_login">
-                        <button type="button" onclick="window.location.href='login.html'">
-                            Login
-                            <img src="/sigem/templates/assets/img/seta_login.png" alt="seta" class="seta_login">
-                        </button>
+                        <figure class="logo2">
+                            <img src="/sigem/templates/assets/img/logo2.png" alt="Logo">
+                        </figure>
                     </div>
                 <?php endif; ?>
             </div>

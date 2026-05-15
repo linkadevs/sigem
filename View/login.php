@@ -53,7 +53,7 @@ unset($_SESSION['erro']);
                       , então deixa o action assim -->
 
                 <?php if ($erro): ?>
-                    <div class="mensagem-erro" style="color: red; text-align: center; margin: 10px 0;">
+                    <div class="mensagem-erro" style="color: red; text-align: center; margin: 10px 0; font-size: 1.2rem;">
                         <?php echo htmlspecialchars($erro); ?>
                     </div>
                 <?php endif; ?>

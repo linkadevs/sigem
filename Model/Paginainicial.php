@@ -50,17 +50,34 @@ class PaginainicialModel
     public function nome_tecnico($id_tecnico)
     {
         try {
-        $sql = 'SELECT nome FROM tecnico WHERE id_tecnico = :id_tecnico';
-        $stmt = $this->db->prepare($sql);
-        $stmt->bindParam(':id_tecnico', $id_tecnico, PDO::PARAM_INT);
-        $stmt->execute();
-        $tecnicoinfor = $stmt->fetch(PDO::FETCH_ASSOC);
-        return $tecnicoinfor ? $tecnicoinfor['nome'] : null;
+            $sql = 'SELECT nome FROM tecnico WHERE id_tecnico = :id_tecnico';
+            $stmt = $this->db->prepare($sql);
+            $stmt->bindParam(':id_tecnico', $id_tecnico, PDO::PARAM_INT);
+            $stmt->execute();
+            $tecnicoinfor = $stmt->fetch(PDO::FETCH_ASSOC);
+            return $tecnicoinfor ? $tecnicoinfor['nome'] : null;
 
         } catch (PDOException $erro) {
             throw new Exception('Erro ao consultar nome do técnico: ' . $erro);
         }
     }
-}
 
+    // ==============================================
+    // NOVO MÉTODO: Verifica se a máquina existe
+    // ==============================================
+    public function verificarMaquinaExiste($cod_maquina)
+    {
+        try {
+            $sql = "SELECT COUNT(*) FROM maquina WHERE cod_maquina = :cod_maquina";
+            $stmt = $this->db->prepare($sql);
+            $stmt->bindParam(':cod_maquina', $cod_maquina, PDO::PARAM_STR);
+            $stmt->execute();
+            
+            return $stmt->fetchColumn() > 0;
+            
+        } catch (PDOException $e) {
+            throw new Exception('Erro ao verificar máquina: ' . $e->getMessage());
+        }
+    }
+}
 ?>

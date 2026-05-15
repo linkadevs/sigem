@@ -505,7 +505,6 @@ body {
     
     .input_pesquisa {
         font-size: 1rem;
-        text-align: center;
     }
     
     .input_pesquisa::placeholder {
@@ -547,7 +546,7 @@ body {
     }
 }
 
-@media (max-width: 340px) {
+@media (max-width: 335px) {
     .container_fundo {
         padding: 0.5rem;
     }
