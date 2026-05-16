@@ -25,28 +25,7 @@ class GerenciamentoCliente
         $this->db = Connection::getInstance();
     }
 
-    public function createCliente($nome, $cnpj, $uf, $cidade, $contato, $email, $senha)
-    {
-        try {
-            $sql = "INSERT INTO cliente (nome, cnpj, uf, cidade, contato, email, senha) VALUES (:nome, :cnpj, :uf, :cidade, :contato , :email, :senha)";
-            $stmt = $this->db->prepare($sql);
 
-            $senhaHash = password_hash($senha, PASSWORD_DEFAULT);
-
-            $stmt->bindParam(':nome', $nome, PDO::PARAM_STR);
-            $stmt->bindParam(':cnpj', $cnpj, PDO::PARAM_STR);
-            $stmt->bindParam(':uf', $uf, PDO::PARAM_STR);
-            $stmt->bindParam(':cidade', $cidade, PDO::PARAM_STR);
-            $stmt->bindParam(':contato', $contato, PDO::PARAM_STR);
-            $stmt->bindParam(':email', $email, PDO::PARAM_STR);
-            $stmt->bindParam(':senha', $senhaHash, PDO::PARAM_STR);
-
-            return $stmt->execute();
-        } catch (PDOException $e) {
-            error_log("Erro ao criar Cliente: " . $e->getMessage());
-            return false;
-        }
-    }
 
     // Buscar todos
     public function getAllClientes()

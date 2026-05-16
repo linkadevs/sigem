@@ -3,11 +3,15 @@
 // DEFINE O NAMESPACE
 namespace Controller;
 
+use Exception;
+use PDOException;
+
 // IMPORTA O MODEL
 require_once __DIR__ . '/../Model/GerenciamentoTec.php';
 
 // USA O MODEL
 use Model\GerenciamentoTec;
+
 
 // CLASSE CONTROLLER
 class GerenciamentoTecController

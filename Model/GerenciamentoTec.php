@@ -25,27 +25,7 @@ class GerenciamentoTec
         $this->db = Connection::getInstance();
     }
 
-    public function createTec($nome, $cpf, $funcao, $email, $senha)
-    {
-        try {
-            $sql = "INSERT INTO tecnico (nome, cpf, funcao, email, senha) VALUES (:nome, :cpf, :funcao, :email, :senha)";
-            $stmt = $this->db->prepare($sql);
-
-            $senhaHash = password_hash($senha, PASSWORD_DEFAULT);
-
-            $stmt->bindParam(':nome', $nome, PDO::PARAM_STR);
-            $stmt->bindParam(':cpf', $cpf, PDO::PARAM_STR); // Alterado para STR por causa dos zeros à esquerda
-            $stmt->bindParam(':funcao', $funcao, PDO::PARAM_STR);
-            $stmt->bindParam(':email', $email, PDO::PARAM_STR);
-            $stmt->bindParam(':senha', $senhaHash, PDO::PARAM_STR);
-
-            return $stmt->execute();
-        } catch (PDOException $e) {
-            error_log("Erro ao criar Técnico: " . $e->getMessage());
-            return false;
-        }
-    }
-
+  
     // Buscar todos
     public function getAllTecs()
     {

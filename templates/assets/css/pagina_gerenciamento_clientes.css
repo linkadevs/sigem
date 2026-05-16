@@ -15,9 +15,9 @@ body {
 }
 
  strong{
-    font-size: 2.4rem;
-    width: 2rem;
-    height: 2rem;
+    font-size: 2.1rem;
+    justify-content: center;
+    display: flex; 
 }
 
 /* MENU LATERAL (padrão desktop) */
@@ -318,11 +318,6 @@ input:focus {
         padding: 1.5rem;
     }
 
-    strong {
-        font-size: 2.1rem !important;
-        width: 2rem;
-        height: 2rem;
-    }
 
     /* Ajuste do menu lateral */
     aside {
@@ -413,8 +408,6 @@ input:focus {
 
     strong {
         font-size: 1.8rem;
-        width: 2rem;
-        height: 2rem;
     }
 }
 
@@ -427,8 +420,6 @@ input:focus {
 
     strong {
         font-size: 1.6rem;
-        width: 2rem;
-        height: 2rem;
     }
 
     aside {
@@ -498,8 +489,6 @@ input:focus {
 
     strong {
         font-size: 1.25rem;
-        width: 2rem;
-        height: 2rem;
     }
 
     .dado,
@@ -561,9 +550,7 @@ input:focus {
     }
 
     strong {
-        font-size: 1.1rem;
-        width: 2rem;
-        height: 2rem;
+        font-size: 1.2rem;
     }
 
     .conteudo_superior {
@@ -653,9 +640,7 @@ input:focus {
     }
 
     strong {
-        font-size: 0.9rem;
-        width: 2rem;
-        height: 2rem;
+        font-size: 1.1rem;
     }
 
     .procurar {
@@ -684,11 +669,7 @@ input:focus {
         font-size: 1.4rem;
     }
 
-    strong {
-        font-size: 0.8rem;
-        width: 2rem;
-        height: 2rem;
-    }
+   
 
     .criarCliente figure img {
         width: 1.6rem;
@@ -720,12 +701,7 @@ input:focus {
         padding: 0.8rem;
         margin: 0 0.5rem 1rem 0.5rem;
     }
-    strong {
-        font-size: 0.7rem;
-        width: 2rem;
-        height: 2rem;
-    }
-
+   
     h1 {
         font-size: 1.2rem;
     }
@@ -802,6 +778,10 @@ input:focus {
         width: 4.5rem;
         font-size: 0.8rem;
         height: 2.2rem;
+    }
+
+     strong {
+        font-size: 1rem;
     }
 
     input {

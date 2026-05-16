@@ -3,6 +3,9 @@
 // DEFINE O NAMESPACE
 namespace Controller;
 
+use Exception;
+use PDOException;
+
 // IMPORTA O MODEL
 require_once __DIR__ . '/../Model/GerenciamentoCliente.php';
 
