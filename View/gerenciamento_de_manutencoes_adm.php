@@ -4,28 +4,133 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gerenciamento de máquinas</title>
-    <link rel="stylesheet" href="/templates/assets/css/gerenciamento_de_maquinas_clientes.css">
+    <title>Gerenciamento de manutenções</title>
+    <link rel="stylesheet" href="../templates/assets/css/gerenciamento_de_manutencoes_adm.css">
 </head>
 
 <body>
-    <button class="voltar">
-        <figure>
-            <img src="/templates/assets/img/seta_voltar_semfundo.png" alt="">
-        </figure>
-    </button>
+    <aside class="menu_lateral">
+
+        <nav>
+            <div class="menu_perfil">
+                <button class="btn_perfil">
+                    <div class="circuloperfil">
+                        <figure>
+                            <img src="../templates/assets/img/menu-perfil.png" alt="Imagem circular de um usuário
+                     genérico para simbolizar o perfil">
+                        </figure>
+                    </div>
+                    <p>Administrador</p>
+                </button>
+            </div>
+
+            <div class="menu_home">
+                <button class="btn_home">
+
+                    <figure>
+                        <img src="../templates/assets/img/menu-home.png" alt="casa azul claro">
+                    </figure>
+
+                    <p>Home</p>
+
+                </button>
+            </div>
+
+            <div class="menu_maquinas">
+                <button class="btn_maquinas">
+
+                    <figure>
+                        <img src="../templates/assets/img/menu-maquinas.png" alt="Máquina cinza ilustrativa">
+                    </figure>
+
+                    <p>Máquinas</p>
+                </button>
+            </div>
+
+            <div class="menu_clientes">
+                <button class="btn_clientes">
+
+                    <figure>
+                        <img src="../templates/assets/img/menu-clientes.png" alt="Imagem ilustrativa de uma medalha
+                         em torno do ícone de um cliente">
+                    </figure>
+
+                    <p>Clientes</p>
+                </button>
+            </div>
+
+            <div class="menu_chamados">
+                <button class="btn_chamados">
+
+                    <figure>
+                        <img src="../templates/assets/img/menu-chamados.png" alt="Imagem ilustrativa de um telefone">
+                    </figure>
+
+                    <p>Chamados</p>
+                </button>
+            </div>
+
+            <div class="menu_manutencoes">
+                <button class="btn_manutencoes">
+
+                    <figure>
+                        <img src="../templates/assets/img/menu-manutencaoazul.png"
+                            alt="Imagem ilustrativa de uma engrenagem ao lado de uma ferramenta">
+                    </figure>
+
+                    <p>Manutenções</p>
+                </button>
+            </div>
+
+            <div class="menu_pecas">
+                <button class="btn_pecas">
+                    <figure>
+                        <img src="../templates/assets/img/menu-pecas.png"
+                            alt="Imagem ilustrativa de uma ciaxa de ferramenta">
+                    </figure>
+
+                    <p>Solicitações de peças</p>
+                </button>
+            </div>
+
+            <div class="menu_tecnicos">
+                <button class="btn_tecnicos">
+
+                    <figure>
+                        <img src="../templates/assets/img/menu-tecnico.png"
+                            alt="Imagem ilustrativa de um homem com um capacete de EPI">
+                    </figure>
+
+                    <p>Técnicos</p>
+                </button>
+            </div>
+
+            <div class="menu_logout">
+                <button class="btn_logout">
+
+                    <figure>
+                        <img src="../templates/assets/img/menu-logout.png" alt="Imagem ilustrativade uma porta aberta 
+                        com uma seta indicando a saída">
+                    </figure>
+
+                    <p>Logout</p>
+                </button>
+            </div>
+        </nav>
+    </aside>
+
     <main>
         <div class="container">
 
             <div class="conteudo_superior">
-                <h1>Suas Máquinas</h1>
+                <h1>Manutenções</h1>
                 <form>
                     <div class="input-container">
                         <figure>
-                            <img src="/templates/assets/img/lupa_branca.png" alt="">
+                            <img src="../templates/assets/img/lupa_branca.png" alt="">
                         </figure>
                         <input type="text" class="pesquisar"
-                            placeholder="Busque por uma data, um código ou máquina específica!">
+                            placeholder="Busque por uma data, nome ou serviço específico!">
                     </div>
                     <button class="procurar">Procurar</button>
                 </form>
@@ -37,7 +142,7 @@
                     <h2 class="maquina">Ar condicionado</h2>
                     <P class="codigo">001</P>
                     <hr>
-                    <h3 class="manutencao">Última manutenção</h3>
+                    <h3 class="manutencao">Manutenção</h3>
                     <div class="dados">
                         <div class="informacaoazul">
                             <p class="tecnico">Técnico:</p>
@@ -60,8 +165,7 @@
                         </div>
                     </div>
                     <div class="botoes">
-                        <button class="historico">Ver histórico</button>
-                        <button class="chamado">Abrir chamado</button>
+                        <button class="pmoc">Ver PMOC</button>
                     </div>
 
                 </div>
@@ -70,7 +174,7 @@
                     <h2 class="maquina">Ar condicionado</h2>
                     <P class="codigo">001</P>
                     <hr>
-                    <h3 class="manutencao">Última manutenção</h3>
+                    <h3 class="manutencao">Manutenção</h3>
                     <div class="dados">
                         <div class="informacaoazul">
                             <p class="tecnico">Técnico:</p>
@@ -93,8 +197,7 @@
                         </div>
                     </div>
                     <div class="botoes">
-                        <button class="historico">Ver histórico</button>
-                        <button class="chamado">Abrir chamado</button>
+                        <button class="pmoc">Ver PMOC</button>
                     </div>
 
                 </div>
@@ -103,7 +206,7 @@
                     <h2 class="maquina">Ar condicionado</h2>
                     <P class="codigo">001</P>
                     <hr>
-                    <h3 class="manutencao">Última manutenção</h3>
+                    <h3 class="manutencao">Manutenção</h3>
                     <div class="dados">
                         <div class="informacaoazul">
                             <p class="tecnico">Técnico:</p>
@@ -126,8 +229,7 @@
                         </div>
                     </div>
                     <div class="botoes">
-                        <button class="historico">Ver histórico</button>
-                        <button class="chamado">Abrir chamado</button>
+                        <button class="pmoc">Ver PMOC</button>
                     </div>
 
                 </div>
@@ -136,7 +238,7 @@
                     <h2 class="maquina">Ar condicionado</h2>
                     <P class="codigo">001</P>
                     <hr>
-                    <h3 class="manutencao">Última manutenção</h3>
+                    <h3 class="manutencao">Manutenção</h3>
                     <div class="dados">
                         <div class="informacaoazul">
                             <p class="tecnico">Técnico:</p>
@@ -159,8 +261,7 @@
                         </div>
                     </div>
                     <div class="botoes">
-                        <button class="historico">Ver histórico</button>
-                        <button class="chamado">Abrir chamado</button>
+                        <button class="pmoc">Ver PMOC</button>
                     </div>
 
                 </div>
@@ -169,7 +270,7 @@
                     <h2 class="maquina">Ar condicionado</h2>
                     <P class="codigo">001</P>
                     <hr>
-                    <h3 class="manutencao">Última manutenção</h3>
+                    <h3 class="manutencao">Manutenção</h3>
                     <div class="dados">
                         <div class="informacaoazul">
                             <p class="tecnico">Técnico:</p>
@@ -192,8 +293,7 @@
                         </div>
                     </div>
                     <div class="botoes">
-                        <button class="historico">Ver histórico</button>
-                        <button class="chamado">Abrir chamado</button>
+                        <button class="pmoc">Ver PMOC</button>
                     </div>
 
                 </div>
@@ -202,7 +302,7 @@
                     <h2 class="maquina">Ar condicionado</h2>
                     <P class="codigo">001</P>
                     <hr>
-                    <h3 class="manutencao">Última manutenção</h3>
+                    <h3 class="manutencao">Manutenção</h3>
                     <div class="dados">
                         <div class="informacaoazul">
                             <p class="tecnico">Técnico:</p>
@@ -225,8 +325,7 @@
                         </div>
                     </div>
                     <div class="botoes">
-                        <button class="historico">Ver histórico</button>
-                        <button class="chamado">Abrir chamado</button>
+                        <button class="pmoc">Ver PMOC</button>
                     </div>
 
                 </div>
@@ -235,7 +334,7 @@
                     <h2 class="maquina">Ar condicionado</h2>
                     <P class="codigo">001</P>
                     <hr>
-                    <h3 class="manutencao">Última manutenção</h3>
+                    <h3 class="manutencao">Manutenção</h3>
                     <div class="dados">
                         <div class="informacaoazul">
                             <p class="tecnico">Técnico:</p>
@@ -258,8 +357,7 @@
                         </div>
                     </div>
                     <div class="botoes">
-                        <button class="historico">Ver histórico</button>
-                        <button class="chamado">Abrir chamado</button>
+                        <button class="pmoc">Ver PMOC</button>
                     </div>
 
                 </div>
@@ -268,7 +366,7 @@
                     <h2 class="maquina">Ar condicionado</h2>
                     <P class="codigo">001</P>
                     <hr>
-                    <h3 class="manutencao">Última manutenção</h3>
+                    <h3 class="manutencao">Manutenção</h3>
                     <div class="dados">
                         <div class="informacaoazul">
                             <p class="tecnico">Técnico:</p>
@@ -291,8 +389,7 @@
                         </div>
                     </div>
                     <div class="botoes">
-                        <button class="historico">Ver histórico</button>
-                        <button class="chamado">Abrir chamado</button>
+                        <button class="pmoc">Ver PMOC</button>
                     </div>
 
                 </div>
@@ -300,7 +397,7 @@
         </div>
 
     </main>
-    <script src="/templates/assets/js/gerenciamento_de_paginas_clientes.js"></script>
+<script src="/templates/assets/js/gerenciamento_de_manutencoes_adm.js"></script>
 </body>
 
 </html>
