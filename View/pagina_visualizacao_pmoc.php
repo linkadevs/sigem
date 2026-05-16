@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . '/../Controller/PMOCController.php';
+require_once __DIR__ . '/../Controller/pmocController.php';
 
 $pmocController = new Controller\PmocController();
 

@@ -56,13 +56,13 @@ class SegmentacaoController
 
                 case 2:
                     if ($tipo_usuario === 'tecnico') {
-                        return '../view/registro_nova_manutencao.php?cod_maquina=' . urlencode($cod_maquina);
+                        return '../view/registro_nova_manutencao.php?cod_maquina=' . urlencode($cod_maquina) . '&id_usuario=' . urlencode($id_usuario);
                     }
                     return null;
 
                 case 3:
                     if ($tipo_usuario === 'cliente') {
-                        return '../view/pagina_abertura_chamados.php?cod_maquina=' . urlencode($cod_maquina);
+                        return '../view/pagina_abertura_chamados.php?cod_maquina=' . urlencode($cod_maquina) . '&id_usuario=' . urlencode($id_usuario);
                     }
                     return null;
                 
