@@ -18,14 +18,14 @@ class Chamado {
 
     public function selecionarTodosOsChamados() :array {
         try {
-            $sql = 'SELECT chamado.id_chamado, chamado.status,
-            tecnico.nome, cliente.nome 
-            FROM chamado 
-            LEFT JOIN tecnico
-            ON chamado.id_tecnico_fk = tecnico.id_tecnico
-            INNER JOIN cliente
-            ON chamado.id_cliente_fk = cliente.id_cliente
-            ORDER BY data_chamado ASC';
+            $sql = 'SELECT c.id_chamado, c.status,
+            t.nome, cl.nome 
+            FROM chamado c
+            LEFT JOIN tecnico t
+            ON c.id_tecnico_fk = t.id_tecnico
+            INNER JOIN cliente cl
+            ON c.id_cliente_fk = cl.id_cliente
+            ORDER BY c.data_chamado ASC';
             $stmt = $this->db->query($sql);
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
         } catch (PDOException $e) {
@@ -37,13 +37,13 @@ class Chamado {
         int $id_cliente_fk
     ) :array {
         try {
-            $sql = 'SELECT chamado.descricao, chamado.status,
-            chamado.data_chamado, chamado.fotos, maquina.cod_maquina,
-            maquina.nome_maquina FROM chamado
-            INNER JOIN maquina
-            ON chamado.cod_maquina_fk = maquina.cod_maquina
-            WHERE id_cliente_fk = :id_cliente_fk
-            ORDER BY data_chamado ASC';
+            $sql = 'SELECT c.descricao, c.status,
+            c.data_c, c.fotos, m.cod_maquina,
+            m.nome_maquina FROM chamado c
+            INNER JOIN maquina m
+            ON c.cod_maquina_fk = m.cod_maquina
+            WHERE c.id_cliente_fk = :id_cliente_fk
+            ORDER BY c.data_chamado ASC';
 
             $stmt = $this->db->prepare($sql);
             $stmt->execute([
@@ -60,16 +60,16 @@ class Chamado {
         int $id_chamado
     ) :?array {
         try {
-            $sql = 'SELECT chamado.descricao, chamado.status,
-            chamado.data_chamado, chamado.fotos, maquina.nome_maquina,
-            maquina.localizacao, maquina.cod_maquina, cliente.nome,
-            cliente.cnpj, cliente.uf, cliente.cidade, cliente.contato
-            FROM chamado
-            INNER JOIN maquina
-            ON chamado.cod_maquina_fk = maquina.cod_maquina
-            INNER JOIN cliente
-            ON chamado.id_cliente_fk = cliente.id_cliente
-            WHERE id_chamado = :id_chamado
+            $sql = 'SELECT c.descricao AS descricao_chamado, c.status AS status_chamado,
+            c.data_chamado, c.fotos AS fotos_chamado, m.nome_maquina,
+            m.localizacao AS localizacao_maquina, m.cod_maquina, cl.nome AS nome_cliente,
+            cl.cnpj AS cnpj_cliente, cl.uf AS uf_cliente, cl.cidade AS cidade_cliente, cl.contato AS contato_cliente
+            FROM chamado c
+            INNER JOIN maquina m
+            ON c.cod_maquina_fk = m.cod_maquina
+            INNER JOIN cliente cl
+            ON c.id_cliente_fk = cl.id_cliente
+            WHERE c.id_chamado = :id_chamado
             LIMIT 1';
 
             $stmt = $this->db->prepare($sql);
@@ -88,17 +88,17 @@ class Chamado {
         }
     }
 
-    public function selecionarChamadoPorTecnico (
+    public function selecionarChamadosPorTecnico (
         int $id_tecnico_fk
     ) :array {
         try {
-            $sql = 'SELECT chamado.id_chamado chamado.status,  cliente.nome, tecnico.nome
-            FROM chamado
-            INNER JOIN cliente
-            ON chamado.id_cliente_fk = cliente.id_cliente
-            INNER JOIN tecnico
-            ON chamado.id_tecnico_fk = tecnico.id_tecnico
-            WHERE id_tecnico_fk = :id_tecnico_fk
+            $sql = 'SELECT c.id_chamado, c.status AS status_chamado, cl.nome AS nome_cliente, t.nome AS nome_tecnico
+            FROM chamado c
+            INNER JOIN cliente cl
+            ON c.id_cliente_fk = cl.id_cliente
+            INNER JOIN tecnico t
+            ON c.id_tecnico_fk = t.id_tecnico
+            WHERE c.id_tecnico_fk = :id_tecnico_fk
             ORDER BY data_chamado ASC';
 
             $stmt = $this->db->prepare($sql);
@@ -116,12 +116,53 @@ class Chamado {
             );
         }
     }
-    public function criarChamado () :bool {
+    public function abrirChamado (
+        string $descricao,
+        string $status,
+        string $fotos,
+        int $id_cliente_fk,
+        string $cod_maquina_fk
+    ) :bool {
         try {
-            
+            $sql = 'INSERT INTO chamado c
+            (c.descricao, c.status, c.data_chamado, c.fotos, c.id_cliente_fk, c.cod_maquina_fk)
+            VALUES (:descricao, :status, CURDATE(), :fotos, :id_cliente_fk, :cod_maquina_fk)';
+
+            $stmt = $this->db->prepare($sql);
+
+            return $stmt->execute([
+                ':descricao' => $descricao,
+                ':status' => $status,
+                ':fotos' => $fotos,
+                ':id_cliente_fk' => $id_cliente_fk,
+                ':cod_maquina_fk' => $cod_maquina_fk
+            ]);
+        } catch (PDOException $e) {
+            throw new Exception (
+                'Erro ao abrir chamado.',
+                0,
+                $e
+            );
         }
     }
 
+    public function deletarChamado (
+        int $id_chamado
+    ) :bool {
+        try {
+            $sql = 'DELETE FROM chamado c WHERE c.id_chamado = :id_chamado';
+            $stmt = $this->db->prepare($sql);
+            return $stmt->execute([
+                ':id_chamado' => $id_chamado
+            ]);
+        } catch (PDOException $e) {
+            throw new Exception (
+                'Erro ao deletar chamado',
+                0,
+                $e
+            );
+        }
+    }
 }
 
 ?>
