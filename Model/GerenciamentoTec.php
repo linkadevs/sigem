@@ -25,7 +25,7 @@ class GerenciamentoTec
         $this->db = Connection::getInstance();
     }
 
-  
+
     // Buscar todos
     public function getAllTecs()
     {
@@ -108,8 +108,9 @@ class GerenciamentoTec
             FROM tecnico
             WHERE
             nome LIKE :busca1
-            OR funcao LIKE :busca2
-            OR email LIKE :busca3
+            OR cpf LIKE :busca2
+            OR funcao LIKE :busca3
+            OR email LIKE :busca4
             ";
 
             $stmt = $this->db->prepare($sql);
@@ -117,6 +118,8 @@ class GerenciamentoTec
             $stmt->bindValue(':busca1', $busca, PDO::PARAM_STR);
             $stmt->bindValue(':busca2', $busca, PDO::PARAM_STR);
             $stmt->bindValue(':busca3', $busca, PDO::PARAM_STR);
+            $stmt->bindValue(':busca4', $busca, PDO::PARAM_STR);
+
 
             $stmt->execute();
 

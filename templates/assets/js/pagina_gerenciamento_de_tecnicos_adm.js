@@ -118,7 +118,7 @@ document.addEventListener('click', (event) => {
 
         // CONFIRMAÇÃO COM OPÇÃO DE CANCELAR
         // confirm() retorna true para OK e false para Cancelar
-        const confirmacao = confirm('Tem certeza que deseja excluir este técnico? Esta ação não pode ser desfeita.');
+        const confirmacao = confirm('Tem certeza que deseja excluir este técnico? Esta ação não poderá ser desfeita.');
 
         if (confirmacao) {
             // Se clicou em OK, ENVIA PARA O CONTROLLER
