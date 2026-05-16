@@ -120,7 +120,7 @@ if (!empty($informacoes_manutencao['fotos'])) {
                 <div class="informacao2">
                     <p class="titulo">Pressão aferida</p>
                     <p class="conteudo">
-                        <?php echo htmlspecialchars($informacoes_manutencao['pressao_aferida'] ?? 'Não informado'); ?>
+                        <?php echo htmlspecialchars($informacoes_manutencao['pressao_aferida'].'  PSI' ?? 'Não informado'); ?>
                     </p>
                 </div>
                 <div class="informacao">
