@@ -1,8 +1,14 @@
+// ==============================================
+// VARIÁVEIS - ELEMENTOS DO DOM
+// ==============================================
+
+// Campos principais
 const pressaoAferida = document.getElementById('pressao_aferida')
 const botaoFotos = document.getElementById('botaoFotos')
 const grid = document.querySelector('.grid')
 const form = document.querySelector('form')
 
+// Dados da manutenção
 const nomeTecnico = document.getElementById('nome_tecnico')
 const nomeAcompanhante = document.getElementById('nome_acompanhante')
 const select = document.getElementById('tipo_servico')
@@ -12,7 +18,7 @@ const dataHora = document.getElementById('data_hora')
 const inputFotos = document.getElementById('fotos')
 const cancelarBtn = document.getElementById('cancelar')
 
-// Elementos de reposição de peças
+// Campos de reposição de peças
 const reposicaoContainer = document.getElementById('reposicao_pecas_container')
 const solicitarReposicao = document.getElementById('solicitar_reposicao')
 const detalhesPecasContainer = document.getElementById('detalhes_pecas_container')
@@ -26,12 +32,13 @@ const paginaPrincipalBtn = document.querySelector('.pagina-principal')
 const historicoBtn = document.querySelector('.historico')
 const botaoVoltar = document.querySelector('.botaoVoltar')
 
-// Tipos de serviço que devem exibir a opção de reposição de peças
+// Tipos de serviço que permitem reposição de peças
 const servicosComReposicao = ['manutencao_corretiva', 'manutencao_preventiva', 'inspecao']
 
-// Função para navegação
+// ==============================================
+// FUNÇÃO DE NAVEGAÇÃO
+// ==============================================
 function navegarPara(destino) {
-    console.log(`Navegando para: ${destino}`)
     switch(destino) {
         case 'principal':
             alert('Redirecionando para a página principal...')
@@ -42,26 +49,25 @@ function navegarPara(destino) {
         case 'voltar':
             alert('Voltando para a página anterior...')
             break
-        default:
-            break
     }
 }
 
-// Eventos de navegação
+// ==============================================
+// EVENTOS DOS BOTÕES DE NAVEGAÇÃO
+// ==============================================
 if (paginaPrincipalBtn) paginaPrincipalBtn.addEventListener('click', () => navegarPara('principal'))
 if (historicoBtn) historicoBtn.addEventListener('click', () => navegarPara('historico'))
 if (botaoVoltar) botaoVoltar.addEventListener('click', () => navegarPara('voltar'))
 
-// Função para verificar se deve mostrar o campo de reposição de peças
+// ==============================================
+// FUNÇÃO: VERIFICAR SE DEVE MOSTRAR REPOSIÇÃO DE PEÇAS
+// Se o tipo de serviço permite reposição, mostra o container
+// ==============================================
 function verificarMostrarReposicao() {
     const tipoSelecionado = select.value
     if (servicosComReposicao.includes(tipoSelecionado)) {
         reposicaoContainer.style.display = 'block'
-        if (solicitarReposicao.checked) {
-            mostrarDetalhesPecas(true)
-        } else {
-            mostrarDetalhesPecas(false)
-        }
+        mostrarDetalhesPecas(solicitarReposicao.checked)
     } else {
         reposicaoContainer.style.display = 'none'
         mostrarDetalhesPecas(false)
@@ -70,7 +76,9 @@ function verificarMostrarReposicao() {
     }
 }
 
-// Função para mostrar/esconder os campos detalhados de peças
+// ==============================================
+// FUNÇÃO: MOSTRAR/ESCONDER DETALHES DAS PEÇAS
+// ==============================================
 function mostrarDetalhesPecas(mostrar) {
     if (mostrar) {
         detalhesPecasContainer.style.display = 'block'
@@ -88,21 +96,27 @@ function mostrarDetalhesPecas(mostrar) {
     }
 }
 
-// Função para limpar os campos de peças
+// ==============================================
+// FUNÇÃO: LIMPAR CAMPOS DE PEÇAS
+// ==============================================
 function limparCamposPecas() {
     nomePeca.value = ''
     quantidadePeca.value = ''
     descricaoPeca.value = ''
 }
 
-// Evento para quando o checkbox de solicitar reposição muda
+// ==============================================
+// EVENTO: CHECKBOX SOLICITAR REPOSIÇÃO
+// ==============================================
 if (solicitarReposicao) {
     solicitarReposicao.addEventListener('change', () => {
         mostrarDetalhesPecas(solicitarReposicao.checked)
     })
 }
 
-// Evento para quando o tipo de serviço muda
+// ==============================================
+// EVENTO: SELECT DE TIPO DE SERVIÇO
+// ==============================================
 if (select) {
     select.addEventListener('change', () => {
         let selectedOption = select.options[select.selectedIndex]
@@ -115,7 +129,9 @@ if (select) {
     })
 }
 
-// Botão de fotos
+// ==============================================
+// EVENTO: BOTÃO DE FOTOS - ABRIR SELETOR DE ARQUIVOS
+// ==============================================
 if (botaoFotos) {
     botaoFotos.addEventListener('click', (e) => {
         e.preventDefault()
@@ -123,7 +139,9 @@ if (botaoFotos) {
     })
 }
 
-// Fazer as fotos selecionadas aparecerem e manipular o texto do botão
+// ==============================================
+// EVENTO: INPUT DE FOTOS - PREVIEW DAS IMAGENS
+// ==============================================
 if (inputFotos) {
     inputFotos.addEventListener('change', () => {
         grid.innerHTML = ''
@@ -134,6 +152,7 @@ if (inputFotos) {
             const figure = document.createElement('figure')
             figure.innerHTML = `<img id="${index}" src="${url}" alt="Foto da manutenção">`
             
+            // Remover foto ao clicar
             figure.addEventListener('click', () => {
                 if (confirm('Deseja remover esta foto?')) {
                     const dt = new DataTransfer()
@@ -147,6 +166,7 @@ if (inputFotos) {
             grid.appendChild(figure)
         })
         
+        // Atualizar texto do botão com quantidade de fotos
         if (inputFotos.files.length > 0) {
             botaoFotos.style.color = '#000000'
             botaoFotos.style.backgroundColor = '#e8f4fd'
@@ -159,7 +179,9 @@ if (inputFotos) {
     })
 }
 
-// Evento para o botão cancelar
+// ==============================================
+// EVENTO: BOTÃO CANCELAR - LIMPAR FORMULÁRIO
+// ==============================================
 if (cancelarBtn) {
     cancelarBtn.addEventListener('click', () => {
         if (confirm('Tem certeza que deseja cancelar? Todas as informações serão perdidas.')) {
@@ -181,75 +203,124 @@ if (cancelarBtn) {
     })
 }
 
-// Validação do formulário
+// ==============================================
+// FUNÇÃO: VERIFICAR TODOS OS CAMPOS OBRIGATÓRIOS
+// Retorna true se todos os campos estiverem preenchidos
+// Mostra alert específico para cada campo vazio
+// ==============================================
 function verificarCampos() {
-    // Validar campos básicos
-    if (!nomeAcompanhante || !select || !descricaoServico || !pressaoAferida || !testesFinalizacao || !inputFotos) {
-        return false
+    // ==============================================
+    // 1. VERIFICA CAMPOS PRINCIPAIS
+    // ==============================================
+    
+    // Acompanhante
+    if (!nomeAcompanhante || nomeAcompanhante.value.trim() === "") {
+        alert('❌ Campo obrigatório: Acompanhante do serviço')
+        if (nomeAcompanhante) nomeAcompanhante.focus();
+        return false;
     }
     
-    if (nomeAcompanhante.value.trim() === "" || 
-        select.value === "placeholder" || 
-        descricaoServico.value.trim() === "" || 
-        pressaoAferida.value.trim() === "" || 
-        testesFinalizacao.value.trim() === "" || 
-        inputFotos.files.length === 0) {
-        
-        alert('Por favor, preencha todos os campos obrigatórios (*) e selecione pelo menos uma foto antes de enviar o formulário.')
-        
-        const primeiroCampoVazio = document.querySelector('input:not([disabled])[required]:invalid, select[required]:invalid, textarea[required]:invalid')
-        if (primeiroCampoVazio) {
-            primeiroCampoVazio.scrollIntoView({ behavior: 'smooth', block: 'center' })
-            primeiroCampoVazio.focus()
-        }
-        return false
+    // Tipo de serviço (select)
+    if (!select || select.value === "placeholder") {
+        alert('❌ Campo obrigatório: Selecione um tipo de serviço')
+        if (select) select.focus();
+        return false;
     }
     
-    // Validar campos de reposição de peças se necessário
-    const tipoSelecionado = select.value
+    // Descrição do serviço
+    if (!descricaoServico || descricaoServico.value.trim() === "") {
+        alert('❌ Campo obrigatório: Descrição do serviço')
+        if (descricaoServico) descricaoServico.focus();
+        return false;
+    }
+    
+    // Pressão aferida
+    if (!pressaoAferida || pressaoAferida.value.trim() === "") {
+        alert('❌ Campo obrigatório: Pressão aferida (PSI)')
+        if (pressaoAferida) pressaoAferida.focus();
+        return false;
+    }
+    
+    // Testes e finalização
+    if (!testesFinalizacao || testesFinalizacao.value.trim() === "") {
+        alert('❌ Campo obrigatório: Testes e finalização')
+        if (testesFinalizacao) testesFinalizacao.focus();
+        return false;
+    }
+    
+    // Fotos
+    if (!inputFotos || inputFotos.files.length === 0) {
+        alert('❌ Campo obrigatório: Selecione pelo menos uma foto')
+        if (botaoFotos) botaoFotos.focus();
+        return false;
+    }
+    
+    // ==============================================
+    // 2. VERIFICA CAMPOS DE PEÇAS (SE CHECKBOX MARCADO)
+    // ==============================================
+    const tipoSelecionado = select.value;
     if (servicosComReposicao.includes(tipoSelecionado) && solicitarReposicao && solicitarReposicao.checked) {
-        if (!nomePeca || !quantidadePeca || !descricaoPeca) return false
         
-        if (nomePeca.value.trim() === "" || 
-            quantidadePeca.value.trim() === "" || 
-            descricaoPeca.value.trim() === "") {
-            alert('Por favor, preencha todos os campos da peça em falta (nome, quantidade e descrição).')
-            return false
+        // Nome da peça
+        if (!nomePeca || nomePeca.value.trim() === "") {
+            alert('❌ Campo obrigatório: Nome da peça em falta')
+            if (nomePeca) nomePeca.focus();
+            return false;
         }
         
+        // Quantidade da peça
+        if (!quantidadePeca || quantidadePeca.value.trim() === "") {
+            alert('❌ Campo obrigatório: Quantidade da peça')
+            if (quantidadePeca) quantidadePeca.focus();
+            return false;
+        }
+        
+        // Verifica se quantidade é maior que zero
         if (parseInt(quantidadePeca.value) <= 0) {
-            alert('A quantidade da peça deve ser maior que zero.')
-            return false
+            alert('❌ A quantidade da peça deve ser maior que zero')
+            if (quantidadePeca) quantidadePeca.focus();
+            return false;
+        }
+        
+        // Descrição da peça
+        if (!descricaoPeca || descricaoPeca.value.trim() === "") {
+            alert('❌ Campo obrigatório: Descrição da peça em falta')
+            if (descricaoPeca) descricaoPeca.focus();
+            return false;
         }
     }
     
-    // Validar pressão aferida (PSI)
-    const pressao = parseFloat(pressaoAferida.value)
-    if (isNaN(pressao) || pressao < 0) {
-        alert('Por favor, insira um valor válido para a pressão aferida em PSI.')
-        return false
+    // ==============================================
+    // 3. VALIDAÇÃO ADICIONAL DA PRESSÃO
+    // ==============================================
+    const pressao = parseFloat(pressaoAferida.value);
+    if (isNaN(pressao)) {
+        alert('❌ Pressão aferida deve ser um número válido')
+        if (pressaoAferida) pressaoAferida.focus();
+        return false;
     }
     
-    // Validar se pressão está dentro de uma faixa razoável (opcional)
-    if (pressao > 10000) {
-        if (!confirm('Atenção: O valor da pressão está muito alto (' + pressao + ' PSI). Tem certeza que este valor está correto?')) {
-            return false
-        }
+    if (pressao < 0) {
+        alert('❌ Pressão aferida não pode ser negativa')
+        if (pressaoAferida) pressaoAferida.focus();
+        return false;
     }
     
-    return true
+    // ==============================================
+    // 4. TUDO OK
+    // ==============================================
+    return true;
 }
 
-// Função para formatar e validar a pressão em tempo real
+// ==============================================
+// VALIDAÇÃO DA PRESSÃO EM TEMPO REAL
+// ==============================================
 if (pressaoAferida) {
+    // Enquanto digita: limita a 2 casas decimais
     pressaoAferida.addEventListener('input', () => {
         let valor = parseFloat(pressaoAferida.value)
+        if (isNaN(valor)) return
         
-        if (isNaN(valor)) {
-            return
-        }
-        
-        // Limitar a 2 casas decimais
         if (pressaoAferida.value.includes('.')) {
             const partes = pressaoAferida.value.split('.')
             if (partes[1] && partes[1].length > 2) {
@@ -257,12 +328,8 @@ if (pressaoAferida) {
             }
         }
         
-        // Não permitir valores negativos
-        if (valor < 0) {
-            pressaoAferida.value = 0
-        }
+        if (valor < 0) pressaoAferida.value = 0
         
-        // Remover caracteres não numéricos (exceto ponto e números)
         let valorStr = pressaoAferida.value.replace(/[^\d.-]/g, '')
         if (valorStr.split('-').length > 2) {
             valorStr = valorStr.replace(/-/g, '')
@@ -270,55 +337,45 @@ if (pressaoAferida) {
         pressaoAferida.value = valorStr
     })
     
-    // Validar ao sair do campo
+    // Ao sair do campo: formata o valor
     pressaoAferida.addEventListener('blur', () => {
         let valor = parseFloat(pressaoAferida.value)
         if (!isNaN(valor) && valor >= 0) {
-            // Manter apenas 2 casas decimais
             pressaoAferida.value = parseFloat(valor.toFixed(2))
         }
     })
 }
 
-// Envio do formulário
+// ==============================================
+// ENVIO DO FORMULÁRIO
+// ==============================================
+let enviando = false
+
 if (form) {
     form.addEventListener('submit', (e) => {
-        e.preventDefault()
+        e.preventDefault() // Impede o envio normal para validar primeiro
+        
+        if (enviando) {
+            alert('Aguarde, o formulário já está sendo enviado...')
+            return
+        }
         
         if (verificarCampos()) {
-            // Sincronizar valores dos campos desabilitados com os hidden fields
+            enviando = true
+            
+            // Sincroniza campos hidden
             const nomeTecnicoHidden = document.getElementById('nome_tecnico_hidden')
             const dataHoraHidden = document.getElementById('data_hora_hidden')
             
             if (nomeTecnicoHidden && nomeTecnico) nomeTecnicoHidden.value = nomeTecnico.value
             if (dataHoraHidden && dataHora) dataHoraHidden.value = dataHora.value
             
-            // Adicionar a unidade PSI ao valor da pressão se necessário
-            const pressaoFinal = document.getElementById('pressao_aferida')
-            if (pressaoFinal && pressaoFinal.value) {
-                console.log(`Pressão registrada: ${pressaoFinal.value} PSI`)
-            }
-            
-            alert('Formulário enviado com sucesso!\nPressão: ' + pressaoAferida.value + ' PSI')
-            // form.submit() // Descomente para enviar realmente
+            form.submit() // Envia o formulário
         }
     })
 }
 
-// Prevenir envio duplicado
-let enviando = false
-if (form) {
-    form.addEventListener('submit', (e) => {
-        if (enviando) {
-            e.preventDefault()
-            return
-        }
-        enviando = true
-        setTimeout(() => {
-            enviando = false
-        }, 3000)
-    })
-}
-
-// Inicializar a verificação ao carregar a página
+// ==============================================
+// INICIALIZAÇÃO
+// ==============================================
 verificarMostrarReposicao()
