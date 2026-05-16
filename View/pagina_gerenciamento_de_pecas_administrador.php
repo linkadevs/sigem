@@ -1,3 +1,27 @@
+<?php
+
+
+require_once __DIR__ . '/../Controller/PecasController.php';
+
+use Controller\PecasController;
+
+$controller = new PecasController();
+
+$busca = trim($_GET['busca'] ?? '');
+
+if ($busca !== '') {
+
+    $solicitacoes =
+        $controller->pesquisarSolicitacoes($busca);
+
+} else {
+
+    $solicitacoes =
+        $controller->listarSolicitacoes();
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -5,298 +29,377 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Solicitações de peças</title>
+
     <link rel="stylesheet" href="../templates/assets/css/pagina_gerenciamento_de_pecas_administrador.css">
 </head>
 
 <body>
+
     <aside class="menu_lateral">
+
         <nav>
+
             <div class="menu_perfil">
+
                 <button class="btn_perfil">
+
                     <div class="circuloperfil">
+
                         <figure>
-                            <img src="../templates/assets/img/menu-perfil.png" alt="Imagem circular de um usuário
-                     genérico para simbolizar o perfil">
+
+                            <img src="../templates/assets/img/menu-perfil.png"
+                                alt="Imagem circular de um usuário genérico para simbolizar o perfil">
+
                         </figure>
+
                     </div>
+
                     <p>Administrador</p>
+
                 </button>
+
             </div>
 
             <div class="menu_home">
+
                 <button class="btn_home">
+
                     <figure>
+
                         <img src="../templates/assets/img/menu-home.png" alt="casa azul claro">
+
                     </figure>
+
                     <p>Home</p>
+
                 </button>
+
             </div>
 
             <div class="menu_maquinas">
+
                 <button class="btn_maquinas">
+
                     <figure>
+
                         <img src="../templates/assets/img/menu-maquinas.png" alt="Máquina cinza ilustrativa">
+
                     </figure>
+
                     <p>Máquinas</p>
+
                 </button>
+
             </div>
 
             <div class="menu_clientes">
+
                 <button class="btn_clientes">
+
                     <figure>
-                        <img src="../templates/assets/img/menu-clientes.png" alt="Imagem ilustrativa de uma medalha
-                         em torno do ícone de um cliente">
+
+                        <img src="../templates/assets/img/menu-clientes.png"
+                            alt="Imagem ilustrativa de uma medalha em torno do ícone de um cliente">
+
                     </figure>
+
                     <p>Clientes</p>
+
                 </button>
+
             </div>
 
             <div class="menu_chamados">
+
                 <button class="btn_chamados">
+
                     <figure>
+
                         <img src="../templates/assets/img/menu-chamados.png" alt="Imagem ilustrativa de um telefone">
+
                     </figure>
+
                     <p>Chamados</p>
+
                 </button>
+
             </div>
 
             <div class="menu_manutencoes">
+
                 <button class="btn_manutencoes">
+
                     <figure>
+
                         <img src="../templates/assets/img/menu-manutencao.png"
                             alt="Imagem ilustrativa de uma engrenagem ao lado de uma ferramenta">
+
                     </figure>
+
                     <p>Manutenções</p>
+
                 </button>
+
             </div>
 
             <div class="menu_pecas">
+
                 <button class="btn_pecas">
+
                     <figure>
+
                         <img src="../templates/assets/img/menu-pecasazul.png"
-                            alt="Imagem ilustrativa de uma ciaxa de ferramenta">
+                            alt="Imagem ilustrativa de uma caixa de ferramenta">
+
                     </figure>
+
                     <p>Solicitações de peças</p>
+
                 </button>
+
             </div>
 
             <div class="menu_tecnicos">
+
                 <button class="btn_tecnicos">
+
                     <figure>
+
                         <img src="../templates/assets/img/menu-tecnico.png"
                             alt="Imagem ilustrativa de um homem com um capacete de EPI">
+
                     </figure>
+
                     <p>Técnicos</p>
+
                 </button>
+
             </div>
 
             <div class="menu_logout">
+
                 <button class="btn_logout">
+
                     <figure>
-                        <img src="../templates/assets/img/menu-logout.png" alt="Imagem ilustrativade uma porta aberta 
-                        com uma seta indicando a saída">
+
+                        <img src="../templates/assets/img/menu-logout.png" alt="Imagem ilustrativa de logout">
+
                     </figure>
+
                     <p>Logout</p>
+
                 </button>
+
             </div>
+
         </nav>
+
     </aside>
 
     <main>
 
         <div class="container">
+
             <div class="conteudo_superior">
+
                 <h1>Solicitações de peças</h1>
-                <form method="GET" action="" class="formulario-pesquisa">
+
+                <!-- BARRA DE PESQUISA -->
+                <form method="GET" class="formulario-pesquisa">
                     <div class="input-container">
-                        <figure><img src="../templates/assets/img/lupa_branca.png" alt="Lupa"></figure>
+
+                        <figure>
+
+                            <img src="../templates/assets/img/lupa_branca.png" alt="Lupa">
+
+                        </figure>
+
                         <input type="text" name="busca" class="pesquisar"
                             placeholder="Busque por uma data ou nome específico!"
-                            value="<?= isset($_GET['busca']) ? $_GET['busca'] : '' ?>">
+                            value="<?= htmlspecialchars($_GET['busca'] ?? '') ?>">
+
                     </div>
-                    <button type="submit" class="procurar">Procurar</button>
+
+                    <button type="submit" class="procurar">
+
+                        Procurar
+
+                    </button>
+
                 </form>
+
             </div>
 
             <div class="conteudo_principal">
-                <?php
-                // VERIFICAÇÃO DINÂMICA: Se a variável $lista não estiver vazia, mostre o banco
-                if (!empty($lista)):
-                    foreach ($lista as $item):
-                        ?>
+
+                <?php if (!empty($solicitacoes)): ?>
+
+                    <?php foreach ($solicitacoes as $solicitacao_pecas): ?>
+
                         <div class="bloco">
+
                             <div class="inforcentro">
+
                                 <div class="topo">
+
+                                    <!-- PEÇA -->
                                     <div class="topico">
-                                        <p class="titulo">Peça</p>
-                                        <p class="infor"><?= $item['nome_peca'] ?></p>
-                                    </div>
-                                    <div class="topico">
-                                        <p class="titulo">Status</p>
-                                        <p class="infor status-texto">
-                                            <?= ucfirst(str_replace('_', ' ', $item['status'])) ?>
+
+                                        <p class="titulo">
+                                            Peça
                                         </p>
-                                    </div>
-                                    <div class="topico">
-                                        <p class="titulo">Técnico solicitante</p>
-                                        <p class="infor"><?= $item['id_tecnico_fk'] ?> (ID)</p>
-                                    </div>
-                                </div>
-                                <div class="descricao">
-                                    <p><?= $item['descricao'] ?></p>
-                                </div>
-                            </div>
-                            <div class="lado-direito">
-                                <div class="data">
-                                    <p><?= date('d/m/y', strtotime($item['data'])) ?></p>
-                                </div>
-                                <div class="grupo-botoes">
-                                    <button class="cancelar" data-id="<?= $item['id_solicitacao_pecas'] ?>">Cancelar</button>
-                                    <button class="concluir" data-id="<?= $item['id_solicitacao_pecas'] ?>">Concluir</button>
-                                </div>
-                            </div>
-                        </div>
-                        <?php
-                    endforeach;
 
-                else:
-                    ?>
-                    <div class="conteudo_principal">
-                        <!-- Bloco 1 -->
-                        <div class="bloco">
-                            <div class="inforcentro">
-                                <div class="topo">
-                                    <div class="topico">
-                                        <p class="titulo">Peça</p>
-                                        <p class="infor">Parafuso</p>
+                                        <p class="infor">
+
+                                            <?= htmlspecialchars($solicitacao_pecas['nome_peca']) ?>
+
+                                        </p>
+
                                     </div>
-                                    <div class="topico">
-                                        <p class="titulo">Status</p>
-                                        <p class="infor status-texto">Em aberto</p>
+
+                                     <div class="topico">
+
+                                        <p class="titulo">
+                                            Quantidade de Peças
+                                        </p>
+
+                                        <p class="infor">
+
+                                            <?= htmlspecialchars($solicitacao_pecas['quantidade_pecas']) ?>
+
+                                        </p>
+
                                     </div>
+
+                                    <!-- STATUS -->
                                     <div class="topico">
-                                        <p class="titulo">Técnico solicitante</p>
-                                        <p class="infor">José Silva de Jesus</p>
+
+                                        <p class="titulo">
+                                            Status
+                                        </p>
+
+                                        <p class="infor status-texto">
+
+                                            <?= $solicitacao_pecas['status'] === 'em_aberto'
+                                                ? 'Em aberto'
+                                                : 'Concluído'
+                                                ?>
+
+                                        </p>
+
                                     </div>
+
+                                    <!-- TÉCNICO -->
+                                    <div class="topico">
+
+                                        <p class="titulo">
+                                            Técnico solicitante
+                                        </p>
+
+                                        <p class="infor">
+
+                                            <?= htmlspecialchars($solicitacao_pecas['nome_tecnico']) ?>
+
+                                        </p>
+
+                                    </div>
+
                                 </div>
+
+                                <!-- DESCRIÇÃO -->
                                 <div class="descricao">
-                                    <p>Parafuso M12 x 60 mm. Classe de resistência 8.8.
-                                        Acabamento zincado (proteção contra corrosão). Padrão métrico (rosca MA).</p>
+
+                                    <p>
+
+                                        <?= htmlspecialchars($solicitacao_pecas['descricao']) ?>
+
+                                    </p>
+
                                 </div>
+
                             </div>
+
                             <div class="lado-direito">
+
+                                <!-- DATA -->
                                 <div class="data">
-                                    <p>12/03/26</p>
+
+                                    <p>
+
+                                        <?= date(
+                                            'd/m/y',
+                                            strtotime($solicitacao_pecas['data'])
+                                        ) ?>
+
+                                    </p>
+
                                 </div>
-                                <div class="grupo-botoes">
-                                    <button class="cancelar" data-id="1">Cancelar</button>
-                                    <button class="concluir" data-id="1">Concluir</button>
-                                </div>
+
+                                <!-- BOTÕES -->
+                                <?php if ($solicitacao_pecas['status'] === 'em_aberto'): ?>
+
+                                    <div class="grupo-botoes">
+
+                                        <button class="cancelar" data-id="<?= $solicitacao_pecas['id_solicitacao_pecas'] ?>">
+
+                                            Cancelar
+
+                                        </button>
+
+                                        <button class="concluir" data-id="<?= $solicitacao_pecas['id_solicitacao_pecas'] ?>">
+
+                                            Concluir
+
+                                        </button>
+
+                                    </div>
+
+                                <?php else: ?>
+
+                                    <div class="grupo-botoes">
+
+                                        <button class="concluido">
+
+                                            Concluído
+
+                                        </button>
+
+                                    </div>
+
+                                <?php endif; ?>
+
                             </div>
+
                         </div>
 
-                        <!-- Bloco 2 -->
-                        <div class="bloco">
-                            <div class="inforcentro">
-                                <div class="topo">
-                                    <div class="topico">
-                                        <p class="titulo">Peça</p>
-                                        <p class="infor">Porca</p>
-                                    </div>
-                                    <div class="topico">
-                                        <p class="titulo">Status</p>
-                                        <p class="infor status-texto">Em aberto</p>
-                                    </div>
-                                    <div class="topico">
-                                        <p class="titulo">Técnico solicitante</p>
-                                        <p class="infor">Maria Santos Oliveira</p>
-                                    </div>
-                                </div>
-                                <div class="descricao">
-                                    <p>Porca M12 galvanizada. Resistência à corrosão. Padrão métrico para aplicações
-                                        industriais.</p>
-                                </div>
-                            </div>
-                            <div class="lado-direito">
-                                <div class="data">
-                                    <p>13/03/26</p>
-                                </div>
-                                <div class="grupo-botoes">
-                                    <button class="cancelar" data-id="4">Cancelar</button>
-                                    <button class="concluir" data-id="4">Concluir</button>
-                                </div>
-                            </div>
-                        </div>
+                    <?php endforeach; ?>
 
-                        <!-- Bloco 3 -->
-                        <div class="bloco">
-                            <div class="inforcentro">
-                                <div class="topo">
-                                    <div class="topico">
-                                        <p class="titulo">Peça</p>
-                                        <p class="infor">Arruela</p>
-                                    </div>
-                                    <div class="topico">
-                                        <p class="titulo">Status</p>
-                                        <p class="infor status-texto">Em aberto</p>
-                                    </div>
-                                    <div class="topico">
-                                        <p class="titulo">Técnico solicitante</p>
-                                        <p class="infor">Carlos Eduardo Pereira</p>
-                                    </div>
-                                </div>
-                                <div class="descricao">
-                                    <p>Arruela de pressão M12. Aço carbono com tratamento anticorrosivo. Espessura 2mm.</p>
-                                </div>
-                            </div>
-                            <div class="lado-direito">
-                                <div class="data">
-                                    <p>14/03/26</p>
-                                </div>
-                                <div class="grupo-botoes">
-                                    <button class="cancelar" data-id="2">Cancelar</button>
-                                    <button class="concluir" data-id="2">Concluir</button>
-                                </div>
-                            </div>
-                        </div>
+                <?php else: ?>
 
-                        <!-- Bloco 4 -->
-                        <div class="bloco">
-                            <div class="inforcentro">
-                                <div class="topo">
-                                    <div class="topico">
-                                        <p class="titulo">Peça</p>
-                                        <p class="infor">Rolamento</p>
-                                    </div>
-                                    <div class="topico">
-                                        <p class="titulo">Status</p>
-                                        <p class="infor status-texto">Em aberto</p>
-                                    </div>
-                                    <div class="topico">
-                                        <p class="titulo">Técnico solicitante</p>
-                                        <p class="infor">Ana Paula Costa</p>
-                                    </div>
-                                </div>
-                                <div class="descricao">
-                                    <p>Rolamento rígido de esferas 6204. Vedação em aço. Para altas rotações.</p>
-                                </div>
-                            </div>
-                            <div class="lado-direito">
-                                <div class="data">
-                                    <p>15/03/26</p>
-                                </div>
-                                <div class="grupo-botoes">
-                                    <button class="cancelar" data-id="3">Cancelar</button>
-                                    <button class="concluir" data-id="3">Concluir</button>
-                                </div>
-                            </div>
-                        </div>
-                    <?php endif; ?>
-                </div>
+                    <!-- MENSAGEM QUANDO NÃO EXISTIR SOLICITAÇÃO -->
+
+                    <div class="sem-registro">
+
+                        <p>
+
+                            <strong>
+                                Não há solicitações de peças.
+                            </strong>
+
+                        </p>
+
+                    </div>
+
+                <?php endif; ?>
+
             </div>
+
+        </div>
+
     </main>
 
     <script src="../templates/assets/js/pagina_gerenciamento_de_pecas_administrador.js"></script>
+
 </body>
 
 </html>

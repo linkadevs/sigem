@@ -6,118 +6,207 @@ use Model\Connection;
 use PDO;
 use PDOException;
 
-// Importa a Connection
+// IMPORTA A CONNECTION
 require_once __DIR__ . '/Connection.php';
 
-class Pecas {
+class Pecas
+{
     private $pecas;
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->pecas = Connection::getInstance();
     }
 
-   // Adição dos parâmetros que a função precisa receber para funcionar
-    public function vincSolicitacao($nome_peca, $descricao, $status, $id_tecnico_fk) {
+    // LISTAR SOLICITAÇÕES
+    public function getAllSolicitacoes()
+    {
+        try {
+
+            $sql = "SELECT 
+                        solicitacao_pecas.id_solicitacao_pecas,
+                        solicitacao_pecas.nome_peca,
+                        solicitacao_pecas.quantidade_pecas,
+                        solicitacao_pecas.data,
+                        solicitacao_pecas.descricao,
+                        solicitacao_pecas.status,
+                        solicitacao_pecas.id_tecnico_fk,
+
+                        tecnico.nome AS nome_tecnico
+
+                    FROM solicitacao_pecas
+
+                    INNER JOIN tecnico
+                    ON tecnico.id_tecnico =
+                    solicitacao_pecas.id_tecnico_fk
+
+                    ORDER BY solicitacao_pecas.data DESC";
+
+            $stmt = $this->pecas->prepare($sql);
+
+            $stmt->execute();
+
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        } catch (PDOException $e) {
+
+            return [];
+        }
+    }
+
+    // PESQUISAR SOLICITAÇÃO
+
+    // PESQUISAR SOLICITAÇÃO
+   
+// PESQUISAR SOLICITAÇÃO
+public function searchSolicitacao($busca)
+{
     try {
-        $sql = 'INSERT INTO solicitacao_pecas (nome_peca, data, descricao, status, id_tecnico_fk) 
-                VALUES (:nome_peca, NOW(), :descricao, :status, :id_tecnico_fk)';
+
+        $sql = "SELECT 
+                    solicitacao_pecas.id_solicitacao_pecas,
+                    solicitacao_pecas.nome_peca,
+                    solicitacao_pecas.quantidade_pecas,
+                    solicitacao_pecas.data,
+                    solicitacao_pecas.descricao,
+                    solicitacao_pecas.status,
+                    solicitacao_pecas.id_tecnico_fk,
+
+                    tecnico.nome AS nome_tecnico
+
+                FROM solicitacao_pecas
+
+                INNER JOIN tecnico
+                ON tecnico.id_tecnico =
+                solicitacao_pecas.id_tecnico_fk
+
+                WHERE
+                    LOWER(solicitacao_pecas.nome_peca)
+                    LIKE :nome_peca
+
+                    OR CAST(
+                        solicitacao_pecas.quantidade_pecas AS CHAR
+                    ) LIKE :quantidade_pecas
+
+                    OR LOWER(solicitacao_pecas.descricao)
+                    LIKE :descricao
+
+                    OR LOWER(tecnico.nome)
+                    LIKE :tecnico_nome
+
+                    OR REPLACE(
+                        LOWER(solicitacao_pecas.status),
+                        '_',
+                        ' '
+                    ) LIKE :status
+
+                    OR DATE_FORMAT(
+                        solicitacao_pecas.data,
+                        '%d/%m/%Y'
+                    ) LIKE :data_busca
+
+                ORDER BY solicitacao_pecas.data DESC";
 
         $stmt = $this->pecas->prepare($sql);
 
-        // Vinculação de parâmetros 
-        $stmt->bindParam(':nome_peca', $nome_peca, PDO::PARAM_STR);
-        $stmt->bindParam(':descricao', $descricao, PDO::PARAM_STR);
-        
-        // Enum no banco é tratado como String (STR) no PDO
-        $stmt->bindParam(':status', $status, PDO::PARAM_STR); 
-        
-        $stmt->bindParam(':id_tecnico_fk', $id_tecnico_fk, PDO::PARAM_INT);
+        $busca = '%' . strtolower(trim($busca)) . '%';
 
-        return $stmt->execute();
-
-    } catch (PDOException $e) {
-        // mensagem real do erro para facilitar o debug
-        throw new \Exception('Erro no banco de dados: ' . $e->getMessage());
-    }
-}
-
-public function listarSolicitacoes($pesquisa = null) {
-    try {
-        // Se houver pesquisa, adicionamos o WHERE, se não, pegamos tudo
-        if ($pesquisa) {
-            $sql = "SELECT * FROM solicitacao_pecas 
-                    WHERE nome_peca LIKE :busca 
-                    OR descricao LIKE :busca 
-                    OR status LIKE :busca 
-                    ORDER BY data DESC";
-            $stmt = $this->pecas->prepare($sql);
-            
-            // O '%' serve para achar a palavra em qualquer lugar (antes ou depois)
-            $termo = "%$pesquisa%"; 
-            $stmt->bindParam(':busca', $termo, PDO::PARAM_STR);
-        } else {
-            // Caso contrário, apenas seleciona tudo
-            $sql = "SELECT * FROM solicitacao_pecas ORDER BY data DESC";
-            $stmt = $this->pecas->prepare($sql);
-        }
+        $stmt->bindValue(':nome_peca', $busca);
+        $stmt->bindValue(':quantidade_pecas', $busca);
+        $stmt->bindValue(':descricao', $busca);
+        $stmt->bindValue(':tecnico_nome', $busca);
+        $stmt->bindValue(':status', $busca);
+        $stmt->bindValue(':data_busca', $busca);
 
         $stmt->execute();
-        
-        // fetchAll(PDO::FETCH_ASSOC) é o que "puxa" os dados e monta a array $lista
+
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     } catch (PDOException $e) {
-        throw new \Exception("Erro ao buscar dados: " . $e->getMessage());
+
+        return [];
     }
 }
 
 
-public function atualizarStatus(
-    int $id,
-    string $status
-) {
+    // BUSCAR POR ID
+    public function getSolicitacaoById($id_solicitacao_pecas)
+    {
+        try {
 
-    try {
+            $sql = "SELECT * FROM solicitacao_pecas
+                    WHERE id_solicitacao_pecas =
+                    :id_solicitacao_pecas";
 
-        $sql = '
-            UPDATE solicitacao_pecas
+            $stmt = $this->pecas->prepare($sql);
 
-            SET status = :status
+            $stmt->bindParam(
+                ':id_solicitacao_pecas',
+                $id_solicitacao_pecas,
+                PDO::PARAM_INT
+            );
 
-            WHERE id_solicitacao_pecas = :id
-        ';
+            $stmt->execute();
 
+            return $stmt->fetch(PDO::FETCH_ASSOC);
 
-        $stmt = $this->pecas->prepare($sql);
+        } catch (PDOException $e) {
 
-
-        $stmt->bindParam(
-            ':status',
-            $status,
-            PDO::PARAM_STR
-        );
-
-        $stmt->bindParam(
-            ':id',
-            $id,
-            PDO::PARAM_INT
-        );
-
-
-        return $stmt->execute();
-
-    } catch (PDOException $e) {
-
-        throw new \Exception(
-            'Erro ao atualizar status: ' .
-            $e->getMessage()
-        );
-
+            return null;
+        }
     }
 
-}
+    // EXCLUIR SOLICITAÇÃO
+    public function deleteSolicitacao($id_solicitacao_pecas)
+    {
+        try {
+
+            $sql = "DELETE FROM solicitacao_pecas
+                    WHERE id_solicitacao_pecas =
+                    :id_solicitacao_pecas";
+
+            $stmt = $this->pecas->prepare($sql);
+
+            $stmt->bindParam(
+                ':id_solicitacao_pecas',
+                $id_solicitacao_pecas,
+                PDO::PARAM_INT
+            );
+
+            return $stmt->execute();
+
+        } catch (PDOException $e) {
+
+            return false;
+        }
+    }
+
+    // CONCLUIR SOLICITAÇÃO
+    public function concluirSolicitacao($id_solicitacao_pecas)
+    {
+        try {
+
+            $sql = "UPDATE solicitacao_pecas
+                    SET status = 'concluido'
+
+                    WHERE id_solicitacao_pecas =
+                    :id_solicitacao_pecas";
+
+            $stmt = $this->pecas->prepare($sql);
+
+            $stmt->bindParam(
+                ':id_solicitacao_pecas',
+                $id_solicitacao_pecas,
+                PDO::PARAM_INT
+            );
+
+            return $stmt->execute();
+
+        } catch (PDOException $e) {
+
+            return false;
+        }
+    }
 }
 
-    
 ?>
-

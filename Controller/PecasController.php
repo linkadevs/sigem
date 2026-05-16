@@ -1,78 +1,158 @@
 <?php
 
+namespace Controller;
+
 require_once __DIR__ . '/../Model/Pecas.php';
 
 use Model\Pecas;
 
+class PecasController
+{
+    private $pecasmodel;
 
-// ==========================================
-// FETCH / AJAX
-// ==========================================
+    public function __construct()
+    {
+        $this->pecasmodel = new Pecas();
+    }
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // LISTAR SOLICITAÇÕES
+    public function listarSolicitacoes()
+    {
+        return $this->pecasmodel->getAllSolicitacoes();
+    }
 
-    header('Content-Type: application/json');
+    // BUSCAR POR ID
+    public function buscarSolicitacaoPorId($id_solicitacao_pecas)
+    {
+        if (empty($id_solicitacao_pecas)) {
 
-    try {
+            return null;
+        }
 
-        $dados = json_decode(
-            file_get_contents("php://input"),
-            true
-        );
+        return $this->pecasmodel
+            ->getSolicitacaoById($id_solicitacao_pecas);
+    }
 
-        if (!$dados) {
+    // PESQUISAR SOLICITAÇÕES
+    public function pesquisarSolicitacoes($busca)
+    {
+        if (empty($busca)) {
 
-            echo json_encode([
-                'sucesso' => false,
-                'mensagem' => 'Dados inválidos'
-            ]);
+            return $this->pecasmodel
+                ->getAllSolicitacoes();
+        }
+
+        return $this->pecasmodel
+            ->searchSolicitacao($busca);
+    }
+
+    // EXCLUIR SOLICITAÇÃO
+    public function excluirSolicitacao($id_solicitacao_pecas)
+    {
+        if (empty($id_solicitacao_pecas)) {
+
+            echo "
+            <script>
+                alert('ID da solicitação inválido.');
+                window.history.back();
+            </script>
+            ";
 
             exit;
         }
 
-        $id = (int) $dados['id'];
+        $resultado = $this->pecasmodel
+            ->deleteSolicitacao($id_solicitacao_pecas);
 
-        $status = $dados['status'];
+        if ($resultado) {
 
-        $pecas = new Pecas();
+            echo "
+            <script>
+                alert('Solicitação excluída com sucesso.');
 
-        $resultado =
-            $pecas->atualizarStatus(
-                $id,
-                $status
-            );
+                window.location.href =
+                '../View/pagina_gerenciamento_de_pecas_administrador.php';
+            </script>
+            ";
 
-        echo json_encode([
-            'sucesso' => $resultado
-        ]);
+        } else {
 
-    } catch (Exception $e) {
-
-        echo json_encode([
-            'sucesso' => false,
-            'erro' => $e->getMessage()
-        ]);
-
+            echo "
+            <script>
+                alert('Erro ao excluir solicitação.');
+                window.history.back();
+            </script>
+            ";
+        }
     }
 
-    exit;
+    // CONCLUIR SOLICITAÇÃO
+    public function concluirSolicitacao($id_solicitacao_pecas)
+    {
+        if (empty($id_solicitacao_pecas)) {
+
+            echo "
+            <script>
+                alert('ID da solicitação inválido.');
+                window.history.back();
+            </script>
+            ";
+
+            exit;
+        }
+
+        $resultado = $this->pecasmodel
+            ->concluirSolicitacao($id_solicitacao_pecas);
+
+        if ($resultado) {
+
+            echo "
+            <script>
+                alert('Solicitação concluída com sucesso.');
+
+                window.location.href =
+                '../View/pagina_gerenciamento_de_pecas_administrador.php';
+            </script>
+            ";
+
+        } else {
+
+            echo "
+            <script>
+                alert('Erro ao concluir solicitação.');
+                window.history.back();
+            </script>
+            ";
+        }
+    }
 }
 
+// INSTANCIA O CONTROLLER
+$controller = new PecasController();
 
-// ==========================================
-// CARREGAR VIEW NORMAL
-// ==========================================
+// VERIFICA AÇÕES
+if (isset($_GET['acao'])) {
 
-$pecas = new Pecas();
+    $acao = $_GET['acao'];
 
-$pesquisa =
-    isset($_GET['busca'])
-    ? $_GET['busca']
-    : null;
+    $id_solicitacao_pecas =
+        $_GET['id_solicitacao_pecas'] ?? null;
 
-$lista =
-    $pecas->listarSolicitacoes($pesquisa);
+    // EXCLUIR
+    if ($acao == 'excluir') {
 
+        $controller->excluirSolicitacao(
+            $id_solicitacao_pecas
+        );
+    }
 
-// CAMINHO DA VIEW
-require_once __DIR__ . '/../View/pagina_gerenciamento_de_pecas_administrador.php';
+    // CONCLUIR
+    if ($acao == 'concluir') {
+
+        $controller->concluirSolicitacao(
+            $id_solicitacao_pecas
+        );
+    }
+}
+
+?>

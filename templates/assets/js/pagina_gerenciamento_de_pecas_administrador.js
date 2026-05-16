@@ -11,6 +11,7 @@ const cancelarbtn = document.querySelectorAll('.cancelar');
 const concluirbtn = document.querySelectorAll('.concluir');
 
 
+
 if (home) {
     home.addEventListener('click', () => {
         window.location.href = 'pagina_principal_adm.php'
@@ -66,156 +67,55 @@ if (logout) {
 }
 
 
-// =======================================
-// PESQUISA
-// =======================================
 
-// --- COMMIT: Correção do destino da pesquisa ---
-const formularioPesquisa = document.querySelector('.formulario-pesquisa');
-
-if (formularioPesquisa) {
-    formularioPesquisa.addEventListener('submit', (event) => {
-        event.preventDefault(); // Para a submissão padrão
-
-        const valorPesquisa = document.querySelector('.pesquisar').value;
-
-        // Vá para a página que MOSTRA os dados (View)
-        window.location.href = `pagina_gerenciamento_de_pecas_administrador.php?busca=${valorPesquisa}`;
-    });
-}
+const controller = '../Controller/PecasController.php';
 
 
 
+document.addEventListener('click', (event) => {
 
-// =======================================
-// CONCLUIR SOLICITAÇÃO
-// =======================================
+    // BOTÃO CANCELAR
+    if (event.target.classList.contains('cancelar')) {
 
-concluirbtn.forEach(botao => {
+        // PEGA O ID 
+        const id = event.target.dataset.id;
 
-    botao.addEventListener('click', async () => {
-
-        try {
-
-            const idSolicitacao = botao.dataset.id;
-
-            const resposta = await fetch(
-            '../Controller/PecasController.php',
-                {
-                    method: 'POST',
-
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-
-                    body: JSON.stringify({
-                        id: idSolicitacao,
-                        status: 'concluído'
-                    })
-                }
-            );
-
-const texto = await resposta.text();
-
-console.log(texto);
-
-const dados = JSON.parse(texto);
-            
-
-            if (dados.sucesso) {
-
-                const bloco = botao.closest('.bloco');
-
-                const statusTexto =
-                    bloco.querySelector('.status-texto');
-
-                const cancelar =
-                    bloco.querySelector('.cancelar');
-
-                statusTexto.textContent = 'Concluído';
-
-                botao.disabled = true;
-
-                botao.textContent = 'Concluído';
-
-                if (cancelar) {
-                    cancelar.style.display = 'none';
-                }
-
-            } else {
-
-                alert('Erro ao atualizar status');
-
-            }
-
-        } catch (erro) {
-
-            console.error(erro);
-
-            alert('Erro no servidor');
-
+        // VERIFICA SE O ID EXISTE
+        if (!id) {
+            alert('ID da Solicitação não encontrada.');
+            return;
         }
 
-    });
+        // CONFIRMAÇÃO COM OPÇÃO DE CANCELAR
+        const confirmacao = confirm('Tem certeza que deseja cancelar esta solicitação de Peça? Esta ação não poderá ser desfeita e a solicitação será excluída do banco de dados ');
 
-});
-
-
-
-
-// =======================================
-// CANCELAR SOLICITAÇÃO
-// =======================================
-
-cancelarbtn.forEach(botao => {
-
-    botao.onclick = async () => {
-
-        const idSolicitacao =
-            botao.dataset.id;
+            if (confirmacao) {
+            // Se clicou em OK, ENVIA PARA O CONTROLLER
+            window.location.href = `${controller}?acao=excluir&id_solicitacao_pecas=${id}`;
+        } else {
+            // Se clicou em Cancelar, apenas fecha o aviso
+            console.log('Exclusão cancelada pelo usuário.');
+        }
+    }
 
 
-        const resposta = await fetch(
+ if (event.target.classList.contains('concluir')) {
 
-            '../Controller/PecasController.php',
+        const id = event.target.dataset.id;
 
-            {
-                method: 'POST',
+        if (!id) {
 
-                headers: {
-                    'Content-Type': 'application/json'
-                },
+            alert('ID da solicitação não encontrado.');
+            return;
+        }
 
-                body: JSON.stringify({
-
-                    id: idSolicitacao,
-
-                    status: 'em_aberto'
-
-                })
-
-            }
-
+        const confirmacao = confirm(
+            'Deseja concluir esta solicitação?'
         );
 
-
- const texto = await resposta.text();
-
-console.log(texto);
-
-const dados = JSON.parse(texto);
-
-        if (dados.sucesso) {
-
-            const bloco =
-                botao.closest('.bloco');
-
-
-            // remove solicitação inteira
-            bloco.remove();
-
+        if (confirmacao) {
+            window.location.href = `${controller}?acao=concluir&id_solicitacao_pecas=${id}`;
         }
+    }
 
-    };
-
-});
+    });
