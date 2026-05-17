@@ -27,37 +27,9 @@ const quantidadePeca = document.getElementById('quantidade_peca')
 const descricaoPeca = document.getElementById('descricao_peca')
 const requiredPecaSpans = document.querySelectorAll('.required-peca')
 
-// Botões de navegação
-const paginaPrincipalBtn = document.querySelector('.pagina-principal')
-const historicoBtn = document.querySelector('.historico')
-const botaoVoltar = document.querySelector('.botaoVoltar')
 
 // Tipos de serviço que permitem reposição de peças
 const servicosComReposicao = ['manutencao_corretiva', 'manutencao_preventiva', 'inspecao']
-
-// ==============================================
-// FUNÇÃO DE NAVEGAÇÃO
-// ==============================================
-function navegarPara(destino) {
-    switch(destino) {
-        case 'principal':
-            alert('Redirecionando para a página principal...')
-            break
-        case 'historico':
-            alert('Redirecionando para o histórico...')
-            break
-        case 'voltar':
-            alert('Voltando para a página anterior...')
-            break
-    }
-}
-
-// ==============================================
-// EVENTOS DOS BOTÕES DE NAVEGAÇÃO
-// ==============================================
-if (paginaPrincipalBtn) paginaPrincipalBtn.addEventListener('click', () => navegarPara('principal'))
-if (historicoBtn) historicoBtn.addEventListener('click', () => navegarPara('historico'))
-if (botaoVoltar) botaoVoltar.addEventListener('click', () => navegarPara('voltar'))
 
 // ==============================================
 // FUNÇÃO: VERIFICAR SE DEVE MOSTRAR REPOSIÇÃO DE PEÇAS
