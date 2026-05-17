@@ -151,14 +151,15 @@ if (!empty($filtro)) {
                                         $tipo = $informacao['tipo_de_servico'] ?? '';
                                         if ($tipo === 'instalacao') {
                                             echo 'Instalação';
-                                        } elseif ($tipo === 'manutencao_corretiva') {
-                                            echo 'Manutenção corretiva';
-                                        } elseif ($tipo === 'manutencao_preventiva') {
+                                        } else if ($tipo === 'manutencao_preventiva') {
                                             echo 'Manutenção preventiva';
-                                        } else {
-                                            echo 'Não especificado';
+                                        } else if ($tipo === 'manutencao_corretiva') {
+                                            echo 'Manutenção corretiva';
+                                        } else if ($tipo === 'inspecao') {
+                                            echo 'Inspeção';
                                         }
                                         ?>
+                                
                                     </span>
                                 </div>
                             </div>
@@ -176,7 +177,9 @@ if (!empty($filtro)) {
                                     }
                                     ?>
                                 </span>
-                                <button class="btn_pmoc" onclick="window.location.href = 'pagina_visualizacao_pmoc.php?cod_maquina=<?php echo htmlentities($cod_maquina); ?>&id_manutencao=<?php echo htmlentities($id_manutencao); ?>&id_tecnico=<?php echo htmlentities($id_tecnico); ?>'">Ver PMOC</button>
+                                <button class="btn_pmoc"
+                                    onclick="window.location.href = 'pagina_visualizacao_pmoc.php?cod_maquina=<?php echo urlencode($cod_maquina); ?>&id_manutencao=<?php echo urlencode($id_manutencao); ?>&id_tecnico=<?php echo urlencode($id_tecnico); ?>'">Ver
+                                    PMOC</button>
                             </div>
                         </article>
                     <?php endforeach; ?>

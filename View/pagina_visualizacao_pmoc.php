@@ -52,17 +52,20 @@ if (!empty($informacoes_manutencao['fotos'])) {
                 <div class="informacao">
                     <p class="titulo">Nome da máquina</p>
                     <p class="conteudo">
-                        <?php echo htmlspecialchars($informacoes_maquina['nome_maquina'] ?? 'Não informado'); ?></p>
+                        <?php echo htmlspecialchars($informacoes_maquina['nome_maquina'] ?? 'Não informado'); ?>
+                    </p>
                 </div>
                 <div class="informacao2">
                     <p class="titulo">Nome do cliente</p>
                     <p class="conteudo">
-                        <?php echo htmlspecialchars($informacoes_maquina['nome_cliente'] ?? 'Não informado'); ?></p>
+                        <?php echo htmlspecialchars($informacoes_maquina['nome_cliente'] ?? 'Não informado'); ?>
+                    </p>
                 </div>
                 <div class="informacao">
                     <p class="titulo">Responsável acompanhando</p>
                     <p class="conteudo">
-                        <?php echo htmlspecialchars($informacoes_manutencao['acompanhante'] ?? 'Não informado'); ?></p>
+                        <?php echo htmlspecialchars($informacoes_manutencao['acompanhante'] ?? 'Não informado'); ?>
+                    </p>
                 </div>
                 <div class="informacao2">
                     <p class="titulo">Capacidade térmica de refrigeração</p>
@@ -73,17 +76,20 @@ if (!empty($informacoes_manutencao['fotos'])) {
                 <div class="informacao">
                     <p class="titulo">Localização</p>
                     <p class="conteudo">
-                        <?php echo htmlspecialchars($informacoes_maquina['localizacao'] ?? 'Não informado'); ?></p>
+                        <?php echo htmlspecialchars($informacoes_maquina['localizacao'] ?? 'Não informado'); ?>
+                    </p>
                 </div>
                 <div class="informacao2">
                     <p class="titulo">Modelo</p>
                     <p class="conteudo">
-                        <?php echo htmlspecialchars($informacoes_maquina['modelo'] ?? 'Não informado'); ?></p>
+                        <?php echo htmlspecialchars($informacoes_maquina['modelo'] ?? 'Não informado'); ?>
+                    </p>
                 </div>
                 <div class="informacao">
                     <p class="titulo">Marca</p>
                     <p class="conteudo">
-                        <?php echo htmlspecialchars($informacoes_maquina['marca'] ?? 'Não informado'); ?></p>
+                        <?php echo htmlspecialchars($informacoes_maquina['marca'] ?? 'Não informado'); ?>
+                    </p>
                 </div>
                 <div class="informacao2">
                     <p class="titulo">Fluido refrigerante</p>
@@ -108,19 +114,19 @@ if (!empty($informacoes_manutencao['fotos'])) {
                     $tipo = $informacoes_manutencao['tipo_de_servico'] ?? '';
                     if ($tipo === 'instalacao') {
                         echo 'Instalação';
-                    } elseif ($tipo === 'manutencao_corretiva') {
-                        echo 'Manutenção corretiva';
-                    } elseif ($tipo === 'manutencao_preventiva') {
+                    } else if ($tipo === 'manutencao_preventiva') {
                         echo 'Manutenção preventiva';
-                    } else {
-                        echo 'Não especificado';
+                    } else if ($tipo === 'manutencao_corretiva') {
+                        echo 'Manutenção corretiva';
+                    } else if ($tipo === 'inspecao') {
+                        echo 'Inspeção';
                     }
                     ?></p>
                 </div>
                 <div class="informacao2">
                     <p class="titulo">Pressão aferida</p>
                     <p class="conteudo">
-                        <?php echo htmlspecialchars($informacoes_manutencao['pressao_aferida'].'  PSI' ?? 'Não informado'); ?>
+                        <?php echo htmlspecialchars($informacoes_manutencao['pressao_aferida'] . '  PSI' ?? 'Não informado'); ?>
                     </p>
                 </div>
                 <div class="informacao">

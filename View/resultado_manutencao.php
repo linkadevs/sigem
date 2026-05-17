@@ -164,6 +164,7 @@ if (!empty($ultimamanutencao_dados['data_e_hora'])) {
                                 if ($tipo === 'instalacao') echo 'Instalação';
                                 elseif ($tipo === 'manutencao_corretiva') echo 'Manutenção corretiva';
                                 elseif ($tipo === 'manutencao_preventiva') echo 'Manutenção preventiva';
+                                elseif ($tipo === 'inspecao') echo 'Inspeção';
                                 else echo htmlspecialchars($tipo, ENT_QUOTES, 'UTF-8');
                                 ?>
                             </p>

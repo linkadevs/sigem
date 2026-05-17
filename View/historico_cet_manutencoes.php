@@ -9,7 +9,7 @@ session_start();
 $cod_maquina = $_GET['cod_maquina'] ?? null;
 
 // Pega o filtro de pesquisa que veio na URL (ex: &filtro=João)
-$filtro = $_GET['filtro'] ?? ''; 
+$filtro = $_GET['filtro'] ?? '';
 
 // ==============================================
 // 2. CARREGA O CONTROLLER E BUSCA OS DADOS
@@ -70,7 +70,7 @@ if (!empty($filtro)) {
             <form class="container_pesquisa" method="GET" action="" id="formPesquisa">
                 <!-- CAMPO OCULTO: mantém o código da máquina na URL -->
                 <input type="hidden" name="cod_maquina" value="<?php echo htmlspecialchars($cod_maquina); ?>">
-                
+
                 <div class="input_wrapper">
                     <figure class="icone_lupa"><img src="../templates/assets/img/lupa_cinza.png" alt="Lupa"></figure>
                     <input type="text" name="filtro" id="filtro" class="input_pesquisa"
@@ -78,10 +78,12 @@ if (!empty($filtro)) {
                         value="<?php echo htmlspecialchars($filtro); ?>">
                 </div>
                 <button type="submit" class="btn_pesquisar">Pesquisar</button>
-                
+
                 <!-- BOTÃO LIMPAR FILTRO (só aparece se tiver filtro ativo) -->
                 <?php if (!empty($filtro)): ?>
-                    <a href="?cod_maquina=<?php echo urlencode($cod_maquina); ?>" class="btn_limpar" style="color: #094C71; font-weight: bold; margin-left: .5rem; margin-right: .5rem; font-size: 1.2rem;">Limpar filtro</a>
+                    <a href="?cod_maquina=<?php echo urlencode($cod_maquina); ?>" class="btn_limpar"
+                        style="color: #094C71; font-weight: bold; margin-left: .5rem; margin-right: .5rem; font-size: 1.2rem;">Limpar
+                        filtro</a>
                 <?php endif; ?>
             </form>
 
@@ -89,22 +91,25 @@ if (!empty($filtro)) {
             <!-- LISTA DE MANUTENÇÕES (RESULTADOS)              -->
             <!-- ============================================== -->
             <div class="lista_manutencoes">
-                
+
                 <!-- CASO 1: Tem filtro mas NÃO encontrou resultados -->
                 <?php if (empty($informacoes) && !empty($filtro)): ?>
-                    <div class="nenhuma-manutencao" style="text-align: center; color:#094C71; font-weight: bold; font-size: 1.5rem;">
-                        <p>Nenhuma manutenção encontrada para "<strong><?php echo htmlspecialchars($filtro); ?></strong>".</p>
+                    <div class="nenhuma-manutencao"
+                        style="text-align: center; color:#094C71; font-weight: bold; font-size: 1.5rem;">
+                        <p>Nenhuma manutenção encontrada para "<strong><?php echo htmlspecialchars($filtro); ?></strong>".
+                        </p>
                     </div>
-                
-                <!-- CASO 2: Sem filtro e NÃO tem manutenções cadastradas -->
+
+                    <!-- CASO 2: Sem filtro e NÃO tem manutenções cadastradas -->
                 <?php elseif (empty($informacoes)): ?>
-                    <div class="nenhuma-manutencao" style="text-align: center; color:#094C71; font-weight: bold; font-size: 2rem;">
+                    <div class="nenhuma-manutencao"
+                        style="text-align: center; color:#094C71; font-weight: bold; font-size: 2rem;">
                         <p>Nenhuma manutenção encontrada para esta máquina.</p>
                     </div>
-                
-                <!-- CASO 3: Tem resultados → exibe os cards -->
+
+                    <!-- CASO 3: Tem resultados → exibe os cards -->
                 <?php else: ?>
-                    
+
                     <!-- LOOP: percorre cada manutenção e cria um card -->
                     <?php foreach ($informacoes as $informacao): ?>
                         <article class="card_manutencao">
@@ -114,21 +119,22 @@ if (!empty($filtro)) {
                             <div class="coluna_dados">
                                 <div class="linha_dado">
                                     <span class="rotulo_dado">Nome do técnico:</span>
-                                    <span class="tag_dado"><?php echo htmlspecialchars($informacao['nome_tecnico'] ?? 'Não atribuído'); ?></span>
+                                    <span
+                                        class="tag_dado"><?php echo htmlspecialchars($informacao['nome_tecnico'] ?? 'Não atribuído'); ?></span>
                                 </div>
                                 <div class="linha_dado">
                                     <span class="rotulo_dado">Tipo de serviço:</span>
                                     <span class="tag_dado">
-                                        <?php 
+                                        <?php
                                         $tipo = $informacao['tipo_de_servico'] ?? '';
                                         if ($tipo === 'instalacao') {
                                             echo 'Instalação';
-                                        } elseif ($tipo === 'manutencao_corretiva') {
-                                            echo 'Manutenção corretiva';
-                                        } elseif ($tipo === 'manutencao_preventiva') {
+                                        } else if ($tipo === 'manutencao_preventiva') {
                                             echo 'Manutenção preventiva';
-                                        } else {
-                                            echo 'Não especificado';
+                                        } else if ($tipo === 'manutencao_corretiva') {
+                                            echo 'Manutenção corretiva';
+                                        } else if ($tipo === 'inspecao') {
+                                            echo 'Inspeção';
                                         }
                                         ?>
                                     </span>
@@ -137,9 +143,9 @@ if (!empty($filtro)) {
                             <div class="coluna_data">
                                 <span class="data_manutencao">
                                     <?php
-                                    $data = $informacao['data_e_hora'] ?? ''; 
+                                    $data = $informacao['data_e_hora'] ?? '';
                                     if ($data && $data != '0000-00-00 00:00:00') {
-                                        echo date('d/m/Y H:i', strtotime($data)); 
+                                        echo date('d/m/Y H:i', strtotime($data));
                                     } else {
                                         echo 'Data e hora não disponíveis';
                                     }
@@ -159,13 +165,13 @@ if (!empty($filtro)) {
     <!-- ============================================== -->
     <script>
         // Aguarda o formulário ser enviado
-        document.getElementById('formPesquisa').addEventListener('submit', function(e) {
+        document.getElementById('formPesquisa').addEventListener('submit', function (e) {
             // IMPEDE o envio normal do formulário
             e.preventDefault();
-            
+
             // Pega o valor digitado no campo de filtro
             let filtro = document.getElementById('filtro').value;
-            
+
             // Verifica se parece uma data brasileira (dd/mm/aaaa ou dd/mm)
             if (filtro.match(/^\d{2}\/\d{2}(\/\d{4})?$/)) {
                 let partes = filtro.split('/');
@@ -177,7 +183,7 @@ if (!empty($filtro)) {
                     filtro = partes[1] + '-' + partes[0];
                 }
             }
-            
+
             // SUBSTITUI a URL atual (NÃO cria nova no histórico)
             window.location.replace('?cod_maquina=<?php echo urlencode($cod_maquina); ?>&filtro=' + encodeURIComponent(filtro));
         });

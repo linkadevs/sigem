@@ -92,11 +92,17 @@ body {
     flex-direction: column;
     align-items: center;
     padding-bottom: 4rem;
-    background-color: #094C71;
+    background-image: url('../../../templates/assets/img/fundo-edicao.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    min-height: 100vh;
+    margin: 0;
 }
 
 .voltar figure img {
-    width: 3rem;
+    width: 2.5rem;
 }
 
 header {
@@ -122,16 +128,12 @@ header {
 }
 
 main {
-    background-image: url('../../../templates/assets/img/fundo-edicao.png');
-    background-size: cover;
-    background-repeat: no-repeat;
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 2.5rem 0;
-    border-bottom-left-radius: 6rem;
-    border-bottom-right-radius: 6rem;
+    background-color: transparent;
 }
 
 .fundoPmoc {
@@ -285,12 +287,6 @@ h1 {
         gap: 2rem;
     }
 
-    main {
-        padding: 2rem 0;
-        border-bottom-left-radius: 4rem;
-        border-bottom-right-radius: 4rem;
-    }
-
     h1 {
         font-size: 2.2rem;
     }
@@ -414,12 +410,6 @@ h1 {
         padding: 1.8rem;
         border-radius: 2rem;
         gap: 1.5rem;
-    }
-
-    main {
-        padding: 1.5rem 0;
-        border-bottom-left-radius: 3rem;
-        border-bottom-right-radius: 3rem;
     }
 
     /* Galeria responsiva mobile */
