@@ -104,6 +104,6 @@ if (isset($_POST['solicitar_reposicao']) && $_POST['solicitar_reposicao'] == 'on
 // ==============================================
 // Após salvar tudo, redireciona para a página principal do técnico
 // Passa o ID do técnico como parâmetro na URL
-header("Location: pagina_principal_do_tecnico.php?id_tecnico={$_POST['id_tecnico']}");
+header("Location: pagina_principal_do_tecnico.php?id_usuario={$_POST['id_tecnico']}");
 exit; // Garante que o script pare aqui
 ?>

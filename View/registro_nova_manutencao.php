@@ -26,14 +26,14 @@ $nome_tecnico = $pecasController->tecnico_nome($id_tecnico)['nome'] ?? 'Técnico
 
 <body>
     <header>
-        <button class="botaoVoltar" type="button">
+        <button class="botaoVoltar" type="button" onclick="window.history.back()">
             <figure class="voltarFigure"><img src="../templates/assets/img/seta_voltar_semfundo.png"
                     alt="Seta apontando para a esquerda para voltar à página anterior" class="voltarImg"></figure>
             Voltar
         </button>
         <nav>
-            <button class="nav-btn pagina-principal" type="button">Página principal</button>
-            <button class="nav-btn historico" type="button">Histórico</button>
+            <button class="nav-btn pagina-principal" type="button" onclick="window.location.href='pagina_principal_do_tecnico.php?id_usuario=<?php echo urlencode($id_tecnico);?>'">Página principal</button>
+            <button class="nav-btn historico" type="button" onclick="window.location.href='historico_cet_manutencoes.php?cod_maquina=<?php echo urlencode($cod_maquina);?>'">Histórico</button>
         </nav>
     </header>
     <main>
