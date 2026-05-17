@@ -1,5 +1,113 @@
 @import 'global.css';
 
+/* Estilização da mensagem quando não há manutenções */
+.nenhuma-manutencao {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 50vh;
+    padding: 4rem 2rem;
+}
+
+.mensagem-vazia {
+    text-align: center;
+    background-color: #f9f9f9;
+    border-radius: 2rem;
+    padding: 4rem 3rem;
+    max-width: 50rem;
+    box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.1);
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.icone-vazio {
+    margin-bottom: 2rem;
+}
+
+.icone-vazio img {
+    width: 12rem;
+    height: 12rem;
+    opacity: 0.7;
+}
+
+.mensagem-vazia h2 {
+    font-size: 2.9rem;
+    color: #094C71;
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.mensagem-vazia p {
+    font-size: 1.6rem;
+    color: #666;
+    margin-bottom: 0.8rem;
+}
+
+.mensagem-vazia .sugestao {
+    color: #1291D5;
+    font-weight: 500;
+    margin-bottom: 2rem;
+}
+
+.limpar-busca {
+    display: inline-block;
+    background-color: #e74c3c;
+    color: white;
+    padding: 0.8rem 1.5rem;
+    border-radius: 2rem;
+    text-decoration: none;
+    font-size: 1.4rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.limpar-busca:hover {
+    background-color: #c0392b;
+    transform: translateY(-2px);
+}
+
+.resultado-busca {
+    background-color: #e8f4fd;
+    padding: 1rem 2rem;
+    border-radius: 1rem;
+    margin-bottom: 2rem;
+    font-size: 1.4rem;
+    color: #094C71;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.resultado-busca strong {
+    color: #1291D5;
+}
+
+.erro-mensagem {
+    background-color: #f8d7da;
+    color: #721c24;
+    padding: 1rem 2rem;
+    border-radius: 1rem;
+    margin-bottom: 2rem;
+    font-size: 1.4rem;
+    border-left: 4px solid #e74c3c;
+}
+
 body {
     background-color: #F4F4F4;
     display: flex;
@@ -7,7 +115,9 @@ body {
     padding-top: 2rem;
     padding-bottom: 4.2rem;
     min-height: 100vh;
-    align-items: stretch;
+    align-items: flex-start;
+    margin: 0;
+    overflow: hidden;
 }
 
 /* MENU LATERAL */
@@ -102,6 +212,27 @@ main {
     width: auto;
     padding: 0 1rem;
     flex: 1;
+    max-height: calc(100vh - 4rem); 
+    overflow-y: auto; 
+    overflow-x: hidden; 
+}
+
+main::-webkit-scrollbar {
+    width: 8px;
+}
+
+main::-webkit-scrollbar-track {
+    background: #e0e0e0;
+    border-radius: 10px;
+}   
+
+main::-webkit-scrollbar-thumb {
+    background: #094C71;
+    border-radius: 10px;
+}
+
+main::-webkit-scrollbar-thumb:hover {
+    background: #1291D5;
 }
 
 .container {
@@ -375,13 +506,13 @@ input:focus {
     background-color: #9dd4f5;
 }
 
-.pmoc{
+.pmoc {
     font-size: 1rem;
     font-weight: 500;
 }
 
-/* 1280px */
-@media (max-width: 1280px) {
+
+@media (min-width: 1540px) {
     body {
         gap: 2rem;
         padding: 1.5rem;
@@ -485,7 +616,129 @@ input:focus {
         font-size: 1rem;
     }
 
-    .dados p{
+    .dados p {
+        font-size: 1.1rem;
+    }
+
+    .card button {
+        width: 8rem;
+        height: 2.5rem;
+        font-size: 0.85rem;
+    }
+
+    .botoes {
+        gap: 0.5rem;
+        margin-bottom: 1rem;
+    }
+}
+
+
+/* 1280px */
+@media (max-width: 1500px) {
+    body {
+        gap: 2rem;
+        padding: 1.5rem;
+    }
+
+    aside {
+        margin-left: 1.5rem;
+        padding: 1.5rem;
+        min-width: 220px;
+    }
+
+    aside button {
+        width: 100%;
+        height: 5rem;
+        gap: 1.2rem;
+        padding-left: 1rem;
+    }
+
+    aside p {
+        font-size: 1.6rem;
+    }
+
+    aside img {
+        height: 3rem;
+        width: 3rem;
+    }
+
+    aside .circuloperfil {
+        height: 4rem;
+        width: 4rem;
+    }
+
+    aside .btn_perfil img {
+        height: 2.5rem;
+        width: 2.5rem;
+    }
+
+    .container {
+        max-width: 1100px;
+    }
+
+    .conteudo_superior {
+        padding-left: 4rem;
+        padding-right: 4rem;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    .procurar {
+        width: 12rem;
+        font-size: 1.3rem;
+        height: 3.3rem;
+    }
+
+    input {
+        height: 3.1rem;
+        font-size: 0.95rem;
+    }
+
+    .conteudo_superior img {
+        width: 2rem;
+        height: 2rem;
+        left: 1rem;
+    }
+
+    .grid_cards {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.3rem;
+        padding: 0 0.8rem;
+    }
+
+    .card {
+        height: auto;
+        min-height: auto;
+        padding: 1.2rem;
+    }
+
+    .codigo {
+        width: 10rem;
+        height: auto;
+        min-height: 3.2rem;
+        font-size: 1.3rem;
+        padding: 0.4rem 0.8rem;
+    }
+
+    .maquina {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+    }
+
+    .manutencao {
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
+    }
+
+    .dados {
+        gap: 0.8rem;
+        margin-bottom: 1.2rem;
+        font-size: 1rem;
+    }
+
+    .dados p {
         font-size: 1.1rem;
     }
 
@@ -604,7 +857,7 @@ input:focus {
         width: 10rem;
         font-size: 1.2rem;
     }
-    
+
     .conteudo_superior img {
         width: 1.8rem;
         height: 1.8rem;
@@ -644,6 +897,18 @@ input:focus {
     .manutencao {
         font-size: 1.1rem;
     }
+
+    main::-webkit-scrollbar-track {
+        display: none;
+}
+
+main::-webkit-scrollbar-thumb {
+     display: none;
+}
+
+main::-webkit-scrollbar-thumb:hover {
+     display: none;
+}
 }
 
 /* 850px */
@@ -687,13 +952,24 @@ input:focus {
         padding: 0.3rem 0.7rem;
     }
 
-    .dados p{
+    .dados p {
         font-size: 1rem;
+    }
+
+    .limpar-busca {
+        padding: 0.6rem 1rem;
+        font-size: 1.1rem;
+    }
+
+    .resultado-busca {
+
+        padding: 1rem 2rem;
+        font-size: 1.2rem;
     }
 }
 
 /* 768px */
-@media (max-width: 768px) { 
+@media (max-width: 768px) {
     body {
         padding-top: 1rem;
         gap: 1rem;
@@ -723,9 +999,10 @@ input:focus {
         height: 2.5rem;
         padding-left: 2.5rem;
     }
+
     input::placeholder {
-    font-size: 1rem;
-}
+        font-size: 1rem;
+    }
 
     .conteudo_superior img {
         width: 1.2rem;
@@ -880,7 +1157,7 @@ input:focus {
         padding: 0 0.4rem;
     }
 
-    .dados p{
+    .dados p {
         font-size: 0.8rem;
     }
 
@@ -911,6 +1188,7 @@ input:focus {
         height: 1.1rem;
         left: 0.6rem;
     }
+
 }
 
 /* 520px */
@@ -940,13 +1218,24 @@ input:focus {
         gap: 0.4rem;
     }
 
-    .dados p{
+    .dados p {
         font-size: 0.8rem;
     }
 
     input::placeholder {
-    font-size: .9rem;
-}
+        font-size: .9rem;
+    }
+
+    .limpar-busca {
+        padding: 0.4rem .9rem;
+        font-size: 1rem;
+    }
+
+    .resultado-busca {
+
+        padding: 1rem 2rem;
+        font-size: 1rem;
+    }
 }
 
 /* 480px */
@@ -1000,7 +1289,7 @@ input:focus {
         padding: 0 0.8rem;
     }
 
-    .informacao, 
+    .informacao,
     .informacaoazul {
         justify-content: flex-start;
         gap: 0.6rem;
@@ -1115,10 +1404,10 @@ input:focus {
         padding: 0 0.4rem;
     }
 
-    .dados p{
+    .dados p {
         font-size: .9rem;
     }
-    
+
     .card button {
         width: 6.5rem;
         height: 2rem;
@@ -1138,8 +1427,8 @@ input:focus {
     }
 
     input::placeholder {
-    font-size: .8rem;
-}
+        font-size: .8rem;
+    }
 
     .conteudo_superior img {
         width: 0.9rem;
@@ -1220,7 +1509,7 @@ input:focus {
         padding: 0 0.3rem;
     }
 
-    .informacao p, 
+    .informacao p,
     .informacaoazul p {
         font-size: .8rem;
     }
@@ -1334,4 +1623,45 @@ input:focus {
         height: 1.6rem;
         width: 1.6rem;
     }
+}
+
+/* Responsividade para a mensagem */
+@media screen and (max-width: 710px) {
+    .mensagem-vazia {
+        padding: 3rem 2rem;
+        max-width: 90%;
+    }
+
+    .icone-vazio img {
+        width: 8rem;
+        height: 8rem;
+    }
+
+    .mensagem-vazia h2 {
+        font-size: 2rem;
+    }
+
+    .mensagem-vazia p {
+        font-size: 1.4rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .mensagem-vazia {
+        padding: 2rem 1.5rem;
+    }
+
+    .icone-vazio img {
+        width: 6rem;
+        height: 6rem;
+    }
+
+    .mensagem-vazia h2 {
+        font-size: 1.6rem;
+    }
+
+    .mensagem-vazia p {
+        font-size: 1.2rem;
+    }
+
 }

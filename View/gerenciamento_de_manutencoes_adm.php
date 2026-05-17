@@ -1,3 +1,19 @@
+<?php
+
+require_once __DIR__ . "/../Controller/gerenciamento_Manutencoes-Controller.php";
+use Controller\GerenciamentoManutencoesController;
+
+// Capturar o termo de busca
+$busca = isset($_GET['busca']) ? trim($_GET['busca']) : null;
+
+$gerenciamento_Manutencoes = new GerenciamentoManutencoesController;
+$manutencoes = $gerenciamento_Manutencoes->exibirmanutencoes($busca);
+
+// Verificar se houve erro
+$temErro = isset($manutencoes['erro']);
+
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -124,280 +140,115 @@
 
             <div class="conteudo_superior">
                 <h1>Manutenções</h1>
-                <form>
+                <form method="GET" action="">
                     <div class="input-container">
                         <figure>
                             <img src="../templates/assets/img/lupa_branca.png" alt="">
                         </figure>
-                        <input type="text" class="pesquisar"
-                            placeholder="Busque por uma data, nome ou serviço específico!">
+                        <input type="text" name="busca" class="pesquisar" 
+                            placeholder="Busque por máquina, código, técnico, serviço ou data..."
+                            value="<?php echo htmlspecialchars($busca ?? ''); ?>" autocomplete="off">
                     </div>
-                    <button class="procurar">Procurar</button>
+                    <button type="submit" class="procurar">Procurar</button>
+                    <?php if ($busca): ?>
+                        <a href="?" class="limpar-busca">Limpar</a>
+                    <?php endif; ?>
                 </form>
             </div>
 
+            <?php if ($temErro): ?>
+                <!-- Mensagem de erro -->
+                <div class="erro-mensagem">
+                    <strong>⚠️ Erro ao carregar manutenções</strong><br>
+                    <?php echo htmlspecialchars($manutencoes['erro']); ?>
+                </div>
+            <?php elseif ($busca && !empty($busca)): ?>
+                <!-- Resultado da busca -->
+                <div class="resultado-busca">
+                    <span>🔍 Resultados da busca por: <strong>"<?php echo htmlspecialchars($busca); ?>"</strong> - <?php echo count($manutencoes); ?> manutenção(ões) encontrada(s)</span>
+                </div>
+            <?php endif; ?>
 
             <div class="grid_cards">
-                <div class="card">
-                    <h2 class="maquina">Ar condicionado</h2>
-                    <P class="codigo">001</P>
-                    <hr>
-                    <h3 class="manutencao">Manutenção</h3>
-                    <div class="dados">
-                        <div class="informacaoazul">
-                            <p class="tecnico">Técnico:</p>
-                            <p class="nome">José Silva de Jesus</p>
-                        </div>
 
-                        <div class="informacao">
-                            <p class="servico">Serviço:</p>
-                            <p class="tipo">Manutenção Preventiva</p>
-                        </div>
-
-                        <div class="informacaoazul">
-                            <p class="data">Data:</p>
-                            <p class="dia">10/05/2026</p>
-                        </div>
-
-                        <div class="informacao">
-                            <p class="hora">Hora:</p>
-                            <p class="horario">10:00</p>
+                <?php if ($temErro): ?>
+                    <!-- Mensagem quando há erro -->
+                    <div class="nenhuma-manutencao">
+                        <div class="mensagem-vazia">
+                            <h2>Erro no sistema</h2>
+                            <p>Não foi possível carregar as manutenções.</p>
+                            <p class="sugestao">Tente novamente mais tarde.</p>
                         </div>
                     </div>
-                    <div class="botoes">
-                        <button class="pmoc">Ver PMOC</button>
-                    </div>
-
-                </div>
-
-                <div class="card">
-                    <h2 class="maquina">Ar condicionado</h2>
-                    <P class="codigo">001</P>
-                    <hr>
-                    <h3 class="manutencao">Manutenção</h3>
-                    <div class="dados">
-                        <div class="informacaoazul">
-                            <p class="tecnico">Técnico:</p>
-                            <p class="nome">José Silva de Jesus</p>
-                        </div>
-
-                        <div class="informacao">
-                            <p class="servico">Serviço:</p>
-                            <p class="tipo">Manutenção Preventiva</p>
-                        </div>
-
-                        <div class="informacaoazul">
-                            <p class="data">Data:</p>
-                            <p class="dia">10/05/2026</p>
-                        </div>
-
-                        <div class="informacao">
-                            <p class="hora">Hora:</p>
-                            <p class="horario">10:00</p>
+                <?php elseif (empty($manutencoes)): ?>
+                    <!-- Mensagem quando não há manutenções registradas -->
+                    <div class="nenhuma-manutencao">
+                        <div class="mensagem-vazia">
+                            <?php if ($busca && !empty($busca)): ?>
+                                <h2>Nenhuma manutenção encontrada</h2>
+                                <p>Não encontramos resultados para "<?php echo htmlspecialchars($busca); ?>"</p>
+                                <p class="sugestao">Tente buscar por outro termo ou <a href="?">limpar a busca</a></p>
+                            <?php else: ?>
+                                <h2>Sem manutenções registradas</h2>
+                                <p>Nenhuma manutenção foi encontrada até o momento.</p>
+                            <?php endif; ?>
                         </div>
                     </div>
-                    <div class="botoes">
-                        <button class="pmoc">Ver PMOC</button>
-                    </div>
+                <?php else: ?>
+                    <?php foreach ($manutencoes as $key => $manutencao): ?>
 
-                </div>
+                        <div class="card">
+                            <h2 class="maquina"><?php echo htmlspecialchars($manutencao['nome_maquina']) ?></h2>
+                            <P class="codigo"><?php echo htmlspecialchars($manutencao['cod_maquina_fk']) ?></P>
+                            <hr>
+                            <h3 class="manutencao">Manutenção</h3>
+                            <div class="dados">
+                                <div class="informacaoazul">
+                                    <p class="tecnico">Técnico:</p>
+                                    <p class="nome"><?php echo htmlspecialchars($manutencao['nome_tecnico']) ?></p>
+                                </div>
 
-                <div class="card">
-                    <h2 class="maquina">Ar condicionado</h2>
-                    <P class="codigo">001</P>
-                    <hr>
-                    <h3 class="manutencao">Manutenção</h3>
-                    <div class="dados">
-                        <div class="informacaoazul">
-                            <p class="tecnico">Técnico:</p>
-                            <p class="nome">José Silva de Jesus</p>
+                                <div class="informacao">
+                                    <p class="servico">Serviço:</p>
+                                    <p class="tipo"><?php
+                                    $tipo = $manutencao['tipo_de_servico'];
+                                    if ($tipo === 'instalacao') {
+                                        echo 'Instalação';
+                                    } else if ($tipo === 'manutencao_preventiva') {
+                                        echo 'Manutenção preventiva';
+                                    } else if ($tipo === 'manutencao_corretiva') {
+                                        echo 'Manutenção corretiva';
+                                    } else if ($tipo === 'inspecao') {
+                                        echo 'Inspeção';
+                                    }
+                                    ?></p>
+                                </div>
+
+                                <div class="informacaoazul">
+                                    <p class="data">Data e hora:</p>
+                                    <p class="dia"><?php
+                                    $data = $manutencao['data_e_hora'] ?? '';
+                                    if ($data != '0000-00-00 00:00:00') {
+                                        echo date('d/m/Y H:i', strtotime($data));
+                                    } else {
+                                        echo 'Data e hora não disponíveis';
+                                    }
+                                    ?>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="botoes">
+                                <button class="pmoc"
+                                    onclick="window.location.href = 'pagina_visualizacao_pmoc.php?cod_maquina=<?php echo htmlspecialchars($manutencao['cod_maquina_fk']); ?>&id_manutencao=<?php echo htmlspecialchars($manutencao['id_manutencao']); ?>&id_tecnico=<?php echo htmlspecialchars($manutencao['id_tecnico_fk']); ?>'">Ver
+                                    PMOC</button>
+                            </div>
                         </div>
-
-                        <div class="informacao">
-                            <p class="servico">Serviço:</p>
-                            <p class="tipo">Manutenção Preventiva</p>
-                        </div>
-
-                        <div class="informacaoazul">
-                            <p class="data">Data:</p>
-                            <p class="dia">10/05/2026</p>
-                        </div>
-
-                        <div class="informacao">
-                            <p class="hora">Hora:</p>
-                            <p class="horario">10:00</p>
-                        </div>
-                    </div>
-                    <div class="botoes">
-                        <button class="pmoc">Ver PMOC</button>
-                    </div>
-
-                </div>
-
-                <div class="card">
-                    <h2 class="maquina">Ar condicionado</h2>
-                    <P class="codigo">001</P>
-                    <hr>
-                    <h3 class="manutencao">Manutenção</h3>
-                    <div class="dados">
-                        <div class="informacaoazul">
-                            <p class="tecnico">Técnico:</p>
-                            <p class="nome">José Silva de Jesus</p>
-                        </div>
-
-                        <div class="informacao">
-                            <p class="servico">Serviço:</p>
-                            <p class="tipo">Manutenção Preventiva</p>
-                        </div>
-
-                        <div class="informacaoazul">
-                            <p class="data">Data:</p>
-                            <p class="dia">10/05/2026</p>
-                        </div>
-
-                        <div class="informacao">
-                            <p class="hora">Hora:</p>
-                            <p class="horario">10:00</p>
-                        </div>
-                    </div>
-                    <div class="botoes">
-                        <button class="pmoc">Ver PMOC</button>
-                    </div>
-
-                </div>
-
-                <div class="card">
-                    <h2 class="maquina">Ar condicionado</h2>
-                    <P class="codigo">001</P>
-                    <hr>
-                    <h3 class="manutencao">Manutenção</h3>
-                    <div class="dados">
-                        <div class="informacaoazul">
-                            <p class="tecnico">Técnico:</p>
-                            <p class="nome">José Silva de Jesus</p>
-                        </div>
-
-                        <div class="informacao">
-                            <p class="servico">Serviço:</p>
-                            <p class="tipo">Manutenção Preventiva</p>
-                        </div>
-
-                        <div class="informacaoazul">
-                            <p class="data">Data:</p>
-                            <p class="dia">10/05/2026</p>
-                        </div>
-
-                        <div class="informacao">
-                            <p class="hora">Hora:</p>
-                            <p class="horario">10:00</p>
-                        </div>
-                    </div>
-                    <div class="botoes">
-                        <button class="pmoc">Ver PMOC</button>
-                    </div>
-
-                </div>
-
-                <div class="card">
-                    <h2 class="maquina">Ar condicionado</h2>
-                    <P class="codigo">001</P>
-                    <hr>
-                    <h3 class="manutencao">Manutenção</h3>
-                    <div class="dados">
-                        <div class="informacaoazul">
-                            <p class="tecnico">Técnico:</p>
-                            <p class="nome">José Silva de Jesus</p>
-                        </div>
-
-                        <div class="informacao">
-                            <p class="servico">Serviço:</p>
-                            <p class="tipo">Manutenção Preventiva</p>
-                        </div>
-
-                        <div class="informacaoazul">
-                            <p class="data">Data:</p>
-                            <p class="dia">10/05/2026</p>
-                        </div>
-
-                        <div class="informacao">
-                            <p class="hora">Hora:</p>
-                            <p class="horario">10:00</p>
-                        </div>
-                    </div>
-                    <div class="botoes">
-                        <button class="pmoc">Ver PMOC</button>
-                    </div>
-
-                </div>
-
-                <div class="card">
-                    <h2 class="maquina">Ar condicionado</h2>
-                    <P class="codigo">001</P>
-                    <hr>
-                    <h3 class="manutencao">Manutenção</h3>
-                    <div class="dados">
-                        <div class="informacaoazul">
-                            <p class="tecnico">Técnico:</p>
-                            <p class="nome">José Silva de Jesus</p>
-                        </div>
-
-                        <div class="informacao">
-                            <p class="servico">Serviço:</p>
-                            <p class="tipo">Manutenção Preventiva</p>
-                        </div>
-
-                        <div class="informacaoazul">
-                            <p class="data">Data:</p>
-                            <p class="dia">10/05/2026</p>
-                        </div>
-
-                        <div class="informacao">
-                            <p class="hora">Hora:</p>
-                            <p class="horario">10:00</p>
-                        </div>
-                    </div>
-                    <div class="botoes">
-                        <button class="pmoc">Ver PMOC</button>
-                    </div>
-
-                </div>
-
-                <div class="card">
-                    <h2 class="maquina">Ar condicionado</h2>
-                    <P class="codigo">001</P>
-                    <hr>
-                    <h3 class="manutencao">Manutenção</h3>
-                    <div class="dados">
-                        <div class="informacaoazul">
-                            <p class="tecnico">Técnico:</p>
-                            <p class="nome">José Silva de Jesus</p>
-                        </div>
-
-                        <div class="informacao">
-                            <p class="servico">Serviço:</p>
-                            <p class="tipo">Manutenção Preventiva</p>
-                        </div>
-
-                        <div class="informacaoazul">
-                            <p class="data">Data:</p>
-                            <p class="dia">10/05/2026</p>
-                        </div>
-
-                        <div class="informacao">
-                            <p class="hora">Hora:</p>
-                            <p class="horario">10:00</p>
-                        </div>
-                    </div>
-                    <div class="botoes">
-                        <button class="pmoc">Ver PMOC</button>
-                    </div>
-
-                </div>
+                    <?php endforeach; ?>
+                <?php endif; ?>
             </div>
         </div>
-
+        <script src="../templates/assets/js/gerenciamento_de_manutencoes.js"></script>
     </main>
-<script src="/templates/assets/js/gerenciamento_de_manutencoes_adm.js"></script>
 </body>
 
 </html>
