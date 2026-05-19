@@ -14,6 +14,26 @@ $admController = new \Controller\ClienteController();
             $_POST['confirmar_senha'] ?? null
         );
     }
+
+$_SESSION['tipo_usuario'] = 'cliente';
+$_SESSION['id_usuario'] = 1;
+$_SESSION['nome_usuario'] = 'Pedro';
+$_SESSION['cpf'] = '12345678900';
+$_SESSION['uf'] = 'ba';
+$_SESSION['cidade'] = 'Salvador';
+$_SESSION['contato'] = '71984358900';
+$_SESSION['email'] = 'teste@teste.com';
+$_SESSION['cnpj'] = '123.456.789/0001-0';
+
+$tipo_tecnico = $_SESSION['tipo_usuario'];
+$id_tecnico = $_SESSION['id_usuario'];
+$nome = $_SESSION['nome_usuario'];
+$cpf = $_SESSION['cpf'];
+$uf = $_SESSION['uf'];
+$cidade = $_SESSION['cidade'];
+$contato = $_SESSION['contato'];
+$email = $_SESSION['email'];
+$cnpj = $_SESSION['cnpj'];
 ?>
 
 <!DOCTYPE html>
@@ -42,42 +62,42 @@ $admController = new \Controller\ClienteController();
             <div class="grade_informacoes">
                 <div class="linha_info">
                     <p class="rotulo">Nome</p>
-                    <p class="valor"></p>
+                    <p class="valor"><?php echo htmlspecialchars($nome ?? '', ENT_QUOTES, 'UTF-8');?></p>
                 </div>
 
                 <div class="linha_info">
                     <p class="rotulo">CNPJ</p>
-                    <p class="valor"></p>
+                    <p class="valor"><?php echo htmlspecialchars($cnpj ?? '', ENT_QUOTES, 'UTF-8');?></p>
                 </div>
 
                 <div class="linha_info">
                     <p class="rotulo">Acompanhante</p>
-                    <p class="valor"></p>
+                    <p class="valor"><?php echo htmlspecialchars($nome ?? '', ENT_QUOTES, 'UTF-8');?></p>
                 </div>
 
                 <div class="linha_info">
                     <p class="rotulo">CPF</p>
-                    <p class="valor"></p>
+                    <p class="valor"><?php echo htmlspecialchars($cpf ?? '', ENT_QUOTES, 'UTF-8');?></p>
                 </div>
                 
                 <div class="linha_info">
                     <p class="rotulo">UF</p>
-                    <p class="valor"></p>
+                    <p class="valor"><?php echo htmlspecialchars($uf ?? '', ENT_QUOTES, 'UTF-8');?></p>
                 </div>
 
                 <div class="linha_info">
                     <p class="rotulo">Cidade</p>
-                    <p class="valor"></p>
+                    <p class="valor"><?php echo htmlspecialchars($cidade ?? '', ENT_QUOTES, 'UTF-8');?></p>
                 </div>
 
                 <div class="linha_info">
                     <p class="rotulo">Número de contato</p>
-                    <p class="valor"></p>
+                    <p class="valor"><?php echo htmlspecialchars($contato ?? '', ENT_QUOTES, 'UTF-8');?></p>
                 </div>
 
                 <div class="linha_info">
                     <p class="rotulo">E-mail</p>
-                    <p class="valor"></p>
+                    <p class="valor"><?php echo htmlspecialchars($email ?? '', ENT_QUOTES, 'UTF-8');?></p>
                 </div>
 
             <div class="secao_senha">

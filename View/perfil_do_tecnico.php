@@ -14,6 +14,25 @@ $admController = new \Controller\TecnicoController();
             $_POST['confirmar_senha'] ?? null
         );
     }
+
+$_SESSION['tipo_usuario'] = 'administrador';
+$_SESSION['id_usuario'] = 1;
+$_SESSION['nome_usuario'] = 'Pedro';
+$_SESSION['cpf'] = '12345678900';
+$_SESSION['uf'] = 'ba';
+$_SESSION['cidade'] = 'Salvador';
+$_SESSION['contato'] = '71984358900';
+$_SESSION['email'] = 'teste@teste.com';
+
+$tipo_tecnico = $_SESSION['tipo_usuario'];
+$id_tecnico = $_SESSION['id_usuario'];
+$nome = $_SESSION['nome_usuario'];
+$cpf = $_SESSION['cpf'];
+$uf = $_SESSION['uf'];
+$cidade = $_SESSION['cidade'];
+$contato = $_SESSION['contato'];
+$email = $_SESSION['email'];
+
 ?>
 
 <!DOCTYPE html>
@@ -42,47 +61,33 @@ $admController = new \Controller\TecnicoController();
             <div class="grade_informacoes">
                 <div class="linha_info">
                     <p class="rotulo">Nome</p>
-                    <p class="valor">Cleiton Nascimento de Jesus</p>
+                    <p class="valor"><?php echo htmlspecialchars($nome ?? '', ENT_QUOTES, 'UTF-8');?></p>
                 </div>
 
                 <div class="linha_info">
                     <p class="rotulo">CPF</p>
-                    <p class="valor">ABC.DEF.GHI-JK</p>
+                    <p class="valor"><?php echo htmlspecialchars($cpf ?? '', ENT_QUOTES, 'UTF-8');?></p>
                 </div>
                 
                 <div class="linha_info">
                     <p class="rotulo">UF</p>
-                    <p class="valor">Bahia</p>
+                    <p class="valor"><?php echo htmlspecialchars($uf ?? '', ENT_QUOTES, 'UTF-8');?></p>
                 </div>
 
                 <div class="linha_info">
                     <p class="rotulo">Cidade</p>
-                    <p class="valor">Salvador</p>
+                    <p class="valor"><?php echo htmlspecialchars($cidade ?? '', ENT_QUOTES, 'UTF-8');?></p>
                 </div>
 
                 <div class="linha_info">
                     <p class="rotulo">Número de contato</p>
-                    <p class="valor">(71) 9 ABCD-EFGH</p>
+                    <p class="valor"><?php echo htmlspecialchars($contato ?? '', ENT_QUOTES, 'UTF-8');?></p>
                 </div>
 
                 <div class="linha_info">
                     <p class="rotulo">E-mail</p>
-                    <p class="valor">abcdef.ghi@gmail.com</p>
+                    <p class="valor"><?php echo htmlspecialchars($email ?? '', ENT_QUOTES, 'UTF-8');?></p>
                 </div>
-
-                <div class="linha_info" id="linha_senha">
-                        <p class="rotulo">Senha</p>
-                        <div class="senha">
-                            <p class="valor" id="senha_desbloqueada" style="display: none;"><?php echo htmlspecialchars($_SESSION['senha'] ?? '', ENT_QUOTES, 'UTF-8'); ?></p>
-                            <p class="valor" id="senha_bloqueada">*****</p>
-                            
-                            
-                            
-                            <figure class="mostrar_senha">
-                                <img src="../templates/assets/img/olhoaberto.png" id="olhoaberto" style="cursor: pointer; width: 3rem; height: 3rem;">
-                                <img src="../templates/assets/img/olhofechado.png" id="olhofechado" alt="" style="cursor: pointer; display: none; width: 3rem; height: 3rem;">
-                            </figure>
-                        </div>
 
             <div class="secao_senha">
                 <p class="rotulo_senha">Alterar senha</p>
