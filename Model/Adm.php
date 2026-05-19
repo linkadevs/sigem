@@ -1,12 +1,12 @@
 <?php
 namespace Model;
 
-require_once __DIR__ . '../Model/Connection.php';
+require_once __DIR__ . '/../Model/Connection.php';
 use PDO;
 use PDOException;
 use Exception;
 
-class Administrador{
+class Adm{
     private $db;
 
     public function __construct(){

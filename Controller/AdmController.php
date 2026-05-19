@@ -2,7 +2,6 @@
 namespace Controller;
 
 use Model\Adm;
-use Model\Administrador;
 use PDO;
 use PDOException;
 use Exception;
@@ -11,7 +10,7 @@ class AdmController{
     private $AdmModel;
 
     public function __construct(){
-        $this-> AdmModel = new Administrador();
+        $this-> AdmModel = new Adm();
     }
 
     public function updateAdm($nome_adm, $cpf_adm, $email_adm, $id_adm) {

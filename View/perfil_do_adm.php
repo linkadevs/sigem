@@ -4,7 +4,7 @@ require_once __DIR__ . '/../Controller/AdmController.php';
 require_once __DIR__ . '/../Model/Adm.php';
 require_once __DIR__ . '/../vendor/autoload.php';
 
-$admModel = new \Model\Administrador();
+$admModel = new \Model\Adm();
 $admController = new \Controller\AdmController();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -33,13 +33,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Seu Perfil</title>
-    <link rel="stylesheet" href="/templates/assets/css/perfil_do_cliente.css">
+    <link rel="stylesheet" href="../templates/assets/css/perfil_do_cliente.css">
 </head>
 <body>
 
     <header class="cabecalho_perfil">
         <button class="btn_voltar">
-            <figure><img src="/templates/assets/img/seta_voltar.png" alt="Seta Voltar"></figure>
+            <figure><img src="../templates/assets/img/seta_voltar.png" alt="Seta Voltar"></figure>
             <span>Voltar</span>
         </button>
         <h1 class="titulo_cabecalho">Seu perfil</h1>
@@ -81,8 +81,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             
                             
                             <figure class="mostrar_senha">
-                                <img src="../templates/assets/img/olhoaberto.png" id="olhoaberto" style="cursor: pointer; width: 3rem; height: 3rem;">
-                                <img src="../templates/assets/img/olhofechado.png" id="olhofechado" alt="" style="cursor: pointer; display: none; width: 3rem; height: 3rem;">
+                                <img src="..../templates/assets/img/olhoaberto.png" id="olhoaberto" style="cursor: pointer; width: 3rem; height: 3rem;">
+                                <img src="..../templates/assets/img/olhofechado.png" id="olhofechado" alt="" style="cursor: pointer; display: none; width: 3rem; height: 3rem;">
                             </figure>
                         </div>
                         
@@ -107,6 +107,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </section>
     </main>
 
-    <script src="/templates/assets/js/perfil_do_cliente.js"></script>
+    <script src="../templates/assets/js/perfil_do_cliente.js"></script>
 </body>
 </html>

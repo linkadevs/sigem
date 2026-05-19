@@ -41,13 +41,13 @@ $email = $_SESSION['email'];
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Seu Perfil</title>
-    <link rel="stylesheet" href="/templates/assets/css/perfil_do_cliente.css">
+    <link rel="stylesheet" href="../templates/assets/css/perfil_do_cliente.css">
 </head>
 <body>
 
     <header class="cabecalho_perfil">
         <button class="btn_voltar">
-            <figure><img src="/templates/assets/img/seta_voltar.png" alt="Seta Voltar"></figure>
+            <figure><img src="../templates/assets/img/seta_voltar.png" alt="Seta Voltar"></figure>
             <span>Voltar</span>
         </button>
         <h1 class="titulo_cabecalho">Seu perfil</h1>
@@ -104,6 +104,6 @@ $email = $_SESSION['email'];
         </section>
     </main>
 
-    <script src="/templates/assets/js/perfil_do_cliente.js"></script>
+    <script src="../templates/assets/js/perfil_do_cliente.js"></script>
 </body>
 </html>
