@@ -1,3 +1,22 @@
+<?php
+
+session_start();
+
+$_SESSION['id_usuario'] = 1;
+
+$id_tecnico = $_SESSION['id_usuario'];
+
+use Controller\ChamadoController;
+
+require_once __DIR__ . '/../Controller/ChamadoController.php';
+require_once __DIR__ . '/../vendor/autoload.php';
+
+$chamadoController = new ChamadoController();
+
+$chamados = $chamadoController->selecionarChamadosPorTecnico($id_tecnico);
+
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -44,8 +63,28 @@
 
         <!-- GRID DE BLOCOS/CHAMADOS -->
         <div class="container_blocos">
-
+            <?php foreach ($chamados as $chamado):?>
             <div class="bloco">
+                <div class="topo_bloco">
+                    <h2><?= $chamado['nome_cliente']?></h2>
+                </div>
+                <div class="conteudo_bloco">
+                    <p class="titulo">Status</p>
+                    <p class="status"><?= $chamado['status_chamado']?></p>
+
+                    <p class="tecnico">Técnico responsável</p>
+                    <p class="nome">
+                        <?php if($chamado['nome_tecnico']):?>
+                            <?= $chamado['nome_tecnico']?>
+                        <?php else:?>
+                            <?= 'Nenhum técnico se responsabilizou por esse chamado ainda'?>
+                        <?php endif;?>
+                    </p>
+                </div>
+            </div>
+            <?php endforeach; ?>
+
+            <!-- <div class="bloco">
                 <div class="topo_bloco">
                     <h2>UNEB</h2>
                 </div>
@@ -108,20 +147,7 @@
                     <p class="tecnico">Técnico responsável</p>
                     <p class="nome">Nenhum técnico se responsabilizou por esse chamado ainda</p>
                 </div>
-            </div>
-
-            <div class="bloco">
-                <div class="topo_bloco">
-                    <h2>UNEB</h2>
-                </div>
-                <div class="conteudo_bloco">
-                    <p class="titulo">Status</p>
-                    <p class="status">Em aberto</p>
-
-                    <p class="tecnico">Técnico responsável</p>
-                    <p class="nome">Nenhum técnico se responsabilizou por esse chamado ainda</p>
-                </div>
-            </div>
+            </div> -->
 
         </div>
     </main>

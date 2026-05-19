@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Detalhamento de chamado</title>
-    <link rel="stylesheet" href="/templates/assets/css/detalhamento_de_chamados_tecnico.css">
+    <link rel="stylesheet" href="../templates/assets/css/detalhamento_de_chamados_tecnico.css">
 </head>
 
 <body>
@@ -15,19 +15,19 @@
             <div class="topo">
                 <button class="voltar">
                     <figure>
-                        <img src="/templates/assets/img/seta_voltar_semfundo.png" alt="">
+                        <img src="../templates/assets/img/seta_voltar_semfundo.png" alt="">
                     </figure>
                 </button>
                 <div class="direita">
                     <button class="perfil">
                         <figure>
-                            <img src="/templates/assets/img/perfiltec.png" alt="">
+                            <img src="../templates/assets/img/perfiltec.png" alt="">
                         </figure>
                         Perfil
                     </button>
                     <button class="logout">
                         <figure>
-                            <img src="/templates/assets/img/menu-logout.png" alt="">
+                            <img src="../templates/assets/img/menu-logout.png" alt="">
                         </figure>
                         Logout
                     </button>
@@ -109,22 +109,22 @@
 
         <div class="fotos">
             <figure>
-                <img src="/templates/assets/img/img-chamado1.png" alt="">
+                <img src="../templates/assets/img/img-chamado1.png" alt="">
             </figure>
             <figure>
-                <img src="/templates/assets/img/img-chamado2.png" alt="">
+                <img src="../templates/assets/img/img-chamado2.png" alt="">
             </figure>
             <figure>
-                <img src="/templates/assets/img/img-chamado3.png" alt="">
+                <img src="../templates/assets/img/img-chamado3.png" alt="">
             </figure>
             <figure>
-                <img src="/templates/assets/img/img-chamado4.png" alt="">
+                <img src="../templates/assets/img/img-chamado4.png" alt="">
             </figure>
             <figure>
-                <img src="/templates/assets/img/img-chamado5.png" alt="">
+                <img src="../templates/assets/img/img-chamado5.png" alt="">
             </figure>
             <figure>
-                <img src="/templates/assets/img/img-chamado6.png" alt="">
+                <img src="../templates/assets/img/img-chamado6.png" alt="">
             </figure>
         </div>
 
@@ -135,7 +135,7 @@
             <button class="responsabilizarse">Responsabilizar-se</button>
         </div>
     </main>
-    <script src="/templates/assets/js/detalhamento_de_chamados_tecnico.js"></script>
+    <script src="../templates/assets/js/detalhamento_de_chamados_tecnico.js"></script>
 </body>
 
 </html>

@@ -96,10 +96,14 @@ class Chamado {
             FROM chamado c
             INNER JOIN cliente cl
             ON c.id_cliente_fk = cl.id_cliente
-            INNER JOIN tecnico t
+            LEFT JOIN tecnico t
             ON c.id_tecnico_fk = t.id_tecnico
-            WHERE c.id_tecnico_fk = :id_tecnico_fk
-            ORDER BY data_chamado ASC';
+            WHERE c.id_tecnico_fk = :id_tecnico_fk OR c.status = "aberto"
+            ORDER BY CASE
+            WHEN c.status = "aberto" THEN 1
+            WHEN c.status = "em_andamento" THEN 2
+            END ASC,
+            data_chamado ASC';
 
             $stmt = $this->db->prepare($sql);
 
