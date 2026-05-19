@@ -10,7 +10,7 @@ class ClienteController{
     private $ClienteModel;
 
     public function __construct(){
-        $this-> ClientModel = new Cliente();
+        $this-> ClienteModel = new Cliente();
     }
 
     public function updatePassword($id_cliente, $nova_senha, $confirmar_senha){
@@ -23,7 +23,7 @@ class ClienteController{
             return false;
         }
 
-        $success = $this->ClienteModel->updatePassword($id_cliente, $nova_senha);
+        $success = $this->ClienteModel->changePassword($id_cliente, $nova_senha);
 
         if ($success) {
             $_SESSION['success_message'] = "Senha alterada com sucesso!";

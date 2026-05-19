@@ -2,6 +2,7 @@
 namespace Controller;
 
 use Model\Adm;
+use Model\Administrador;
 use PDO;
 use PDOException;
 use Exception;
@@ -10,25 +11,22 @@ class AdmController{
     private $AdmModel;
 
     public function __construct(){
-        $this-> AdmModel = new Adm();
+        $this-> AdmModel = new Administrador();
     }
 
-    public function updateAdm($id_adm, $nome_adm, $email_adm, $cnpj_adm){
-
-        $success = $this->AdmModel->updateAdm($id_adm, $nome_adm, $email_adm, $cnpj_adm);
-
+    public function updateAdm($nome_adm, $cpf_adm, $email_adm, $id_adm) {
+        $success = $this->AdmModel->updateUserAdm($nome_adm, $cpf_adm, $email_adm, $id_adm);
+    
         if ($success) {
             $_SESSION['nome_adm'] = $nome_adm;
             $_SESSION['email_adm'] = $email_adm;
-            $_SESSION['cnpj_adm'] = $cnpj_adm;
+            $_SESSION['cpf_adm'] = $cpf_adm;
             $_SESSION['success_message'] = "Perfil atualizado com sucesso!";
-
         } else {
             $_SESSION['error_message'] = "Erro ao atualizar o perfil.";
         }
         header('Location: perfil_do_adm.php');
         exit;
-
     }
 
     public function updatePassword($id_adm, $nova_senha, $confirmar_senha){
@@ -41,7 +39,7 @@ class AdmController{
             return false;
         }
 
-        $success = $this->AdmModel->updatePassword($id_adm, $nova_senha);
+        $success = $this->AdmModel->changePassword($nova_senha, $id_adm);
 
         if ($success) {
             $_SESSION['success_message'] = "Senha alterada com sucesso!";

@@ -10,7 +10,7 @@ class TecnicoController{
     private $TecnicoModel;
 
     public function __construct(){
-        $this-> TecnicoModel = new Cliente();
+        $this-> TecnicoModel = new Tecnico();
     }
 
     public function updatePassword($id_tecnico, $nova_senha, $confirmar_senha){
@@ -23,7 +23,7 @@ class TecnicoController{
             return false;
         }
 
-        $success = $this->ClienteModel->updatePassword($id_tecnico, $nova_senha);
+        $success = $this->TecnicoModel->changePassword($id_tecnico, $nova_senha);
 
         if ($success) {
             $_SESSION['success_message'] = "Senha alterada com sucesso!";

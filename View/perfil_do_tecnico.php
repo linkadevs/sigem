@@ -1,3 +1,21 @@
+<?php
+session_start();
+require_once __DIR__ . '/../Controller/TecnicoController.php';
+require_once __DIR__ . '/../Model/Tecnico.php';
+require_once __DIR__ . '/../vendor/autoload.php';
+
+$admModel = new \Model\Tecnico();
+$admController = new \Controller\TecnicoController();
+
+    if (isset($_POST['action']) && $_POST['action'] === 'update_password') {
+        $admController->updatePassword(
+            $_SESSION['id_tecnico'],
+            $_POST['nova_senha'] ?? null,
+            $_POST['confirmar_senha'] ?? null
+        );
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -51,6 +69,20 @@
                     <p class="rotulo">E-mail</p>
                     <p class="valor">abcdef.ghi@gmail.com</p>
                 </div>
+
+                <div class="linha_info" id="linha_senha">
+                        <p class="rotulo">Senha</p>
+                        <div class="senha">
+                            <p class="valor" id="senha_desbloqueada" style="display: none;"><?php echo htmlspecialchars($_SESSION['senha'] ?? '', ENT_QUOTES, 'UTF-8'); ?></p>
+                            <p class="valor" id="senha_bloqueada">*****</p>
+                            
+                            
+                            
+                            <figure class="mostrar_senha">
+                                <img src="../templates/assets/img/olhoaberto.png" id="olhoaberto" style="cursor: pointer; width: 3rem; height: 3rem;">
+                                <img src="../templates/assets/img/olhofechado.png" id="olhofechado" alt="" style="cursor: pointer; display: none; width: 3rem; height: 3rem;">
+                            </figure>
+                        </div>
 
             <div class="secao_senha">
                 <p class="rotulo_senha">Alterar senha</p>

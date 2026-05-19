@@ -1,3 +1,21 @@
+<?php
+session_start();
+require_once __DIR__ . '/../Controller/ClienteController.php';
+require_once __DIR__ . '/../Model/Cliente.php';
+require_once __DIR__ . '/../vendor/autoload.php';
+
+$admModel = new \Model\Cliente();
+$admController = new \Controller\ClienteController();
+
+    if (isset($_POST['action']) && $_POST['action'] === 'update_password') {
+        $admController->updatePassword(
+            $_SESSION['id_cliente'],
+            $_POST['nova_senha'] ?? null,
+            $_POST['confirmar_senha'] ?? null
+        );
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -24,42 +42,42 @@
             <div class="grade_informacoes">
                 <div class="linha_info">
                     <p class="rotulo">Nome</p>
-                    <p class="valor">UNEB</p>
+                    <p class="valor"></p>
                 </div>
 
                 <div class="linha_info">
                     <p class="rotulo">CNPJ</p>
-                    <p class="valor">AB.123.CDE/0001-XY</p>
+                    <p class="valor"></p>
                 </div>
 
                 <div class="linha_info">
                     <p class="rotulo">Acompanhante</p>
-                    <p class="valor">Miguel Cruz Carvalho</p>
+                    <p class="valor"></p>
                 </div>
 
                 <div class="linha_info">
                     <p class="rotulo">CPF</p>
-                    <p class="valor">ABC.DEF.GHI.JK</p>
+                    <p class="valor"></p>
                 </div>
                 
                 <div class="linha_info">
                     <p class="rotulo">UF</p>
-                    <p class="valor">Bahia</p>
+                    <p class="valor"></p>
                 </div>
 
                 <div class="linha_info">
                     <p class="rotulo">Cidade</p>
-                    <p class="valor">Salvador</p>
+                    <p class="valor"></p>
                 </div>
 
                 <div class="linha_info">
                     <p class="rotulo">Número de contato</p>
-                    <p class="valor">(71) 9 ABCD-EFGH</p>
+                    <p class="valor"></p>
                 </div>
 
                 <div class="linha_info">
                     <p class="rotulo">E-mail</p>
-                    <p class="valor">abcdef.ghi@gmail.com</p>
+                    <p class="valor"></p>
                 </div>
 
             <div class="secao_senha">

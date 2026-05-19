@@ -4,7 +4,7 @@ require_once __DIR__ . '/../Controller/AdmController.php';
 require_once __DIR__ . '/../Model/Adm.php';
 require_once __DIR__ . '/../vendor/autoload.php';
 
-$admModel = new \Model\Adm();
+$admModel = new \Model\Administrador();
 $admController = new \Controller\AdmController();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -13,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_SESSION['id_adm'],
             $_POST['nome'] ?? null,
             $_POST['email'] ?? null,
-            $_POST['cnpj'] ?? null,
+            $_POST['cpf'] ?? null,
         );
     }
 
@@ -52,29 +52,30 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             <form method="POST">
             <div class="grade_informacoes">
+            <input type="hidden" name="action" value="update_profile">
 
                     <div class="linha_info">
                         <p class="rotulo">Nome</p>
                         <!-- <p class="valor">UNEB</p> -->
-                        <input type="text" class="valor" value="UNEB">
+                        <input type="text" class="valor" value="<?php echo htmlspecialchars($_SESSION['nome_adm'] ?? '', ENT_QUOTES, 'UTF-8');?>">
                     </div>
                     
                     <div class="linha_info">
                         <p class="rotulo">CNPJ</p>
                         <!-- <p class="valor">AB.123.CDE/0001-XY</p> -->
-                        <input type="text" class="valor" value="AB.123.CDE/0001-XY">
+                        <input type="text" class="valor" value="<?php echo htmlspecialchars($_SESSION['cnpj_adm'] ?? '', ENT_QUOTES, 'UTF-8'); ?>">
                     </div>
                     
                     <div class="linha_info">
                         <p class="rotulo">E-mail</p>
                         <!-- <p class="valor">abcdef.ghi@gmail.com</p> -->
-                        <input type="text" class="valor" value="abcdef.ghi@gmail.com">
+                        <input type="text" class="valor" value="<?php echo htmlspecialchars($_SESSION['email_adm'] ?? '', ENT_QUOTES, 'UTF-8'); ?>">
                     </div>
                     
                     <div class="linha_info" id="linha_senha">
                         <p class="rotulo">Senha</p>
                         <div class="senha">
-                            <p class="valor" id="senha_desbloqueada" style="display: none;">123456</p>
+                            <p class="valor" id="senha_desbloqueada" style="display: none;"><?php echo htmlspecialchars($_SESSION['senha'] ?? '', ENT_QUOTES, 'UTF-8'); ?></p>
                             <p class="valor" id="senha_bloqueada">*****</p>
                             
                             

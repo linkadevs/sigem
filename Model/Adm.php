@@ -13,17 +13,16 @@ class Administrador{
         $this-> db = Connection::getInstance();
     }
 
-    public function updateUserAdm($nome_adm, $cnpj_adm, $email_adm, $id_adm){
+    public function updateUserAdm($nome_adm, $cpf_adm, $email_adm, $id_adm){
         try{
-            $sql = 'UPDATE administrador SET nome = :nome, cnpj = :cnpj, email = :email, senha = :senha WHERE id_administrador = :id_administrador'
+            $sql = 'UPDATE administrador SET nome = :nome, cpf = :cpf, email = :email WHERE id_administrador = :id_administrador';
             
             $stmt = $this->db->prepare($sql);
 
             $stmt->bindParam(":id_administrador", $id_adm, PDO::PARAM_INT);
             $stmt->bindParam(":nome", $nome_adm, PDO::PARAM_STR);
-            $stmt->bindParam(":cnpj", $cnpj_adm, PDO::PARAM_STR);
+            $stmt->bindParam(":cpf", $cpf_adm, PDO::PARAM_STR);
             $stmt->bindParam(":email", $email_adm, PDO::PARAM_STR);
-            $stmt->bindParam(":senha", $senha_adm, PDO::PARAM_STR);
 
             return $stmt-> execute();
 
