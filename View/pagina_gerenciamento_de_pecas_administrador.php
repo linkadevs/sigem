@@ -225,7 +225,11 @@ if ($busca !== '') {
                         Procurar
 
                     </button>
-
+                    
+                    <?php if ($busca): ?>
+                        <a href="?" class="limpar-busca">Limpar</a>
+                    <?php endif; ?>
+                    
                 </form>
 
             </div>

@@ -214,6 +214,25 @@ input:focus {
     pointer-events: none;
 }
 
+.limpar-busca {
+    display: inline-block;
+    background-color: #a83ce7;
+    color: white;
+    padding: 0.8rem 1.5rem;
+    border-radius: 2rem;
+    text-decoration: none;
+    font-size: 1.4rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.limpar-busca:hover {
+    background-color: #842bc0;
+    transform: translateY(-2px);
+}
+
 /* ===== BLOCOS DE SOLICITAÇÕES ===== */
 .conteudo_principal {
     display: flex;
@@ -552,6 +571,13 @@ strong{
     }
 }
 
+@media screen and (max-width: 850px) {
+    .limpar-busca {
+        padding: 0.6rem 1rem;
+        font-size: 1.1rem;
+    }
+}
+
 /* Menu apenas ícones */
 @media (max-width: 768px) {
     body {
@@ -758,6 +784,11 @@ strong{
         gap: .2rem;
     }
     
+    .limpar-busca {
+        padding: 0.4rem .9rem;
+        font-size: 1rem;
+    }
+
     .lado-direito {
         flex-direction: row;
         align-items: stretch;
