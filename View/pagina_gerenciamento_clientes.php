@@ -181,7 +181,9 @@ if (!empty($busca)) {
                     <button class="procurar" type="submit">
                         Procurar
                     </button>
-
+                    <?php if ($busca): ?>
+                        <a href="?" class="limpar-busca">Limpar</a>
+                    <?php endif; ?>
                 </form>
 
             </div>

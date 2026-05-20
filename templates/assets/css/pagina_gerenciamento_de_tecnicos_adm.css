@@ -264,6 +264,25 @@ input:focus {
     pointer-events: none;
 }
 
+.limpar-busca {
+    display: inline-block;
+    background-color: #a83ce7;
+    color: white;
+    padding: 0.8rem 1.5rem;
+    border-radius: 2rem;
+    text-decoration: none;
+    font-size: 1.4rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.limpar-busca:hover {
+    background-color: #842bc0;
+    transform: translateY(-2px);
+}
+
 /* ============================================
    GRADE DE CARDS (2 COLUNAS)
    ============================================ */
@@ -670,6 +689,11 @@ input:focus {
         height: 3.2rem;
     }
 
+    .limpar-busca {
+        padding: 0.6rem 1rem;
+        font-size: 1.1rem;
+    }
+
     input {
         padding-left: 3rem;
         height: 3rem;
@@ -947,6 +971,11 @@ input:focus {
 
     .container_informacoes {
         gap: 0.7rem;
+    }
+
+    .limpar-busca {
+        padding: 0.4rem .9rem;
+        font-size: 1rem;
     }
 
     .container_cpf,

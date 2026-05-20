@@ -148,6 +148,9 @@ $tecnicos = $controller->pesquisarTecnicos($busca);
                             placeholder="Busque por uma data, um nome ou função específica!">
                     </div>
                     <button class="procurar">Procurar</button>
+                    <?php if ($busca): ?>
+                        <a href="?" class="limpar-busca">Limpar</a>
+                    <?php endif; ?>
                 </form>
             </div>
 
