@@ -74,14 +74,12 @@ class ChamadoController {
     
     public function abrirChamado (
         string $descricao,
-        string $status,
         string $fotos,
         int $id_cliente_fk,
         string $cod_maquina_fk
     ) :bool {
         try {
             $descricao = trim($descricao);
-            $status = trim($status);
             $fotos = trim($fotos);
             $cod_maquina_fk = trim($cod_maquina_fk);
 
@@ -89,7 +87,6 @@ class ChamadoController {
             
             return $this->chamadoModel->abrirChamado(
                 $descricao,
-                $status,
                 $fotos,
                 $id_cliente_fk,
                 $cod_maquina_fk
@@ -112,6 +109,111 @@ class ChamadoController {
         } catch (Exception $e) {
             throw new Exception(
                 'Erro ao deletar chamado',
+                0,
+                $e
+            );
+        }
+    }
+
+    public function pesquisarChamado (
+        string $pesquisa
+    ) :array {
+        $pesquisa = trim($pesquisa);
+        try {
+            return $this->chamadoModel->pesquisarChamado($pesquisa);
+        } catch (Exception $e) {
+            throw new Exception(
+                'Erro ao pesquisar chamado.',
+                0,
+                $e
+            );
+        }
+    }
+
+    public function pesquisarChamadoCliente (
+        string $pesquisa,
+        int $id_cliente
+    ) :array {
+        $pesquisa = trim($pesquisa);
+        $id_cliente = filter_var($id_cliente, FILTER_SANITIZE_NUMBER_INT);
+        try {
+            return $this->chamadoModel->pesquisarChamadoCliente(
+                $pesquisa,
+                $id_cliente
+            );
+        } catch (Exception $e) {
+            throw new Exception(
+                'Erro ao pesquisar chamados.',
+                0,
+                $e
+            );
+        }
+    }
+
+    public function pesquisarChamadoTecnico (
+        string $pesquisa,
+        int $id_tecnico
+    ) :array {
+        $pesquisa = trim($pesquisa);
+        $id_tecnico = filter_var($id_tecnico, FILTER_SANITIZE_NUMBER_INT);
+        try {
+            return $this->chamadoModel->pesquisarChamadoTecnico(
+                $pesquisa,
+                $id_tecnico
+            );
+        } catch (Exception $e) {
+            throw new Exception(
+                'Erro ao pesquisar chamados',
+                0,
+                $e
+            );
+        }
+    }
+
+    public function responsabilizarse (
+        int $id_tecnico,
+        int $id_chamado
+    ) :bool {
+        $id_tecnico = filter_var($id_tecnico, FILTER_SANITIZE_NUMBER_INT);
+        $id_chamado = filter_var($id_chamado, FILTER_SANITIZE_NUMBER_INT);
+        try {
+            return $this->chamadoModel->responsabilizarse(
+                $id_tecnico,
+                $id_chamado
+            );
+        } catch (Exception $e) {
+            throw new Exception(
+                'Erro ao responsabilizar técnico ao chamado.',
+                0,
+                $e
+            );
+        }
+    }
+    
+    public function cancelar (
+        int $id_chamado
+    ) :bool {
+        $id_chamado = filter_var($id_chamado, FILTER_SANITIZE_NUMBER_INT);
+        try {
+            return $this->chamadoModel->cancelar($id_chamado);
+        } catch (Exception $e) {
+            throw new Exception(
+                'Erro ao cancelar responsabilidade do chamado',
+                0,
+                $e
+            );
+        }
+    }
+
+    public function finalizarChamado (
+        int $id_chamado
+    ) :bool {
+        $id_chamado = filter_var($id_chamado, FILTER_SANITIZE_NUMBER_INT);
+        try {
+            return $this->chamadoModel->finalizarChamado($id_chamado);
+        } catch (Exception $e) {
+            throw new Exception(
+                'Erro ao finalizar chamado.',
                 0,
                 $e
             );

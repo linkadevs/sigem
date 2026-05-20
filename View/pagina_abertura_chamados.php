@@ -1,3 +1,16 @@
+<?php
+
+session_start();
+$_SESSION['id_usuario'] = 2;
+$_SESSION['cod_maquina'] = 'HVNT';
+
+use Controller\ChamadoController;
+require_once __DIR__ . '/../Controller/ChamadoController.php';
+require_once __DIR__ . '/../vendor/autoload.php';
+$chamadoController = new ChamadoController();
+
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
     <head>
@@ -16,29 +29,29 @@
         <main>
             <div class="conteiner">
                 <figure><img src="../templates/assets/img/fundo_chamado.png" alt="Engrenagens e ícones interconectados representando o fluxo de trabalho de gerenciamento de manutenção com análises, marcas de seleção e símbolos de fluxo de processo em um fundo de rede digital."></figure>
-                <form method="POST">
+                <form action="salvar_chamado.php" method="POST" enctype="multipart/form-data">
                     <div class="inputs">
                         <div class="input">
-                            <label for="nome">Nome</label>
-                            <input type="text" name="nome" id="nome" placeholder="Insira o nome do cliente">
+                            <label for="cliente">Nome</label>
+                            <input type="text" name="nome" id="nome" placeholder="Insira o nome do cliente" value="Bombeiros">
                         </div>
                         <div class="dataUf">
                             <div class="input">
                                 <label for="data">Data</label>
-                                <input type="date" name="data" id="data">
+                                <input type="date" name="data" id="data" value="<?= date('Y-m-d')?>">
                             </div>
                             <div class="input">
                                 <label for="uf">UF</label>
-                                <input type="text" name="uf" id="uf" maxlength="2" placeholder="Estado">
+                                <input type="text" name="uf" id="uf" maxlength="2" placeholder="Estado" value="Bahia">
                             </div>
                         </div>
                         <div class="input">
                             <label for="cidade">Cidade</label>
-                            <input type="text" name="cidade" id="cidade" placeholder="Insira a cidade do chamado">
+                            <input type="text" name="cidade" id="cidade" placeholder="Insira a cidade do chamado" value="Camaçari">
                         </div>
                         <div class="input">
                             <label for="localizacao">Localização</label>
-                            <input type="text" name="localizacao" id="localizacao" placeholder="Insira o local do chamado">
+                            <input type="text" name="localizacao" id="localizacao" placeholder="Insira o local do chamado" value="asdsfg">
                         </div>
                         <div class="input">
                             <label for="descricao">Descrição</label>
@@ -47,7 +60,7 @@
                         <div class="input">
                             <label for="fotos">Fotos</label>
                             <button id="botaoFotos" name="botaoFotos">Selecione fotos da manutenção</button>
-                            <input type="file" name="fotos" id="fotos" accept="image/*" multiple>
+                            <input type="file" name="fotos[]" id="fotos" accept="image/*" multiple>
                         </div>
                         <div class="grid"></div>
                     </div>

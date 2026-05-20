@@ -1,3 +1,45 @@
+<?php
+
+session_start();
+$_SESSION['id_chamado'] = 39;
+$_SESSION['id_usuario'] = 1;
+use Controller\ChamadoController;
+require_once __DIR__ . '/../Controller/ChamadoController.php';
+require_once __DIR__ . '/../vendor/autoload.php';
+$chamadoController = new ChamadoController();
+$id_chamado = $_SESSION['id_chamado'];
+$id_usuario = $_SESSION['id_usuario'];
+$chamado = $chamadoController->selecionarChamadosPorId($id_chamado);
+
+if($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (!empty($_POST['responsabilizarse']) && isset($_POST['responsabilizarse'])) {
+        $chamadoController->responsabilizarse(
+            $id_usuario,
+            $id_chamado
+        );
+        header('Location: detalhamento_de_chamados_tecnico.php');
+        exit();
+    }
+
+    if (!empty($_POST['concluir']) && isset($_POST['concluir'])) {
+        $chamadoController->finalizarChamado(
+            $id_chamado
+        );
+        header('Location: detalhamento_de_chamados_tecnico.php');
+        exit();
+    }
+
+    if (!empty($_POST['cancelar']) && isset($_POST['cancelar'])) {
+        $chamadoController->cancelar(
+            $id_chamado
+        );
+        header('Location: detalhamento_de_chamados_tecnico.php');
+        exit();
+    }
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -44,55 +86,71 @@
                 <div class="linha">
                     <div class="cliente">
                         <p class="titulo">Cliente:</p>
-                        <p class="campo">UNEB</p>
+                        <p class="campo"><?= htmlspecialchars($chamado['nome_cliente'])?></p>
                     </div>
                     <div class="cnpj">
                         <p class="titulo">CNPJ:</p>
-                        <p class="campo">AB.123.CDE/0001-XY</p>
+                        <p class="campo"><?= htmlspecialchars($chamado['cnpj_cliente'])?></p>
                     </div>
                 </div>
 
                 <div class="linha">
                     <div class="nomemaquina">
                         <p class="titulo">Nome da máquina:</p>
-                        <p class="campo">Ar condicionado</p>
+                        <p class="campo"><?= htmlspecialchars($chamado['nome_maquina'])?></p>
                     </div>
                     <div class="codigo">
                         <p class="titulo">Código da Máquina:</p>
-                        <p class="campo">001</p>
+                        <p class="campo"><?= htmlspecialchars($chamado['cod_maquina'])?></p>
                     </div>
                 </div>
 
                 <div class="linha">
                     <div class="uf">
                         <p class="titulo">UF:</p>
-                        <p class="campo">BA</p>
+                        <p class="campo"><?= htmlspecialchars($chamado['uf_cliente'])?></p>
                     </div>
                     <div class="cidade">
                         <p class="titulo">Cidade:</p>
-                        <p class="campo">Salvador</p>
+                        <p class="campo"><?= htmlspecialchars($chamado['cidade_cliente'])?></p>
                     </div>
                 </div>
 
                 <div class="linha">
                     <div class="localizacao">
                         <p class="titulo">Localização</p>
-                        <p class="campo">Sala da recepção</p>
+                        <p class="campo"><?= htmlspecialchars($chamado['localizacao_maquina'])?></p>
                     </div>
                     <div class="contato">
                         <p class="titulo">Contato:</p>
-                        <p class="campo">(71) 97726-5052</p>
+                        <p class="campo"><?= htmlspecialchars($chamado['contato_cliente'])?></p>
                     </div>
                 </div>
 
                 <div class="linha">
                     <div class="status">
                         <p class="titulo">Status:</p>
-                        <p class="campo">Em aberto</p>
+                        <p class="campo">
+                            <?php
+                                switch ($chamado['status_chamado']) {
+                                    case 'aberto':
+                                        echo 'Aberto';
+                                        break;
+                                    
+                                    case 'em_andamento':
+                                        echo 'Em andamento';
+                                        break;
+
+                                    case 'resolvido':
+                                        echo 'Resolvido';
+                                        break;
+                                } 
+                            ?>
+                        </p>
                     </div>
                     <div class="data">
                         <p class="titulo">Data:</p>
-                        <p class="campo">14/04/2026</p>
+                        <p class="campo"><?= htmlspecialchars($chamado['data_chamado'])?></p>
                     </div>
                 </div>
 
@@ -100,39 +158,37 @@
                 <div class="linha_descricao">
                     <div class="descricao">
                         <p class="titulo_descricao">Descrição do problema:</p>
-                        <p class="campodescricao">A máquina está apresentando falhas durante o funcionamento, com
-                            interrupções inesperadas no processo e ruídos incomuns.</p>
+                        <p class="campodescricao"><?= htmlspecialchars($chamado['descricao_chamado'])?></p>
                     </div>
                 </div>
             </div>
         </div>
 
         <div class="fotos">
-            <figure>
-                <img src="../templates/assets/img/img-chamado1.png" alt="">
-            </figure>
-            <figure>
-                <img src="../templates/assets/img/img-chamado2.png" alt="">
-            </figure>
-            <figure>
-                <img src="../templates/assets/img/img-chamado3.png" alt="">
-            </figure>
-            <figure>
-                <img src="../templates/assets/img/img-chamado4.png" alt="">
-            </figure>
-            <figure>
-                <img src="../templates/assets/img/img-chamado5.png" alt="">
-            </figure>
-            <figure>
-                <img src="../templates/assets/img/img-chamado6.png" alt="">
-            </figure>
+            <?php
+                $fotos = json_decode($chamado['fotos_chamado'], true);
+                foreach($fotos as $foto){
+                    echo '<figure><img src="../'.$foto.'"></figure>';
+                }
+            ?>
         </div>
 
 
         <div class="botoes">
-            <button class="concluido">Marcar como concluído</button>
-            <button class="cancelar">Cancelar</button>
-            <button class="responsabilizarse">Responsabilizar-se</button>
+            <form method="POST">
+                <?php if($chamado['status_chamado'] === 'aberto'):?>
+                    <?= '<button class="responsabilizarse" name="responsabilizarse" value="true">Responsabilizar-se</button>'?>
+                <?php elseif($chamado['status_chamado'] === 'em_andamento'):?>
+                    <?= '
+                        <button class="concluido" name="concluir" value="true">Marcar como concluído</button>
+                        <button class="cancelar" name="cancelar" value="true">Cancelar</button>
+                    '?>
+                <?php else:?>
+                    <?= '
+                        <button class="cancelar" name="responsabilizarse" value="true">Desmarcar como concluído</button>
+                    '?>
+                <?php endif;?>
+            </form>
         </div>
     </main>
     <script src="../templates/assets/js/detalhamento_de_chamados_tecnico.js"></script>

@@ -152,6 +152,36 @@ class Maquina {
         ]);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+
+    public function pesquisarMaquinaCliente (
+        string $pesquisa,
+        int $id_cliente
+    ) {
+        $pesquisaFormatada = '%'.$pesquisa.'%'; 
+        $sql = 'SELECT maquina.cod_maquina,
+                maquina.nome_maquina,
+                maquina.localizacao,
+                maquina.marca,
+                maquina.modelo,
+                maquina.fluido_refrigerante,
+                maquina.capacidade_termica_de_refrigeracao
+                FROM maquina
+                INNER JOIN cliente
+                ON maquina.id_cliente_fk = cliente.id_cliente
+                WHERE (
+                maquina.cod_maquina LIKE :pesquisa1
+                OR maquina.nome_maquina LIKE :pesquisa2
+                OR cliente.nome LIKE :pesquisa3
+                ) AND cliente.id_cliente = :id_cliente';
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute([
+            ':id_cliente' => $id_cliente,
+            ':pesquisa1' => $pesquisaFormatada,
+            ':pesquisa2' => $pesquisaFormatada,
+            ':pesquisa3' => $pesquisaFormatada
+        ]);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
 }
 
 ?>

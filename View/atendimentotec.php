@@ -13,8 +13,15 @@ require_once __DIR__ . '/../vendor/autoload.php';
 
 $chamadoController = new ChamadoController();
 
-$chamados = $chamadoController->selecionarChamadosPorTecnico($id_tecnico);
-
+if(isset($_GET['search']) && !empty($_GET['search'])) {
+    $pesquisa = $_GET['search'];
+    $chamados = $chamadoController->pesquisarChamadoTecnico(
+        $pesquisa,
+        $id_tecnico
+    );
+} else {
+    $chamados = $chamadoController->selecionarChamadosPorTecnico($id_tecnico);
+}
 ?>
 
 <!DOCTYPE html>
@@ -51,10 +58,10 @@ $chamados = $chamadoController->selecionarChamadosPorTecnico($id_tecnico);
 
             <h1>Chamados</h1>
 
-            <form>
+            <form method="GET">
                 <div class="input-container">
                     <img src="../templates/assets/img/lupa.png" alt="lupa de pesquisa">
-                    <input type="text" id="pesquisa"
+                    <input type="text" id="pesquisa" name="search"
                         placeholder="Busque por um Cliente, UF, CNPJ ou Código da Máquina!">
                 </div>
                 <button type="submit" class="procurar">Procurar</button>
@@ -66,16 +73,16 @@ $chamados = $chamadoController->selecionarChamadosPorTecnico($id_tecnico);
             <?php foreach ($chamados as $chamado):?>
             <div class="bloco">
                 <div class="topo_bloco">
-                    <h2><?= $chamado['nome_cliente']?></h2>
+                    <h2><?= htmlspecialchars($chamado['nome_cliente'])?></h2>
                 </div>
                 <div class="conteudo_bloco">
                     <p class="titulo">Status</p>
-                    <p class="status"><?= $chamado['status_chamado']?></p>
+                    <p class="status"><?= htmlspecialchars($chamado['status_chamado'])?></p>
 
                     <p class="tecnico">Técnico responsável</p>
                     <p class="nome">
                         <?php if($chamado['nome_tecnico']):?>
-                            <?= $chamado['nome_tecnico']?>
+                            <?= htmlspecialchars($chamado['nome_tecnico'])?>
                         <?php else:?>
                             <?= 'Nenhum técnico se responsabilizou por esse chamado ainda'?>
                         <?php endif;?>

@@ -265,7 +265,7 @@ h1 {
 /* =========================
    BOTÕES
 ========================= */
-.botoes {
+.botoes form, .botoes{
     display: flex;
     width: 100%;
     align-items: center;
@@ -321,11 +321,6 @@ h1 {
     background: linear-gradient(to right, #094B6F, #1291D5);
     border: none;
     color: #ffffff;
-}
-
-.concluido,
-.cancelar {
-    display: none;
 }
 
 /* =========================

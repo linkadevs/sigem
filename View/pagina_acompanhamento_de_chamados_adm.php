@@ -1,3 +1,17 @@
+<?php
+
+use Controller\ChamadoController;
+require_once __DIR__ . '/../Controller/ChamadoController.php';
+require_once __DIR__ . '/../vendor/autoload.php';
+$chamadoController = new ChamadoController();
+if (!empty($_GET['search']) && isset($_GET['search'])) {
+    $pesquisa = $_GET['search'];
+    $chamados = $chamadoController->pesquisarChamado($pesquisa);
+} else {
+    $chamados = $chamadoController->selecionarTodosOsChamados();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -108,12 +122,12 @@
 
             <div class="conteudo_superior">
                 <h1>Chamados</h1>
-                <form>
+                <form method="GET">
                     <div class="input-container">
                         <figure>
-                            <img src="/templates/assets/img/lupa_branca.png" alt="">
+                            <img src="../templates/assets/img/lupa_branca.png" alt="">
                         </figure>
-                        <input type="text" class="pesquisar"
+                        <input type="text" class="pesquisar" name="search"
                             placeholder="Busque por um Cliente, UF, CNPJ ou Código da Máquina!">
                     </div>
                     <button class="procurar">Procurar</button>
@@ -121,8 +135,43 @@
             </div>
 
             <div class="container_blocos">
-
+                <?php foreach ($chamados as $chamado):?>
                 <div class="bloco">
+                    <div class="topo_bloco">
+                        <h2><?= htmlspecialchars($chamado['nome_cliente'])?></h2>
+                    </div>
+                    <div class="conteudo_bloco">
+                        <p class="titulo">Status</p>
+                        <p class="status"><?php 
+                            switch ($chamado['status_chamado']) {
+                                case 'aberto':
+                                    echo 'Aberto';
+                                    break;
+                                
+                                case 'em_andamento':
+                                    echo 'Em andamento';
+                                    break;
+
+                                case 'resolvido':
+                                    echo 'Resolvido';
+                                    break;
+                            }
+                        ?></p>
+                        <p class="tecnico">Técnico responsável</p>
+                        <p class="nome">
+                            <?php
+                                if(!empty($chamado['nome_tecnico']) && isset($chamado['nome_tecnico'])) {
+                                    echo htmlspecialchars($chamado['nome_tecnico']);
+                                } else {
+                                    echo 'Nenhum técnico se responsabilizou por esse chamado ainda';
+                                }
+                            ?>
+                        </p>
+                    </div>
+                </div>
+                <?php endforeach;?>
+
+                <!-- <div class="bloco">
                     <div class="topo_bloco">
                         <h2>UNEB</h2>
                     </div>
@@ -185,20 +234,7 @@
                         <p class="tecnico">Técnico responsável</p>
                         <p class="nome">Nenhum técnico se responsabilizou por esse chamado ainda</p>
                     </div>
-                </div>
-
-                <div class="bloco">
-                    <div class="topo_bloco">
-                        <h2>UNEB</h2>
-                    </div>
-                    <div class="conteudo_bloco">
-                        <p class="titulo">Status</p>
-                        <p class="status">Em aberto</p>
-
-                        <p class="tecnico">Técnico responsável</p>
-                        <p class="nome">Nenhum técnico se responsabilizou por esse chamado ainda</p>
-                    </div>
-                </div>
+                </div> -->
 
             </div>
         </div>
