@@ -25,6 +25,12 @@ class GerenciamentoCliente
         $this->db = Connection::getInstance();
     }
 
+    // Criar cliente
+    public function createCliente($nome, $cnpj, $uf, $cidade, $contato, $email, $senha)
+    {
+        try {
+            $sql = "INSERT INTO cliente (nome, cnpj, uf, cidade, contato, email, senha) VALUES (:nome, :cnpj, :uf, :cidade, :contato, :email, :senha)";
+            $stmt = $this->db->prepare($sql);
 
             $senhaHash = password_hash($senha, PASSWORD_DEFAULT);
 
@@ -41,7 +47,7 @@ class GerenciamentoCliente
             error_log("Erro ao criar Cliente: " . $e->getMessage());
             return false;
         }
-   }
+    }
    //Atualizar cliente
 public function updateCliente($id, $nome, $cnpj, $uf, $cidade, $contato, $email) {
     try {
