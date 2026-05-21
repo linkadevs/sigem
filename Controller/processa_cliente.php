@@ -5,16 +5,37 @@ use Controller\GerenciamentoClienteController;
 $controller = new GerenciamentoClienteController();
 
 if (isset($_GET['acao']) && $_GET['acao'] === 'excluir') {
-    $controller->excluirCliente($_GET['id_cliente']);
+    $id_cliente = $_GET['id_cliente'] ?? null;
+    $controller->excluirCliente($id_cliente);
+    header("Location: ../View/pagina_gerenciamento_clientes.php");
+    exit;
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $acao = $_POST['acao'] ?? '';
+    $acao = trim($_POST['acao'] ?? '');
+
     if ($acao === 'cadastrar') {
-        $controller->GerenciamentoCliente->createCliente($_POST['nome'], $_POST['cnpj'], $_POST['uf'], $_POST['cidade'], $_POST['contato'], $_POST['email'], $_POST['senha']);
+        $controller->criarCliente(
+            trim($_POST['nome'] ?? ''),
+            trim($_POST['cnpj'] ?? ''),
+            trim($_POST['uf'] ?? ''),
+            trim($_POST['cidade'] ?? ''),
+            trim($_POST['contato'] ?? ''),
+            trim($_POST['email'] ?? ''),
+            $_POST['senha'] ?? ''
+        );
     } elseif ($acao === 'editar') {
-        $controller->GerenciamentoCliente->updateCliente($_POST['id_cliente'], $_POST['nome'], $_POST['cnpj'], $_POST['uf'], $_POST['cidade'], $_POST['contato'], $_POST['email']);
+        $controller->atualizarCliente(
+            $_POST['id_cliente'] ?? null,
+            trim($_POST['nome'] ?? ''),
+            trim($_POST['cnpj'] ?? ''),
+            trim($_POST['uf'] ?? ''),
+            trim($_POST['cidade'] ?? ''),
+            trim($_POST['contato'] ?? ''),
+            trim($_POST['email'] ?? '')
+        );
     }
+
     header("Location: ../View/pagina_gerenciamento_clientes.php");
     exit;
 }

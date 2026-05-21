@@ -198,8 +198,8 @@ $tecnicos = $controller->pesquisarTecnicos($busca);
                                     <button class="editar">Editar</button>
                                 </a>
 
-                                <a href="../Controller/GerenciamentoTecController.php?acao=excluir&id_tecnico=<?= $tecnico['id_tecnico'] ?>">
-                                    <button class="excluir">Excluir</button>
+                                <a href="../Controller/processa_tecnico.php?acao=excluir&id_tecnico=<?= $tecnico['id_tecnico'] ?>" onclick="return confirm('Tem certeza que deseja excluir este técnico?');">
+                                    <button type="button" class="excluir">Excluir</button>
                                 </a>
                             </div>
                         </div>

@@ -27,6 +27,14 @@ class GerenciamentoTecController
         return $this->gerenciamentoTec->getTecById($id_tecnico);
     }
 
+    public function criarTecnico($nome, $cpf, $funcao, $email, $senha) {
+        return $this->gerenciamentoTec->createTec($nome, $cpf, $funcao, $email, $senha);
+    }
+
+    public function atualizarTecnico($id, $nome, $cpf, $funcao, $email) {
+        return $this->gerenciamentoTec->updateTec($id, $nome, $cpf, $funcao, $email);
+    }
+
     public function excluirTecnico($id_tecnico) {
         if (empty($id_tecnico)) return false;
         return $this->gerenciamentoTec->deleteTec($id_tecnico);

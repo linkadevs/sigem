@@ -47,48 +47,26 @@ class GerenciamentoClienteController
         return $this->gerenciamentoC->getClienteById($id_cliente);
     }
 
+    // CRIAR CLIENTE
+    public function criarCliente($nome, $cnpj, $uf, $cidade, $contato, $email, $senha)
+    {
+        return $this->gerenciamentoC->createCliente($nome, $cnpj, $uf, $cidade, $contato, $email, $senha);
+    }
+
+    // ATUALIZAR CLIENTE
+    public function atualizarCliente($id_cliente, $nome, $cnpj, $uf, $cidade, $contato, $email)
+    {
+        return $this->gerenciamentoC->updateCliente($id_cliente, $nome, $cnpj, $uf, $cidade, $contato, $email);
+    }
+
     // EXCLUIR CLIENTE
     public function excluirCliente($id_cliente)
     {
-
-        // VERIFICA SE O ID EXISTE
         if (empty($id_cliente)) {
-
-            echo "
-            <script>
-                alert('ID do cliente inválido.');
-                window.history.back();
-            </script>
-            ";
-
-            exit;
+            return false;
         }
 
-        // EXCLUI O CLIENTE
-        $resultado = $this->gerenciamentoC->deleteCliente($id_cliente);
-
-        // VERIFICA RESULTADO
-        if ($resultado) {
-
-            echo "
-            <script>
-                alert('Cliente excluído com sucesso.');
-
-                window.location.href =
-                '../View/pagina_gerenciamento_clientes.php';
-            </script>
-            ";
-
-        } else {
-
-            echo "
-            <script>
-                alert('Erro ao excluir cliente.');
-
-                window.history.back();
-            </script>
-            ";
-        }
+        return $this->gerenciamentoC->deleteCliente($id_cliente);
     }
 
 
@@ -103,28 +81,6 @@ class GerenciamentoClienteController
         }
         // RETORNA PESQUISA
         return $this->gerenciamentoC->searchCliente($busca);
-    }
-}
-
-// INSTANCIA O CONTROLLER
-$controller = new GerenciamentoClienteController();
-
-// AÇÃO EXCLUIR
-if (isset($_GET['acao'])) {
-
-    // RECEBE A AÇÃO
-    $acao = $_GET['acao'];
-
-    // VERIFICA SE É EXCLUIR
-    if ($acao == 'excluir') {
-
-        // RECEBE O ID
-        $id_cliente = $_GET['id_cliente'] ?? null;
-
-        // CHAMA A FUNÇÃO
-        $controller->excluirCliente(
-            $id_cliente
-        );
     }
 }
 

@@ -19,7 +19,6 @@ if (!empty($busca)) {
     // LISTA TODOS OS CLIENTES
     $clientes = $controller->listarClientes();
 }
-
 ?>
 
 <!DOCTYPE html>
