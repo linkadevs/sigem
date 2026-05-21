@@ -154,14 +154,14 @@ $tecnicos = $controller->pesquisarTecnicos($busca);
                 </form>
             </div>
 
-            <div class="novo_colaborador">
-                <button class="btn_colaborador">
+            <a href="pagina_cadastro_tecnicos_administrador.php">
+                <button class="btn_colaborador" type="button">
                     <figure>
                         <img src="../templates/assets/img/sinal-de-adicao.png" alt="">
                     </figure>
                     Novo colaborador
                 </button>
-            </div>
+            </a>
 
             <div class="grid_cards">
 
@@ -194,10 +194,13 @@ $tecnicos = $controller->pesquisarTecnicos($busca);
                             </div>
 
                             <div class="btn_card">
-                                <div class="btn_card">
-                                    <button class="excluir" data-id="<?php echo $tecnico['id_tecnico']; ?>">Excluir</button>
-                                    <button class="editar" data-id="<?php echo $tecnico['id_tecnico']; ?>">Editar</button>
-                                </div>
+                                <a href="pagina_cadastro_tecnicos_administrador.php?id=<?= $tecnico['id_tecnico'] ?>">
+                                    <button class="editar">Editar</button>
+                                </a>
+
+                                <a href="../Controller/GerenciamentoTecController.php?acao=excluir&id_tecnico=<?= $tecnico['id_tecnico'] ?>">
+                                    <button class="excluir">Excluir</button>
+                                </a>
                             </div>
                         </div>
                     <?php endforeach; ?>

@@ -26,6 +26,36 @@ class GerenciamentoCliente
     }
 
 
+            $senhaHash = password_hash($senha, PASSWORD_DEFAULT);
+
+            $stmt->bindParam(':nome', $nome, PDO::PARAM_STR);
+            $stmt->bindParam(':cnpj', $cnpj, PDO::PARAM_STR);
+            $stmt->bindParam(':uf', $uf, PDO::PARAM_STR);
+            $stmt->bindParam(':cidade', $cidade, PDO::PARAM_STR);
+            $stmt->bindParam(':contato', $contato, PDO::PARAM_STR);
+            $stmt->bindParam(':email', $email, PDO::PARAM_STR);
+            $stmt->bindParam(':senha', $senhaHash, PDO::PARAM_STR);
+
+            return $stmt->execute();
+        } catch (PDOException $e) {
+            error_log("Erro ao criar Cliente: " . $e->getMessage());
+            return false;
+        }
+   }
+   //Atualizar cliente
+public function updateCliente($id, $nome, $cnpj, $uf, $cidade, $contato, $email) {
+    try {
+        $sql = "UPDATE cliente SET nome = :nome, cnpj = :cnpj, uf = :uf, cidade = :cidade, contato = :contato, email = :email WHERE id_cliente = :id";
+        $stmt = $this->db->prepare($sql);
+        return $stmt->execute([
+            ':id' => $id, ':nome' => $nome, ':cnpj' => $cnpj, ':uf' => $uf, 
+            ':cidade' => $cidade, ':contato' => $contato, ':email' => $email
+        ]);
+    } catch (PDOException $e) {
+        error_log("Erro ao atualizar Cliente: " . $e->getMessage());
+        return false;
+    }
+}
 
     // Buscar todos
     public function getAllClientes()
