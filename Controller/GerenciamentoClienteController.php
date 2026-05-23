@@ -17,7 +17,7 @@ class GerenciamentoClienteController
 {
 
     // ATRIBUTO PRIVADO
-    private $gerenciamentoC;
+    public $gerenciamentoC;
 
     // CONSTRUTOR
     public function __construct()
