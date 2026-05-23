@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Editar Cliente</title>
-    <link rel="stylesheet" href="/templates/assets/css/cadastro_de_clientes_administrador.css">
+    <link rel="stylesheet" href="../templates/assets/css/cadastro_de_clientes_administrador.css">
 </head>
 <body>
     <main class="container_edicao">
@@ -15,18 +15,18 @@
         <!-- LADO ESQUERDO: ORBES + ILUSTRAÇÃO -->
         <section class="secao_imagem">
             <button class="btn_voltar">
-                <figure><img src="/templates/assets/img/seta_voltar.png" alt="Seta para voltar"></figure>
+                <figure><img src="../templates/assets/img/seta_voltar.png" alt="Seta para voltar"></figure>
             </button>
             
             <!-- As 5 orbes nomeadas em ordem -->
-            <img src="/templates/assets/img/Orbe1.png" class="orbe orbe1" alt="Orbe azul topo esquerdo">
-            <img src="/templates/assets/img/Orbe2.png" class="orbe orbe2" alt="Orbe azul topo direito">
-            <img src="/templates/assets/img/Orbe3.png" class="orbe orbe3" alt="Orbe rosa do meio">
-            <img src="/templates/assets/img/Orbe4.png" class="orbe orbe4" alt="Orbe roxa direita inferior">
-            <img src="/templates/assets/img/Orbe5.png" class="orbe orbe5" alt="Orbe rosa esquerda inferior">
+            <img src="../templates/assets/img/Orbe1.png" class="orbe orbe1" alt="Orbe azul topo esquerdo">
+            <img src="../templates/assets/img/Orbe2.png" class="orbe orbe2" alt="Orbe azul topo direito">
+            <img src="../templates/assets/img/Orbe3.png" class="orbe orbe3" alt="Orbe rosa do meio">
+            <img src="../templates/assets/img/Orbe4.png" class="orbe orbe4" alt="Orbe roxa direita inferior">
+            <img src="../templates/assets/img/Orbe5.png" class="orbe orbe5" alt="Orbe rosa esquerda inferior">
             
             <!-- A Mulher -->
-            <img src="/templates/assets/img/ilustracao_mulher.png" class="mulher_ilustracao" alt="Ilustração">
+            <img src="../templates/assets/img/ilustracao_mulher.png" class="mulher_ilustracao" alt="Ilustração">
         </section>
 
         <!-- LADO DIREITO: FORMULÁRIO -->
@@ -80,6 +80,6 @@
         </section>
 
     </main>
-    <script src="/templates/assets/js/cadastro_de_clientes_adm.js"></script>
+    <script src="../templates/assets/js/cadastro_de_clientes_adm.js"></script>
 </body>
 </html>

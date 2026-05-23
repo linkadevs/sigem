@@ -131,17 +131,5 @@ document.addEventListener('click', (event) => {
 
 
     // BOTÃO EDITAR
-    if (event.target.classList.contains('editar')) {
-        const id = event.target.dataset.id;
-
-        if (!id) {
-            alert('ID do técnico não encontrado.');
-            return;
-        }
-
-        // REDIRECIONA PARA A PÁGINA DE CADASTRO PASSANDO O ID
-        // Certifique-se de que o nome do arquivo abaixo é exatamente o que você usa para cadastrar/editar
-        window.location.href = `pagina_cadastro_tecnicos_administrador.php?id=${id}`;
-    }
 
 });
