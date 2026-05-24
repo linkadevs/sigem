@@ -87,9 +87,9 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
                 <div class="entrada">
                     <label for="funcao">Função</label>
                     <select name="funcao" required id="funcao" class="selectfuncao">
-                        <option value="mecanico" <?php echo (isset($tecnico['funcao']) && $tecnico['funcao'] == 'mecanico') ? 'selected' : ''; ?>>Mecânico</option>
-                        <option value="eletricista" <?php echo (isset($tecnico['funcao']) && $tecnico['funcao'] == 'eletricista') ? 'selected' : ''; ?>>Eletricista</option>
-                        <option value="tecnico_refrigeracao" <?php echo (isset($tecnico['funcao']) && $tecnico['funcao'] == 'tecnico_refrigeracao') ? 'selected' : ''; ?>>Técnico em refrigeração</option>
+                        <option value="Mecanico(a)" <?php echo (isset($tecnico['funcao']) && $tecnico['funcao'] == 'mecanico') ? 'selected' : ''; ?>>Mecânico(a)</option>
+                        <option value="Eletricista" <?php echo (isset($tecnico['funcao']) && $tecnico['funcao'] == 'eletricista') ? 'selected' : ''; ?>>Eletricista</option>
+                        <option value="Técnico(a) em refrigeração" <?php echo (isset($tecnico['funcao']) && $tecnico['funcao'] == 'tecnico_refrigeracao') ? 'selected' : ''; ?>>Técnico(a) em refrigeração</option>
                     </select>
                 </div>
 

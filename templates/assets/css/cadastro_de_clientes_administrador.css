@@ -11,6 +11,16 @@ body {
     width: 100%;
     min-height: 100vh;
 }
+.img-mobile {
+    display: none;
+}
+.img-desktop {
+    display: block;
+    width: auto;
+    height: 67rem;
+    object-position: top left;
+    margin: 0;
+}
 
 /* LADO ESQUERDO - IMAGEM E ORBES */
 .secao_imagem {
@@ -174,6 +184,13 @@ body {
 /* ========================================================
    MEDIA QUERIES (Responsividade)
 ======================================================== */
+@media screen and (max-width: 1180px) {
+    .img-desktop {
+        height: 64rem;
+        transform: translateX(-14%);
+    }
+}
+
 
 @media (max-width: 1024px) {
     .titulo_formulario {
@@ -187,6 +204,28 @@ body {
 }
 
 @media (max-width: 900px) {
+
+    .img-desktop, .img-mobile {
+        display: block;
+        width: auto;
+        height: 19rem;
+        object-position: top left;
+        margin: 0;
+    }
+
+    .img-figure {
+        display: flex;
+        justify-content: center;
+        background-color: pink;
+    }
+
+    .img-desktop {
+        display: none;
+    }
+    .img-mobile {
+        display: block;
+    }
+
     .container_cadastro {
         flex-direction: column;
     }

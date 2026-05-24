@@ -154,19 +154,16 @@ $tecnicos = $controller->pesquisarTecnicos($busca);
                 </form>
             </div>
 
-            <a href="pagina_cadastro_tecnicos_administrador.php">
-                <button class="btn_colaborador" type="button">
-                    <figure>
-                        <img src="../templates/assets/img/sinal-de-adicao.png" alt="">
-                    </figure>
-                    Novo colaborador
-                </button>
-            </a>
-
+            <button class="btn_colaborador" type="button">
+                <figure>
+                    <img src="../templates/assets/img/sinal-de-adicao.png" alt="">
+                </figure>
+                Novo colaborador
+            </button>
+            
             <div class="grid_cards">
-
-                <?php if (isset($tecnicos) && !empty($tecnicos)): ?>
-                    <?php foreach ($tecnicos as $tecnico): ?>
+            <?php if (isset($tecnicos) && !empty($tecnicos)): ?>
+                <?php foreach ($tecnicos as $tecnico): ?>
                         <div class="card">
                             <h2 class="nome"><?php echo htmlspecialchars($tecnico['nome']); ?></h2>
 
@@ -197,18 +194,15 @@ $tecnicos = $controller->pesquisarTecnicos($busca);
                                 <a href="pagina_cadastro_tecnicos_administrador.php?id=<?= $tecnico['id_tecnico'] ?>">
                                     <button class="editar">Editar</button>
                                 </a>
-
-                                <a href="../Controller/processa_tecnico.php?acao=excluir&id_tecnico=<?= $tecnico['id_tecnico'] ?>" onclick="return confirm('Tem certeza que deseja excluir este técnico?');">
-                                    <button type="button" class="excluir">Excluir</button>
-                                </a>
+                                <button type="button" data-id="<?= $tecnico['id_tecnico']?>" class="excluir">Excluir</button>
+                                
                             </div>
                         </div>
-                    <?php endforeach; ?>
-                <?php else: ?>
-                    <p><strong>Nenhum técnico encontrado.</strong></p>
-                <?php endif; ?>
-
-            </div>
+                    <?php endforeach; ?>    
+                </div>
+            <?php else: ?>
+                <p class="nenhumTecnico"><strong>Nenhum técnico encontrado.</strong></p>
+            <?php endif; ?>
         </div>
     </main>
     <script src="../templates/assets/js/pagina_gerenciamento_de_tecnicos_adm.js"></script>

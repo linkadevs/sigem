@@ -47,23 +47,6 @@ class GerenciamentoClienteController
         return $this->gerenciamentoC->getClienteById($id_cliente);
     }
 
-    // CRIAR CLIENTE
-    public function criarCliente($nome, $cnpj, $uf, $cidade, $contato, $email, $senha)
-    {
-        return $this->gerenciamentoC->createCliente($nome, $cnpj, $uf, $cidade, $contato, $email, $senha);
-    }
-
-    // ATUALIZAR CLIENTE
-    public function atualizarCliente($id_cliente, $nome, $cnpj, $uf, $cidade, $contato, $email, $senha)
-    {
-        if(!empty($senha)) {
-            $senha = password_hash($senha, PASSWORD_DEFAULT);
-            return $this->gerenciamentoC->updateCliente($id_cliente, $nome, $cnpj, $uf, $cidade, $contato, $email, $senha);
-        } else {
-            return $this->gerenciamentoC->updateClienteSemSenha($id_cliente, $nome, $cnpj, $uf, $cidade, $contato, $email);
-        }
-    }
-
     // EXCLUIR CLIENTE
     public function excluirCliente($id_cliente)
     {
@@ -122,7 +105,6 @@ class GerenciamentoClienteController
         return $this->gerenciamentoC->searchCliente($busca);
     }
 }
-
 
 // INSTANCIA O CONTROLLER
 $controller = new GerenciamentoClienteController();

@@ -24,12 +24,13 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
 <body>
     <main class="container_cadastro">
         <section class="secao_imagem">
+            <figure class="img-figure">
+                <img class="img-mobile" src="../templates/assets/img/ilustracao_mulher.png" alt="Cadastro de técnicos">
+                <img class="img-desktop" src="../templates/assets/img/foto.jpeg" alt="Cadastro de técnicos">
+            </figure>
             <button class="btn_voltar" onclick="window.history.back()">
                 <figure><img src="../templates/assets/img/seta_voltar.png" alt="Voltar"></figure>
             </button>
-            <div class="ilustracao_cadastro">
-                <img src="../templates/assets/img/ilustracao_mulher.png" alt="Ilustração">
-            </div>
         </section>
 
         <section class="secao_formulario">
@@ -55,12 +56,24 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
 
                     <div class="grupo_input">
                         <label>UF</label>
-                        <input type="text" name="uf" value="<?php echo htmlspecialchars($cliente['uf'] ?? ''); ?>" required>
+                        <select name="uf" id="uf">
+                            <?php if(!empty($cliente) && isset($cliente)):?>
+                                <option value="<?= $cliente['uf']?>" selected><?= $cliente['uf']?></option>
+                            <?php else:?>
+                                <option value="" selected>Selecione um estado</option>
+                            <?php endif;?>
+                        </select>
                     </div>
 
                     <div class="grupo_input">
                         <label>Cidade</label>
-                        <input type="text" name="cidade" value="<?php echo htmlspecialchars($cliente['cidade'] ?? ''); ?>" required>
+                        <select name="cidade" id="cidade">
+                            <?php if(!empty($cliente) && isset($cliente)):?>
+                                <option value="<?= $cliente['cidade']?>" selected><?= $cliente['cidade']?></option>
+                            <?php else:?>
+                                <option value="" selected>Selecione uma cidade</option>
+                            <?php endif;?>
+                        </select>
                     </div>
 
                     <div class="grupo_input">
@@ -83,5 +96,6 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
             </div>
         </section>
     </main>
+    <script src="../templates/assets/js/cadastro_de_clientes_administrador.js"></script>
 </body>
 </html>

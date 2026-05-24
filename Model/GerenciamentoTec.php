@@ -75,7 +75,24 @@ class GerenciamentoTec
         }
     }
     //Atualizar técnico
-public function updateTec($id, $nome, $cpf, $funcao, $email) {
+public function updateTec($id, $nome, $cpf, $funcao, $email, $senha) {
+    try {
+        $sql = "UPDATE tecnico SET nome = :nome, cpf = :cpf, funcao = :funcao, email = :email, senha = :senha WHERE id_tecnico = :id";
+        $stmt = $this->db->prepare($sql);
+        return $stmt->execute([
+            ':id' => $id, 
+            ':nome' => $nome, 
+            ':cpf' => $cpf, 
+            ':funcao' => $funcao, 
+            ':email' => $email,
+            ':senha' => $senha
+        ]);
+    } catch (PDOException $e) {
+        error_log("Erro ao atualizar: " . $e->getMessage());
+        return false;
+    }
+}
+public function updateTecSemSenha($id, $nome, $cpf, $funcao, $email) {
     try {
         $sql = "UPDATE tecnico SET nome = :nome, cpf = :cpf, funcao = :funcao, email = :email WHERE id_tecnico = :id";
         $stmt = $this->db->prepare($sql);

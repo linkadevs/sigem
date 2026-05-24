@@ -24,10 +24,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if ($acao === 'cadastrar') {
         $controller->criarTecnico($nome, $cpf, $funcao, $email, $senha);
+        echo "<script>
+                alert('Técnico cadastrado com sucesso.')
+                window.location.href = '../View/pagina_gerenciamento_de_tecnicos_adm.php';
+            </script>";
     } elseif ($acao === 'editar') {
-        $controller->atualizarTecnico($id, $nome, $cpf, $funcao, $email);
+        $controller->atualizarTecnico($id, $nome, $cpf, $funcao, $email, $senha);
+        echo "<script>
+                alert('Técnico atualizado com sucesso.')
+                window.location.href = '../View/pagina_gerenciamento_de_tecnicos_adm.php';
+            </script>";
     }
-    header("Location: ../View/pagina_gerenciamento_de_tecnicos_adm.php");
     exit;
 }
 ?>

@@ -24,7 +24,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             trim($_POST['email'] ?? ''),
             $_POST['senha'] ?? ''
         );
-    } elseif ($acao === 'editar') {
+        echo '<script>
+                alert("Cliente cadastrado com sucesso.")
+                window.location.href = "../View/pagina_gerenciamento_clientes.php";
+            </script>';
+    } 
+    if ($acao === 'editar') {
         $controller->atualizarCliente(
             $_POST['id_cliente'] ?? null,
             trim($_POST['nome'] ?? ''),
@@ -32,10 +37,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             trim($_POST['uf'] ?? ''),
             trim($_POST['cidade'] ?? ''),
             trim($_POST['contato'] ?? ''),
-            trim($_POST['email'] ?? '')
+            trim($_POST['email'] ?? ''),
+            trim($_POST['senha'] ?? '')
         );
+        echo '<script>
+                alert("Cliente atualizado com sucesso.")
+                window.location.href = "../View/pagina_gerenciamento_clientes.php";
+            </script>';
     }
-
-    header("Location: ../View/pagina_gerenciamento_clientes.php");
     exit;
 }
