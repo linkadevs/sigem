@@ -3,10 +3,10 @@
 //redirecionamnto para o perfil
 
 
-document.querySelector('.logout').addEventListener('click', () => {
-    window.location.href = 'pagina_inicial.html';
+document.querySelector('.logoutDiv').addEventListener('click', () => {
+    window.location.href = '/sigem/index.php';
 });
 
-document.querySelector('.perfil_tec').addEventListener('click', () => {
-    window.location.href = 'perfil_tecnico.html';
+document.querySelector('.perfilBtn').addEventListener('click', () => {
+    window.location.href = 'perfil_do_tecnico.php';
 });

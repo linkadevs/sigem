@@ -1,3 +1,11 @@
+<?php
+
+session_start();
+
+$_SESSION['id_usuario'] = $_GET['id_tecnico'];
+$_SESSION['cod_maquina'] = null;
+
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -23,11 +31,6 @@
         </figure>
 
         <div class="btn_cadastrar_nv_maquina">
-            <button class="cadastrarBtn" type="button" onclick="window.location.href='cadastro.html'">
-                <img src="../templates/assets/img/icone_nova_maq.png" alt="Icone de Cadastro de Nova maquina"
-                    class="icone_nova_maquina">
-                Cadastrar nova Máquina
-            </button>
             <button class="perfilBtn">
                 <figure class="perfil_tec">
                     <img src="../templates/assets/img/perfiltec.png" alt=" icone de Perfil do Tecnico">
@@ -49,7 +52,7 @@
                     <h1>Consulte os dados dos Chamados abertos pelos clientes</h1>
                 </div>
                 
-                <button type="button" onclick="window.location.href='acompanhamento_de_chamados.html' "
+                <button type="button" onclick="window.location.href='atendimentotec.php' "
                     class="consultas">Consultar
                 </button>
             </div>

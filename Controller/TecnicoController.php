@@ -15,22 +15,20 @@ class TecnicoController{
 
     public function updatePassword($id_tecnico, $nova_senha, $confirmar_senha){
         if (empty($id_tecnico) || empty($nova_senha) || empty($confirmar_senha)) {
-            $_SESSION['error_message'] = "Todos os campos de senha são obrigatórios.";
+            throw new Exception("Todos os campos de senha são obrigatórios.");
             return false;
         }
         if ($nova_senha !== $confirmar_senha) {
-            $_SESSION['error_message'] = "As senhas não coincidem.";
+            throw new Exception("As senhas não coincidem.");
             return false;
         }
 
-        $success = $this->TecnicoModel->changePassword($id_tecnico, $nova_senha);
+        $success = $this->TecnicoModel->changePassword($nova_senha, $id_tecnico);
 
-        if ($success) {
-            $_SESSION['success_message'] = "Senha alterada com sucesso!";
-        } else {
-            $_SESSION['error_message'] = "Ocorreu um erro ao alterar a senha.";
+        if (!$success) {
+            throw new Exception("Ocorreu um erro ao alterar a senha.");
         }
-        header('Location: perfil_do_adm.php#content-seguranca');
+        header('Location: perfil_do_tecnico.php');
         exit;
     }
 }

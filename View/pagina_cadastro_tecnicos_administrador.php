@@ -89,9 +89,18 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
                     <select name="funcao" required id="funcao" class="selectfuncao">
                         <option value="Mecanico(a)" <?php echo (isset($tecnico['funcao']) && $tecnico['funcao'] == 'mecanico') ? 'selected' : ''; ?>>Mecânico(a)</option>
                         <option value="Eletricista" <?php echo (isset($tecnico['funcao']) && $tecnico['funcao'] == 'eletricista') ? 'selected' : ''; ?>>Eletricista</option>
+                        <option value="Técnico(a) em TI" <?php echo (isset($tecnico['funcao']) && $tecnico['funcao'] == 'tecnico_em_ti') ? 'selected' : ''; ?>>Técnico(a) em TI</option>
                         <option value="Técnico(a) em refrigeração" <?php echo (isset($tecnico['funcao']) && $tecnico['funcao'] == 'tecnico_refrigeracao') ? 'selected' : ''; ?>>Técnico(a) em refrigeração</option>
                     </select>
                 </div>
+
+                <div class="entrada">
+                    <label for="email">Email</label>
+                    <input type="text" name="email" id="email" required 
+                           value="<?php echo $tecnico['email'] ?? ''; ?>" 
+                           placeholder="Insira seu email" class="inputemail">
+                </div>
+                
 
                 <div class="entrada">
                     <label for="senha">Senha</label>

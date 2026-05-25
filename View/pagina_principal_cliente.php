@@ -40,10 +40,10 @@
             <div class="decoracao_consulta">
 
                 <h1>Acompanhe os seus chamados em andamento</h1>
-                <button class="consultarBtn" type="button" onclick="window.location.href='acompanhamento_de_chamados.html' "
+                <button class="consultarBtn" type="button" onclick="window.location.href='acompanhamento_de_chamados.php' "
                     class="consultas">Consultar
                 </button>
-                <button class="maquinasBtn" type="button" onclick="window.location.href='acompanhamento_de_chamados.html' "
+                <button class="maquinasBtn" type="button" onclick="window.location.href='acompanhamento_de_chamados.php' "
                     class="maquinasBtn">Minhas máquinas
                 </button>
             </div>

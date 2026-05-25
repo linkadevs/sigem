@@ -4,9 +4,9 @@
 
 
 document.querySelector('.logout').addEventListener('click', () => {
-    window.location.href = 'pagina_inicial.html';
+    window.location.href = 'pagina_inicial.php';
 });
 
 document.querySelector('.perfil_tec').addEventListener('click', () => {
-    window.location.href = 'perfil_tecnico.html';
+    window.location.href = 'perfil_tecnico.php';
 });

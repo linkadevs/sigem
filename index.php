@@ -134,7 +134,7 @@
 
             if (login) {
                 login.addEventListener('click', () => {
-                    window.location.href = 'login.php?objetivo=4';
+                    window.location.href = 'View/login.php?objetivo=4';
                 })
             }
         });

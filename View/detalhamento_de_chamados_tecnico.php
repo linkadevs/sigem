@@ -1,14 +1,14 @@
 <?php
 
 session_start();
-$_SESSION['id_chamado'] = 39;
-$_SESSION['id_usuario'] = 1;
+
 use Controller\ChamadoController;
 require_once __DIR__ . '/../Controller/ChamadoController.php';
 require_once __DIR__ . '/../vendor/autoload.php';
 $chamadoController = new ChamadoController();
 $id_chamado = $_SESSION['id_chamado'];
 $id_usuario = $_SESSION['id_usuario'];
+
 $chamado = $chamadoController->selecionarChamadosPorId($id_chamado);
 
 if($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -22,10 +22,11 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     if (!empty($_POST['concluir']) && isset($_POST['concluir'])) {
-        $chamadoController->finalizarChamado(
-            $id_chamado
-        );
-        header('Location: detalhamento_de_chamados_tecnico.php');
+        $_SESSION['cod_maquina'] = $chamado['cod_maquina'];
+        // $chamadoController->finalizarChamado(
+        //     $id_chamado
+        // );
+        header('Location: registro_nova_manutencao.php');
         exit();
     }
 
@@ -167,8 +168,12 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
         <div class="fotos">
             <?php
                 $fotos = json_decode($chamado['fotos_chamado'], true);
-                foreach($fotos as $foto){
-                    echo '<figure><img src="../'.$foto.'"></figure>';
+                if(!empty($fotos) && isset($fotos)) {
+                    foreach($fotos as $foto){
+                        echo '<figure><img src="../'.$foto.'"></figure>';
+                    }
+                } else {
+                    echo '<strong>Nenhuma foto para esse chamado</strong>';
                 }
             ?>
         </div>
@@ -177,16 +182,16 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
         <div class="botoes">
             <form method="POST">
                 <?php if($chamado['status_chamado'] === 'aberto'):?>
-                    <?= '<button class="responsabilizarse" name="responsabilizarse" value="true">Responsabilizar-se</button>'?>
+                    <button class="responsabilizarse" name="responsabilizarse" value="true">Responsabilizar-se</button>
                 <?php elseif($chamado['status_chamado'] === 'em_andamento'):?>
-                    <?= '
-                        <button class="concluido" name="concluir" value="true">Marcar como concluído</button>
-                        <button class="cancelar" name="cancelar" value="true">Cancelar</button>
-                    '?>
+                    
+                    <button class="concluido" name="concluir" value="true">Marcar como concluído</button>
+                    <button class="cancelar" name="cancelar" value="true">Cancelar</button>
+                    
                 <?php else:?>
-                    <?= '
-                        <button class="cancelar" name="responsabilizarse" value="true">Desmarcar como concluído</button>
-                    '?>
+                    
+                    <button class="cancelar" name="responsabilizarse" value="true">Desmarcar como concluído</button>
+                    
                 <?php endif;?>
             </form>
         </div>

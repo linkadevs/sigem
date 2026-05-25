@@ -1,15 +1,38 @@
 <?php
+
+session_start();
+
+use Controller\PecasController;
+use Controller\ManutencaoController;
+
 date_default_timezone_set('America/Sao_Paulo');
 $data_hora_atual = date('Y-m-d\TH:i');
 // $id_tecnico = $_GET['id_usuario'];
 // $cod_maquina = $_GET['cod_maquina'];
-$id_tecnico = 6;
-$cod_maquina = 'M001';
+$id_tecnico = $_SESSION['id_usuario'];
+$cod_maquina = $_SESSION['cod_maquina'];
 
+require_once __DIR__ . '/../Controller/ManutencaoController.php';
 require_once __DIR__ . '/../Controller/PecasController.php';
 $pecasController = new Controller\PecasController();
+$manutencaoController = new Controller\ManutencaoController();
+
 
 $nome_tecnico = $pecasController->tecnico_nome($id_tecnico)['nome'] ?? 'Técnico desconhecido';
+
+if($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $dados = [];
+    $dados['tipo_de_servico'] = $_POST['tipo_de_servico'];
+    $dados['descricao_do_servico'] = $_POST['descricao_do_servico'];
+    $dados['acompanhante'] = $_POST['acompanhante'];
+    $dados['pressao_aferida'] = $_POST['pressao_aferida'];
+    $dados['testes_e_finalizacao'] = $_POST['testes_e_finalizacao'];
+    $dados['cod_maquina'] = $cod_maquina;
+    $dados['id_tecnico'] = $id_tecnico;
+    $fotos = $_FILES['fotos[]'];
+
+    $manutencaoController->salvarManutencao($dados, $fotos);
+}
 ?>
 
 
@@ -105,11 +128,8 @@ $nome_tecnico = $pecasController->tecnico_nome($id_tecnico)['nome'] ?? 'Técnico
 
                 <div class="input">
                     <label for="pressao_aferida">Pressão aferida <span class="required">*</span></label>
-                    <div class="input-com-unidade">
-                        <input class="inputTexto" type="number" step="0.1" id="pressao_aferida" name="pressao_aferida"
-                            placeholder="Ex: 35.5" required>
-                        <span class="unidade-medida">PSI</span>
-                    </div>
+                    <input class="inputTexto" type="text" id="pressao_aferida" name="pressao_aferida"
+                        placeholder="Ex: 120" required>
 
                 </div>
 
@@ -134,8 +154,10 @@ $nome_tecnico = $pecasController->tecnico_nome($id_tecnico)['nome'] ?? 'Técnico
                 <div class="grid"></div>
             </div>
             <div class="botoes">
-                <button type="button" class="cancelar" id="cancelar">Cancelar</button>
-                <button class="enviar" id="enviar" type="submit">Enviar</button>
+                <form method="POST">
+                    <button type="button" class="cancelar" id="cancelar">Cancelar</button>
+                    <button class="enviar" id="enviar" type="submit">Enviar</button>
+                </form>
             </div>
         </form>
     </main>

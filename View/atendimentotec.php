@@ -2,8 +2,6 @@
 
 session_start();
 
-$_SESSION['id_usuario'] = 1;
-
 $id_tecnico = $_SESSION['id_usuario'];
 
 use Controller\ChamadoController;
@@ -21,6 +19,12 @@ if(isset($_GET['search']) && !empty($_GET['search'])) {
     );
 } else {
     $chamados = $chamadoController->selecionarChamadosPorTecnico($id_tecnico);
+}
+
+if($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $_SESSION['id_chamado'] = $_POST['id_chamado'];
+    header('Location: detalhamento_de_chamados_tecnico.php');
+    exit;
 }
 ?>
 
@@ -71,13 +75,27 @@ if(isset($_GET['search']) && !empty($_GET['search'])) {
         <!-- GRID DE BLOCOS/CHAMADOS -->
         <div class="container_blocos">
             <?php foreach ($chamados as $chamado):?>
-            <div class="bloco">
+            <div class="bloco" id="<?= $chamado['id_chamado']?>">
                 <div class="topo_bloco">
                     <h2><?= htmlspecialchars($chamado['nome_cliente'])?></h2>
                 </div>
                 <div class="conteudo_bloco">
                     <p class="titulo">Status</p>
-                    <p class="status"><?= htmlspecialchars($chamado['status_chamado'])?></p>
+                    <p class="status"><?php
+                                switch ($chamado['status_chamado']) {
+                                    case 'aberto':
+                                        echo 'Aberto';
+                                        break;
+                                    
+                                    case 'em_andamento':
+                                        echo 'Em andamento';
+                                        break;
+
+                                    case 'resolvido':
+                                        echo 'Resolvido';
+                                        break;
+                                } 
+                            ?></p>
 
                     <p class="tecnico">Técnico responsável</p>
                     <p class="nome">
