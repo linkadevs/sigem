@@ -20,19 +20,19 @@ $manutencaoController = new Controller\ManutencaoController();
 
 $nome_tecnico = $pecasController->tecnico_nome($id_tecnico)['nome'] ?? 'Técnico desconhecido';
 
-if($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $dados = [];
-    $dados['tipo_de_servico'] = $_POST['tipo_de_servico'];
-    $dados['descricao_do_servico'] = $_POST['descricao_do_servico'];
-    $dados['acompanhante'] = $_POST['acompanhante'];
-    $dados['pressao_aferida'] = $_POST['pressao_aferida'];
-    $dados['testes_e_finalizacao'] = $_POST['testes_e_finalizacao'];
-    $dados['cod_maquina'] = $cod_maquina;
-    $dados['id_tecnico'] = $id_tecnico;
-    $fotos = $_FILES['fotos[]'];
+// if($_SERVER['REQUEST_METHOD'] === 'POST') {
+//     $dados = [];
+//     $dados['tipo_de_servico'] = $_POST['tipo_de_servico'];
+//     $dados['descricao_do_servico'] = $_POST['descricao_do_servico'];
+//     $dados['acompanhante'] = $_POST['acompanhante'];
+//     $dados['pressao_aferida'] = $_POST['pressao_aferida'];
+//     $dados['testes_e_finalizacao'] = $_POST['testes_e_finalizacao'];
+//     $dados['cod_maquina'] = $cod_maquina;
+//     $dados['id_tecnico'] = $id_tecnico;
+//     $fotos = $_FILES['fotos[]'];
 
-    $manutencaoController->salvarManutencao($dados, $fotos);
-}
+//     $manutencaoController->salvarManutencao($dados, $fotos);
+// }
 ?>
 
 
@@ -60,7 +60,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
         </nav>
     </header>
     <main>
-        <form method="POST" enctype="multipart/form-data" action="../View/salvar_manutencao.php">
+        <form method="POST" enctype="multipart/form-data" action="salvar_manutencao.php">
             <input type="hidden" name="id_tecnico" id="id_tecnico" value="<?= $id_tecnico ?>">
             <input type="hidden" name="cod_maquina" id="cod_maquina" value="<?= $cod_maquina ?>">
 
@@ -154,10 +154,8 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <div class="grid"></div>
             </div>
             <div class="botoes">
-                <form method="POST">
-                    <button type="button" class="cancelar" id="cancelar">Cancelar</button>
-                    <button class="enviar" id="enviar" type="submit">Enviar</button>
-                </form>
+                <button type="button" class="cancelar" id="cancelar">Cancelar</button>
+                <button class="enviar" id="enviar" type="submit">Enviar</button>
             </div>
         </form>
     </main>

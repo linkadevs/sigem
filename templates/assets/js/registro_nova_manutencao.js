@@ -7,7 +7,6 @@ const nomeTecnico = document.getElementById('nome_tecnico')
 const nomeAcompanhante = document.getElementById('nome_acompanhante')
 const select = document.getElementById('tipo_servico')
 const descricaoServico = document.getElementById('descricao_servico')
-const pressao = document.getElementById('pressao')
 const testesFinalizacao = document.getElementById('testes_finalizacao')
 const dataHora = document.getElementById('data_hora')
 const inputFotos = document.getElementById('fotos')
@@ -38,7 +37,7 @@ pressaoAferida.addEventListener('input', () => {
     // 1. Salva apenas o que é número no input hidden
     // O regex /\D/g remove tudo que não for dígito
     let apenasNumeros = pressaoAferida.value.replace(/\D/g, '');
-    pressao.value = apenasNumeros;
+    pressaoAferida.value = apenasNumeros;
 });
 
 pressaoAferida.addEventListener('blur', () => {
@@ -95,9 +94,10 @@ form.addEventListener('submit', (e) => {
 })
 
 const verificarCampos = () => {
-    if (nomeTecnico.value === "" || nomeAcompanhante.value === "" || select.value === "placeholder" || descricaoServico.value === "" || pressao.value === "" || testesFinalizacao.value === "" || dataHora.value === "" || inputFotos.files.length === 0) {
+    if (nomeTecnico.value === "" || nomeAcompanhante.value === "" || select.value === "placeholder" || descricaoServico.value === "" || pressaoAferida.value === "" || testesFinalizacao.value === "" || dataHora.value === "" || inputFotos.files.length === 0) {
         alert('Por favor, preencha todos os campos e selecione pelo menos uma foto antes de enviar o formulário.')
     } else {
+        pressaoAferida.value = pressaoAferida.value.replace(' PSI', '')
         form.submit()
     }
 }

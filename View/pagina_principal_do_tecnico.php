@@ -2,7 +2,13 @@
 
 session_start();
 
-$_SESSION['id_usuario'] = $_GET['id_tecnico'];
+if((empty($_SESSION['id_usuario']) || !isset($_SESSION['id_usuario'])) && (empty($_GET['id_tecnico']) || !isset($_GET['id_tecnico']))) {
+    header('Location: ../index.php');
+} else {
+    if(empty($_SESSION['id_usuario']) || !isset($_SESSION['id_usuario'])) {
+        $_SESSION['id_usuario'] = $_GET['id_tecnico'];
+    }
+}
 $_SESSION['cod_maquina'] = null;
 
 ?>

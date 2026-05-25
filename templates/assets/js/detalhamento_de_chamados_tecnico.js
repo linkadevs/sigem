@@ -3,17 +3,24 @@ const logout = document.querySelector('.logout')
 const responsabilizarse = document.querySelector('.responsabilizarse')
 const cancelar = document.querySelector('.cancelar')
 const concluido = document.querySelector('.concluido')
+const voltar = document.querySelector('.voltar')
 
 
 if (perfil) {
     perfil.addEventListener('click', () => {
-        window.location.href = '';
+        window.location.href = 'perfil_do_tecnico.php';
     });
 }
 
 if (logout) {
-    perfil.addEventListener('click', () => {
-        window.location.href = '';
+    logout.addEventListener('click', () => {
+        window.location.href = '../index.php';
+    });
+}
+
+if (voltar) {
+    voltar.addEventListener('click', () => {
+        window.location.href = 'atendimentotec.php';
     });
 }
 

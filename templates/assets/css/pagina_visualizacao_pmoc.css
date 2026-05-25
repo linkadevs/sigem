@@ -1,5 +1,83 @@
 @import 'global.css';
 
+/* ========== GALERIA DE FOTOS RESPONSIVA ========== */
+.galeria-fotos {
+    margin: 1rem 1rem 1rem 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.fotos-miniaturas {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    justify-content: center;
+    width: 100%;
+}
+
+.foto-item {
+    text-align: center;
+    border: 0.1rem solid #ddd;
+    border-radius: 0.8rem;
+    padding: 1rem;
+    width: 13rem;
+    max-width: 100%;
+    background: #f9f9f9;
+    transition: transform 0.3s ease;
+}
+
+.foto-item:hover {
+    transform: scale(1.02);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+}
+
+.foto-item img {
+    width: 100%;
+    height: 10rem;
+    object-fit: cover;
+    border-radius: 0.5rem;
+    cursor: pointer;
+}
+
+.foto-acoes {
+    margin-top: 0.8rem;
+}
+
+.link-download {
+    display: inline-block;
+    padding: 0.4rem 0.8rem;
+    background: #094C71;
+    color: white;
+    text-decoration: none;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    transition: background 0.3s ease;
+}
+
+.link-download:hover {
+    background: #1191D7;
+}
+
+.btn-zip {
+    display: inline-block;
+    margin-top: 1.5rem;
+    padding: 0.6rem 1rem;
+    background: #7e38f8;
+    color: white;
+    text-decoration: none;
+    border-radius: 0.5rem;
+    font-size: 1.1rem;
+    transition: background 0.3s ease;
+}
+
+.btn-zip:hover {
+    background: #3e079d;
+}
+
+/* ========== ESTILOS GERAIS ========== */
 figure img {
     display: block;
 }
@@ -14,15 +92,21 @@ body {
     flex-direction: column;
     align-items: center;
     padding-bottom: 4rem;
-    background-color: #094C71;
+    background-image: url('../../../templates/assets/img/fundo-edicao.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    min-height: 100vh;
+    margin: 0;
 }
 
 .voltar figure img {
-    width: 5.2rem;
+    width: 2.5rem;
 }
 
 header {
-    padding: 3.9rem 3.7rem;
+    padding: 1.5rem 2.5rem;
     width: 100%;
     background-color: #ffffff;
 }
@@ -33,38 +117,39 @@ header {
     background-color: transparent;
     border-style: none;
     align-items: center;
-    font-size: 3.6rem;
+    font-size: 2rem;
     font-weight: 700;
-    gap: 3.5rem;
+    gap: 1.5rem;
+    cursor: pointer;
+}
+
+.voltar:hover {
+    opacity: 0.8;
 }
 
 main {
-    background-image: url('../../../templates/assets/img/fundo-edicao.png');
-    background-size: cover;
-    background-repeat: no-repeat;
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 4rem 0;
-    border-bottom-left-radius: 12rem;
-    border-bottom-right-radius: 12rem;
+    padding: 2.5rem 0;
+    background-color: transparent;
 }
 
 .fundoPmoc {
     background-color: white;
     display: flex;
     flex-direction: column;
-    width: 120.6rem;
+    width: 90rem;
     height: auto;
-    padding: 8rem;
-    border-radius: 6rem;
-    gap: 4.5rem;
-    box-shadow: 0 .4rem 2.56rem 0 rgb(0, 0, 0, 0.88);
+    padding: 4rem;
+    border-radius: 3rem;
+    gap: 2.5rem;
+    box-shadow: 0 0.4rem 2.56rem 0 rgba(0, 0, 0, 0.88);
 }
 
 h1 {
-    font-size: 5rem;
+    font-size: 3rem;
     font-weight: 700;
     color: #094C71;
 }
@@ -73,24 +158,27 @@ h1 {
     justify-content: space-between;
     display: flex;
     width: 100%;
+    flex-wrap: wrap;
+    gap: 1rem;
 }
 
 .tituloPmoc p {
-    font-size: 2.5rem;
+    font-size: 1.6rem;
     font-weight: 700;
     color: #ffffff;
     background-color: rgba(10, 22, 247, 0.7);
-    padding: 1.6rem 13.5rem;
+    padding: 0.8rem 6rem;
     border-radius: 1.5rem;
+    text-align: center;
 }
 
 .titulo {
-    font-size: 2.5rem;
+    font-size: 1.6rem;
     color: #094C71;
     width: 50%;
-    padding-left: 2.7rem;
-    padding-top: 1.5rem;
-    padding-bottom: 1.5rem;
+    padding-left: 1.5rem;
+    padding-top: 0.8rem;
+    padding-bottom: 0.8rem;
     text-wrap: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -103,13 +191,13 @@ h1 {
 }
 
 .conteudo {
-    font-size: 2.5rem;
+    font-size: 1.6rem;
     font-weight: 600;
     color: #488DB2;
     width: 50%;
-    padding-right: 2.7rem;
-    padding-top: 1.5rem;
-    padding-bottom: 1.5rem;
+    padding-right: 1.5rem;
+    padding-top: 0.8rem;
+    padding-bottom: 0.8rem;
     text-wrap: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -121,95 +209,311 @@ h1 {
     text-overflow: clip;
 }
 
-.informacao, .informacao2 {
+.informacao,
+.informacao2 {
     display: flex;
+    width: 100%;
 }
 
 .informacao {
     background-color: #B7E6FF;
 }
 
-@media screen and (max-width: 1367px) {
-    .voltar {
-        font-size: 2.3rem;
-    }
-    .voltar figure img {
-        height: 2.8rem;
-    }
-    header {
-        padding: 3.7rem 2.2rem;
-    }
+/* ========== RESPONSIVIDADE ========== */
+
+/* Desktop médio (até 1200px) */
+@media screen and (max-width: 1200px) {
     .fundoPmoc {
-        width: 67.9rem;
-        padding: 4.5rem;
-        border-radius: 3.6rem;
+        width: 85rem;
+        padding: 3.5rem;
     }
-    .tituloPmoc h1{
-        font-size: 3rem;
+
+    h1 {
+        font-size: 2.8rem;
     }
+
     .tituloPmoc p {
-        font-size: 2rem;
-        padding: .9rem 4.5rem;
-    }
-    .informacao, .informacao2 {
-        height: fit-content;
-        padding: 1.2rem 0;
-    }
-    .titulo {
         font-size: 1.5rem;
-        padding-left: 1rem;
-        padding-top: 0;
-        padding-bottom: 0;
-        align-self: center;
+        padding: 0.7rem 4rem;
     }
-    .conteudo {
+
+    .titulo, .conteudo {
         font-size: 1.5rem;
-        padding-top: 0;
-        padding-bottom: 0;
-        align-self: center;
     }
 }
 
-@media screen and (max-width: 764px) {
+/* Tablet (até 1024px) */
+@media screen and (max-width: 1024px) {
+    .fundoPmoc {
+        width: 75rem;
+        padding: 3rem;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    .tituloPmoc p {
+        font-size: 1.4rem;
+        padding: 0.6rem 3rem;
+    }
+
+    .titulo, .conteudo {
+        font-size: 1.4rem;
+        padding-top: 0.6rem;
+        padding-bottom: 0.6rem;
+    }
+}
+
+/* Tablet pequeno (950px a 764px) - AJUSTE PRINCIPAL */
+@media screen and (max-width: 950px) {
     .voltar {
+        font-size: 1.8rem;
+    }
+
+    .voltar figure img {
+        width: 2.5rem;
+    }
+
+    header {
+        padding: 1.2rem 1.8rem;
+    }
+
+    .fundoPmoc {
+        width: 90%;
+        max-width: 65rem;
+        padding: 2.5rem;
+        border-radius: 2.5rem;
         gap: 2rem;
     }
-    .voltarImg {
-        width: 3rem !important;
-        object-fit: contain;
+
+    h1 {
+        font-size: 2.2rem;
     }
-    header {
+
+    .tituloPmoc p {
+        font-size: 1.3rem;
+        padding: 0.5rem 2rem;
+    }
+
+    .titulo, .conteudo {
+        font-size: 1.3rem;
+        padding-top: 0.6rem;
+        padding-bottom: 0.6rem;
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    .informacao, .informacao2 {
+        padding: 0.4rem 0;
+    }
+
+    /* Galeria */
+    .fotos-miniaturas {
+        gap: 1rem;
+    }
+
+    .foto-item {
+        width: 11rem;
+        padding: 0.7rem;
+    }
+
+    .foto-item img {
+        height: 8rem;
+    }
+
+    .link-download {
+        font-size: 0.85rem;
+        padding: 0.3rem 0.6rem;
+    }
+
+    .btn-zip {
+        font-size: 0.95rem;
+        padding: 0.5rem 0.8rem;
+    }
+}
+
+/* Tablet muito pequeno (830px a 764px) */
+@media screen and (max-width: 830px) {
+    .fundoPmoc {
+        max-width: 55rem;
         padding: 2rem;
     }
-    .tituloPmoc h1{
-        font-size: 1.4rem;
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    .tituloPmoc p {
+        font-size: 1.2rem;
+        padding: 0.5rem 1.5rem;
+    }
+
+    .titulo, .conteudo {
+        font-size: 1.2rem;
+    }
+
+    .foto-item {
+        width: 10rem;
+    }
+
+    .foto-item img {
+        height: 7rem;
+    }
+}
+
+/* Mobile (até 764px) */
+@media screen and (max-width: 764px) {
+    .voltar {
+        gap: 1rem;
+        font-size: 1.6rem;
+    }
+
+    .voltar figure img {
+        width: 2.2rem;
+    }
+
+    header {
+        padding: 1rem 1.5rem;
+    }
+
+    .tituloPmoc h1 {
+        font-size: 1.6rem;
         display: flex;
         align-items: center;
     }
+
     .tituloPmoc p {
-        font-size: 1.5rem;
-        padding: .8rem 1.6rem;
+        font-size: 1.1rem;
+        padding: 0.4rem 1.2rem;
     }
+
     .titulo {
-        font-size: 1rem;
-        padding-left: .5rem;
-        padding-top: 0;
-        padding-bottom: 0;
-        align-self: center;
+        font-size: 1.1rem;
+        padding-left: 0.5rem;
     }
+
     .conteudo {
-        font-size: 1rem;
-        padding-top: 0;
-        padding-bottom: 0;
-        align-self: center;
+        font-size: 1.1rem;
+        padding-right: 0.5rem;
     }
-    .informacao, .informacao2 {
+
+    .informacao,
+    .informacao2 {
         height: fit-content;
-        padding: 1rem 0;
+        padding: 0.5rem 0;
     }
+
     .fundoPmoc {
-        width: 32rem;
-        padding: 2.5rem;
-        border-radius: 3.6rem;
+        width: 95%;
+        max-width: 35rem;
+        padding: 1.8rem;
+        border-radius: 2rem;
+        gap: 1.5rem;
+    }
+
+    /* Galeria responsiva mobile */
+    .galeria-fotos {
+        margin: 0.5rem;
+    }
+
+    .fotos-miniaturas {
+        gap: 0.8rem;
+    }
+
+    .foto-item {
+        max-width: 10rem;
+        padding: 0.5rem;
+    }
+
+    .foto-item img {
+        height: 7rem;
+    }
+
+    .link-download {
+        font-size: 0.8rem;
+        padding: 0.3rem 0.5rem;
+    }
+
+    .btn-zip {
+        font-size: 0.85rem;
+        padding: 0.4rem 0.6rem;
+        margin-top: 0.8rem;
+    }
+}
+
+/* Mobile pequeno (até 480px) */
+@media screen and (max-width: 480px) {
+    .voltar {
+        font-size: 1.4rem;
+    }
+
+    .voltar figure img {
+        width: 2rem;
+    }
+
+    .fundoPmoc {
+        padding: 1.5rem;
+    }
+
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    .tituloPmoc p {
+        font-size: 1rem;
+        padding: 0.4rem 1rem;
+    }
+
+    .titulo, .conteudo {
+        font-size: 1rem;
+    }
+
+    .fotos-miniaturas {
+        gap: 0.6rem;
+    }
+
+    .foto-item {
+        max-width: 8rem;
+        padding: 0.4rem;
+    }
+
+    .foto-item img {
+        height: 6rem;
+    }
+
+    .link-download {
+        font-size: 0.7rem;
+        padding: 0.2rem 0.4rem;
+    }
+
+    .btn-zip {
+        font-size: 0.75rem;
+        padding: 0.3rem 0.5rem;
+    }
+
+    .tituloPmoc {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .tituloPmoc h1 {
+        justify-content: center;
+    }
+}
+
+/* Ajuste para quando há muitas fotos em tablet */
+@media screen and (min-width: 765px) and (max-width: 1024px) {
+    .fotos-miniaturas {
+        gap: 1rem;
+    }
+
+    .foto-item {
+        width: 10rem;
+    }
+
+    .foto-item img {
+        height: 8rem;
     }
 }

@@ -181,6 +181,7 @@ class Chamado {
         try {
             $pesquisaFormatada = '%'.$pesquisa.'%';
             $sql = 'SELECT
+            c.id_chamado
             c.status AS status_chamado,
             c.data_chamado,
             c.descricao AS descricao_chamado,
@@ -239,6 +240,7 @@ class Chamado {
         try {
             $pesquisaFormatada = '%'.$pesquisa.'%';
             $sql = 'SELECT
+            c.id_chamado,
             c.status AS status_chamado,
             DATE_FORMAT(c.data_chamado, "%d/%m/%Y") AS data_chamado,
             c.descricao AS descricao_chamado,
@@ -285,6 +287,7 @@ class Chamado {
         try {
             $pesquisaFormatada = '%'.$pesquisa.'%';
             $sql = 'SELECT
+            c.id_chamado,
             c.status AS status_chamado,
             cl.nome AS nome_cliente,
             t.nome AS nome_tecnico
@@ -299,7 +302,8 @@ class Chamado {
                 cl.nome LIKE :pesquisa1 OR
                 cl.uf LIKE :pesquisa2 OR
                 cl.cnpj LIKE :pesquisa3 OR
-                c.cod_maquina_fk LIKE :pesquisa4
+                c.cod_maquina_fk LIKE :pesquisa4 OR
+                t.nome LIKE :pesquisa5
             ) AND (
             c.id_tecnico_fk = :id_tecnico
             OR c.status = "aberto"
@@ -318,7 +322,8 @@ class Chamado {
                 ':pesquisa1' => $pesquisaFormatada,
                 ':pesquisa2' => $pesquisaFormatada,
                 ':pesquisa3' => $pesquisaFormatada,
-                ':pesquisa4' => $pesquisaFormatada
+                ':pesquisa4' => $pesquisaFormatada,
+                ':pesquisa5' => $pesquisaFormatada
             ]);
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
         } catch (PDOException $e) {

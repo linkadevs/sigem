@@ -54,7 +54,7 @@
                     <img src="/sigem/templates/assets/img/linha_azul.png" alt="linha azul no form">
                 </figure>
 
-                <form class="form" method="POST" action="./resultado_manutencao.php">
+                <form class="form" method="POST" action="View/resultado_manutencao.php">
                     <div class="input_codigo">
                         <label for="Codigo">Código de Identificação</label>
                         <input type="text" id="Codigo" name="cod_maquina" value=""

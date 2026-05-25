@@ -74,7 +74,7 @@ if (!empty($ultimamanutencao_dados['data_e_hora'])) {
 <body class="pagina-resultado">
     <div class="imagem_de_fundo"></div>
 
-    <a href="pagina_inicial.php" class="btn_voltar_responsive">
+    <a href="../index.php" class="btn_voltar_responsive">
         <img src="/sigem/templates/assets/img/seta_voltar.png" alt="Voltar" class="seta_voltar">
         Voltar
     </a>
