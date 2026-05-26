@@ -175,7 +175,7 @@ class MaquinaController {
                 ];
             }
     
-            $this->maquinaModel->editarMaquina(
+            $dados = $this->maquinaModel->editarMaquina(
                 $cod_maquina,
                 $nome_maquina,
                 $localizacao,
@@ -186,7 +186,8 @@ class MaquinaController {
             );
     
             return [
-                'sucesso' => true
+                'sucesso' => true,
+                'dados' => $dados
             ];
         } catch (Exception $e) {
             throw new Exception ('Erro interno grave, por favor, reinicie a página e tente novamente');

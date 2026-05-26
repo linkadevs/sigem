@@ -136,7 +136,7 @@ if (!empty($_GET['search']) && isset($_GET['search'])) {
 
             <div class="container_blocos">
                 <?php foreach ($chamados as $chamado):?>
-                <div class="bloco">
+                <div class="bloco" id="<?= $chamado['id_chamado']?>">
                     <div class="topo_bloco">
                         <h2><?= htmlspecialchars($chamado['nome_cliente'])?></h2>
                     </div>
@@ -241,7 +241,7 @@ if (!empty($_GET['search']) && isset($_GET['search'])) {
 
     </main>
 
-    <script src="../templates/assets/js/pagina_acompanhamento_de_chamados_adm..js"></script>
+    <script src="../templates/assets/js/pagina_acompanhamento_de_chamados_adm.js"></script>
 </body>
 
 </html>

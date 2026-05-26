@@ -27,7 +27,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
     if(isset($_POST['historico'])){
         $_SESSION['cod_maquina'] = $_POST['historico'];
-        header('Location: historico_manutencoes.php');
+        header('Location: historico_adm_manutencoes.php');
         exit();
     }
     if(isset($_POST['apagar'])){

@@ -13,9 +13,16 @@ class AdmController{
         $this-> AdmModel = new Adm();
     }
 
+    public function selecionarAdmPorId($id_adm) {
+        try {
+            return $this->AdmModel->selecionarAdmPorId($id_adm);
+        } catch (Exception $e) {
+            throw new Exception('Erro ao selecionar Adm por ID: ' . $e);
+        }
+    }
+
     public function updateAdm($nome_adm, $cpf_adm, $email_adm, $id_adm) {
         $success = $this->AdmModel->updateUserAdm($nome_adm, $cpf_adm, $email_adm, $id_adm);
-    
         if ($success) {
             $_SESSION['nome_adm'] = $nome_adm;
             $_SESSION['email_adm'] = $email_adm;
@@ -24,8 +31,6 @@ class AdmController{
         } else {
             $_SESSION['error_message'] = "Erro ao atualizar o perfil.";
         }
-        header('Location: perfil_do_adm.php');
-        exit;
     }
 
     public function updatePassword($id_adm, $nova_senha, $confirmar_senha){
@@ -45,8 +50,6 @@ class AdmController{
         } else {
             $_SESSION['error_message'] = "Ocorreu um erro ao alterar a senha.";
         }
-        header('Location: perfil_do_adm.php#content-seguranca');
-        exit;
     }
 }
 ?>

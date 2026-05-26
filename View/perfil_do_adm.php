@@ -1,30 +1,49 @@
 <?php
 session_start();
 require_once __DIR__ . '/../Controller/AdmController.php';
-require_once __DIR__ . '/../Model/Adm.php';
 require_once __DIR__ . '/../vendor/autoload.php';
 
-$admModel = new \Model\Adm();
+
 $admController = new \Controller\AdmController();
+$administrador = $admController->selecionarAdmPorId($_SESSION['id_administrador']);
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    if (isset($_POST['action']) && $_POST['action'] === 'update_profile') {
+
+    $id = $_SESSION['id_administrador'];
+
+    if (
+        !empty($_POST['nome']) &&
+        !empty($_POST['cpf']) &&
+        !empty($_POST['email'])
+    ) {
         $admController->updateAdm(
-            $_SESSION['id_adm'],
-            $_POST['nome'] ?? null,
-            $_POST['email'] ?? null,
-            $_POST['cpf'] ?? null,
+            $_POST['nome'],
+            $_POST['cpf'],
+            $_POST['email'],
+            $id
         );
     }
 
-    if (isset($_POST['action']) && $_POST['action'] === 'update_password') {
+    if (
+        !empty($_POST['nova_senha']) &&
+        !empty($_POST['confirmar_senha'])
+    ) {
         $admController->updatePassword(
-            $_SESSION['id_adm'],
-            $_POST['nova_senha'] ?? null,
-            $_POST['confirmar_senha'] ?? null
+            $id,
+            $_POST['nova_senha'],
+            $_POST['confirmar_senha']
         );
     }
+
+    header('Location: perfil_do_adm.php');
+    exit;
 }
+
+if(isset($_SESSION['success_message'])) {
+    echo '<script>alert("Perfil/senha alterado com sucesso")</script>';
+    $_SESSION['success_message'] = null;
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -57,56 +76,43 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <div class="linha_info">
                         <p class="rotulo">Nome</p>
                         <!-- <p class="valor">UNEB</p> -->
-                        <input type="text" class="valor" value="<?php echo htmlspecialchars($_SESSION['nome_adm'] ?? '', ENT_QUOTES, 'UTF-8');?>">
+                        <input type="text" name="nome" class="valor" value="<?php echo htmlspecialchars($administrador['nome'] ?? '', ENT_QUOTES, 'UTF-8');?>">
                     </div>
                     
                     <div class="linha_info">
-                        <p class="rotulo">CNPJ</p>
+                        <p class="rotulo">CPF</p>
                         <!-- <p class="valor">AB.123.CDE/0001-XY</p> -->
-                        <input type="text" class="valor" value="<?php echo htmlspecialchars($_SESSION['cnpj_adm'] ?? '', ENT_QUOTES, 'UTF-8'); ?>">
+                        <input type="text" name="cpf" class="valor" value="<?php echo htmlspecialchars($administrador['cpf'] ?? '', ENT_QUOTES, 'UTF-8'); ?>">
                     </div>
                     
                     <div class="linha_info">
                         <p class="rotulo">E-mail</p>
                         <!-- <p class="valor">abcdef.ghi@gmail.com</p> -->
-                        <input type="text" class="valor" value="<?php echo htmlspecialchars($_SESSION['email_adm'] ?? '', ENT_QUOTES, 'UTF-8'); ?>">
+                        <input type="text" name="email" class="valor" value="<?php echo htmlspecialchars($administrador['email'] ?? '', ENT_QUOTES, 'UTF-8'); ?>">
                     </div>
                     
                     <div class="linha_info" id="linha_senha">
                         <p class="rotulo">Senha</p>
-                        <div class="senha">
-                            <p class="valor" id="senha_desbloqueada" style="display: none;"><?php echo htmlspecialchars($_SESSION['senha'] ?? '', ENT_QUOTES, 'UTF-8'); ?></p>
-                            <p class="valor" id="senha_bloqueada">*****</p>
-                            
-                            
-                            
-                            <figure class="mostrar_senha">
-                                <img src="..../templates/assets/img/olhoaberto.png" id="olhoaberto" style="cursor: pointer; width: 3rem; height: 3rem;">
-                                <img src="..../templates/assets/img/olhofechado.png" id="olhofechado" alt="" style="cursor: pointer; display: none; width: 3rem; height: 3rem;">
-                            </figure>
-                        </div>
-                        
-                        
-                        
+                        <p class="valor" id="senha_bloqueada"><?= str_repeat('*', $administrador['qtd_caracteres'])?></p>
                     </div>
                 </div>
                 
                 <div class="secao_senha">
                     <p class="rotulo_senha">Alterar senha</p>
                     <div class="inputs_senha">
-                        <input type="password" name="password" placeholder="Digite a nova senha">
-                        <input type="password" name="password" placeholder="Repita a nova senha">
+                        <input type="password" name="nova_senha" placeholder="Digite a nova senha">
+                        <input type="password" name="confirmar_senha" placeholder="Repita a nova senha">
                     </div>
                 </div>
                 
                 <div class="botoes_acao">
-                    <button class="btn_cancelar">Cancelar</button>
+                    <button class="btn_cancelar" type="button">Cancelar</button>
                     <button class="btn_salvar" type="submit">Salvar</button>
                 </div>
             </form>
         </section>
     </main>
 
-    <script src="../templates/assets/js/perfil_do_cliente.js"></script>
+    <script src="../templates/assets/js/perfil_do_adm.js"></script>
 </body>
 </html>

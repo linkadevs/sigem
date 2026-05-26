@@ -161,8 +161,8 @@ $tecnicos = $controller->pesquisarTecnicos($busca);
                 Novo colaborador
             </button>
             
-            <div class="grid_cards">
             <?php if (isset($tecnicos) && !empty($tecnicos)): ?>
+            <div class="grid_cards">
                 <?php foreach ($tecnicos as $tecnico): ?>
                         <div class="card">
                             <h2 class="nome"><?php echo htmlspecialchars($tecnico['nome']); ?></h2>
@@ -200,10 +200,10 @@ $tecnicos = $controller->pesquisarTecnicos($busca);
                         </div>
                     <?php endforeach; ?>    
                 </div>
-            <?php else: ?>
-                <p class="nenhumTecnico"><strong>Nenhum técnico encontrado.</strong></p>
-            <?php endif; ?>
-        </div>
+            </div>
+        <?php else: ?>
+            <p class="nenhumTecnico"><strong>Nenhum técnico encontrado.</strong></p>
+        <?php endif; ?>
     </main>
     <script src="../templates/assets/js/pagina_gerenciamento_de_tecnicos_adm.js"></script>
 </body>

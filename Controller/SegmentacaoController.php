@@ -78,7 +78,7 @@ class SegmentacaoController
                     return '../View/pagina_principal_do_tecnico.php?id_tecnico='.urlencode($id_usuario);
 
                 } elseif($tipo_usuario === 'administrador'){
-                    return '../View/pagina_principal_administrador.php?id_administrador='.urlencode($id_usuario);
+                    return '../View/pagina_principal_adm.php?id_administrador='.urlencode($id_usuario);
 
                 } else {
                     return null;

@@ -72,7 +72,7 @@ class Maquina {
 
         $stmt = $this->db->prepare($sql);
 
-        return $stmt->execute([
+        $stmt->execute([
             ':nome_maquina' => $nome_maquina,
             ':localizacao' => $localizacao,
             ':marca' => $marca,
@@ -81,6 +81,8 @@ class Maquina {
             ':capacidade_termica_de_refrigeracao' => $capacidade_termica_de_refrigeracao,
             ':cod_maquina' => $cod_maquina
         ]);
+
+        return $cod_maquina;
     }
 
     public function deletarMaquina(

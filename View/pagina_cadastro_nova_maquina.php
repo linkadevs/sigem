@@ -3,16 +3,16 @@
 session_start();
 
 use Controller\MaquinaController;
-// use Controller\ClienteController;
+use Controller\GerenciamentoClienteController;
 
 require_once __DIR__ . '/../vendor/autoload.php';
 require_once __DIR__ . '/../Controller/MaquinaController.php';
-// require_once __DIR__ . '/../Controller/ClienteController.php';
+require_once __DIR__ . '/../Controller/ClienteController.php';
 
-// $clienteController = new ClienteController();
+$clienteController = new GerenciamentoClienteController();
 $maquinaController = new MaquinaController();
 
-// $clientes = $clienteController->SelecionarTodosClientes();
+$clientes = $clienteController->listarClientes();
 
 
 if($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -38,6 +38,7 @@ if($_SESSION['cod_maquina'] === null) {
     $modelo_value = '';
     $marca_value = '';
     $fluido_refrigerante_value = '';
+    $submit = 'Cadastrar';
 } else {
     $cod_maquina = $_SESSION['cod_maquina'];
     $maquina = $maquinaController->verMaquinasPorCodigo($cod_maquina);
@@ -51,8 +52,8 @@ if($_SESSION['cod_maquina'] === null) {
     $marca_value = $maquina['dados']['marca'];
     $fluido_refrigerante_value = $maquina['dados']['fluido_refrigerante'];
     $id_cliente_value = $maquina['dados']['id_cliente_fk'];
+    $submit = 'Editar';
 }
-
 
 ?>
 
@@ -95,15 +96,17 @@ if($_SESSION['cod_maquina'] === null) {
                             echo 'selected';
                         }
                     ?>>Selecione um cliente</option>
-                    <option value="2">SESI</option>
+                    
                     <?php
                     foreach ($clientes as $cliente) {
                         echo '
-                            <option value="' . htmlspecialchars($cliente['id_cliente']) . ' ';
-                            if($id_cliente_value === $cliente['id_cliente']) {
-                                echo 'selected';
+                            <option value="' . htmlspecialchars($cliente['id_cliente']) . '" ';
+                            if(isset($id_cliente_value)){
+                                if($id_cliente_value === $cliente['id_cliente']) {
+                                    echo 'selected';
+                                }
                             }
-                            echo '">' . htmlspecialchars($cliente['nome']) . '</option>
+                            echo '>' . htmlspecialchars($cliente['nome']) . '</option>
                         ';
                     }
                     ?>
@@ -156,8 +159,8 @@ if($_SESSION['cod_maquina'] === null) {
                         echo htmlspecialchars($result['erros']['fluido_refrigerante']);
                     }?></p>
                 <div class="botoes_form">
-                    <button class="cancelar">Cancelar</button>
-                    <button type="submit" class="cadastrar">Cadastrar</button>
+                    <button type="button" class="cancelar">Cancelar</button>
+                    <button type="submit" class="cadastrar"><?= $submit?></button>
                 </div>
             </form>
             

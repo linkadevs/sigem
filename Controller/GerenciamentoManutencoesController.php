@@ -2,7 +2,7 @@
 
 namespace Controller;
 
-require_once __DIR__ ."/../Model/gerenciamentoManutencoes.php";
+require_once __DIR__ ."/../Model/GerenciamentoManutencoes.php";
 
 use Model\GerenciamentoManutencoes;
 use Exception;

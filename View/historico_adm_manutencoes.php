@@ -6,7 +6,7 @@ session_start();
 // 1. RECEBE OS DADOS DA URL (GET)
 // ==============================================
 // Pega o código da máquina que veio na URL (ex: ?cod_maquina=M001)
-$cod_maquina = $_GET['cod_maquina'] ?? null;
+$cod_maquina = $_SESSION['cod_maquina'];
 
 // Pega o filtro de pesquisa que veio na URL (ex: &filtro=João)
 $filtro = $_GET['filtro'] ?? '';
@@ -56,7 +56,7 @@ if (!empty($filtro)) {
             <!-- CABEÇALHO COM TÍTULO E BOTÃO VOLTAR -->
             <header class="cabecalho_historico">
                 <!-- Botão voltar (usa JavaScript para voltar à página anterior) -->
-                <button class="btn_voltar" onclick="window.history.back()">
+                <button class="btn_voltar" onclick="window.location.href = 'gerenciamento_de_maquinas_adm.php'">
                     <figure><img src="../templates/assets/img/seta_voltar.png" alt="Seta Voltar"></figure>
                 </button>
                 <div class="textos_cabecalho">

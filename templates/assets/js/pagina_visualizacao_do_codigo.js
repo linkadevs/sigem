@@ -1,3 +1,11 @@
+const voltar = document.querySelectorAll('.voltar_header h1, .voltar_header figure, .sair')
+
+voltar.forEach(element => {
+    element.addEventListener('click', () => {
+        window.location.href = 'pagina_principal_adm.php'
+    })
+})
+
 function copiar() {
     const elemento = document.getElementById("textoParaCopiar");
     const texto = elemento ? elemento.textContent.trim() : "";
@@ -50,3 +58,4 @@ function baixarComTexto() {
     link.href = canvas.toDataURL('image/png');
     link.click();
 }
+

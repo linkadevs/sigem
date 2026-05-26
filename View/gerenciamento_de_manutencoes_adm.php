@@ -1,6 +1,6 @@
 <?php
 
-require_once __DIR__ . "/../Controller/gerenciamento_Manutencoes-Controller.php";
+require_once __DIR__ . "/../Controller/GerenciamentoManutencoesController.php";
 use Controller\GerenciamentoManutencoesController;
 
 // Capturar o termo de busca

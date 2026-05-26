@@ -21,7 +21,7 @@ if (chamados) { chamados.addEventListener('click', () => { window.location.href 
 if (manutencoes) { manutencoes.addEventListener('click', () => { window.location.href = 'gerenciamento_de_manutencoes_adm.php'; }); }
 if (pecas) { pecas.addEventListener('click', () => { window.location.href = 'pagina_gerenciamento_de_pecas_administrador.php'; }); }
 if (tecnicos) { tecnicos.addEventListener('click', () => { window.location.href = 'pagina_gerenciamento_de_tecnicos_adm.php'; }); }
-if (logout) { logout.addEventListener('click', () => { window.location.href = 'pagina_inicial.php'; }); }
+if (logout) { logout.addEventListener('click', () => { window.location.href = '../index.php'; }); }
 
 const controller = '../Controller/GerenciamentoClienteController.php';
 // NOVO CLIENTE

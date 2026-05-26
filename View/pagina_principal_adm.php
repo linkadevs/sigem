@@ -1,10 +1,24 @@
 <?php
 
+session_start();
+
+$_SESSION['id_administrador'] = $_GET['id_administrador'];
+
 use Controller\MaquinaController;
+use Controller\GerenciamentoTecController;
+use Controller\GerenciamentoClienteController;
+require_once __DIR__ . '/../Controller/GerenciamentoTecController.php';
+require_once __DIR__ . '/../Controller/GerenciamentoClienteController.php';
 require_once __DIR__ . '/../Controller/MaquinaController.php';
 $maquinaController = new MaquinaController();
+$gerenciamentoTecController = new GerenciamentoTecController();
+$gerenciamentoClienteController = new GerenciamentoClienteController();
 $maquinas = $maquinaController->verMaquinas();
+$tecnicos = $gerenciamentoTecController->listarTecnicos();
+$clientes = $gerenciamentoClienteController->listarClientes();
+$qtdTecnicos = count($tecnicos);
 $qtdMaquinas = count($maquinas);
+$qtdClientes = count($clientes);
 
 ?>
 
@@ -144,19 +158,19 @@ $qtdMaquinas = count($maquinas);
             <div class="contagem">
 
                 <div class="cont_maquinas">
-                    <p class="contnumero_maquinas"><?php echo htmlspecialchars($qtdMaquinas);?></p>
+                    <p class="contnumero_maquinas"><?= htmlspecialchars($qtdMaquinas); ?></p>
                     <p class="conttitulo_maquinas">
                         Máquinas em funcionamento
                     </p>
                 </div>
 
                 <div class="cont_tecnicos">
-                    <p class="contnumero_tecnicos">80</p>
+                    <p class="contnumero_tecnicos"><?= htmlspecialchars($qtdTecnicos); ?></p>
                     <p class="conttitulo_tecnicos">Técnicos em atividade</p>
                 </div>
 
                 <div class="cont_clientes">
-                    <p class="contnumero_clientes">15</p>
+                    <p class="contnumero_clientes"><?= htmlspecialchars($qtdClientes); ?></p>
                     <p class="conttitulo_clientes">Clientes cadastrados</p>
                 </div>
             </div>

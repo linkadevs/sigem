@@ -12,10 +12,10 @@ require_once __DIR__ . '/../Controller/MaquinaController.php';
 $maquinaController = new MaquinaController();
 
 if($_SESSION['nome_maquina'] === null) {
-    header('Location: gerenciamento_de_maquinas_adm.php');
+    // header('Location: gerenciamento_de_maquinas_adm.php');
     exit();
 }
-
+$cod_maquina = $_SESSION['cod_maquina'];
 $nome_maquina = $_SESSION['nome_maquina'];
 $localizacao = $_SESSION['localizacao'];
 $marca = $_SESSION['marca'];
@@ -24,21 +24,33 @@ $fluido_refrigerante = $_SESSION['fluido_refrigerante'];
 $capacidade_termica_de_refrigeracao = $_SESSION['capacidade_termica'];
 $id_cliente_fk = $_SESSION['id_cliente'];
 
-$result = $maquinaController->criarMaquina(
-    $nome_maquina,
-    $localizacao,
-    $marca,
-    $modelo,
-    $fluido_refrigerante,
-    $capacidade_termica_de_refrigeracao,
-    $id_cliente_fk
-);
+if(!empty($cod_maquina) && isset($cod_maquina)) {
+    $result = $maquinaController->editarMaquina(
+        $cod_maquina,
+        $nome_maquina,
+        $localizacao,
+        $marca,
+        $modelo,
+        $fluido_refrigerante,
+        $capacidade_termica_de_refrigeracao
+    );
+} else {
+    $result = $maquinaController->criarMaquina(
+        $nome_maquina,
+        $localizacao,
+        $marca,
+        $modelo,
+        $fluido_refrigerante,
+        $capacidade_termica_de_refrigeracao,
+        $id_cliente_fk
+    );
+}
+
 
 $qrCode = new QrCode($result['dados']);
 
 $writer = new PngWriter();
-
-$img = $writer->write($qrCode);
+$resultQr = $writer->write($qrCode);
 
 $_SESSION['nome_maquina'] = null;
 $_SESSION['localizacao'] = null;
@@ -55,7 +67,7 @@ $_SESSION['id_cliente'] = null;
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../templates/assets/css/Página-visualização-do-código.css">
+    <link rel="stylesheet" href="../templates/assets/css/pagina_visualizacao_do_codigo.css">
     <title>Cadastro de Máquina</title>
 </head>
 <body>
@@ -77,7 +89,7 @@ $_SESSION['id_cliente'] = null;
             </div>
             
             <figure class="qrcode">
-                <img src="data:image/png;base64,<?php echo base64_encode($img->getString());?>" alt="QR Code" id="qrCodeImage">
+                <img src="data:image/png;base64,<?php echo base64_encode($resultQr->getString());?>" alt="QR Code" id="qrCodeImage">
             </figure>
             <div class="codigo_maquina">
                 <h1 id="textoParaCopiar"><?php echo htmlspecialchars($result['dados']);?></h1>
@@ -97,6 +109,6 @@ $_SESSION['id_cliente'] = null;
             
         </div>
         </main>
-        <script src="../templates/assets/js/Página-visualização-do-código.js"></script>
+        <script src="../templates/assets/js/pagina_visualizacao_do_codigo.js"></script>
     </body>
 </html>

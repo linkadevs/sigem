@@ -1,12 +1,12 @@
 <?php
 
 session_start();
-$_SESSION['id_chamado'] = 39;
+
 use Controller\ChamadoController;
 require_once __DIR__ . '/../Controller/ChamadoController.php';
 require_once __DIR__ . '/../vendor/autoload.php';
 $chamadoController = new ChamadoController();
-$id_chamado = $_SESSION['id_chamado'];
+$id_chamado = $_GET['id_chamado'];
 $chamado = $chamadoController->selecionarChamadosPorId($id_chamado);
 
 ?>
@@ -169,9 +169,12 @@ $chamado = $chamadoController->selecionarChamadosPorId($id_chamado);
                 
                 <?php 
                     $fotos = $fotos = json_decode($chamado['fotos_chamado'], true);
-
-                    foreach($fotos as $foto) {
-                        echo '<figure><img src="../'.$foto.'"></figure>';
+                    if(isset($fotos) && !empty($fotos)) {
+                        foreach($fotos as $foto) {
+                            echo '<figure><img src="../'.$foto.'"></figure>';
+                        }
+                    } else {
+                        echo '<strong>Nenhuma foto foi registrada nesse chamado.</strong>';
                     }
                 ?>
             </div>
