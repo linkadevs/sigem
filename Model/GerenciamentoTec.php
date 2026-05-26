@@ -9,6 +9,7 @@ require_once __DIR__ . '/../Model/Connection.php';
 //objetos de erro
 use PDO;
 use PDOException;
+use Exception;
 
 //Definindo o nome da classe.
 class GerenciamentoTec
@@ -189,6 +190,19 @@ public function updateTecSemSenha($id, $nome, $cpf, $funcao, $email) {
             );
 
             return [];
+        }
+    }
+
+    public function getTecByCpf($cpf) {
+        try {
+            $sql = 'SELECT cpf FROM tecnico WHERE cpf = :cpf';
+            $stmt = $this->db->prepare($sql);
+            $stmt->execute([
+                ':cpf' => $cpf
+            ]);
+            return $stmt->fetch(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            throw new Exception('Erro ao selecionar Adm por ID: ' . $e);
         }
     }
 }

@@ -35,7 +35,7 @@ unset($_SESSION['erro']);
 
             <div class="Cform_login">
 
-                <figure>
+                <figure class="setaVoltar">
                     <img src=" ../templates/assets/img/seta_voltar.png" alt="seta azul">
                 </figure>
 
@@ -69,7 +69,7 @@ unset($_SESSION['erro']);
 
                     <div class="input_cpf">
                         <label for="Cpf">CPF/CNPJ</label>
-                        <input type="text" id="Cpf" name="cpf_cnpj" placeholder="000.000.000-00" required>
+                        <input type="number" id="Cpf" name="cpf_cnpj" placeholder="Insira apenas números" required oninput="this.value = this.value.replace(/\D/g, '')">
                     </div>
 
                     <div class="input_senha">
@@ -93,6 +93,7 @@ unset($_SESSION['erro']);
                 </form>
             </div>
     </main>
+    <script src="../templates/assets/js/login.js"></script>
 </body>
 
 </html>

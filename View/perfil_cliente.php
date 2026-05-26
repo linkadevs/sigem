@@ -3,17 +3,14 @@ session_start();
 
 $id_cliente = $_SESSION['id_usuario'];
 
-use Model\Cliente;
 use Controller\ClienteController;
 use Controller\GerenciamentoClienteController;
 
 require_once __DIR__ . '/../Controller/ClienteController.php';
-require_once __DIR__ . '/../Model/Cliente.php';
 require_once __DIR__ . '/../vendor/autoload.php';
 require_once __DIR__ . '/../Controller/GerenciamentoClienteController.php';
 
 
-$clienteModel = new Cliente();
 $clienteController = new ClienteController();
 $gerenciamentoClienteController = new GerenciamentoClienteController();
 

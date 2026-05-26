@@ -27,6 +27,8 @@ class ChamadoController {
         }
     }
 
+
+
     public function selecionarChamadosPorCliente (
         int $id_cliente_fk
     ) :array {

@@ -26,7 +26,8 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
         $chamadoController->finalizarChamado(
             $id_chamado
         );
-        header('Location: registro_nova_manutencao.php');
+        $id_chamado = urlencode($id_chamado);
+        header("Location: registro_nova_manutencao.php?id_chamado=$id_chamado");
         exit();
     }
 

@@ -17,9 +17,16 @@ if(isset($_GET['search']) && !empty($_GET['search']) && $_GET['search'] != ''){
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $_SESSION['cod_maquina'] = $_POST['cod_maquina_clicada'];
-    header('Location: pagina_abertura_chamados.php');
-    exit;
+    if(isset($_POST['cod_maquina_clicada'])){
+        $_SESSION['cod_maquina'] = $_POST['cod_maquina_clicada'];
+        header('Location: pagina_abertura_chamados.php');
+        exit;
+    }
+    if(isset($_POST['historico'])) {
+        $_SESSION['cod_maquina'] = $_POST['historico'];
+        header('Location: historico_cet_manutencoes.php');
+        exit;
+    }
 }
 ?>
 
@@ -87,8 +94,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         </div>
                         <form method="POST">
                             <div class="botoes">
-                                <button class="historico">Ver histórico</button>
-                                <button class="chamado" name="cod_maquina_clicada" value="<?= $maquina['cod_maquina'] ?>">Abrir chamado</button>
+                                <button class="historico" name="historico" value="<?= htmlspecialchars($maquina['cod_maquina']) ?>">Ver histórico</button>
+                                <button class="chamado" name="cod_maquina_clicada" value="<?= htmlspecialchars($maquina['cod_maquina']) ?>">Abrir chamado</button>
                             </div>
                         </form>
                     </div>

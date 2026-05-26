@@ -44,6 +44,14 @@ if(isset($_SESSION['success_message'])) {
     $_SESSION['success_message'] = null;
 }
 
+if(isset($_GET['error_message'])) {
+    echo '<script>
+        alert("'.$_GET['error_message'].'")
+        window.location.href = "perfil_do_adm.php"
+    </script>';
+    exit;
+}
+
 ?>
 
 <!DOCTYPE html>

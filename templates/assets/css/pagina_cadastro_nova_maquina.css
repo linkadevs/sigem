@@ -114,7 +114,7 @@ form input, form select {
 }
 
 .botoes_form{
-    margin: 2rem 1rem 0 0;
+    margin: 2rem 1rem 2rem 0;
     gap: 1rem;
     display: flex;
     justify-content: flex-end;

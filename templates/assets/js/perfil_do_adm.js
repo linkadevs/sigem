@@ -3,13 +3,13 @@ const btnCancelar = document.querySelector('.btn_cancelar')
 
 if(btnVoltar){
     btnVoltar.addEventListener('click', () => {
-        window.history.back()
+        window.location.href = 'pagina_principal_adm.php';
     })
 }
 
 if(btnCancelar){
     btnCancelar.addEventListener('click', () => {
-        window.history.back()
+        window.location.href = 'pagina_principal_adm.php';
     })
 }
 

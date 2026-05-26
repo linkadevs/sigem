@@ -42,6 +42,11 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 
 <body>
+    <button class="voltar">
+        <figure>
+            <img src="/sigem/templates/assets/img/seta_voltar_semfundo.png" alt="">
+        </figure>
+    </button>
     <main>
         <div class="container">
 

@@ -22,17 +22,41 @@ if (empty($cpf_cnpj) || empty($senha)) {
     exit();
 }
 
-    if (empty($objetivo)) {
-        $_SESSION['erro'] = 'Nenhuma funcionalidade selecionada!';
-        header('Location: pagina_inicial.php');
-        exit();
-    }
+if (empty($objetivo)) {
+    $_SESSION['erro'] = 'Nenhuma funcionalidade selecionada!';
+    header('Location: pagina_inicial.php');
+    exit();
+}
+
+if (strlen($cpf_cnpj) !== 11 && strlen($cpf_cnpj) !== 14) {
+    echo '<script>
+            alert("CPF ou CNPJ inválido. (Insira apenas números)");
+            window.history.back();
+        </script>';
+    exit;
+}
 
 // ==============================================
 // 3. CHAMAR O CONTROLLER PARA AUTENTICAR E VALIDAR
 // ==============================================
 
 $segmentacaoController = new Controller\SegmentacaoController();
+
+if(strlen($cpf_cnpj) === 11) {
+    $cpf_cnpj = preg_replace(
+        "/(\d{3})(\d{3})(\d{3})(\d{2})/",
+        "$1.$2.$3-$4",
+        $cpf_cnpj
+    );
+}
+if(strlen($cpf_cnpj) === 14) {
+    $cpf_cnpj = preg_replace(
+        "/(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})/",
+        "$1.$2.$3/$4-$5",
+        $cpf_cnpj
+    );
+}
+
 $resultado = $segmentacaoController->Autenticar_e_validar($cpf_cnpj, $senha, $objetivo, $cod_maquina);
 
 

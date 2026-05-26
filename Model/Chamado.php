@@ -130,6 +130,8 @@ class Chamado {
             );
         }
     }
+
+
     public function abrirChamado (
         string $descricao,
         string $fotos,

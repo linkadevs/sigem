@@ -13,6 +13,19 @@ figure {
     margin: 0;
 }
 
+/* Chrome, Edge, Safari, Opera */
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
+    appearance: textfield;
+}
+
 /* ========== CONTAINER PRINCIPAL ========== */
 .container {
     display: flex;

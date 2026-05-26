@@ -79,8 +79,9 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
 
                 <div class="entrada">
                     <label for="cpf">CPF</label>
-                    <input type="text" name="cpf" id="cpf" required 
-                           value="<?php echo $tecnico['cpf'] ?? ''; ?>" 
+                    <input type="number" name="cpf" id="cpf" required 
+                           value="<?php echo htmlspecialchars(preg_replace('/\D/', '', $tecnico['cpf'])) ?? ''; ?>" 
+                           oninput="this.value = this.value.replace(/\D/g, '')"
                            placeholder="ABC.DEF.GHI-JK" class="inputcpf">
                 </div>
 
@@ -96,7 +97,7 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
 
                 <div class="entrada">
                     <label for="email">Email</label>
-                    <input type="text" name="email" id="email" required 
+                    <input type="email" name="email" id="email" required 
                            value="<?php echo $tecnico['email'] ?? ''; ?>" 
                            placeholder="Insira seu email" class="inputemail">
                 </div>

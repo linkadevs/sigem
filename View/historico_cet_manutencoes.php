@@ -6,7 +6,11 @@ session_start();
 // 1. RECEBE OS DADOS DA URL (GET)
 // ==============================================
 // Pega o código da máquina que veio na URL (ex: ?cod_maquina=M001)
-$cod_maquina = $_GET['cod_maquina'] ?? null;
+if(isset($_GET['cod_maquina'])) {
+    $cod_maquina = $_GET['cod_maquina'] ?? null;
+} else {
+    $cod_maquina = $_SESSION['cod_maquina'];
+}
 
 // Pega o filtro de pesquisa que veio na URL (ex: &filtro=João)
 $filtro = $_GET['filtro'] ?? '';

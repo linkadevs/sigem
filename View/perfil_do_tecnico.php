@@ -3,11 +3,9 @@ session_start();
 
 $id_usuario = $_SESSION['id_usuario'];
 require_once __DIR__ . '/../Controller/TecnicoController.php';
-require_once __DIR__ . '/../Model/Tecnico.php';
 require_once __DIR__ . '/../Controller/GerenciamentoTecController.php';
 require_once __DIR__ . '/../vendor/autoload.php';
 
-$tecnicoModel = new \Model\Tecnico();
 $tecnicoController = new \Controller\TecnicoController();
 $gerenciamentoTecController = new \Controller\GerenciamentoTecController();
 

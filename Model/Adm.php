@@ -26,6 +26,19 @@ class Adm{
         }
     }
 
+    public function selecionarAdmPorCpf($cpf) {
+        try {
+            $sql = 'SELECT cpf FROM administrador WHERE cpf = :cpf';
+            $stmt = $this->db->prepare($sql);
+            $stmt->execute([
+                ':cpf' => $cpf
+            ]);
+            return $stmt->fetch(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            throw new Exception('Erro ao selecionar Adm por ID: ' . $e);
+        }
+    }
+
     public function updateUserAdm($nome_adm, $cpf_adm, $email_adm, $id_adm){
         try{
             $sql = 'UPDATE administrador SET nome = :nome, cpf = :cpf, email = :email WHERE id_administrador = :id_administrador';

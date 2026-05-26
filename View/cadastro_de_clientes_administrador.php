@@ -51,7 +51,7 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
 
                     <div class="grupo_input">
                         <label>CNPJ</label>
-                        <input type="text" name="cnpj" value="<?php echo htmlspecialchars($cliente['cnpj'] ?? ''); ?>" required>
+                        <input type="number" oninput="this.value = this.value.replace(/\D/g, '')" name="cnpj" value="<?php echo htmlspecialchars(preg_replace('/\D/', '', $cliente['cnpj']) ?? ''); ?>" required>
                     </div>
 
                     <div class="grupo_input">
@@ -83,7 +83,7 @@ if (isset($_GET['id']) && !empty($_GET['id'])) {
 
                     <div class="grupo_input">
                         <label>Número de contato</label>
-                        <input type="tel" name="contato" value="<?php echo htmlspecialchars($cliente['contato'] ?? ''); ?>" required>
+                        <input type="number" oninput="this.value = this.value.replace(/\D/g, '')" name="contato" value="<?php echo htmlspecialchars(preg_replace('/\D/', '', $cliente['contato']) ?? ''); ?>" required>
                     </div>
 
                     <div class="grupo_input largura_total">

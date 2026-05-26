@@ -1,5 +1,7 @@
 <?php
 
+use Controller\ChamadoController;
+
 session_start();
 
 use Controller\PecasController;
@@ -12,10 +14,13 @@ $data_hora_atual = date('Y-m-d\TH:i');
 $id_tecnico = $_SESSION['id_usuario'];
 $cod_maquina = $_SESSION['cod_maquina'];
 
+
 require_once __DIR__ . '/../Controller/ManutencaoController.php';
 require_once __DIR__ . '/../Controller/PecasController.php';
+
 $pecasController = new Controller\PecasController();
 $manutencaoController = new Controller\ManutencaoController();
+
 
 
 $nome_tecnico = $pecasController->tecnico_nome($id_tecnico)['nome'] ?? 'Técnico desconhecido';
