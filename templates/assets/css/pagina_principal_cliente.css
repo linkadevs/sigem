@@ -1,5 +1,9 @@
 @import 'global.css';
 
+:root {
+    font-size: 46%;
+}
+
 figure img {
     display: block;
 }
@@ -362,7 +366,7 @@ header {
 
     .decoracao_consulta button {
         margin: 0;
-        width: 22.5rem;
+        width: 23.5rem;
         height: 5rem;
         font-size: 1.9rem;
         padding: 1rem 3rem;
