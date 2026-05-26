@@ -90,15 +90,28 @@ form p {
     color: #094C71;
 }
 
+.reposicao-container {
+    display: none;
+    flex-direction: column;
+    gap: 3rem;
+}
+
+.detalhes-pecas {
+    display: none;
+    flex-direction: column;
+    gap: 3rem;
+}
+
 .helper-text {
     padding-left: 2rem;
-    color: red;
+    color: rgb(0, 0, 0);
+    transform: translateY(-50%);
 }
 
 .inputs {
     display: flex;
     flex-direction: column;
-    gap: 1.2rem;
+    gap: 3rem;
 }
 
 .input {

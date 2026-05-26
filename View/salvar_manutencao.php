@@ -1,4 +1,6 @@
 <?php
+
+session_start();
 // ==============================================
 // CARREGA OS CONTROLLERS NECESSÁRIOS
 // ==============================================
@@ -82,20 +84,19 @@ if (isset($resultado['erro'])) {
 // ==============================================
 // Verifica se o checkbox "solicitar_reposicao" foi marcado
 // E se o campo "nome_peca" foi preenchido
-if (isset($_POST['solicitar_reposicao']) && $_POST['solicitar_reposicao'] == 'on' && !empty($_POST['nome_peca'])) {
+if (isset($_POST['solicitar_reposicao']) && !empty($_POST['nome_peca']) && !empty($_POST['descricao_peca'])) {
     
     // Instancia o controller de peças
     $pecasController = new Controller\PecasController();
     
     // Define o status inicial da solicitação como 'em_aberto'
-    $status = 'em_aberto';
     
     // Chama o método para salvar a solicitação de peça
     $pecasController->solicitarPeca(
         $_POST['nome_peca'],           // Nome da peça solicitada
+        $_POST['quantidade_peca'],
         $_POST['descricao_peca'] ?? '', // Descrição da peça (se houver)
-        $_POST['id_tecnico'],          // ID do técnico que solicitou
-        $status                         // Status inicial da solicitação
+        $_SESSION['id_usuario'],          // ID do técnico que solicitou
     );
 }
 

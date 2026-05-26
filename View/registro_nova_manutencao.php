@@ -20,19 +20,6 @@ $manutencaoController = new Controller\ManutencaoController();
 
 $nome_tecnico = $pecasController->tecnico_nome($id_tecnico)['nome'] ?? 'Técnico desconhecido';
 
-// if($_SERVER['REQUEST_METHOD'] === 'POST') {
-//     $dados = [];
-//     $dados['tipo_de_servico'] = $_POST['tipo_de_servico'];
-//     $dados['descricao_do_servico'] = $_POST['descricao_do_servico'];
-//     $dados['acompanhante'] = $_POST['acompanhante'];
-//     $dados['pressao_aferida'] = $_POST['pressao_aferida'];
-//     $dados['testes_e_finalizacao'] = $_POST['testes_e_finalizacao'];
-//     $dados['cod_maquina'] = $cod_maquina;
-//     $dados['id_tecnico'] = $id_tecnico;
-//     $fotos = $_FILES['fotos[]'];
-
-//     $manutencaoController->salvarManutencao($dados, $fotos);
-// }
 ?>
 
 
@@ -49,7 +36,7 @@ $nome_tecnico = $pecasController->tecnico_nome($id_tecnico)['nome'] ?? 'Técnico
 
 <body>
     <header>
-        <button class="botaoVoltar" type="button" onclick="window.history.back()">
+        <button class="botaoVoltar" type="button">
             <figure class="voltarFigure"><img src="../templates/assets/img/seta_voltar_semfundo.png"
                     alt="Seta apontando para a esquerda para voltar à página anterior" class="voltarImg"></figure>
             Voltar
@@ -91,7 +78,7 @@ $nome_tecnico = $pecasController->tecnico_nome($id_tecnico)['nome'] ?? 'Técnico
                 </div>
 
                 <!-- Seção de reposição de peças (condicional) -->
-                <div id="reposicao_pecas_container" class="reposicao-container" style="display: none;">
+                <div id="reposicao_pecas_container" class="reposicao-container">
                     <div class="input checkbox-input">
                         <label class="checkbox-label">
                             <input type="checkbox" id="solicitar_reposicao" name="solicitar_reposicao">
@@ -99,21 +86,18 @@ $nome_tecnico = $pecasController->tecnico_nome($id_tecnico)['nome'] ?? 'Técnico
                         </label>
                     </div>
                     <div id="detalhes_pecas_container" class="detalhes-pecas">
-                        <div class="input">
-                            <label for="nome_peca">Nome da peça em falta <span class="required-peca"
-                                    style="display: none;">*</span></label>
+                        <div class="input inputPecas">
+                            <label for="nome_peca">Nome da peça em falta <span class="required-peca">*</span></label>
                             <input class="inputTexto" type="text" id="nome_peca" name="nome_peca"
                                 placeholder="Insira o nome da peça">
                         </div>
-                        <div class="input">
-                            <label for="quantidade_peca">Quantidade <span class="required-peca"
-                                    style="display: none;">*</span></label>
+                        <div class="input inputPecas">
+                            <label for="quantidade_peca">Quantidade <span class="required-peca">*</span></label>
                             <input class="inputTexto" type="number" id="quantidade_peca" name="quantidade_peca"
                                 placeholder="Informe a quantidade" min="1">
                         </div>
-                        <div class="input">
-                            <label for="descricao_peca">Descrição da peça em falta <span class="required-peca"
-                                    style="display: none;">*</span></label>
+                        <div class="input inputPecas">
+                            <label for="descricao_peca">Descrição da peça em falta <span class="required-peca">*</span></label>
                             <textarea id="descricao_peca" name="descricao_peca" placeholder="Descreva a peça necessária"
                                 rows="3"></textarea>
                         </div>

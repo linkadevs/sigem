@@ -23,14 +23,13 @@ class ClienteController{
             return false;
         }
 
-        $success = $this->ClienteModel->changePassword($id_cliente, $nova_senha);
+        $success = $this->ClienteModel->changePassword($nova_senha, $id_cliente);
 
-        if ($success) {
-            $_SESSION['success_message'] = "Senha alterada com sucesso!";
-        } else {
-            $_SESSION['error_message'] = "Ocorreu um erro ao alterar a senha.";
+        if (!$success) {
+           throw new Exception("Ocorreu um erro ao alterar a senha.");
         }
-        header('Location: perfil_do_adm.php#content-seguranca');
+        $_SESSION['error_message'] = null;
+        header('Location: perfil_cliente');
         exit;
     }
 }

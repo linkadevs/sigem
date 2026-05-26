@@ -39,7 +39,8 @@ class Chamado {
         int $id_cliente_fk
     ) :array {
         try {
-            $sql = 'SELECT c.descricao AS descricao_chamado,
+            $sql = 'SELECT c.id_chamado,
+            c.descricao AS descricao_chamado,
             c.status AS status_chamado,
             DATE_FORMAT(c.data_chamado, "%d/%m/%Y") AS data_chamado,
             c.fotos AS fotos_chamado,
@@ -161,7 +162,7 @@ class Chamado {
         int $id_chamado
     ) :bool {
         try {
-            $sql = 'DELETE FROM chamado c WHERE c.id_chamado = :id_chamado';
+            $sql = 'DELETE FROM chamado WHERE id_chamado = :id_chamado';
             $stmt = $this->db->prepare($sql);
             return $stmt->execute([
                 ':id_chamado' => $id_chamado
@@ -255,6 +256,7 @@ class Chamado {
             WHERE (
                 DATE_FORMAT(c.data_chamado, "%d/%m/%Y") LIKE :pesquisa1
                 OR m.cod_maquina LIKE :pesquisa2
+                OR m.nome_maquina LIKE :pesquisa3
             ) AND cl.id_cliente = :id_cliente
             ORDER BY CASE 
                 WHEN c.status = "em andamento" THEN 1
@@ -268,7 +270,8 @@ class Chamado {
             $stmt->execute([
                 ':id_cliente' => $id_cliente,
                 ':pesquisa1' => $pesquisaFormatada,
-                ':pesquisa2' => $pesquisaFormatada
+                ':pesquisa2' => $pesquisaFormatada,
+                ':pesquisa3' => $pesquisaFormatada
             ]);
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
         } catch (PDOException $e) {

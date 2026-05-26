@@ -2,7 +2,7 @@ const pressaoAferida = document.getElementById('pressao_aferida')
 const botaoFotos = document.getElementById('botaoFotos')
 const grid = document.querySelector('.grid')
 const form = document.querySelector('form')
-
+const cancelar = document.getElementById('cancelar')
 const nomeTecnico = document.getElementById('nome_tecnico')
 const nomeAcompanhante = document.getElementById('nome_acompanhante')
 const select = document.getElementById('tipo_servico')
@@ -10,6 +10,26 @@ const descricaoServico = document.getElementById('descricao_servico')
 const testesFinalizacao = document.getElementById('testes_finalizacao')
 const dataHora = document.getElementById('data_hora')
 const inputFotos = document.getElementById('fotos')
+const voltarBtn = document.querySelector('.botaoVoltar')
+const reposicao = document.getElementById('reposicao_pecas_container')
+const reposicaoCheckbox = document.getElementById('solicitar_reposicao')
+const detalhes = document.querySelector('.detalhes-pecas')
+
+const nomePeca = document.getElementById('nome_peca')
+const quantidadePeca = document.getElementById('quantidade_peca')
+const descricaoPeca = document.getElementById('descricao_peca')
+
+cancelar.addEventListener('click', () => {
+    if(!confirm('O registro de manutenção é obrigatório após o serviço. Ao clicar em "cancelar" você está será responsabilizado pela ausência desse registro.')){
+        window.location.href = 'pagina_principal_do_tecnico.php';
+    }
+})
+
+voltarBtn.addEventListener('click', () => {
+    if(!confirm('O registro de manutenção é obrigatório após o serviço. Ao clicar em "cancelar" você está será responsabilizado pela ausência desse registro.')){
+        window.location.href = 'pagina_principal_do_tecnico.php'
+    }
+})
 
 botaoFotos.addEventListener('click', (e) => {
     e.preventDefault()
@@ -94,10 +114,38 @@ form.addEventListener('submit', (e) => {
 })
 
 const verificarCampos = () => {
-    if (nomeTecnico.value === "" || nomeAcompanhante.value === "" || select.value === "placeholder" || descricaoServico.value === "" || pressaoAferida.value === "" || testesFinalizacao.value === "" || dataHora.value === "" || inputFotos.files.length === 0) {
-        alert('Por favor, preencha todos os campos e selecione pelo menos uma foto antes de enviar o formulário.')
+    if (reposicaoCheckbox.checked === false) {
+        if (nomeTecnico.value === "" || nomeAcompanhante.value === "" || select.value === "placeholder" || descricaoServico.value === "" || pressaoAferida.value === "" || testesFinalizacao.value === "" || dataHora.value === "" || inputFotos.files.length === 0) {
+            alert('Por favor, preencha todos os campos e selecione pelo menos uma foto antes de enviar o formulário.')
+        } else {
+            pressaoAferida.value = pressaoAferida.value.replace(' PSI', '')
+            form.submit()
+        }
     } else {
-        pressaoAferida.value = pressaoAferida.value.replace(' PSI', '')
-        form.submit()
+        if (nomeTecnico.value === "" || nomeAcompanhante.value === "" || select.value === "placeholder" || descricaoServico.value === "" || pressaoAferida.value === "" || testesFinalizacao.value === "" || dataHora.value === "" || inputFotos.files.length === 0 || nomePeca.value === "" || quantidadePeca === "" || descricaoPeca === "") {
+            alert('Por favor, preencha todos os campos e selecione pelo menos uma foto antes de enviar o formulário.')
+        } else {
+            pressaoAferida.value = pressaoAferida.value.replace(' PSI', '')
+            form.submit()
+        }
     }
 }
+
+select.addEventListener('change', () => {
+    if(select.value != 'instalacao' && select.value != 'placeholder') {
+        reposicao.style.display = 'flex'
+    } else {
+        reposicao.style.display = 'none'
+        reposicaoCheckbox.checked = false
+        detalhes.style.display = 'none'
+    }
+})
+
+
+reposicaoCheckbox.addEventListener('change', () => {
+    if(reposicaoCheckbox.checked) {
+        detalhes.style.display = 'flex'
+    } else {
+        detalhes.style.display = 'none'
+    }
+})

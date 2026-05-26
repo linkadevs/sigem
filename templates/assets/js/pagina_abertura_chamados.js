@@ -8,6 +8,11 @@ const uf = document.getElementById('uf')
 const cidade = document.getElementById('cidade')
 const descricao = document.getElementById('descricao')
 const inputFotos = document.getElementById('fotos')
+const botaoVoltar = document.querySelector('.botaoVoltar');
+
+botaoVoltar.addEventListener('click', () => {
+    window.location.href = 'gerenciamento_de_maquinas_clientes.php';
+})
 
 botaoFotos.addEventListener('click', (e) => {
     e.preventDefault()

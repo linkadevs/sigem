@@ -105,7 +105,7 @@ class ChamadoController {
     ) :bool {
         try {
             $id_chamado = filter_var($id_chamado, FILTER_SANITIZE_NUMBER_INT);
-            return $this->deletarChamado($id_chamado);
+            return $this->chamadoModel->deletarChamado($id_chamado);
         } catch (Exception $e) {
             throw new Exception(
                 'Erro ao deletar chamado',

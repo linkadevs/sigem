@@ -1,3 +1,17 @@
+<?php 
+
+session_start();
+
+if((empty($_SESSION['id_usuario']) || !isset($_SESSION['id_usuario'])) && (empty($_GET['id_cliente']) || !isset($_GET['id_cliente']))) {
+    header('Location: ../index.php');
+} else {
+    if(empty($_SESSION['id_usuario']) || !isset($_SESSION['id_usuario'])) {
+        $_SESSION['id_usuario'] = $_GET['id_cliente'];
+    }
+}
+$_SESSION['cod_maquina'] = null;
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -40,10 +54,10 @@
             <div class="decoracao_consulta">
 
                 <h1>Acompanhe os seus chamados em andamento</h1>
-                <button class="consultarBtn" type="button" onclick="window.location.href='acompanhamento_de_chamados.php' "
+                <button class="consultarBtn" type="button" onclick="window.location.href='pagina_acompanhamento_chamados_cliente.php' "
                     class="consultas">Consultar
                 </button>
-                <button class="maquinasBtn" type="button" onclick="window.location.href='acompanhamento_de_chamados.php' "
+                <button class="maquinasBtn" type="button" onclick="window.location.href='gerenciamento_de_maquinas_clientes.php' "
                     class="maquinasBtn">Minhas máquinas
                 </button>
             </div>

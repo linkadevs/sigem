@@ -140,10 +140,10 @@ class PecasController
         }
     }
 
-    public function solicitarPeca($nome_peca, $descricao, $id_tecnico, $status)
+    public function solicitarPeca($nome_peca, $quantidade_pecas, $descricao, $id_tecnico)
     {
         try {
-            return $this->pecas->solicitarPeca($nome_peca, $descricao, $id_tecnico, $status);
+            return $this->pecas->solicitarPeca($nome_peca, $quantidade_pecas, $descricao, $id_tecnico);
         } catch (Exception $e) {
             throw new Exception("Erro ao solicitar peça: " . $e->getMessage());
         }

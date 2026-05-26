@@ -31,18 +31,19 @@ class PecasModel
         }
     }
 
-    public function solicitarPeca($nome_peca, $descricao, $id_tecnico, $status)
+    public function solicitarPeca($nome_peca, $quantidade_pecas, $descricao, $id_tecnico)
     {
         try {
-            $sql = "INSERT INTO solicitacao_pecas (nome_peca, descricao, id_tecnico_fk, status) 
-                    VALUES (:nome_peca, :descricao, :id_tecnico, :status)";
+            $sql = "INSERT INTO solicitacao_pecas (nome_peca, data, descricao, quantidade_pecas, status, id_tecnico_fk) 
+                    VALUES (:nome_peca, NOW(), :descricao, :quantidade_pecas, 'em_aberto', :id_tecnico)";
             $stmt = $this->db->prepare($sql);
-            $stmt->bindParam(':nome_peca', $nome_peca, PDO::PARAM_STR);
-            $stmt->bindParam(':descricao', $descricao, PDO::PARAM_STR);
-            $stmt->bindParam(':id_tecnico', $id_tecnico, PDO::PARAM_INT);
-            $stmt->bindParam(':status', $status, PDO::PARAM_STR);
             
-            return $stmt->execute();
+            return $stmt->execute([
+                ':nome_peca' => $nome_peca,
+                ':descricao' => $descricao,
+                ':quantidade_pecas' => $quantidade_pecas,
+                ':id_tecnico' => $id_tecnico
+            ]);
         } catch (PDOException $e) {
             throw new Exception("Erro ao solicitar peça: " . $e->getMessage());
         }

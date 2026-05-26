@@ -1,13 +1,22 @@
 <?php
 
 session_start();
-$_SESSION['id_usuario'] = 2;
-$_SESSION['cod_maquina'] = 'HVNT';
-
+$id_cliente = $_SESSION['id_usuario'];
+$cod_maquina = $_SESSION['cod_maquina'];
+use Controller\MaquinaController;
+use Controller\GerenciamentoClienteController;
 use Controller\ChamadoController;
 require_once __DIR__ . '/../Controller/ChamadoController.php';
+require_once __DIR__ . '/../Controller/GerenciamentoClienteController.php';
+require_once __DIR__ . '/../Controller/MaquinaController.php';
 require_once __DIR__ . '/../vendor/autoload.php';
 $chamadoController = new ChamadoController();
+$gerenciamentoClienteController = new GerenciamentoClienteController();
+$maquinaController = new MaquinaController();
+
+$array = $maquinaController->verMaquinasPorCodigo($cod_maquina);
+$maquina = $array['dados'];
+$cliente = $gerenciamentoClienteController->buscarClientePorId($id_cliente);
 
 ?>
 
@@ -33,7 +42,7 @@ $chamadoController = new ChamadoController();
                     <div class="inputs">
                         <div class="input">
                             <label for="cliente">Nome</label>
-                            <input type="text" name="nome" id="nome" placeholder="Insira o nome do cliente" value="Bombeiros">
+                            <input type="text" name="nome" id="nome" placeholder="Insira o nome do cliente" value="<?= $cliente['nome']?>">
                         </div>
                         <div class="dataUf">
                             <div class="input">
@@ -42,16 +51,16 @@ $chamadoController = new ChamadoController();
                             </div>
                             <div class="input">
                                 <label for="uf">UF</label>
-                                <input type="text" name="uf" id="uf" maxlength="2" placeholder="Estado" value="Bahia">
+                                <input type="text" name="uf" id="uf" maxlength="2" placeholder="Estado" value="<?= $cliente['uf']?>">
                             </div>
                         </div>
                         <div class="input">
                             <label for="cidade">Cidade</label>
-                            <input type="text" name="cidade" id="cidade" placeholder="Insira a cidade do chamado" value="Camaçari">
+                            <input type="text" name="cidade" id="cidade" placeholder="Insira a cidade do chamado" value="<?= $cliente['cidade']?>">
                         </div>
                         <div class="input">
                             <label for="localizacao">Localização</label>
-                            <input type="text" name="localizacao" id="localizacao" placeholder="Insira o local do chamado" value="asdsfg">
+                            <input type="text" name="localizacao" id="localizacao" placeholder="Insira o local do chamado" value="<?= $maquina['localizacao']?>">
                         </div>
                         <div class="input">
                             <label for="descricao">Descrição</label>

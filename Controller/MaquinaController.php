@@ -316,6 +316,26 @@ class MaquinaController {
             throw new Exception('Erro interno grave, por favor, reinicie a página e tente novamente');
         }
     }
+
+    public function pesquisarMaquinaCliente (
+        string $pesquisa,
+        int $id_cliente
+    ) :array {
+        try {
+            if($pesquisa === null || $pesquisa === '') {
+                $dados = $this->maquinaModel->verMaquinasPorCliente($id_cliente);
+            } else {
+                $dados = $this->maquinaModel->pesquisarMaquinaCliente($pesquisa, $id_cliente);
+            }
+
+            return [
+                'sucesso' => true,
+                'dados' => $dados
+            ];
+        } catch (Exception $e) {
+            throw new Exception('Erro interno grave, por favor, reinicie a página e tente novamente');
+        }
+    }
 }
 
 ?>

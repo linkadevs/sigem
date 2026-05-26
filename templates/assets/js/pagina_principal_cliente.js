@@ -3,10 +3,10 @@
 //redirecionamnto para o perfil
 
 
-document.querySelector('.logout').addEventListener('click', () => {
-    window.location.href = 'pagina_inicial.php';
+document.querySelector('.logoutDiv').addEventListener('click', () => {
+    window.location.href = '../index.php';
 });
 
-document.querySelector('.perfil_tec').addEventListener('click', () => {
-    window.location.href = 'perfil_tecnico.php';
+document.querySelector('.perfilBtn').addEventListener('click', () => {
+    window.location.href = 'perfil_cliente.php';
 });

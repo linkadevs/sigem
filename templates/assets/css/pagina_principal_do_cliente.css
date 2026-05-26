@@ -30,7 +30,7 @@ header {
 }
 
 .logoutDiv p {
-    font-size: 1.8rem;
+    font-size: 2.5rem;
     font-weight: 700;
     color: #094C71;
 }
@@ -38,12 +38,15 @@ header {
 .perfilBtn{
     background-color: transparent;
     display: flex;
+}
+
+.perfilBtn {
     border-style: none;
     display: flex;
     align-items: center;
     gap: 1rem;
     color: #094C71;
-    font-size: 1.8rem;
+    font-size: 2.5rem;
     font-weight: 700;
 }
 
@@ -86,34 +89,30 @@ header {
 }
 
 .consultarBtn {
-    width: 17rem;
-    height: 4rem;
+    width: 34rem;
+    height: fit-content;
     background-color: #8A38F5;
-    font-size: 1.8rem;
+    font-size: 2.9rem;
     color: #FFFFFF;
     font-weight: 700;
+    padding: 1.7rem 9.8rem;
     border-style: none;
     border-radius: 1rem;
     box-shadow: 0 .4rem .4rem 0 rgba(0, 0, 0, 0.25);
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
 .maquinasBtn {
-    width: 17rem;
-    height: 4rem;
+    width: 34rem;
+    height: fit-content;
     background-color: transparent;
-    font-size: 1.8rem;
+    font-size: 2.9rem;
     color: #094C71;
     font-weight: 700;
-    border-style: none;
-    border-radius: 1rem;
+    padding: 1.8rem 0;
+    border-style: solid;
     border-color: #8A38F5;
+    border-radius: 1rem;
     box-shadow: 0 .4rem .4rem 0 rgba(0, 0, 0, 0.25);
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
 .containertextos_e_dicas {
@@ -128,7 +127,7 @@ header {
 }
 
 .padding h3 {
-    font-size: 2rem;
+    font-size: 3rem;
     font-weight: 400;
     color: #094C71;
     padding: 1.5rem 13.1rem;
@@ -140,12 +139,13 @@ header {
     display: flex;
     flex-direction: column;
     background: linear-gradient(#8A38F5, #51218F);
-    gap: 2.1rem;
-    padding: 1.8rem 3.8rem;
+    gap: 5.1rem;
+    padding: 2.8rem 5.8rem;
     border-radius: 8rem;
     transform: translateX(-4rem);
     z-index: 1;
 }
+
 .dica {
     display: flex;
     gap: 1rem;
@@ -154,7 +154,7 @@ header {
     border-style: solid;
     border-color: #E46CFF;
     border-radius: 5rem;
-    padding: 2rem 2.1rem;
+    padding: 2.9rem 2.1rem;
     border-width: .1rem;
 }
 
@@ -188,12 +188,12 @@ header {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 10rem 3.2rem 10rem 5.6rem;
+    padding: 10rem 2.7rem;
     background-color: #002C65;
     height: fit-content;
     border-top-right-radius: 1.5rem;
     border-bottom-right-radius: 1.5rem;
-    transform: translateX(-7.8rem);
+    transform: translateX(-5rem);
     z-index: 0;
 }
 
@@ -226,15 +226,15 @@ header {
     }
 
     .logo img {
-        width: 15rem;
+        width: 20rem;
     }
 
-    .decoracao_consulta h1 {
+    .textoCima h1 {
         font-size: 3rem;
     }
 
     .decoracao_consulta button {
-        font-size: 1.8rem;
+        font-size: 2.2rem;
     }
 }
 
@@ -248,16 +248,15 @@ header {
         flex-direction: column;
         background-color: #002C65;
         align-items: center;
-        justify-content: center;
         gap: 4rem;
         padding: 4rem 0;
     }
 
     .containertextos_e_dicas2 h2 {
-        font-size: 2.5rem;
+        font-size: 4.5rem;
         font-weight: 700;
+        width: 57.3rem;
         color: #FFFFFF;
-        text-align: center;
     }
 
     .containertextos_e_dicas2 h2 span {
@@ -286,7 +285,7 @@ header {
         gap: 4rem;
     }
     .logo img {
-        width: 20rem;
+        width: 25rem;
     }
 
     .texto_e_fotohomem {
@@ -295,9 +294,6 @@ header {
 
     .fundoPng img {
         width: 70rem;
-    }
-    .decoracao_consulta h1 {
-        width: 40rem;
     }
 }
 
@@ -345,7 +341,7 @@ header {
     }
 
     .containertextos_e_dicas2 h2 {
-        font-size: 2rem;
+        font-size: 3rem;
         width: 40rem;
     }
 
@@ -355,6 +351,15 @@ header {
 
     .decoracao_consulta h1 {
         font-size: 2rem;
+    }
+
+    .decoracao_consulta button {
+        margin: 0;
+        width: 22.5rem;
+        height: 5rem;
+        font-size: 1.9rem;
+        padding: 1rem 3rem;
+
     }
 
     .decoracao_consulta {
@@ -371,6 +376,15 @@ header {
 
     header {
         align-items: baseline;
+    }
+
+    .decoracao_consulta button {
+        margin: 0;
+        width: 22rem;
+        height: 5rem;
+        font-size: 1.6rem;
+        padding: 1rem 3rem;
+
     }
 
     .decoracao_consulta {
@@ -412,6 +426,13 @@ header {
         width: 24rem;
     }
 
+    .decoracao_consulta button {
+        width: 21rem;
+        height: fit-content;
+        padding: 1rem 3rem;
+        font-size: 1.7rem;
+    }
+
     .fundoPng img {
         width: 25rem;
     }
@@ -444,6 +465,13 @@ header {
         width: 9rem;
     }
 
+    .decoracao_consulta button {
+        width: 18.5rem;
+        height: fit-content;
+        padding: 1rem 3rem;
+        font-size: 1.4rem;
+    }
+
 }
 
 @media screen and (max-width: 485px) {
@@ -469,14 +497,9 @@ header {
         width: 1.5rem !important;
     }
 
-     .decoracao_consulta h1 {
+     .textoCima h1 {
         font-size: 1.3rem;
         width: 20rem;
-    }
-
-    .decoracao_consulta button {
-        font-size: 1.3rem;
-        width: 13rem;
     }
     
 }

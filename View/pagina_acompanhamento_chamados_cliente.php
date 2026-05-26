@@ -23,6 +23,12 @@ if (!empty($_GET['search']) && isset($_GET['search'])) {
     $chamados = $chamadoController->selecionarChamadosPorCliente($id_cliente);
 }
 
+if($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $chamadoController->deletarChamado($_POST['cancelar']);
+    header('Location: pagina_acompanhamento_chamados_cliente.php');
+    exit;
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -47,15 +53,16 @@ if (!empty($_GET['search']) && isset($_GET['search'])) {
                             <img src="../templates/assets/img/lupa_branca.png" alt="">
                         </figure>
                         <input type="text" class="pesquisar" name="search"
-                            placeholder="Busque pela data ou Código da Máquina!">
+                            placeholder="Busque pela data, Código ou nome da Máquina!">
                     </div>
                     <button class="procurar">Procurar</button>
                 </form>
             </div>
 
-            <button class="criarCliente"><figure><img src="../templates/assets/img/adicao_roxo.png" alt=""></figure>Abrir chamado</button>
-
             <div class="cards">
+                <?php if(empty($chamados) || !isset($chamados)):?>
+                    <strong>Nenhum chamado encontrado</strong>
+                <?php endif;?>
                 <?php foreach ($chamados as $chamado):?>
                 <div class="card">
                     <div class="d1">
@@ -69,7 +76,7 @@ if (!empty($_GET['search']) && isset($_GET['search'])) {
                     <p class="tituloDescricao">Descrição do Problema</p>
                     <div class="d3">
                         <p class="descricao"><?= htmlspecialchars($chamado['descricao_chamado'])?></p>
-                        <button class="cancelar">Cancelar</button>
+                        <form method="POST"><button class="cancelar" name="cancelar" value="<?= $chamado['id_chamado']?>" onclick="return confirm('Tem certeza que deseja apagar esse chamado? Essa ação não poderá ser desfeita.')">Cancelar</button></form>
                     </div>
                     <div class="grid">
                         <?php 

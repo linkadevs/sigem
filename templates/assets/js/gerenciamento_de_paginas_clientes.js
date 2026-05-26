@@ -4,7 +4,7 @@ const chamados = document.querySelectorAll('.chamado');
 
 if (voltar) {
     voltar.addEventListener('click', () => {
-        window.location.href = '';
+        window.location.href = 'pagina_principal_cliente.php';
     });
 }
 

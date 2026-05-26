@@ -23,9 +23,9 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if (!empty($_POST['concluir']) && isset($_POST['concluir'])) {
         $_SESSION['cod_maquina'] = $chamado['cod_maquina'];
-        // $chamadoController->finalizarChamado(
-        //     $id_chamado
-        // );
+        $chamadoController->finalizarChamado(
+            $id_chamado
+        );
         header('Location: registro_nova_manutencao.php');
         exit();
     }

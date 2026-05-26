@@ -5,10 +5,10 @@ figure img {
 }
 
 body {
-    
     background-color: #FFFFFF;
     display: flex;
     flex-direction: column;
+    justify-content: baseline;
     min-height: 100vh;
 }
 
@@ -133,11 +133,15 @@ body {
     font-weight: 400;
 }
 
+.erro {
+    color: red;
+}
+
 /* SENHA */
 .secao_senha {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 1rem;
     margin-top: 1rem;
 }
 
@@ -153,17 +157,24 @@ body {
     gap: 2rem;
 }
 
-.inputs_senha input {
+.inputs_senha input, .valor {
     border: none;
     padding: 1rem 0;
     font-size: 1.6rem;
-    color: #374151;
     outline: none;
-    background: transparent;
+    background-color: #f8f8f8;
+    border-radius: 1rem;
+    padding-left: 1rem;
 }
 
 .inputs_senha input::placeholder {
     color: #9CA3AF;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
 }
 
 .inputs_senha input:focus {

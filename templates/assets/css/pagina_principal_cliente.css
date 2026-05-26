@@ -3,6 +3,9 @@
 figure img {
     display: block;
 }
+button {
+    cursor: pointer;
+}
 
 header {
     display: flex;
@@ -17,6 +20,10 @@ header {
 .botoesHeader {
     display: flex;
     gap: 2rem;
+}
+
+.botoesHeader div {
+    cursor: pointer;
 }
 
 .logoutDiv {

@@ -1,39 +1,41 @@
 <?php
 session_start();
+
+$id_cliente = $_SESSION['id_usuario'];
+
+use Model\Cliente;
+use Controller\ClienteController;
+use Controller\GerenciamentoClienteController;
+
 require_once __DIR__ . '/../Controller/ClienteController.php';
 require_once __DIR__ . '/../Model/Cliente.php';
 require_once __DIR__ . '/../vendor/autoload.php';
+require_once __DIR__ . '/../Controller/GerenciamentoClienteController.php';
 
-$admModel = new \Model\Cliente();
-$admController = new \Controller\ClienteController();
 
-    if (isset($_POST['action']) && $_POST['action'] === 'update_password') {
-        $admController->updatePassword(
-            $_SESSION['id_cliente'],
-            $_POST['nova_senha'] ?? null,
-            $_POST['confirmar_senha'] ?? null
-        );
-    }
+$clienteModel = new Cliente();
+$clienteController = new ClienteController();
+$gerenciamentoClienteController = new GerenciamentoClienteController();
 
-$_SESSION['tipo_usuario'] = 'cliente';
-$_SESSION['id_usuario'] = 1;
-$_SESSION['nome_usuario'] = 'Pedro';
-$_SESSION['cpf'] = '12345678900';
-$_SESSION['uf'] = 'ba';
-$_SESSION['cidade'] = 'Salvador';
-$_SESSION['contato'] = '71984358900';
-$_SESSION['email'] = 'teste@teste.com';
-$_SESSION['cnpj'] = '123.456.789/0001-0';
+$cliente = $gerenciamentoClienteController->buscarClientePorId($id_cliente);
 
-$tipo_tecnico = $_SESSION['tipo_usuario'];
-$id_tecnico = $_SESSION['id_usuario'];
-$nome = $_SESSION['nome_usuario'];
-$cpf = $_SESSION['cpf'];
-$uf = $_SESSION['uf'];
-$cidade = $_SESSION['cidade'];
-$contato = $_SESSION['contato'];
-$email = $_SESSION['email'];
-$cnpj = $_SESSION['cnpj'];
+$nome = $cliente['nome'];
+$cnpj = $cliente['cnpj'];
+$uf = $cliente['uf'];
+$cidade = $cliente['cidade'];
+$contato = $cliente['contato'];
+$email = $cliente['email'];
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $clienteController->updatePassword(
+        $id_cliente,
+        $_POST['nova_senha'] ?? null,
+        $_POST['confirmar_senha'] ?? null
+    );
+    header('Location: perfil_cliente.php');
+    exit;
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -69,16 +71,6 @@ $cnpj = $_SESSION['cnpj'];
                     <p class="rotulo">CNPJ</p>
                     <p class="valor"><?php echo htmlspecialchars($cnpj ?? '', ENT_QUOTES, 'UTF-8');?></p>
                 </div>
-
-                <div class="linha_info">
-                    <p class="rotulo">Acompanhante</p>
-                    <p class="valor"><?php echo htmlspecialchars($nome ?? '', ENT_QUOTES, 'UTF-8');?></p>
-                </div>
-
-                <div class="linha_info">
-                    <p class="rotulo">CPF</p>
-                    <p class="valor"><?php echo htmlspecialchars($cpf ?? '', ENT_QUOTES, 'UTF-8');?></p>
-                </div>
                 
                 <div class="linha_info">
                     <p class="rotulo">UF</p>
@@ -99,19 +91,23 @@ $cnpj = $_SESSION['cnpj'];
                     <p class="rotulo">E-mail</p>
                     <p class="valor"><?php echo htmlspecialchars($email ?? '', ENT_QUOTES, 'UTF-8');?></p>
                 </div>
-
-            <div class="secao_senha">
-                <p class="rotulo_senha">Alterar senha</p>
-                <div class="inputs_senha">
-                    <input type="password" placeholder="Digite a nova senha">
-                    <input type="password" placeholder="Repita a nova senha">
+            <form method="POST">
+                <div class="secao_senha">
+                    <p class="rotulo_senha">Alterar senha</p>
+                    <div class="inputs_senha">
+                        <input type="password" name="nova_senha" placeholder="Digite a nova senha">
+                        <input type="password" name="confirmar_senha" placeholder="Repita a nova senha">
+                    </div>
+                    <?php if(isset($_SESSION['error_message']) && !empty($_SESSION['error_message'])):?>
+                        <p class="erro"><?= $_SESSION['error_message']?></p>
+                    <?php endif;?>
                 </div>
-            </div>
 
-            <div class="botoes_acao">
-                <button class="btn_cancelar">Cancelar</button>
-                <button class="btn_salvar">Salvar</button>
-            </div>
+                <div class="botoes_acao">
+                    <button class="btn_cancelar">Cancelar</button>
+                    <button class="btn_salvar" onclick="return confirm('Tem certeza que deseja mudar a senha?')">Salvar</button>
+                </div>
+            </form>
         </section>
     </main>
 

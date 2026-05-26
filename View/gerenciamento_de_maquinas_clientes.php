@@ -1,10 +1,26 @@
 <?php
 
+session_start();
+$id_usuario = $_SESSION['id_usuario'];
+
 use Controller\MaquinaController;
 require_once __DIR__ . '/../Controller/MaquinaController.php';
 $maquinaController = new MaquinaController();
-$maquinas = $maquinaController->verMaquinasPorCliente(2);
 
+if(isset($_GET['search']) && !empty($_GET['search']) && $_GET['search'] != ''){
+    $pesquisa = trim($_GET['search']);
+    $array = $maquinaController->pesquisarMaquinaCliente($pesquisa, $id_usuario);
+    $maquinas = $array['dados'];
+} else {
+    $array = $maquinaController->verMaquinasPorCliente($id_usuario);
+    $maquinas = $array['dados'];
+}
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $_SESSION['cod_maquina'] = $_POST['cod_maquina_clicada'];
+    header('Location: pagina_abertura_chamados.php');
+    exit;
+}
 ?>
 
 <!DOCTYPE html>
@@ -28,58 +44,55 @@ $maquinas = $maquinaController->verMaquinasPorCliente(2);
 
             <div class="conteudo_superior">
                 <h1>Suas Máquinas</h1>
-                <form>
+                <form method="GET">
                     <div class="input-container">
                         <figure>
                             <img src="/sigem/templates/assets/img/lupa_branca.png" alt="">
                         </figure>
-                        <input type="text" class="pesquisar"
+                        <input type="text" name="search" class="pesquisar"
                             placeholder="Busque por uma data, um código ou máquina específica!">
                     </div>
-                    <button class="procurar">Procurar</button>
+                    <button type="submit" class="procurar">Procurar</button>
                 </form>
             </div>
 
 
             <div class="grid_cards">
-                <?php
-                    foreach ($maquinas['dados'] as $maquina) {
-                        echo '
-                            <div class="card">
-                                <h2 class="maquina">'. htmlspecialchars($maquina['nome_maquina']) .'</h2>
-                                <P class="codigo">'. htmlspecialchars($maquina['cod_maquina']) .'</P>
-                                <hr>
-                                <h3 class="manutencao">Última manutenção</h3>
-                                <div class="dados">
-                                    <div class="informacaoazul">
-                                        <p class="tecnico">Técnico:</p>
-                                        <p class="nome">José Silva de Jesus</p>
-                                    </div>
-
-                                    <div class="informacao">
-                                        <p class="servico">Serviço:</p>
-                                        <p class="tipo">Manutenção Preventiva</p>
-                                    </div>
-
-                                    <div class="informacaoazul">
-                                        <p class="data">Data:</p>
-                                        <p class="dia">10/05/2026</p>
-                                    </div>
-
-                                    <div class="informacao">
-                                        <p class="hora">Hora:</p>
-                                        <p class="horario">10:00</p>
-                                    </div>
-                                </div>
-                                <div class="botoes">
-                                    <button class="historico">Ver histórico</button>
-                                    <button class="chamado">Abrir chamado</button>
-                                </div>
-
+                <?php foreach ($maquinas as $maquina): ?>
+                    <div class="card">
+                        <h2 class="maquina"> <?= htmlspecialchars($maquina['nome_maquina']) ?> </h2>
+                        <p class="codigo"><?= htmlspecialchars($maquina['cod_maquina']) ?> </p>
+                        <hr>
+                        <h3 class="manutencao">Última manutenção</h3>
+                        <div class="dados">
+                            <div class="informacaoazul">
+                                <p class="tecnico">Técnico:</p>
+                                <p class="nome">José Silva de Jesus</p>
                             </div>
-                        ';
-                    }
-                ?>
+
+                            <div class="informacao">
+                                <p class="servico">Serviço:</p>
+                                <p class="tipo">Manutenção Preventiva</p>
+                            </div>
+
+                            <div class="informacaoazul">
+                                <p class="data">Data:</p>
+                                <p class="dia">10/05/2026</p>
+                            </div>
+
+                            <div class="informacao">
+                                <p class="hora">Hora:</p>
+                                <p class="horario">10:00</p>
+                            </div>
+                        </div>
+                        <form method="POST">
+                            <div class="botoes">
+                                <button class="historico">Ver histórico</button>
+                                <button class="chamado" name="cod_maquina_clicada" value="<?= $maquina['cod_maquina'] ?>">Abrir chamado</button>
+                            </div>
+                        </form>
+                    </div>
+                <?php endforeach; ?>
             </div>
         </div>
 

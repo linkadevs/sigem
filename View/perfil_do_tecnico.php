@@ -1,4 +1,4 @@
-'<?php
+<?php
 session_start();
 
 $id_usuario = $_SESSION['id_usuario'];
@@ -11,7 +11,7 @@ $tecnicoModel = new \Model\Tecnico();
 $tecnicoController = new \Controller\TecnicoController();
 $gerenciamentoTecController = new \Controller\GerenciamentoTecController();
 
-    if (isset($_POST['password']) && !empty($_POST['password']) && isset($_POST['repeatPassword']) && !empty($_POST['repeatPassword'])) {
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $tecnicoController->updatePassword(
             $id_usuario,
             $_POST['password'] ?? null,
@@ -76,15 +76,20 @@ $email = $usuario['email'];
             <form method="POST">
                 <div class="secao_senha">
                     <p class="rotulo_senha">Alterar senha</p>
+        
                     <div class="inputs_senha">
                         <input name="password" type="password" placeholder="Digite a nova senha">
                         <input name="repeatPassword" type="password" placeholder="Repita a nova senha">
                     </div>
+
+                    <?php if(isset($_SESSION['error_message']) && !empty($_SESSION['error_message'])):?>
+                        <p class="erro"><?= $_SESSION['error_message']?></p>
+                    <?php endif;?>
                 </div>
     
                 <div class="botoes_acao">
                     <button class="btn_cancelar">Cancelar</button>
-                    <button class="btn_salvar">Salvar</button>
+                    <button class="btn_salvar" onclick="return confirm('Tem certeza que deseja mudar a senha?')">Salvar</button>
                 </div>
             </form>
         </section>
