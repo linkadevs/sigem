@@ -246,6 +246,11 @@ h1 {
     margin: 0;
 }
 
+form {
+    display: flex;
+    gap: 2rem;
+}
+
 .fotos img {
     width: 16rem;
     height: 16rem;

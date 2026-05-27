@@ -237,7 +237,7 @@ if (!empty($busca)) {
 
                             <div class="informacao">
 
-                                <p class="titulo">E-mail</p>
+                                <p class="titulo emailTitulo">E-mail</p>
 
                                 <p class="dado">
                                     <?= htmlspecialchars($cliente['email']) ?>

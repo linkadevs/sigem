@@ -286,6 +286,11 @@ input:focus {
     color: #FFFFFF;
 }
 
+.emailTitulo {
+    width: 13.5rem;
+    align-self: flex-end;
+}
+
 .dado,
 .dadoCFundo {
     font-size: 1.4rem;
@@ -309,6 +314,8 @@ input:focus {
     display: flex;
     flex-direction: column;
     gap: 1.2rem;
+    width: 13.5rem;
+    align-self: flex-end;
 }
 
 .botoes button {

@@ -306,7 +306,7 @@ input:focus {
 .cancelar,
 .concluir , 
 .concluido{
-    width: 12rem;
+    width: 10rem;
     height: 3rem;
     border-radius: .5rem;
     color: #FFFFFF;

@@ -8,7 +8,7 @@ body {
     padding-bottom: 2rem;
     display: flex;
     flex-direction: column;
-    gap: 3rem;
+    gap: 2rem;
 }
 
 .voltar {
@@ -21,6 +21,7 @@ body {
     border-radius: 30rem;
     border: none;
     padding-left: .5rem;
+    padding-right: .5rem;
     padding-top: .4rem;
     margin-left: 2rem;
     cursor: pointer;
