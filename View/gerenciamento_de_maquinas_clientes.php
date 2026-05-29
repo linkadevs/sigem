@@ -32,14 +32,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gerenciamento de máquinas</title>
     <link rel="stylesheet" href="/sigem/templates/assets/css/gerenciamento_de_maquinas_clientes.css">
 </head>
-
 <body>
     <button class="voltar">
         <figure>
@@ -48,27 +46,29 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </button>
     <main>
         <div class="container">
-
             <div class="conteudo_superior">
                 <h1>Suas Máquinas</h1>
-                <form method="GET">
+                <form method="GET" id="searchForm">
                     <div class="input-container">
                         <figure>
                             <img src="/sigem/templates/assets/img/lupa_branca.png" alt="">
                         </figure>
-                        <input type="text" name="search" class="pesquisar"
-                            placeholder="Busque por uma data, um código ou máquina específica!">
+                        <input type="text" name="search" id="searchInput" class="pesquisar"
+                            placeholder="Busque por uma data, um código ou máquina específica!"
+                            value="<?php echo isset($_GET['search']) ? htmlspecialchars($_GET['search']) : ''; ?>"
+                            autocomplete="off">
                     </div>
                     <button type="submit" class="procurar">Procurar</button>
+                    <button type="button" class="limpar-filtro" id="limparBtn"
+                        onclick="window.location.href='gerenciamento_de_maquinas_clientes.php'">Limpar</button>
                 </form>
             </div>
-
 
             <div class="grid_cards">
                 <?php foreach ($maquinas as $maquina): ?>
                     <div class="card">
-                        <h2 class="maquina"> <?= htmlspecialchars($maquina['nome_maquina']) ?> </h2>
-                        <p class="codigo"><?= htmlspecialchars($maquina['cod_maquina']) ?> </p>
+                        <h2 class="maquina"><?= htmlspecialchars($maquina['nome_maquina']) ?></h2>
+                        <p class="codigo"><?= htmlspecialchars($maquina['cod_maquina']) ?></p>
                         <hr>
                         <h3 class="manutencao">Última manutenção</h3>
                         <div class="dados">
@@ -76,17 +76,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                 <p class="tecnico">Técnico:</p>
                                 <p class="nome">José Silva de Jesus</p>
                             </div>
-
                             <div class="informacao">
                                 <p class="servico">Serviço:</p>
                                 <p class="tipo">Manutenção Preventiva</p>
                             </div>
-
                             <div class="informacaoazul">
                                 <p class="data">Data:</p>
                                 <p class="dia">10/05/2026</p>
                             </div>
-
                             <div class="informacao">
                                 <p class="hora">Hora:</p>
                                 <p class="horario">10:00</p>
@@ -102,9 +99,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <?php endforeach; ?>
             </div>
         </div>
-
     </main>
-    <script src="/sigem/templates/assets/js/gerenciamento_de_paginas_clientes.js"></script>
+    <script src="/sigem/templates/assets/js/gerenciamento_de_maquinas_clientes.js"></script>
 </body>
-
 </html>

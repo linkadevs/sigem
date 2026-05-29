@@ -1,357 +1,382 @@
 @import 'global.css';
 
+/* ========== RESET E BASE ========== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 figure img {
     display: block;
 }
 
+body {
+    background-color: #EAF7FE;
+    padding-bottom: 3rem;
+    margin: 0;
+    font-family: inherit;
+}
+
+/* ========== HEADER ========== */
 header {
     display: flex;
     width: 100%;
-    padding: 3.6rem 1.6rem 3.6rem 3.7rem;
+    padding: 2rem 2rem 2rem 3rem;
     justify-content: space-between;
-}
-
-body {
-    background-color: #EAF7FE;
-    padding-bottom: 5.9rem;
+    align-items: center;
+    background-color: #ffffff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
 .botaoVoltar {
     display: flex;
-    gap: 3.5rem;
-    font-size: 2.5rem;
+    gap: 1.5rem;
+    font-size: 1.8rem;
     color: #094C71;
     background-color: transparent;
-    border-style: none;
+    border: none;
     align-items: center;
+    cursor: pointer;
+    font-weight: 600;
+    transition: opacity 0.2s;
 }
 
+.botaoVoltar:hover {
+    opacity: 0.7;
+}
+
+.voltarImg {
+    width: 2.4rem;
+    height: auto;
+}
+
+/* ========== MAIN E CONTAINER ========== */
 main {
     display: flex;
     background-repeat: no-repeat;
     background-size: cover;
-    border-bottom-right-radius: 26rem;
-    border-bottom-left-radius: 26rem;
-    padding-top: 7.3rem;
-    padding-bottom: 5.9rem;
+    border-bottom-right-radius: 12rem;
+    border-bottom-left-radius: 12rem;
+    padding: 4rem 2rem;
     justify-content: center;
 }
 
 .conteiner {
     display: flex;
-    align-items: center;
-    gap: 9.7rem;
+    align-items: stretch;          /* imagem e formulário terão mesma altura */
+    gap: 5rem;
     background-color: #ffffff;
-    border-radius: 3.6rem;
-    box-shadow: 0 0 4rem rgba(0, 0, 0, 0.42);
-    padding: 2.3rem 7.9rem 1.8rem 3.6rem;
+    border-radius: 2.5rem;
+    box-shadow: 0 0 2rem rgba(0, 0, 0, 0.2);
+    padding: 2.5rem 3rem;
+    max-width: 1200px;
+    width: 100%;
 }
 
+/* ========== IMAGEM LATERAL ========== */
+.conteiner figure {
+    display: flex;
+    align-items: center;
+    margin: 0;
+    flex-shrink: 0;
+}
+
+.conteiner figure img {
+    width: 100%;
+    max-width: 35vw;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 1rem;
+}
+
+/* ========== FORMULÁRIO ========== */
 form {
-    width: 82.7rem;
+    width: 100%;
+    max-width: 70rem;
     display: flex;
     flex-direction: column;
-    gap: 3.1rem;
+    gap: 2rem;
+    flex: 1;
 }
 
 .inputs {
     display: flex;
     flex-direction: column;
-    gap: 3.9rem;
+    gap: 2rem;
 }
 
 .input {
     display: flex;
     flex-direction: column;
-    gap: 1.4rem;
+    gap: 0.8rem;
     width: 100%;
 }
 
-input,
-textarea {
-    height: 7.3rem;
-    border-style: solid;
-    border-color: #07A6FE;
-    border-width: .1rem;
-    font-size: 2.5rem;
-    padding-left: 2.2rem;
-}
-
-input[type="text"],
-textarea {
+label {
+    font-size: 1.6rem;
+    font-weight: 600;
     color: #094C71;
+    padding-left: 0.5rem;
 }
 
-input[type="date"] {
-    color: #A0AAAF;
-    font-weight: 700;
+input, textarea, #botaoFotos {
+    border: 0.1rem solid #07A6FE;
+    border-radius: 1rem;
+    font-size: 1.6rem;
+    padding: 1rem 1.5rem;
+    background-color: #fff;
+    transition: all 0.2s;
+    font-family: inherit;
+    width: 100%;
 }
 
-#botaoFotos {
-    display: flex;
-    justify-content: baseline;
-    align-items: center;
-    height: 7.3rem;
-    border-style: solid;
-    border-color: #07A6FE;
-    border-width: .1rem;
-    font-size: 2.5rem;
-    font-weight: 700;
-    padding-left: 2.2rem;
-    background-color: transparent;
-    color: #BFC6C9;
+input:focus, textarea:focus, #botaoFotos:focus {
+    outline: none;
+    border-color: #094C71;
+    box-shadow: 0 0 0 2px rgba(9, 76, 113, 0.2);
+}
+
+input, #botaoFotos {
+    height: 4.8rem;
 }
 
 textarea {
-    padding-top: 2rem;
-    height: 14rem;
+    padding-top: 1rem;
+    height: 10rem;
+    resize: vertical;
 }
 
 input::placeholder,
 textarea::placeholder {
     color: #BFC6C9;
-    font-weight: 600;
+    font-weight: 500;
 }
 
-.dataUf {
+/* ========== BOTÃO FOTOS ========== */
+#botaoFotos {
     display: flex;
-    width: 100%;
-    gap: 14.8rem;
-}
-
-label {
-    font-size: 2.5rem;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 0.5rem;
+    background-color: #f9f9f9;
+    cursor: pointer;
+    font-weight: 600;
     color: #094C71;
 }
 
-.enviar {
-    width: 100%;
-    height: 6rem;
-    font-size: 2.5rem;
-    font-weight: 700;
-    box-shadow: 0 .4rem .4rem 0 rgba(0, 0, 0, 0.25);
-    border-radius: 2rem;
-    background: linear-gradient(270deg, #1291D5 0%, #094B6F 100%);
-    border-style: none;
-    color: #FFFFFF;
+#botaoFotos:hover {
+    background-color: #eef2f5;
+    border-color: #094C71;
 }
 
-#fotos {
-    display: none;
-}
-
+/* ========== GRID DE FOTOS ========== */
 .grid {
     display: grid;
-    grid-template-columns: 8rem 8rem 8rem 8rem 8rem 8rem 8rem 8rem;
-    grid-auto-rows: 8rem;
-    justify-content: space-between;
-    row-gap: 1.5rem;
+    grid-template-columns: repeat(auto-fill, minmax(7rem, 1fr));
+    grid-auto-rows: 7rem;
+    gap: 1rem;
+    margin-top: 0.5rem;
 }
 
 .grid figure {
-    width: 100%;
-    height: 100%;
+    margin: 0;
+    cursor: pointer;
 }
 
 .grid figure img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border-radius: 1rem;
+    border-radius: 0.8rem;
+    transition: transform 0.2s;
 }
 
-@media screen and (max-width: 1800px) {
-    .conteiner figure img {
-        width: 40vw;
-        height: 107.3rem;
-        object-fit: cover;
-    }
+.grid figure img:hover {
+    transform: scale(1.02);
+}
 
+/* ========== BOTÃO ENVIAR ========== */
+.enviar {
+    width: 100%;
+    height: 4.8rem;
+    font-size: 1.8rem;
+    font-weight: 700;
+    box-shadow: 0 0.2rem 0.4rem rgba(0, 0, 0, 0.15);
+    border-radius: 1.5rem;
+    background: linear-gradient(270deg, #1291D5 0%, #094B6F 100%);
+    border: none;
+    color: #FFFFFF;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.enviar:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0.4rem 0.8rem rgba(0, 0, 0, 0.2);
+}
+
+/* ========== CAMPOS DATA/UF ========== */
+.dataUf {
+    display: flex;
+    width: 100%;
+    gap: 3rem;
+    flex-wrap: wrap;
+}
+
+/* ========== OCULTAR INPUT FILE PADRÃO ========== */
+#fotos {
+    display: none;
+}
+
+/* ========== RESPONSIVIDADE ========== */
+
+/* Telas grandes (até 1400px) */
+@media screen and (max-width: 1400px) {
     .conteiner {
-        padding: 3.4rem;
-        width: fit-content;
+        gap: 3rem;
+        padding: 2rem;
     }
-
-    form {
-        width: fit-content;
+    .conteiner figure img {
+        max-width: 30vw;
     }
-
     .inputs {
-        width: 59rem;
-    }
-
-    #uf {
-        width: 100%;
+        max-width: 55rem;
     }
 }
 
-@media screen and (max-width: 1368px) {
+/* Esconder a imagem em telas menores que 1200px */
+@media screen and (max-width: 1200px) {
     .conteiner figure {
         display: none;
     }
-
+    .conteiner {
+        justify-content: center;
+    }
     .inputs {
-        min-width: 65.8rem;
-        width: 70vw;
-    }
-
-    .voltarImg {
-        width: 7.6rem;
-        height: 5.5rem;
-    }
-}
-
-@media screen and (max-width: 760px) {
-    .dataUf {
-        flex-direction: column;
-        gap: 3.9rem;
-    }
-
-      .voltarImg {
-        width: 3.6rem;
-        height: 3rem;
-    }
-
-    .botaoVoltar {
-        font-size: 2rem;
-        gap: 1.2rem;
-    }
-
-    main {
-        padding: 0 1.2rem 4rem;
-        border-bottom-right-radius: 8rem;
-        border-bottom-left-radius: 8rem;
-    }
-
-    form {
-        width: 100%;
-    }
-
-    .inputs {
+        max-width: 100%;
         width: 100%;
         min-width: auto;
-        gap: 2.4rem;
     }
-
-    .dataUf {
-        flex-direction: column;
-        gap: 2.4rem;
-    }
-
-    .input {
-        gap: 1rem;
-    }
-
-    input,
-    textarea,
-    #botaoFotos {
-        width: 100%;
-        font-size: 1.6rem;
-        padding-left: 1.4rem;
-    }
-
-    input,
-    #botaoFotos {
-        height: 5.4rem;
-    }
-
-    textarea {
-        height: 12rem;
-        padding-top: 1.4rem;
-    }
-
-    label {
-        font-size: 1.7rem;
-    }
-
-    .enviar {
-        height: 5.4rem;
-        font-size: 1.8rem;
-    }
-
-    .grid {
-        grid-template-columns: repeat(auto-fit, minmax(6rem, 1fr));
-        grid-auto-rows: 6rem;
-        gap: 1rem;
+    form {
+        max-width: 60rem;
     }
 }
 
-@media (max-width: 480px) {
+/* Tablet (768px) */
+@media screen and (max-width: 768px) {
     header {
-        padding: 1.6rem 1rem;
+        padding: 1.2rem 1.5rem;
     }
-
     .botaoVoltar {
-        font-size: 1.7rem;
-        gap: 0.8rem;
-    }
-
-    input,
-    textarea,
-    #botaoFotos {
-        font-size: 1.4rem;
-    }
-
-    label {
-        font-size: 1.5rem;
-    }
-
-    .enviar {
         font-size: 1.6rem;
-        height: 5rem;
-    }
-
-    .grid {
-        grid-template-columns: repeat(auto-fit, minmax(5rem, 1fr));
-        grid-auto-rows: 5rem;
-    }
-
-    .conteiner {
-        padding: 4rem 2rem;
-        border-radius: 2rem;
-    }
-}
-
-
-@media screen and (max-width: 390px) {
-    .conteiner {
-        padding: 4rem 2rem;
-        border-radius: 2rem;
-    }
-    .botaoVoltar {
-        font-size: 1.4rem;
+        gap: 1rem;
     }
     .voltarImg {
-        width: 4.5rem;
+        width: 2rem;
     }
-    header {
-        padding: 2rem;
+    main {
+        padding: 2rem 1.5rem;
+        border-bottom-right-radius: 6rem;
+        border-bottom-left-radius: 6rem;
     }
-}
-
-@media screen and (max-width: 330px) {
-    .botaoVoltar {
-        font-size: 1.5rem;
+    .conteiner {
+        padding: 1.8rem;
+        border-radius: 2rem;
     }
-
-    input,
-    textarea,
-    #botaoFotos {
-        font-size: 1.3rem;
-        padding-left: 1rem;
+    form {
+        gap: 1.5rem;
     }
-
+    .inputs {
+        gap: 1.5rem;
+    }
+    .input {
+        gap: 0.6rem;
+    }
     label {
         font-size: 1.4rem;
     }
-
-    .enviar {
+    input, textarea, #botaoFotos {
         font-size: 1.4rem;
-        height: 4.6rem;
+        padding: 0.8rem 1.2rem;
     }
-
+    input, #botaoFotos {
+        height: 4.2rem;
+    }
+    textarea {
+        height: 8rem;
+    }
+    .enviar {
+        height: 4.2rem;
+        font-size: 1.6rem;
+    }
+    .dataUf {
+        gap: 1.5rem;
+        flex-direction: column;
+    }
     .grid {
-        grid-template-columns: repeat(4, 1fr);
-        grid-auto-rows: 4.5rem;
+        grid-template-columns: repeat(auto-fill, minmax(6rem, 1fr));
+        grid-auto-rows: 6rem;
+        gap: 0.8rem;
+    }
+}
+
+/* Mobile médio (480px) */
+@media screen and (max-width: 480px) {
+    header {
+        padding: 1rem;
+    }
+    .botaoVoltar {
+        font-size: 1.4rem;
+        gap: 0.8rem;
+    }
+    .voltarImg {
+        width: 1.8rem;
+    }
+    main {
+        padding: 1.5rem 1rem;
+        border-bottom-right-radius: 4rem;
+        border-bottom-left-radius: 4rem;
+    }
+    .conteiner {
+        padding: 1.5rem;
+    }
+    label {
+        font-size: 1.3rem;
+    }
+    input, textarea, #botaoFotos {
+        font-size: 1.3rem;
+        padding: 0.7rem 1rem;
+    }
+    input, #botaoFotos {
+        height: 3.8rem;
+    }
+    .enviar {
+        height: 3.8rem;
+        font-size: 1.4rem;
+    }
+    .grid {
+        grid-template-columns: repeat(auto-fill, minmax(5rem, 1fr));
+        grid-auto-rows: 5rem;
+    }
+}
+
+/* Mobile pequeno (360px) */
+@media screen and (max-width: 360px) {
+    .botaoVoltar {
+        font-size: 1.2rem;
+    }
+    .voltarImg {
+        width: 1.5rem;
+    }
+    input, textarea, #botaoFotos {
+        font-size: 1.2rem;
+        padding: 0.6rem 0.8rem;
+    }
+    label {
+        font-size: 1.2rem;
+    }
+    .enviar {
+        font-size: 1.3rem;
     }
 }

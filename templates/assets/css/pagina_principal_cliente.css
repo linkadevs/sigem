@@ -7,6 +7,7 @@
 figure img {
     display: block;
 }
+
 button {
     cursor: pointer;
 }
@@ -34,6 +35,10 @@ header {
     display: flex;
     align-items: center;
     gap: 2.2rem;
+    transition: all .3s ease;
+}
+.logoutDiv:hover {
+    transform: scale(1.05);
 }
 
 .logout img {
@@ -46,9 +51,13 @@ header {
     color: #094C71;
 }
 
-.perfilBtn{
+.perfilBtn {
     background-color: transparent;
     display: flex;
+    transition: all .3s ease;
+}
+.perfilBtn:hover {
+    transform: scale(1.05);
 }
 
 .perfilBtn {
@@ -75,11 +84,13 @@ header {
     padding-left: 5.7rem;
     height: fit-content;
 }
+
 .decoracao_seta {
     width: fit-content;
     height: fit-content;
     padding-top: 4.2rem;
 }
+
 .decoracao_seta img {
     width: 11.2rem;
     transform: rotate(-90deg);
@@ -110,6 +121,13 @@ header {
     border-style: none;
     border-radius: 1rem;
     box-shadow: 0 .4rem .4rem 0 rgba(0, 0, 0, 0.25);
+    transition: all.3s ease;
+}
+
+.consultarBtn:hover {
+    transform: scale(1.05);
+    background-color: #3e007f;
+    box-shadow: 0 .6rem .6rem 0 rgba(0, 0, 0, 0.25);
 }
 
 .maquinasBtn {
@@ -124,6 +142,11 @@ header {
     border-color: #8A38F5;
     border-radius: 1rem;
     box-shadow: 0 .4rem .4rem 0 rgba(0, 0, 0, 0.25);
+    transition: all.3s ease;
+}
+
+.maquinasBtn:hover {
+transform: scale(1.05);
 }
 
 .containertextos_e_dicas {
@@ -295,6 +318,7 @@ header {
         width: fit-content;
         gap: 4rem;
     }
+
     .logo img {
         width: 25rem;
     }
@@ -462,9 +486,10 @@ header {
         font-size: .8rem;
     }
 
-     .decoracao_seta img {
+    .decoracao_seta img {
         width: 5.5rem;
     }
+
     .fundo_clientes img {
         width: 30rem;
     }
@@ -508,11 +533,11 @@ header {
         width: 1.5rem !important;
     }
 
-     .textoCima h1 {
+    .textoCima h1 {
         font-size: 1.3rem;
         width: 20rem;
     }
-    
+
 }
 
 

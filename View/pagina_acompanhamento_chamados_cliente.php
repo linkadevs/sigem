@@ -23,7 +23,7 @@ if (!empty($_GET['search']) && isset($_GET['search'])) {
     $chamados = $chamadoController->selecionarChamadosPorCliente($id_cliente);
 }
 
-if($_SERVER['REQUEST_METHOD'] === 'POST') {
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $chamadoController->deletarChamado($_POST['cancelar']);
     header('Location: pagina_acompanhamento_chamados_cliente.php');
     exit;
@@ -49,143 +49,98 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
     </button>
     <main>
         <div class="container">
-
             <div class="conteudo_superior">
                 <h1>Seus chamados</h1>
-                <form method="GET">
+                <form method="GET" id="searchForm">
                     <div class="input-container">
                         <figure>
                             <img src="../templates/assets/img/lupa_branca.png" alt="">
                         </figure>
-                        <input type="text" class="pesquisar" name="search"
-                            placeholder="Busque pela data, Código ou nome da Máquina!">
+                        <input type="text" class="pesquisar" name="search" id="searchInput"
+                            placeholder="Busque pela data, Código ou nome da Máquina!" autocomplete="off"
+                            value="<?php echo isset($_GET['search']) ? htmlspecialchars($_GET['search']) : ''; ?>">
                     </div>
-                    <button class="procurar">Procurar</button>
+                    <button class="procurar" type="submit">Procurar</button>
+                    <button type="button" class="limpar-filtro" id="limparBtn"
+                        onclick="window.location.href='pagina_acompanhamento_chamados_cliente.php'">Limpar</button>
                 </form>
             </div>
 
             <div class="cards">
-                <?php if(empty($chamados) || !isset($chamados)):?>
+                <?php if (empty($chamados) || !isset($chamados)): ?>
                     <strong>Nenhum chamado encontrado</strong>
-                <?php endif;?>
-                <?php foreach ($chamados as $chamado):?>
-                <div class="card">
-                    <div class="d1">
-                        <p class="status">Status: <span><?= htmlspecialchars($chamado['status_chamado'])?></span></p>
-                        <p class="data">Data: <?= htmlspecialchars($chamado['data_chamado'])?></p>
-                    </div>
-                    <div class="d2">
-                        <p class="codigo">Código da máquina: <?= htmlspecialchars($chamado['cod_maquina'])?></p>
-                        <p class="nomeDaMaquina"><span>Nome da maquina:</span> <?= htmlspecialchars($chamado['nome_maquina'])?></p>
-                    </div>
-                    <p class="tituloDescricao">Descrição do Problema</p>
-                    <div class="d3">
-                        <p class="descricao"><?= htmlspecialchars($chamado['descricao_chamado'])?></p>
-                        <form method="POST"><button class="cancelar" name="cancelar" value="<?= $chamado['id_chamado']?>" onclick="return confirm('Tem certeza que deseja apagar esse chamado? Essa ação não poderá ser desfeita.')">Cancelar</button></form>
-                    </div>
-                    <div class="grid">
-                        <?php 
+                <?php endif; ?>
+                <?php foreach ($chamados as $chamado): ?>
+                    <div class="card">
+                        <div class="d1">
+                            <p class="status">Status: <span>
+                                    <?php
+                                    switch ($chamado['status_chamado']) {
+                                        case 'aberto':
+                                            echo 'Em aberto';
+                                            break;
+                                        case 'em_andamento':
+                                            echo 'Em andamento';
+                                            break;
+                                        case 'resolvido':
+                                            echo 'Resolvido';
+                                            break;
+                                    }
+                                    ?>
+                                </span></p>
+                            <p class="data">Data: <?= htmlspecialchars($chamado['data_chamado']) ?></p>
+                        </div>
+                        <div class="d2">
+                            <p class="codigo">Código da máquina: <?= htmlspecialchars($chamado['cod_maquina']) ?></p>
+                            <p class="nomeDaMaquina"> <?= htmlspecialchars($chamado['nome_maquina']) ?></p>
+                        </div>
+                        <p class="tituloDescricao">Descrição do Problema</p>
+                        <div class="d3">
+                            <p class="descricao"><?= htmlspecialchars($chamado['descricao_chamado']) ?></p>
+                            <form method="POST">
+                                <button class="cancelar" name="cancelar" value="<?= $chamado['id_chamado'] ?>"
+                                    onclick="return confirm('Tem certeza que deseja apagar esse chamado? Essa ação não poderá ser desfeita.')">Cancelar</button>
+                            </form>
+                        </div>
+                        <div class="grid">
+                            <?php
                             $fotos = json_decode($chamado['fotos_chamado'], true);
-
                             foreach ($fotos as $foto) {
-                                echo '<figure><img src="../'.$foto.'"></figure>';
+                                echo '<figure><img src="../' . $foto . '"></figure>';
                             }
-                        ?>
+                            ?>
+                        </div>
                     </div>
-                </div>
-                <?php endforeach;?>
-                <!-- <div class="card">
-                    <div class="d1">
-                        <p class="status">Status: <span>Em aberto</span></p>
-                        <p class="data">Data: 14/04/2026</p>
-                    </div>
-                    <div class="d2">
-                        <p class="codigo">Código da máquina: 055</p>
-                        <p class="nomeDaMaquina"><span>Nome da maquina:</span> Ar condicionado</p>
-                    </div>
-                    <p class="tituloDescricao">Descrição do Problema</p>
-                    <div class="d3">
-                        <p class="descricao">A máquina está apresentando falhas durante o funcionamento, com interrupções inesperadas no processo e ruídos incomuns.</p>
-                        <button class="cancelar">Cancelar</button>
-                    </div>
-                    <div class="grid">
-                        <figure><img src="../templates/assets/img/img-chamado1.png" alt=""></figure>
-                        <figure><img src="../templates/assets/img/img-chamado2.png" alt=""></figure>
-                        <figure><img src="../templates/assets/img/img-chamado3.png" alt=""></figure>
-                        <figure><img src="../templates/assets/img/img-chamado4.png" alt=""></figure>
-                        <figure><img src="../templates/assets/img/img-chamado5.png" alt=""></figure>
-                        <figure><img src="../templates/assets/img/img-chamado6.png" alt=""></figure>
-                        <figure><img src="../templates/assets/img/img-chamado1.png" alt=""></figure>
-                        <figure><img src="../templates/assets/img/img-chamado2.png" alt=""></figure>
-                        <figure><img src="../templates/assets/img/img-chamado3.png" alt=""></figure>
-                        <figure><img src="../templates/assets/img/img-chamado4.png" alt=""></figure>
-                        <figure><img src="../templates/assets/img/img-chamado5.png" alt=""></figure>
-                        <figure><img src="../templates/assets/img/img-chamado6.png" alt=""></figure>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="d1">
-                        <p class="status">Status: <span>Em aberto</span></p>
-                        <p class="data">Data: 14/04/2026</p>
-                    </div>
-                    <div class="d2">
-                        <p class="codigo">Código da máquina: 055</p>
-                        <p class="nomeDaMaquina"><span>Nome da maquina:</span> Ar condicionado</p>
-                    </div>
-                    <p class="tituloDescricao">Descrição do Problema</p>
-                    <div class="d3">
-                        <p class="descricao">A máquina está apresentando falhas durante o funcionamento, com interrupções inesperadas no processo e ruídos incomuns.</p>
-                        <button class="cancelar">Cancelar</button>
-                    </div>
-                    <div class="grid">
-                        <figure><img src="../templates/assets/img/img-chamado1.png" alt=""></figure>
-                        <figure><img src="../templates/assets/img/img-chamado2.png" alt=""></figure>
-                        <figure><img src="../templates/assets/img/img-chamado3.png" alt=""></figure>
-                        <figure><img src="../templates/assets/img/img-chamado4.png" alt=""></figure>
-                        <figure><img src="../templates/assets/img/img-chamado5.png" alt=""></figure>
-                        <figure><img src="../templates/assets/img/img-chamado6.png" alt=""></figure>
-                        <figure><img src="../templates/assets/img/img-chamado1.png" alt=""></figure>
-                        <figure><img src="../templates/assets/img/img-chamado2.png" alt=""></figure>
-                        <figure><img src="../templates/assets/img/img-chamado3.png" alt=""></figure>
-                        <figure><img src="../templates/assets/img/img-chamado4.png" alt=""></figure>
-                        <figure><img src="../templates/assets/img/img-chamado5.png" alt=""></figure>
-                        <figure><img src="../templates/assets/img/img-chamado6.png" alt=""></figure>
-                    </div>
-                </div>
-                <div class="card">
-                    <div class="d1">
-                        <p class="status">Status: <span>Em aberto</span></p>
-                        <p class="data">Data: 14/04/2026</p>
-                    </div>
-                    <div class="d2">
-                        <p class="codigo">Código da máquina: 055</p>
-                        <p class="nomeDaMaquina"><span>Nome da maquina:</span> Ar condicionado</p>
-                    </div>
-                    <p class="tituloDescricao">Descrição do Problema</p>
-                    <div class="d3">
-                        <p class="descricao">A máquina está apresentando falhas durante o funcionamento, com interrupções inesperadas no processo e ruídos incomuns.</p>
-                        <button class="cancelar">Cancelar</button>
-                    </div>
-                    <div class="grid">
-                        <figure><img src="../templates/assets/img/img-chamado1.png" alt=""></figure>
-                        <figure><img src="../templates/assets/img/img-chamado2.png" alt=""></figure>
-                        <figure><img src="../templates/assets/img/img-chamado3.png" alt=""></figure>
-                        <figure><img src="../templates/assets/img/img-chamado4.png" alt=""></figure>
-                        <figure><img src="../templates/assets/img/img-chamado5.png" alt=""></figure>
-                        <figure><img src="../templates/assets/img/img-chamado6.png" alt=""></figure>
-                        <figure><img src="../templates/assets/img/img-chamado1.png" alt=""></figure>
-                        <figure><img src="../templates/assets/img/img-chamado2.png" alt=""></figure>
-                        <figure><img src="../templates/assets/img/img-chamado3.png" alt=""></figure>
-                        <figure><img src="../templates/assets/img/img-chamado4.png" alt=""></figure>
-                        <figure><img src="../templates/assets/img/img-chamado5.png" alt=""></figure>
-                        <figure><img src="../templates/assets/img/img-chamado6.png" alt=""></figure>
-                    </div>
-                </div> -->
+                <?php endforeach; ?>
             </div>
         </div>
-
     </main>
-<script src="../templates/assets/js/pagina_acompanhamento_chamados_cliente.js"></script>
+
+    <script>
+        // Controle do botão Limpar (aparece apenas quando há texto no input)
+        const searchInput = document.getElementById('searchInput');
+        const limparBtn = document.getElementById('limparBtn');
+
+        function toggleLimparBtn() {
+            if (searchInput.value.trim() !== '') {
+                limparBtn.style.display = 'flex';
+            } else {
+                limparBtn.style.display = 'none';
+            }
+        }
+
+        // Executa ao carregar e ao digitar
+        toggleLimparBtn();
+        searchInput.addEventListener('input', toggleLimparBtn);
+
+        // Botão voltar
+        const voltar = document.querySelector('.voltar');
+        if (voltar) {
+            voltar.addEventListener('click', () => {
+                window.location.href = 'pagina_principal_cliente.php';
+            });
+        }
+    </script>
 </body>
 
 </html>

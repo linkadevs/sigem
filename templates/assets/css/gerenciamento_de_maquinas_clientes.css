@@ -1,6 +1,5 @@
 @import 'global.css';
 
-
 body {
     background-color: #F4F4F4;
     padding-top: 2rem;
@@ -120,6 +119,7 @@ input:focus {
     background-color: #094d7180;
 }
 
+/* Botão Procurar */
 .procurar {
     background: none;
     border: none;
@@ -151,6 +151,46 @@ input:focus {
     pointer-events: none;
 }
 
+/* Botão Limpar (aparece apenas quando necessário) */
+.limpar-filtro {
+    background: none;
+    border: none;
+    border-radius: 10%;
+    position: relative;
+    width: 10rem;
+    height: 3.5rem;
+    color: #FFFFFF;
+    font-weight: bold;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+    background-color: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(2px);
+    display: none;
+    /* inicialmente escondido */
+    align-items: center;
+    justify-content: center;
+}
+
+.limpar-filtro:hover {
+    transform: scale(1.02);
+    background-color: rgba(255, 255, 255, 0.35);
+}
+
+.limpar-filtro::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    padding: 3px;
+    background: linear-gradient(to right, #FF6BDF, #6500C4);
+    border-radius: inherit;
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    pointer-events: none;
+}
+
+/* Grid de cards */
 .grid_cards {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -186,9 +226,6 @@ input:focus {
     text-align: center;
     padding: 0 0.5rem;
     word-wrap: break-word;
-    overflow-wrap: break-word;
-    word-break: break-word;
-    hyphens: auto;
     max-width: 100%;
     line-height: 1.3;
     width: 100%;
@@ -209,9 +246,6 @@ input:focus {
     align-items: center;
     justify-content: center;
     margin-bottom: 1rem;
-    word-wrap: break-word;
-    overflow-wrap: break-word;
-    word-break: break-word;
     text-align: center;
     padding: 0.5rem 1rem;
 }
@@ -231,10 +265,6 @@ input:focus {
     font-weight: normal;
     margin-bottom: 1.2rem;
     text-align: center;
-    word-wrap: break-word;
-    overflow-wrap: break-word;
-    word-break: break-word;
-    padding: 0 0.5rem;
     width: 100%;
 }
 
@@ -247,7 +277,6 @@ input:focus {
     color: #094C71;
     width: 100%;
     padding: 0 1rem;
-    overflow: hidden;
     box-sizing: border-box;
 }
 
@@ -257,8 +286,6 @@ input:focus {
     flex-wrap: wrap;
     align-items: flex-start;
     width: 100%;
-    min-width: 0;
-    box-sizing: border-box;
 }
 
 .informacaoazul {
@@ -266,51 +293,34 @@ input:focus {
     gap: 0.8rem;
     flex-wrap: wrap;
     background-color: #EAF7FE;
-    height: auto;
-    min-height: 2rem;
     align-items: center;
     padding: 0.4rem 0.6rem;
     border-radius: 0.3rem;
     width: 100%;
-    min-width: 0;
-    box-sizing: border-box;
 }
 
 .informacao p,
 .informacaoazul p {
     word-wrap: break-word;
-    overflow-wrap: break-word;
-    word-break: break-word;
     margin: 0;
     line-height: 1.4;
-    max-width: 100%;
 }
 
-.informacao p:first-child,
-.informacaoazul p:first-child {
-    flex-shrink: 0;
-}
-
-.informacao p:last-child,
-.informacaoazul p:last-child {
-    flex: 1;
-    min-width: 0;
-    word-break: break-word;
-}
-
-.tecnico, .servico, .data, .hora {
+.tecnico,
+.servico,
+.data,
+.hora {
     flex-shrink: 0;
     font-weight: 500;
 }
 
-.nome, .tipo, .dia, .horario {
+.nome,
+.tipo,
+.dia,
+.horario {
     word-wrap: break-word;
-    overflow-wrap: break-word;
-    word-break: break-word;
     white-space: normal;
-    line-height: 1.4;
     flex: 1;
-    min-width: 0;
 }
 
 .card button {
@@ -325,9 +335,6 @@ input:focus {
     transition: all 0.3s ease;
     font-size: 1rem;
     padding: 0.5rem;
-    word-wrap: break-word;
-    overflow-wrap: break-word;
-    word-break: break-word;
     white-space: normal;
 }
 
@@ -344,7 +351,6 @@ input:focus {
     display: flex;
     gap: .6rem;
     margin-top: auto;
-    margin-bottom: 0;
     flex-wrap: wrap;
     justify-content: center;
     padding: 0 0.5rem;
@@ -370,6 +376,7 @@ input:focus {
     color: #FFFFFF;
 }
 
+/* ========== RESPONSIVIDADE (incluindo botão Limpar) ========== */
 @media (max-width: 1024px) {
     .grid_cards {
         grid-template-columns: repeat(3, 1fr);
@@ -385,23 +392,23 @@ input:focus {
         width: 10rem;
         font-size: 1.3rem;
     }
-    
+
     h1 {
         font-size: 2.5rem;
     }
-    
+
     .maquina {
         font-size: 1.7rem;
     }
-    
+
     .codigo {
         font-size: 1.7rem;
     }
-    
+
     .manutencao {
         font-size: 1.4rem;
     }
-    
+
     .dados {
         font-size: 1.2rem;
     }
@@ -418,6 +425,12 @@ input:focus {
         height: 3.2rem;
     }
 
+    .limpar-filtro {
+        width: 7rem;
+        font-size: 1.1rem;
+        height: 3.2rem;
+    }
+
     input {
         padding-left: 3.5rem;
         height: 3rem;
@@ -429,27 +442,27 @@ input:focus {
         height: 1.8rem;
         left: 1.2rem;
     }
-    
+
     .grid_cards {
         grid-template-columns: repeat(2, 1fr);
         gap: 1rem;
     }
-    
+
     .maquina {
         font-size: 1.6rem;
         margin-bottom: 1.2rem;
     }
-    
+
     .codigo {
         font-size: 1.6rem;
         min-height: 3.5rem;
     }
-    
+
     .manutencao {
         font-size: 1.3rem;
         margin-bottom: 1rem;
     }
-    
+
     .dados {
         gap: 0.7rem;
         font-size: 1.1rem;
@@ -492,6 +505,12 @@ input:focus {
         height: 3rem;
     }
 
+    .limpar-filtro {
+        width: 6rem;
+        font-size: 1rem;
+        height: 3rem;
+    }
+
     input {
         font-size: 0.95rem;
     }
@@ -520,7 +539,7 @@ input:focus {
         font-size: 1.3rem;
         margin-bottom: 1rem;
     }
-    
+
     .dados {
         font-size: 1.1rem;
         gap: 0.7rem;
@@ -530,7 +549,7 @@ input:focus {
 
 @media (max-width: 600px) {
     body {
-        gap: 0rem;
+        gap: 0;
     }
 
     .conteudo_superior {
@@ -547,6 +566,12 @@ input:focus {
         height: 2.8rem;
     }
 
+    .limpar-filtro {
+        width: 5rem;
+        font-size: 0.9rem;
+        height: 2.8rem;
+    }
+
     input {
         padding-left: 3rem;
         font-size: 0.9rem;
@@ -557,10 +582,6 @@ input:focus {
         width: 1.5rem;
         height: 1.5rem;
         left: 1rem;
-    }
-
-    input::placeholder {
-        font-size: 0.85rem;
     }
 
     .card {
@@ -576,15 +597,12 @@ input:focus {
         gap: 0.6rem;
         font-size: 1rem;
     }
-    
-    .informacao, .informacaoazul {
-        gap: 0.5rem;
-    }
-    
-    .informacao p, .informacaoazul p {
+
+    .informacao p,
+    .informacaoazul p {
         font-size: 0.95rem;
     }
-    
+
     .card button {
         font-size: 0.95rem;
         min-height: 2.6rem;
@@ -614,6 +632,12 @@ input:focus {
         height: 2.5rem;
     }
 
+    .limpar-filtro {
+        width: 4.5rem;
+        font-size: 0.85rem;
+        height: 2.5rem;
+    }
+
     input {
         padding-left: 2.5rem;
         font-size: 0.85rem;
@@ -634,12 +658,12 @@ input:focus {
 
     .card {
         padding: 0.8rem;
-        max-width: 100%;
     }
 
     .codigo {
         font-size: 1.3rem;
         min-height: 2.6rem;
+        width: 80%;
     }
 
     .maquina {
@@ -658,7 +682,8 @@ input:focus {
         margin-bottom: 1rem;
     }
 
-    .informacao p, .informacaoazul p {
+    .informacao p,
+    .informacaoazul p {
         font-size: 0.9rem;
     }
 
@@ -666,10 +691,6 @@ input:focus {
         width: 8rem;
         min-height: 2.5rem;
         font-size: 0.9rem;
-    }
-    
-    .informacaoazul {
-        padding: 0.4rem 0.5rem;
     }
 }
 
@@ -701,6 +722,12 @@ input:focus {
     .procurar {
         width: 4.5rem;
         font-size: 0.85rem;
+        height: 2.3rem;
+    }
+
+    .limpar-filtro {
+        width: 4rem;
+        font-size: 0.8rem;
         height: 2.3rem;
     }
 
@@ -745,30 +772,22 @@ input:focus {
         margin-bottom: 0.8rem;
     }
 
-    .informacao {
-        gap: 0.4rem;
-    }
-    
-    .informacaoazul {
-        gap: 0.4rem;
-        padding: 0.3rem 0.5rem;
-    }
-    
-    .informacao p, .informacaoazul p {
+    .informacao p,
+    .informacaoazul p {
         font-size: 0.9rem;
     }
-    
+
     .card button {
         width: 6.5rem;
         min-height: 2.2rem;
         font-size: 0.8rem;
         padding: 0.4rem;
     }
-    
+
     .botoes {
         gap: 0.4rem;
     }
-    
+
     .card hr {
         margin: 0.5rem auto;
     }
@@ -787,6 +806,12 @@ input:focus {
     .procurar {
         width: 4rem;
         font-size: 0.8rem;
+        height: 2.2rem;
+    }
+
+    .limpar-filtro {
+        width: 3.8rem;
+        font-size: 0.75rem;
         height: 2.2rem;
     }
 
@@ -834,18 +859,10 @@ input:focus {
         margin-bottom: 0.7rem;
     }
 
-    .informacao p, .informacaoazul p {
-        font-size: 0.9rem;
-    }
-
     .card button {
         width: 6rem;
         min-height: 2rem;
         font-size: 0.75rem;
-    }
-    
-    .informacaoazul {
-        padding: 0.25rem 0.4rem;
     }
 }
 
@@ -883,6 +900,12 @@ input:focus {
     .procurar {
         width: 3.8rem;
         font-size: 0.75rem;
+        height: 2rem;
+    }
+
+    .limpar-filtro {
+        width: 3.5rem;
+        font-size: 0.7rem;
         height: 2rem;
     }
 
@@ -927,30 +950,16 @@ input:focus {
         margin-bottom: 0.6rem;
     }
 
-    .informacao {
-        gap: 0.35rem;
-    }
-    
-    .informacaoazul {
-        gap: 0.35rem;
-        padding: 0.25rem 0.4rem;
-    }
-
-    .informacao p, .informacaoazul p {
-        font-size: 0.9rem;
-    }
-
     .card button {
         width: 5.5rem;
         min-height: 1.8rem;
         font-size: 0.7rem;
-        padding: 0.3rem;
     }
 
     .botoes {
         gap: 0.3rem;
     }
-    
+
     .card hr {
         margin: 0.4rem auto;
     }
@@ -969,6 +978,12 @@ input:focus {
     .procurar {
         width: 3.5rem;
         font-size: 0.7rem;
+        height: 1.9rem;
+    }
+
+    .limpar-filtro {
+        width: 3rem;
+        font-size: 0.65rem;
         height: 1.9rem;
     }
 
@@ -1009,7 +1024,8 @@ input:focus {
         margin-bottom: 0.5rem;
     }
 
-    .informacao p, .informacaoazul p {
+    .informacao p,
+    .informacaoazul p {
         font-size: 0.65rem;
     }
 

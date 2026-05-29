@@ -55,10 +55,10 @@ $_SESSION['cod_maquina'] = null;
 
                 <h1>Acompanhe os seus chamados em andamento</h1>
                 <button class="consultarBtn" type="button" onclick="window.location.href='pagina_acompanhamento_chamados_cliente.php' "
-                    class="consultas">Consultar
+                   >Consultar
                 </button>
                 <button class="maquinasBtn" type="button" onclick="window.location.href='gerenciamento_de_maquinas_clientes.php' "
-                    class="maquinasBtn">Minhas máquinas
+                >Minhas máquinas
                 </button>
             </div>
             <figure class="decoracao_seta">

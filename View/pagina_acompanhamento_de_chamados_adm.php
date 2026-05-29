@@ -128,7 +128,7 @@ if (!empty($_GET['search']) && isset($_GET['search'])) {
                             <img src="../templates/assets/img/lupa_branca.png" alt="">
                         </figure>
                         <input type="text" class="pesquisar" name="search"
-                            placeholder="Busque por um Cliente, UF, CNPJ ou Código da Máquina!">
+                            placeholder="Busque por um Cliente, UF, CNPJ ou Código da Máquina!" autocomplete="off">
                     </div>
                     <button class="procurar">Procurar</button>
                 </form>
@@ -145,7 +145,7 @@ if (!empty($_GET['search']) && isset($_GET['search'])) {
                         <p class="status"><?php 
                             switch ($chamado['status_chamado']) {
                                 case 'aberto':
-                                    echo 'Aberto';
+                                    echo 'Em aberto';
                                     break;
                                 
                                 case 'em_andamento':
