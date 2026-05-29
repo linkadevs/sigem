@@ -87,7 +87,7 @@ if (!empty($ultimamanutencao_dados['data_e_hora'])) {
                 </figure>
                 <div class="conjunto">
                     <div class="barra_seta_decorativa">
-                        <h2 class="titulo">Gerencie a manutenção da sua empresa!</h2>
+                        <h2 class="titulo">Startech: Inovação que move suas máquinas!</h2>
                         <figure class="seta_decorativa">
                             <img src="/sigem/templates/assets/img/seta_decorativa.png" alt="seta decorativa">
                         </figure>

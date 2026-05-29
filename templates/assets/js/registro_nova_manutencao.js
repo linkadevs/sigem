@@ -149,3 +149,33 @@ reposicaoCheckbox.addEventListener('change', () => {
         detalhes.style.display = 'none'
     }
 })
+
+// ==============================================
+// EVENTO: INPUT DE FOTOS - PREVIEW DAS IMAGENS
+// ==============================================
+if (inputFotos) {
+    inputFotos.addEventListener('change', () => {
+        grid.innerHTML = ''
+        const files = Array.from(inputFotos.files)
+        
+        files.forEach((element, index) => {
+            const url = URL.createObjectURL(element)
+            const figure = document.createElement('figure')
+            figure.innerHTML = `<img id="${index}" src="${url}" alt="Foto da manutenção">`
+            
+            // Remover foto ao clicar
+            figure.addEventListener('click', () => {
+                if (confirm('Deseja remover esta foto?')) {
+                    const dt = new DataTransfer()
+                    const remainingFiles = files.filter((_, i) => i !== index)
+                    remainingFiles.forEach(file => dt.items.add(file))
+                    inputFotos.files = dt.files
+                    inputFotos.dispatchEvent(new Event('change'))
+                }
+            })
+            
+            grid.appendChild(figure)
+        })
+    })}
+
+select.dispatchEvent(new Event('change'));

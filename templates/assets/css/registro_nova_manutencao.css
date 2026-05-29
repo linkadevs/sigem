@@ -8,41 +8,102 @@ header {
     display: flex;
     background-color: #ffffff;
     width: 100%;
-    padding: 3.6rem 1.6rem 3.6rem 3.7rem;
+    padding: 2rem 2.5rem;
     justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1.2rem;
+    align-items: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 body {
-    background-color: #094C71;
-    padding-bottom: 5.9rem;
+    background-color: transparent;
+    padding-bottom: 0;
+    min-height: 100vh;
 }
 
 .botaoVoltar {
     display: flex;
-    gap: 3.5rem;
-    font-size: 2rem;
+    gap: 0.8rem;
+    font-size: 1.8rem;
     color: #094C71;
     font-weight: 700;
     background-color: transparent;
     border-style: none;
     align-items: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.botaoVoltar:hover {
+    opacity: 0.7;
+    transform: translateX(-3px);
 }
 
 .voltarFigure img {
-    width: 3rem;
+    width: 2.6rem;
 }
 
+/* ESTILIZAÇÃO DOS BOTÕES DE NAVEGAÇÃO */
 nav {
     display: flex;
-    gap: 4.5rem;
+    gap: 1.5rem;
+    align-items: center;
 }
 
-nav button {
-    color: #488DB2;
-    font-size: 2rem;
+.nav-btn {
+    background: linear-gradient(135deg, #094C71 0%, #1291D5 100%);
+    border: none;
+    color: #ffffff;
+    font-size: 1.5rem;
     font-weight: 700;
-    background-color: transparent;
-    border-style: none;
+    cursor: pointer;
+    padding: 0.9rem 1.8rem;
+    border-radius: 2.5rem;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    letter-spacing: 0.5px;
+}
+
+.nav-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.5s ease;
+}
+
+.nav-btn:hover::before {
+    left: 100%;
+}
+
+.nav-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 3px 10px rgba(9, 76, 113, 0.3);
+    background: linear-gradient(135deg, #0a5a88 0%, #1a9ee0 100%);
+}
+
+.nav-btn:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilização para campos desabilitados */
+input:disabled,
+input[disabled] {
+    background-color: #E8E8E8;
+    color: #666666;
+    cursor: not-allowed;
+    opacity: 0.8;
+}
+
+input:disabled::placeholder {
+    color: #999999;
 }
 
 main {
@@ -50,96 +111,104 @@ main {
     background-image: url('../../assets/img/fundo-edicao.jpg');
     background-repeat: no-repeat;
     background-size: cover;
-    border-bottom-right-radius: 26rem;
-    border-bottom-left-radius: 26rem;
-    padding-top: 7.3rem;
-    padding-bottom: 5.9rem;
+    background-position: center;
+    padding: 4rem 2rem;
     justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 6rem);
 }
 
 form {
     background-color: #ffffff;
-    border-radius: 3.6rem;
-    box-shadow: 0 0 4rem rgba(0, 0, 0, 0.42);
-    padding: 3.6rem 3.3rem;
-    width: 82.7rem;
+    border-radius: 2.5rem;
+    box-shadow: 0 0 3rem rgba(0, 0, 0, 0.42);
+    padding: 2.5rem 3rem;
+    width: 100%;
+    max-width: 70rem;
     display: flex;
     flex-direction: column;
-    gap: 3.1rem;
+    gap: 2rem;
 }
 
 form h3 {
     color: #094C71;
-    font-size: 2.5rem;
+    font-size: 1.8rem;
     font-weight: 600;
-    padding: .8rem 2.4rem;
+    padding: 0.6rem 1.8rem;
     background-color: #D3F0FF;
     width: fit-content;
-    border-radius: 1.5rem;
+    border-radius: 1.2rem;
 }
 
 h1 {
-    font-size: 3.6rem;
+    font-size: 2.8rem;
     font-weight: 700;
     color: #094C71;
+    word-break: break-word;
 }
 
 form p {
-    font-size: 2rem;
+    font-size: 1.6rem;
     font-weight: 500;
     color: #094C71;
-}
-
-.reposicao-container {
-    display: none;
-    flex-direction: column;
-    gap: 3rem;
-}
-
-.detalhes-pecas {
-    display: none;
-    flex-direction: column;
-    gap: 3rem;
-}
-
-.helper-text {
-    padding-left: 2rem;
-    color: rgb(0, 0, 0);
-    transform: translateY(-50%);
 }
 
 .inputs {
     display: flex;
     flex-direction: column;
-    gap: 3rem;
+    gap: 1.5rem;
 }
 
 .input {
     display: flex;
     flex-direction: column;
-    gap: 1.4rem;
+    gap: 0.6rem;
 }
 
 label {
-    padding-left: 2.2rem;
-    font-size: 2rem;
+    padding-left: 1.8rem;
+    font-size: 1.6rem;
     font-weight: 600;
     color: #094C71;
 }
 
-textarea {
-    border-radius: 2rem !important;
-    resize: none;
+.required {
+    color: #e74c3c;
+    font-size: 1.4rem;
 }
 
-input, select, #botaoFotos, textarea {
-    padding: 1.8rem 2.2rem;
-    font-size: 2rem;
-    font-weight: 600;
-    border-radius: 5rem;
+.required-peca {
+    color: #e74c3c;
+    font-size: 1.3rem;
+}
+
+input,
+select,
+#botaoFotos,
+textarea {
+    padding: 1.2rem 1.8rem;
+    font-size: 1.6rem;
+    font-weight: 500;
+    border-radius: 3rem;
     background-color: #F9F9F9;
     border-style: none;
-    font-family: 'Inter';
+    font-family: inherit;
+    transition: all 0.3s;
+    width: 100%;
+}
+
+textarea {
+    border-radius: 1.5rem;
+    resize: vertical;
+    min-height: 8rem;
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+#botaoFotos:focus {
+    outline: 2px solid #1291D5;
+    outline-offset: 2px;
 }
 
 .inputTexto {
@@ -150,30 +219,87 @@ input, select, #botaoFotos, textarea {
     color: #A0AAAF;
 }
 
-input::placeholder, select, textarea::placeholder {
+input::placeholder,
+select,
+textarea::placeholder {
     color: #A0AAAF;
+}
+
+/* Estilização para input com unidade de medida */
+.input-com-unidade {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.input-com-unidade input {
+    flex: 1;
+    padding-right: 6rem;
+}
+
+.unidade-medida {
+    position: absolute;
+    right: 1.8rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #094C71;
+    background-color: transparent;
+    pointer-events: none;
+    z-index: 1;
 }
 
 #botaoFotos {
     display: flex;
-    justify-content: baseline;
+    justify-content: center;
+    align-items: center;
     color: #A0AAAF;
+    cursor: pointer;
+    transition: all 0.3s;
+    background-color: #F9F9F9;
+    border: none;
+}
+
+#botaoFotos:hover {
+    background-color: #e0e0e0;
+    transform: translateY(-2px);
+}
+
+.helper-text {
+    font-size: 1.2rem;
+    color: #A0AAAF;
+    padding-left: 1.8rem;
+    margin-top: -0.3rem;
 }
 
 .botoes {
     display: flex;
-    align-self: flex-end;
-    gap: 2.5rem;
+    gap: 1.5rem;
     width: 100%;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    margin-top: 0.5rem;
 }
 
+/* BOTÕES PARA DESKTOP */
 .botoes button {
-    width: 23.8rem;
-    height: 6rem;
-    font-size: 2.5rem;
+    width: 14rem;
+    height: 4.2rem;
+    font-size: 1.6rem;
     font-weight: 700;
-    box-shadow: 0 .4rem .4rem 0 rgba(0, 0, 0, 0.25);
-    border-radius: 2rem;
+    box-shadow: 0 .3rem .3rem 0 rgba(0, 0, 0, 0.25);
+    border-radius: 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.botoes button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 .5rem .5rem 0 rgba(0, 0, 0, 0.3);
+}
+
+.botoes button:active {
+    transform: translateY(0);
 }
 
 .cancelar {
@@ -183,10 +309,19 @@ input::placeholder, select, textarea::placeholder {
     border-color: rgba(0, 0, 0, 0.1);
 }
 
+.cancelar:hover {
+    background-color: #f5f5f5;
+    border-color: rgba(0, 0, 0, 0.2);
+}
+
 .enviar {
     background: linear-gradient(270deg, #1291D5 0%, #094B6F 100%);
     border-style: none;
     color: #FFFFFF;
+}
+
+.enviar:hover {
+    background: linear-gradient(270deg, #1a9ee0 0%, #0a5a88 100%);
 }
 
 #fotos {
@@ -199,108 +334,128 @@ select {
     appearance: none;
     background-image: url('../img/seta_baixo.png');
     background-repeat: no-repeat;
-    background-position: right 1.8rem center;
+    background-position: right 1.5rem center;
+    background-size: 1.6rem;
+    cursor: pointer;
 }
 
+/* Checkbox estilizado */
+.checkbox-input {
+    margin: 0.3rem 0;
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    cursor: pointer;
+    padding-left: 1.8rem;
+}
+
+.checkbox-label input[type="checkbox"] {
+    width: 1.8rem;
+    height: 1.8rem;
+    cursor: pointer;
+    accent-color: #094C71;
+}
+
+.checkbox-label span {
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: #094C71;
+}
+
+/* Container de reposição de peças */
+.reposicao-container {
+    background-color: #F0F8FF;
+    border-radius: 1.5rem;
+    padding: 1.2rem;
+    margin: 0.3rem 0;
+    border-left: 4px solid #1291D5;
+    gap: 1rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.detalhes-pecas {
+    margin-top: 0.8rem;
+    padding-top: 0.3rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.inputPecas {
+    width: 100%;
+}
 .grid {
     display: grid;
-    grid-template-columns: 8rem 8rem 8rem 8rem 8rem 8rem 8rem 8rem;
-    grid-auto-rows: 8rem;
-    justify-content: space-between;
-    row-gap: 1.5rem;
+    grid-template-columns: repeat(auto-fill, minmax(7rem, 1fr));
+    grid-auto-rows: 7rem;
+    gap: 1rem;
+    margin-top: 0.5rem;
 }
 
 .grid figure {
     width: 100%;
     height: 100%;
+    margin: 0;
+    position: relative;
+    cursor: pointer;
 }
 
 .grid figure img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border-radius: 1rem;
+    border-radius: 0.8rem;
+    transition: transform 0.2s;
 }
 
-@media screen and (max-width: 984px) {
-    form {
-        width: 67.9rem;
-    }
-    .botaoVoltar {
-        font-size: 1.8rem;
-        gap: 1.3rem;
-    }
-
-    .voltarFigure img {
-        width: 3rem;
-    }
-
-    header p {
-        font-size: 1.8rem;
-    }
-    form h3 {
-        font-size: 2.3rem;
-        padding: .9rem 2.7rem;
-    }
-
-    h1 {
-        font-size: 3rem;
-    }
-
-    form p {
-        font-size: 1.9rem;
-    }
-    label {
-        font-size: 1.9rem;
-    }
-    input, select, #botaoFotos {
-        font-size: 1.8rem;
-    }
-    .botoes button {
-        font-size: 2.3rem;
-        width: 18.1rem;
-    }
+.grid figure img:hover {
+    transform: scale(1.05);
 }
 
-@media screen and (max-width: 710px) {
-    .voltarFigure img {
-        width: 2rem;
-    }
+/* ========== RESPONSIVIDADE ========== */
 
+/* DESKTOP - MAIS COMPACTO */
+@media screen and (min-width: 985px) {
     header {
-        padding: 1.6rem;
+        padding: 1.5rem 2.5rem;
     }
+
     .botaoVoltar {
-        font-size: 1.2rem;
-        gap: 1rem;
-        display: flex;
-        align-items: center;
+        font-size: 1.6rem;
+        gap: 0.6rem;
     }
-    nav button {
-        font-size: 1.2rem;
+
+    .voltarFigure img {
+        width: 2.2rem;
     }
+
+    .nav-btn {
+        font-size: 1.3rem;
+        padding: 0.7rem 1.5rem;
+    }
+
     nav {
         gap: 1rem;
     }
 
     main {
-        border-radius: 0;
-        padding-top: 4rem;
+        padding: 2.5rem;
+        min-height: calc(100vh - 6rem);
     }
 
     form {
-        width: 85%;
-        padding: 3.6rem 2.5rem;
-        min-width: 32rem;
+        padding: 2rem 2.5rem;
+        max-width: 70rem;
+        gap: 1.2rem;
     }
 
     form h3 {
-        font-size: 1.6rem;
-        padding: .9rem 2.7rem;
-    }
-
-    input, select, #botaoFotos {
-        font-size: 1.6rem;
+        font-size: 1.4rem;
+        padding: 0.5rem 1.4rem;
     }
 
     h1 {
@@ -308,30 +463,308 @@ select {
     }
 
     form p {
-        font-size: 1.6rem;
+        font-size: 1.3rem;
     }
-    
+
+    .inputs {
+        gap: 1rem;
+    }
+
+    .input {
+        gap: 0.4rem;
+    }
+
+    label {
+        font-size: 1.3rem;
+        padding-left: 1.2rem;
+    }
+
+    .required {
+        font-size: 1.1rem;
+    }
+
+    input,
+    select,
+    #botaoFotos,
+    textarea {
+        padding: 0.9rem 1.5rem;
+        font-size: 1.3rem;
+    }
+
+    textarea {
+        min-height: 6rem;
+    }
+
+    .unidade-medida {
+        font-size: 1.2rem;
+        right: 1.2rem;
+    }
+
     .botoes button {
-        font-size: 1.6rem;
-        width: 13rem;
-        height: 3.9rem;
+        width: 11rem;
+        height: 3.5rem;
+        font-size: 1.4rem;
     }
 
-    .botoes {
-        justify-content: space-between;
-        gap: auto;
+    .checkbox-label span {
+        font-size: 1.3rem;
     }
 
-    select {
-        background-size: 2rem;
+    .checkbox-label input[type="checkbox"] {
+        width: 1.6rem;
+        height: 1.6rem;
+    }
+
+    .reposicao-container {
+        padding: 1rem;
+    }
+
+    .grid {
+        grid-template-columns: repeat(auto-fill, minmax(6rem, 1fr));
+        grid-auto-rows: 6rem;
+        gap: 0.8rem;
+    }
+
+    .helper-text {
+        font-size: 1rem;
     }
 }
 
-@media screen and (max-width: 416px) {
-    input {
-        padding-right: 0;
+/* TABLET (985px até 710px) */
+@media screen and (max-width: 1024px) and (min-width: 711px) {
+    header {
+        padding: 1.2rem 2rem;
     }
-    input, select, #botaoFotos {
+
+    .botaoVoltar {
+        font-size: 1.5rem;
+    }
+
+    .voltarFigure img {
+        width: 2.2rem;
+    }
+
+    .nav-btn {
         font-size: 1.3rem;
+        padding: 0.7rem 1.4rem;
+    }
+
+    form {
+        max-width: 60rem;
+        padding: 2rem 2.5rem;
+    }
+
+    form h3 {
+        font-size: 1.7rem;
+        padding: .5rem 1.6rem;
+    }
+
+    h1 {
+        font-size: 2.4rem;
+    }
+
+    form p {
+        font-size: 1.5rem;
+    }
+
+    label {
+        font-size: 1.5rem;
+    }
+
+    input,
+    select,
+    #botaoFotos,
+    textarea {
+        font-size: 1.5rem;
+        padding: 1rem 1.6rem;
+    }
+
+    .botoes button {
+        width: 13rem;
+        height: 4rem;
+        font-size: 1.5rem;
+    }
+
+    main {
+        min-height: calc(100vh - 5rem);
+    }
+}
+
+/* MOBILE (até 710px) */
+@media screen and (max-width: 710px) {
+    header {
+        padding: 1rem 1.5rem;
+    }
+
+    .botaoVoltar {
+        font-size: 1.3rem;
+        gap: 0.6rem;
+    }
+
+    .voltarFigure img {
+        width: 1.8rem;
+    }
+
+    .nav-btn {
+        font-size: 1.1rem;
+        padding: 0.5rem 1rem;
+    }
+
+    nav {
+        gap: 0.8rem;
+    }
+
+    main {
+        padding: 1.5rem;
+        min-height: calc(100vh - 4rem);
+    }
+
+    form {
+        padding: 1.5rem 1.2rem 1.2rem 1.2rem;
+        min-width: auto;
+        gap: 1rem;
+    }
+
+    form h3 {
+        font-size: 1.2rem;
+        padding: 0.3rem 1rem;
+    }
+
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    form p {
+        font-size: 1.1rem;
+    }
+
+    .inputs {
+        gap: 0.8rem;
+    }
+
+    label {
+        font-size: 1.2rem;
+        padding-left: 0.8rem;
+    }
+
+    input,
+    select,
+    #botaoFotos,
+    textarea {
+        font-size: 1.2rem;
+        padding: 0.7rem 1rem;
+    }
+
+    textarea {
+        min-height: 4rem;
+    }
+
+    .botoes button {
+        font-size: 1.2rem;
+        width: 10rem;
+        height: 3.2rem;
+    }
+
+    .botoes {
+        justify-content: center;
+        gap: 1rem;
+    }
+
+    select {
+        background-size: 1.2rem;
+        background-position: right 1rem center;
+    }
+
+    .checkbox-label span {
+        font-size: 1.1rem;
+    }
+
+    .checkbox-label {
+        padding-left: 0.8rem;
+        gap: 0.5rem;
+    }
+
+    .checkbox-label input[type="checkbox"] {
+        width: 1.4rem;
+        height: 1.4rem;
+    }
+
+    .grid {
+        grid-template-columns: repeat(auto-fill, minmax(5rem, 1fr));
+        grid-auto-rows: 5rem;
+        gap: 0.6rem;
+    }
+
+    .input-com-unidade input {
+        padding-right: 4rem;
+    }
+
+    .unidade-medida {
+        font-size: 1rem;
+        right: 1rem;
+    }
+
+    .helper-text {
+        font-size: 0.9rem;
+        padding-left: 1rem;
+    }
+
+    .reposicao-container {
+        padding: 0.6rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    header {
+        padding: 0.8rem 1.2rem;
+    }
+
+    .botaoVoltar {
+        font-size: 1.2rem;
+    }
+
+    .voltarFigure img {
+        width: 1.6rem;
+    }
+
+    .nav-btn {
+        font-size: 1rem;
+        padding: 0.4rem 0.8rem;
+    }
+
+    form {
+        padding: 1.7rem 1.2rem 1.2rem 1.2rem;
+    }
+
+    input,
+    select,
+    #botaoFotos,
+    textarea {
+        font-size: 1.1rem;
+        padding: 0.6rem 0.8rem;
+    }
+
+    .botoes button {
+        font-size: 1.1rem;
+        width: 9rem;
+        height: 3rem;
+    }
+
+    h1 {
+        font-size: 1.3rem;
+    }
+
+    .grid {
+        grid-template-columns: repeat(auto-fill, minmax(4.5rem, 1fr));
+        grid-auto-rows: 4.5rem;
+    }
+
+    .input-com-unidade input {
+        padding-right: 3.5rem;
+    }
+
+    .unidade-medida {
+        font-size: 0.9rem;
+        right: 0.8rem;
     }
 }

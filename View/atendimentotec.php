@@ -66,7 +66,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <div class="input-container">
                     <img src="../templates/assets/img/lupa.png" alt="lupa de pesquisa">
                     <input type="text" id="pesquisa" name="search"
-                        placeholder="Busque por um Cliente, UF, CNPJ ou Código da Máquina!">
+                        placeholder="Busque por um Cliente, UF, CNPJ ou Código da Máquina!" autocomplete="off">
                 </div>
                 <button type="submit" class="procurar">Procurar</button>
             </form>

@@ -113,12 +113,11 @@ input {
     display: flex;
     align-items: center;
     color: #FFFFFF;
-    font-size: 1rem;
 }
 
 input::placeholder {
     color: #ffffff;
-    font-size: 1.2rem;
+    font-size: 1.3rem;
 }
 
 input:focus {

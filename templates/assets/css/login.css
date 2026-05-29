@@ -100,15 +100,15 @@ input[type=number] {
 }
 
 /* ========== SETA VOLTAR ========== */
-.Cform_login > figure:first-child {
+.Cform_login>figure:first-child {
     margin-bottom: 1rem;
     cursor: pointer;
     align-self: flex-start;
 }
 
-.Cform_login > figure:first-child img {
-    width: 2.5rem;
-    height: 2.5rem;
+.Cform_login>figure:first-child img {
+    width: 3.5rem;
+    height: 3.5rem;
     object-fit: contain;
 }
 
@@ -131,12 +131,12 @@ input[type=number] {
 }
 
 /* ========== LINHA AZUL ========== */
-.Cform_login > figure:nth-of-type(2) {
+.Cform_login>figure:nth-of-type(2) {
     text-align: center;
     margin-bottom: 2.0rem;
 }
 
-.Cform_login > figure:nth-of-type(2) img {
+.Cform_login>figure:nth-of-type(2) img {
     width: 44rem;
     max-width: 90%;
 }
@@ -148,7 +148,7 @@ input[type=number] {
     gap: 0.4rem;
     margin-bottom: 2.9rem;
     width: 100%;
-    align-items: center;
+    align-items: right;
 }
 
 .input_cpf label,
@@ -211,6 +211,7 @@ input[type=number] {
 
 /* Ajuste para telas maiores */
 @media screen and (min-width: 1024px) {
+
     .input_senha .olho1,
     .input_senha .olho2 {
         right: calc(50% - 18rem);
@@ -258,7 +259,7 @@ input[type=number] {
         font-size: 1.5rem;
     }
 
-    .Cform_login > figure:nth-of-type(2) img {
+    .Cform_login>figure:nth-of-type(2) img {
         width: 48rem;
     }
 
@@ -272,7 +273,7 @@ input[type=number] {
     .input_senha input {
         width: 44.5rem;
     }
-    
+
     .input_senha .olho1,
     .input_senha .olho2 {
         right: calc(50% - 21rem);
@@ -299,7 +300,7 @@ input[type=number] {
         font-size: 1.3rem;
     }
 
-    .Cform_login > figure:nth-of-type(2) img {
+    .Cform_login>figure:nth-of-type(2) img {
         width: 32.7rem;
     }
 
@@ -313,13 +314,13 @@ input[type=number] {
     .input_senha input {
         width: 31.5rem;
     }
-    
+
     .input_senha .olho1,
     .input_senha .olho2 {
         right: calc(50% - 15rem);
         top: 69%;
     }
-    
+
     .olho1 img,
     .olho2 img {
         width: 1.8rem;
@@ -328,6 +329,17 @@ input[type=number] {
     .btn_login button {
         width: 31.5rem;
         font-size: 1.4rem;
+    }
+
+    .Cform_login>figure:first-child img {
+        width: 3rem;
+        height: 3rem;
+        object-fit: contain;
+    }
+
+    .input_cpf input::placeholder,
+    .input_senha input::placeholder {
+        font-size: 1.1rem;
     }
 }
 
@@ -346,7 +358,7 @@ input[type=number] {
         font-size: 1.2rem;
     }
 
-    .Cform_login > figure:nth-of-type(2) img {
+    .Cform_login>figure:nth-of-type(2) img {
         width: 24.7rem;
     }
 
@@ -358,7 +370,7 @@ input[type=number] {
 
     .input_cpf input::placeholder,
     .input_senha input::placeholder {
-        font-size: 1.0rem;
+        font-size: 0.9rem;
     }
 
     .input_cpf input,
@@ -366,13 +378,13 @@ input[type=number] {
         width: 23.5rem;
         height: 3.4rem;
     }
-    
+
     .input_senha .olho1,
     .input_senha .olho2 {
         right: calc(50% - 11rem);
         top: 68%;
     }
-    
+
     .olho1 img,
     .olho2 img {
         width: 1.6rem;
@@ -382,6 +394,12 @@ input[type=number] {
         width: 23.5rem;
         font-size: 1.2rem;
         height: 3.4rem;
+    }
+
+    .Cform_login>figure:first-child img {
+        width: 2.9rem;
+        height: 2.9rem;
+        object-fit: contain;
     }
 }
 
@@ -400,7 +418,7 @@ input[type=number] {
         font-size: 1.0rem;
     }
 
-    .Cform_login > figure:nth-of-type(2) img {
+    .Cform_login>figure:nth-of-type(2) img {
         width: 21.7rem;
     }
 
@@ -412,7 +430,7 @@ input[type=number] {
 
     .input_cpf input::placeholder,
     .input_senha input::placeholder {
-        font-size: 1.0rem;
+        font-size: 0.8rem;
     }
 
     .input_cpf input,
@@ -420,13 +438,13 @@ input[type=number] {
         width: 19.5rem;
         height: 3rem;
     }
-    
+
     .input_senha .olho1,
     .input_senha .olho2 {
         right: calc(50% - 9rem);
         top: 67%;
     }
-    
+
     .olho1 img,
     .olho2 img {
         width: 1.5rem;
@@ -437,11 +455,17 @@ input[type=number] {
         font-size: 1rem;
         height: 3rem;
     }
+
+    .Cform_login>figure:first-child img {
+        width: 2.9rem;
+        height: 2.9rem;
+        object-fit: contain;
+    }
 }
 
 /* Mobile pequeno - até 330px */
 @media screen and (max-width: 330px) {
-    .Cform_login > figure:first-child img {
+    .Cform_login>figure:first-child img {
         width: 2rem;
         height: 2rem;
     }
@@ -460,7 +484,7 @@ input[type=number] {
         font-size: 0.9rem;
     }
 
-    .Cform_login > figure:nth-of-type(2) img {
+    .Cform_login>figure:nth-of-type(2) img {
         width: 18rem;
     }
 
@@ -481,13 +505,13 @@ input[type=number] {
         height: 2.8rem;
         font-size: 0.9rem;
     }
-    
+
     .input_senha .olho1,
     .input_senha .olho2 {
         right: calc(50% - 7.8rem);
         top: 66%;
     }
-    
+
     .olho1 img,
     .olho2 img {
         width: 1.4rem;
@@ -516,7 +540,7 @@ input[type=number] {
         font-size: 0.85rem;
     }
 
-    .Cform_login > figure:nth-of-type(2) img {
+    .Cform_login>figure:nth-of-type(2) img {
         width: 16rem;
     }
 
@@ -526,12 +550,12 @@ input[type=number] {
         height: 2.6rem;
         font-size: 0.85rem;
     }
-    
+
     .input_senha .olho1,
     .input_senha .olho2 {
         right: calc(50% - 7rem);
     }
-    
+
     .olho1 img,
     .olho2 img {
         width: 1.3rem;

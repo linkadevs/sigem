@@ -69,7 +69,7 @@ unset($_SESSION['erro']);
 
                     <div class="input_cpf">
                         <label for="Cpf">CPF/CNPJ</label>
-                        <input type="number" id="Cpf" name="cpf_cnpj" placeholder="Insira apenas números" required oninput="this.value = this.value.replace(/\D/g, '')">
+                        <input type="number" id="Cpf" name="cpf_cnpj" placeholder="Insira apenas números, sem pontos ou traços" required oninput="this.value = this.value.replace(/\D/g, '')">
                     </div>
 
                     <div class="input_senha">
