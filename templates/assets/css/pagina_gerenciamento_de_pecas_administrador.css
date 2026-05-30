@@ -1,6 +1,6 @@
 @import 'global.css';
 
-/* ===== CONFIGURAÇÕES ===== */
+/* ===== CONFIGURAÇÕES GERAIS ===== */
 body {
     background-color: #F4F4F4;
     display: flex;
@@ -11,7 +11,7 @@ body {
     align-items: stretch;
 }
 
-/* ===== MENU LATERAL ===== */
+/* ===== MENU LATERAL (PADRÃO HOME) ===== */
 aside {
     background-color: #FFFFFF;
     display: flex;
@@ -58,7 +58,6 @@ aside p {
     color: #CBCFD1;
 }
 
-/* Botão ativo da página */
 aside .btn_pecas {
     background-color: #EAF7FE;
 }
@@ -67,7 +66,6 @@ aside .btn_pecas p {
     color: #024265;
 }
 
-/* Botão de perfil */
 aside .btn_perfil {
     margin-bottom: 4rem;
 }
@@ -82,7 +80,6 @@ aside .btn_perfil img {
     width: 3.5rem;
 }
 
-/* Círculo do perfil */
 aside .circuloperfil {
     display: flex;
     align-items: center;
@@ -98,7 +95,7 @@ aside .btn_logout p {
     font-weight: lighter;
 }
 
-/* ===== CONTEÚDO PRINCIPAL ===== */
+/* ===== MAIN E CONTAINER ===== */
 main {
     display: flex;
     flex-direction: column;
@@ -114,7 +111,7 @@ main {
     max-width: 1400px;
 }
 
-/* ===== TOPO COM LUPA ===== */
+/* ===== CONTEÚDO SUPERIOR (TOP) – PADRÃO ===== */
 .conteudo_superior {
     width: 100%;
     background: linear-gradient(to right, #8A38F5, #B7E6FF);
@@ -123,8 +120,13 @@ main {
     border-radius: 1rem;
     display: flex;
     flex-direction: column;
-    padding: 1.5rem 6.6rem 1.5rem 6.6rem;
+    padding: 1.5rem 6.6rem;
     margin-bottom: 3.4rem;
+}
+
+h1 {
+    font-weight: normal;
+    font-size: 3rem;
 }
 
 form {
@@ -142,7 +144,6 @@ form {
     min-width: 0;
 }
 
-/* Ícone da lupa dentro do input */
 .conteudo_superior img {
     width: 2.2rem;
     height: 2.2rem;
@@ -154,12 +155,6 @@ form {
     z-index: 1;
 }
 
-h1 {
-    font-weight: normal;
-    font-size: 3rem;
-}
-
-/* Campo de busca */
 input {
     background-color: #094d7170;
     border: none;
@@ -174,6 +169,7 @@ input {
 
 input::placeholder {
     color: #FFFFFF;
+    font-size: 1rem;
     opacity: 0.8;
 }
 
@@ -182,7 +178,6 @@ input:focus {
     background-color: #094d7180;
 }
 
-/* Botão de procurar com borda gradiente */
 .procurar {
     background: none;
     border: none;
@@ -214,26 +209,101 @@ input:focus {
     pointer-events: none;
 }
 
+/* BOTÃO LIMPAR – PADRÃO */
 .limpar-busca {
     display: inline-block;
-    background-color: #a83ce7;
+    background-color: #e74c3c;
     color: white;
-    padding: 0.8rem 1.5rem;
+    padding: 0.6rem 1.2rem;
     border-radius: 2rem;
     text-decoration: none;
-    font-size: 1.4rem;
+    font-size: 1.3rem;
     font-weight: 600;
     transition: all 0.3s ease;
     border: none;
     cursor: pointer;
+    white-space: nowrap;
 }
 
 .limpar-busca:hover {
-    background-color: #842bc0;
+    background-color: #c0392b;
     transform: translateY(-2px);
 }
 
-/* ===== BLOCOS DE SOLICITAÇÕES ===== */
+/* ===== MENSAGEM DE RESULTADO DA BUSCA ===== */
+.resultado-busca {
+    background-color: #e8f4fd;
+    padding: 0.8rem 1.5rem;
+    border-radius: 1rem;
+    margin-bottom: 1.5rem;
+    font-size: 1.3rem;
+    color: #094C71;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    width: 100%;
+}
+
+.resultado-busca strong {
+    color: #1291D5;
+}
+
+/* ===== MENSAGEM DE NENHUM REGISTRO (PADRÃO) ===== */
+.nenhum-registro {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 50vh;
+    padding: 4rem 2rem;
+    width: 100%;
+}
+
+.mensagem-vazia {
+    text-align: center;
+    background-color: #f9f9f9;
+    border-radius: 2rem;
+    padding: 3rem 2rem;
+    max-width: 45rem;
+    box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.1);
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.mensagem-vazia h2 {
+    font-size: 2rem;
+    color: #094C71;
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.mensagem-vazia p {
+    font-size: 1.4rem;
+    color: #666;
+    margin-bottom: 0.8rem;
+}
+
+.mensagem-vazia .sugestao {
+    color: #1291D5;
+    font-weight: 500;
+}
+
+.mensagem-vazia .sugestao a {
+    color: #1291D5;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.mensagem-vazia .sugestao a:hover {
+    text-decoration: underline;
+}
+
+/* ===== BLOCOS DE SOLICITAÇÕES (CARDS) ===== */
 .conteudo_principal {
     display: flex;
     flex-direction: column;
@@ -302,10 +372,9 @@ input:focus {
     font-size: 1.5rem;
 }
 
-/* Botões de ação */
 .cancelar,
-.concluir , 
-.concluido{
+.concluir, 
+.concluido {
     width: 10rem;
     height: 3rem;
     border-radius: .5rem;
@@ -317,8 +386,8 @@ input:focus {
 }
 
 .cancelar:hover,
-.concluir:hover 
-.concluido:hover{
+.concluir:hover,
+.concluido:hover {
     transform: scale(1.02);
 }
 
@@ -333,803 +402,707 @@ input:focus {
     border: 2px solid #FFFFFF;
 }
 
+/* ===== MEDIA QUERIES ===== */
 
-strong{
-    font-size: 2rem;
-    font-weight: bold;
-}
-
-/* ===== RESPONSIVIDADE ===== */
-
-/* Desktop pequeno / Laptop */
-@media (max-width: 1280px) {
+/* Tablet (até 1000px) */
+@media (max-width: 1000px) {
     body {
-        gap: 3rem;
-        padding: 1.5rem;
+        gap: 1.5rem;
+        padding: 1rem;
     }
-
-    strong{
-    font-size: 1.7rem;
-    font-weight: bold;
-}
-
     aside {
-        margin-left: 1.5rem;
+        margin-left: 0;
         padding: 1.5rem;
-        min-width: 220px;
+        width: auto;
+        min-width: 200px;
     }
-
     aside button {
         width: 100%;
-        height: 5rem;
-        gap: 1.2rem;
+        height: 4.5rem;
+        gap: 1rem;
         padding-left: 1rem;
     }
-
     aside p {
-        font-size: 1.6rem;
+        font-size: 1.2rem;
     }
-
     aside img {
-        height: 3rem;
-        width: 3rem;
+        height: 2.5rem;
+        width: 2.5rem;
     }
-
-    aside .circuloperfil {
-        height: 4rem;
-        width: 4rem;
+    aside .btn_perfil {
+        margin-bottom: 2rem;
     }
-
     aside .btn_perfil img {
         height: 2.5rem;
         width: 2.5rem;
     }
-
-    .container {
-        max-width: 1100px;
+    aside .circuloperfil {
+        height: 4rem;
+        width: 4rem;
     }
-
+    main {
+        margin-right: 0;
+    }
     .conteudo_superior {
         padding-left: 4rem;
         padding-right: 4rem;
+        margin-bottom: 3rem;
     }
-
     h1 {
         font-size: 2.5rem;
     }
-
     .procurar {
         width: 12rem;
         font-size: 1.3rem;
         height: 3.3rem;
     }
-
     input {
         height: 3.1rem;
         font-size: 0.95rem;
     }
-
+    input::placeholder {
+        font-size: 0.9rem;
+    }
     .conteudo_superior img {
         width: 2rem;
         height: 2rem;
         left: 1rem;
     }
-
+    .resultado-busca {
+        padding: 0.6rem 1.2rem;
+        font-size: 1.2rem;
+    }
+    .limpar-busca {
+        padding: 0.5rem 1rem;
+        font-size: 1.2rem;
+    }
     .bloco {
         padding: 2rem;
         gap: 1.5rem;
     }
-
     .topo {
         gap: 3rem;
     }
-
     .titulo {
         font-size: 1.5rem;
     }
-
-    .infor,
-    .descricao,
-    .data {
+    .infor, .descricao, .data {
         font-size: 1.3rem;
     }
-
-    .cancelar,
-    .concluir,
-     .concluido {
+    .cancelar, .concluir, .concluido {
         width: 10rem;
         height: 2.8rem;
         font-size: 0.9rem;
     }
-    
-    .grupo-botoes {
-        gap: 0.8rem;
+}
+
+/* Celular (até 768px) – menu ícones + topo adaptado */
+@media (max-width: 768px) {
+    body {
+        gap: 1rem;
+        padding: 0.8rem;
+        flex-direction: row;
+        align-items: stretch;
+    }
+    aside {
+        margin-left: 0;
+        padding: 1rem 0.5rem;
+        border-radius: 1rem;
+        width: auto;
+        min-width: auto;
+        align-self: stretch;
+    }
+    aside p {
+        display: none;
+    }
+    aside button {
+        width: auto;
+        height: auto;
+        padding: 0.8rem;
+        margin-bottom: 1rem;
+        gap: 0;
+        justify-content: center;
+        border-radius: 0.8rem;
+    }
+    aside button:hover {
+        transform: scale(1.05);
+    }
+    aside img {
+        height: 2rem;
+        width: 2rem;
+        margin: 0;
+    }
+    aside .btn_perfil {
+        margin-bottom: 1.5rem;
+        padding: 0.5rem;
+    }
+    aside .circuloperfil {
+        height: 3rem;
+        width: 3rem;
+    }
+    aside .btn_perfil img {
+        height: 1.8rem;
+        width: 1.8rem;
+    }
+    main {
+        margin-right: 0;
+        flex: 1;
+    }
+    .conteudo_superior {
+        padding: 1rem;
+        margin-bottom: 2rem;
+    }
+    h1 {
+        font-size: 1.5rem;
+    }
+    form {
+        gap: 0.6rem;
+    }
+    .procurar {
+        width: 7rem;
+        font-size: 1rem;
+        height: 2.8rem;
+    }
+    input {
+        font-size: 0.85rem;
+        height: 2.8rem;
+        padding-left: 2.8rem;
+    }
+    input::placeholder {
+        font-size: 0.8rem;
+    }
+    .conteudo_superior img {
+        width: 1.4rem;
+        height: 1.4rem;
+        left: 0.8rem;
+    }
+    .limpar-busca {
+        padding: 0.4rem 0.8rem;
+        font-size: 1rem;
+    }
+    .resultado-busca {
+        padding: 0.6rem 1rem;
+        font-size: 1.1rem;
+        margin-bottom: 1rem;
+    }
+    .bloco {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 1.5rem;
+        gap: 1rem;
+    }
+    .lado-direito {
+        align-items: stretch;
+        flex-direction: row;
+        justify-content: space-between;
+        margin-top: 0.5rem;
+    }
+    .topo {
+        gap: 1.5rem;
+    }
+    .topico {
+        min-width: 100px;
     }
 }
 
-/* Ajuste do topo */
+/* Celular pequeno (até 480px) */
+@media (max-width: 480px) {
+    aside {
+        padding: 0.8rem 0.4rem;
+    }
+    aside button {
+        padding: 0.6rem;
+        margin-bottom: 0.8rem;
+    }
+    aside img {
+        height: 1.6rem;
+        width: 1.6rem;
+    }
+    aside .btn_perfil {
+        margin-bottom: 1rem;
+        padding: 0.4rem;
+    }
+    aside .circuloperfil {
+        height: 2.5rem;
+        width: 2.5rem;
+    }
+    aside .btn_perfil img {
+        height: 1.5rem;
+        width: 1.5rem;
+    }
+    .conteudo_superior {
+        padding: 0.8rem;
+        margin-bottom: 1.5rem;
+    }
+    h1 {
+        font-size: 1.2rem;
+    }
+    .procurar {
+        width: 5rem;
+        font-size: 0.85rem;
+        height: 2.3rem;
+    }
+    input {
+        padding-left: 2.2rem;
+        font-size: 0.75rem;
+        height: 2.3rem;
+    }
+    input::placeholder {
+        font-size: 0.7rem;
+    }
+    .conteudo_superior img {
+        width: 1.1rem;
+        height: 1.1rem;
+        left: 0.6rem;
+    }
+    .limpar-busca {
+        padding: 0.3rem 0.7rem;
+        font-size: 0.85rem;
+    }
+    .resultado-busca {
+        padding: 0.5rem 0.8rem;
+        font-size: 1rem;
+        gap: 0.6rem;
+    }
+    .bloco {
+        padding: 1rem;
+        gap: 0.8rem;
+    }
+    .topo {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    .topico {
+        min-width: auto;
+        gap: 0.3rem;
+    }
+    .titulo {
+        font-size: 1.2rem;
+    }
+    .infor {
+        font-size: 1.1rem;
+    }
+    .descricao {
+        font-size: 1rem;
+        margin-top: 0.5rem;
+    }
+    .lado-direito {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.8rem;
+        width: 100%;
+        margin-top: 0.5rem;
+    }
+    .data {
+        font-size: 1rem;
+        align-self: flex-start;
+    }
+    .cancelar,
+    .concluir,
+    .concluido {
+        width: 7rem;
+        height: 2.2rem;
+        font-size: 0.8rem;
+    }
+    .mensagem-vazia {
+        padding: 2rem 1.5rem;
+        max-width: 90%;
+    }
+    .mensagem-vazia h2 {
+        font-size: 1.6rem;
+    }
+    .mensagem-vazia p {
+        font-size: 1.2rem;
+    }
+}
+
+/* Telas muito pequenas (até 420px) – ajuste extra para padding dos cards */
+@media (max-width: 420px) {
+    .bloco {
+        padding: 0.8rem;
+        gap: 0.6rem;
+    }
+    .inforcentro {
+        gap: 1rem;
+    }
+    .topo {
+        gap: 0.8rem;
+    }
+    .topico {
+        gap: 0.2rem;
+    }
+    .titulo {
+        font-size: 1rem;
+    }
+    .infor {
+        font-size: 0.9rem;
+    }
+    .descricao {
+        font-size: 0.85rem;
+        margin-top: 0.3rem;
+    }
+    .lado-direito {
+        gap: 0.6rem;
+    }
+    .data {
+        font-size: 0.85rem;
+    }
+    .cancelar,
+    .concluir,
+    .concluido {
+        width: 6rem;
+        height: 1.9rem;
+        font-size: 0.7rem;
+    }
+}
+
+/* Celular muito pequeno (até 340px) */
+@media (max-width: 340px) {
+    body {
+        gap: 0.6rem;
+        padding: 0.5rem;
+        align-items: stretch;
+    }
+    aside {
+        padding: 0.6rem 0.3rem;
+        border-radius: 0.6rem;
+    }
+    aside button {
+        padding: 0.5rem;
+        margin-bottom: 0.6rem;
+        border-radius: 0.5rem;
+    }
+    aside img {
+        height: 1.4rem;
+        width: 1.4rem;
+    }
+    aside .btn_perfil {
+        margin-bottom: 0.8rem;
+        padding: 0.3rem;
+    }
+    aside .circuloperfil {
+        height: 2.2rem;
+        width: 2.2rem;
+    }
+    aside .btn_perfil img {
+        height: 1.3rem;
+        width: 1.3rem;
+    }
+    .conteudo_superior {
+        padding: 0.5rem;
+        border-radius: 0.6rem;
+    }
+    h1 {
+        font-size: 1rem;
+    }
+    form {
+        gap: 0.3rem;
+    }
+    .procurar {
+        width: 4rem;
+        font-size: 0.7rem;
+        height: 2rem;
+    }
+    input {
+        padding-left: 1.8rem;
+        font-size: 0.65rem;
+        height: 2rem;
+    }
+    input::placeholder {
+        font-size: 0.6rem;
+    }
+    .conteudo_superior img {
+        width: 0.9rem;
+        height: 0.9rem;
+        left: 0.45rem;
+    }
+    .limpar-busca {
+        padding: 0.2rem 0.5rem;
+        font-size: 0.75rem;
+    }
+    .resultado-busca {
+        font-size: 0.9rem;
+        padding: 0.4rem 0.6rem;
+    }
+    .bloco {
+        padding: 0.8rem;
+    }
+    .titulo {
+        font-size: 1rem;
+    }
+    .infor {
+        font-size: 0.9rem;
+    }
+    .descricao {
+        font-size: 0.85rem;
+    }
+    .cancelar,
+    .concluir,
+    .concluido {
+        width: 6rem;
+        height: 2rem;
+        font-size: 0.7rem;
+    }
+    .mensagem-vazia {
+        padding: 1.5rem;
+    }
+    .mensagem-vazia h2 {
+        font-size: 1.3rem;
+    }
+    .mensagem-vazia p {
+        font-size: 1rem;
+    }
+}
+
+/* 280px – extra */
+@media (max-width: 280px) {
+    .conteudo_superior {
+        padding: 0.4rem;
+    }
+    h1 {
+        font-size: 0.9rem;
+    }
+    .procurar {
+        width: 3.5rem;
+        font-size: 0.65rem;
+        height: 1.8rem;
+    }
+    input {
+        font-size: 0.55rem;
+        height: 1.8rem;
+        padding-left: 1.6rem;
+    }
+    input::placeholder {
+        font-size: 0.5rem;
+    }
+    .conteudo_superior img {
+        width: 0.8rem;
+        height: 0.8rem;
+        left: 0.4rem;
+    }
+    .resultado-busca {
+        font-size: 0.8rem;
+        padding: 0.3rem 0.5rem;
+    }
+    .limpar-busca {
+        padding: 0.15rem 0.4rem;
+        font-size: 0.65rem;
+    }
+    .bloco {
+        padding: 0.5rem;
+    }
+    .cancelar,
+    .concluir,
+    .concluido {
+        width: 5rem;
+        height: 1.8rem;
+        font-size: 0.6rem;
+    }
+    aside img {
+        height: 1.1rem;
+        width: 1.1rem;
+    }
+    aside .circuloperfil {
+        height: 1.8rem;
+        width: 1.8rem;
+    }
+    .mensagem-vazia {
+        padding: 1rem;
+    }
+    .mensagem-vazia h2 {
+        font-size: 1.1rem;
+    }
+    .mensagem-vazia p {
+        font-size: 0.9rem;
+    }
+}
+
+/* ===== RESPONSIVIDADE ADICIONAL (BLOCO E GRID) ===== */
 @media (max-width: 1200px) {
     .conteudo_superior {
         padding-left: 3rem;
         padding-right: 3rem;
     }
-
-
-      strong{
-    font-size: 1.4rem;
-    font-weight: bold;
-}
 }
 
-/* Tablet */
 @media (max-width: 1024px) {
-    body {
-        gap: 3rem;
-        padding: 1rem;
-    }
-
-    aside {
-        margin-left: 0;
-        padding: 1.5rem;
-        width: auto;
-        min-width: 180px;
-    }
-
-        strong{
-    font-size: 1.3rem;
-    font-weight: bold;
-}
-
-    aside button {
-        width: 100%;
-        height: 4rem;
-        gap: 1rem;
-        padding-left: 1rem;
-    }
-
-    aside p {
-        font-size: 1rem;
-    }
-
-    aside img {
-        height: 2rem;
-        width: 2rem;
-    }
-
-    aside .circuloperfil {
-        height: 3rem;
-        width: 3rem;
-    }
-
-    aside .btn_perfil img {
-        height: 1.8rem;
-        width: 1.8rem;
-    }
-
-    main {
-        margin-right: 0;
-    }
-
     .conteudo_superior {
         padding-left: 3rem;
         padding-right: 3rem;
     }
-
     .procurar {
         width: 10rem;
         font-size: 1.2rem;
     }
-
     .conteudo_superior img {
         width: 1.8rem;
         height: 1.8rem;
         left: 1rem;
     }
-
     input {
         padding-left: 3rem;
     }
-
     .bloco {
         flex-direction: column;
         align-items: stretch;
         padding: 1.8rem;
     }
-    
     .lado-direito {
         flex-direction: row;
         align-items: center;
         justify-content: space-between;
         margin-top: 0.5rem;
     }
-    
-    .data {
-        margin-bottom: 0;
-    }
-    
     .grupo-botoes {
         gap: 0.8rem;
     }
-
-    .cancelar,
-    .concluir, 
-    .concluido {
+    .cancelar, .concluir, .concluido {
         width: 9rem;
         height: 2.6rem;
         font-size: 0.85rem;
     }
-    
     .topo {
-        flex-direction: row;
+        gap: 2rem;
         flex-wrap: wrap;
-        gap: 3rem;
     }
-    
     .topico {
-        width: auto;
-        min-width: 120px;
+        min-width: 110px;
     }
 }
 
-@media screen and (max-width: 850px) {
+@media (max-width: 850px) {
     .limpar-busca {
-        padding: 0.6rem 1rem;
-        font-size: 1.1rem;
-    }
-}
-
-/* Menu apenas ícones */
-@media (max-width: 768px) {
-    body {
-        padding-top: 1rem;
-        gap: 1rem;
-    }
-
-          strong{
-    font-size: 1.1rem;
-    font-weight: bold;
-}
-
-    .conteudo_superior {
-        padding: 1.2rem;
-        
-    }
-
-    h1 {
-        font-size: 1.5rem;
-    }
-
-    form {
-        gap: 0.8rem;
-    }
-
-    .procurar {
-        width: 7rem;
-        font-size: 1rem;
-        height: 2.8rem;
-    }
-
-    input {
-        font-size: 0.85rem;
-        height: 2.8rem;
-        padding-left: 2.8rem;
-    }
-
-    .conteudo_superior img {
-        width: 1.4rem;
-        height: 1.4rem;
-        left: 0.8rem;
-    }
-
-    /* Menu lateral - apenas ícones visíveis */
-    aside {
-        margin-left: 0;
-        padding: 1rem 0.6rem;
-        border-radius: 1rem;
-        width: auto;
-        min-width: auto;
-        align-self: stretch;
-    }
-
-    aside p {
-        display: none;
-    }
-
-    aside button {
-        width: auto;
-        height: auto;
-        padding: 0.7rem;
-        margin-bottom: 0.8rem;
-        gap: 0;
-        justify-content: center;
-        border-radius: 0.8rem;
-    }
-
-    aside img {
-        height: 1.8rem;
-        width: 1.8rem;
-        margin: 0;
-    }
-
-    aside .btn_perfil {
-        margin-bottom: 1rem;
-        padding: 0.4rem;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    aside .circuloperfil {
-        height: 2.5rem;
-        width: 2.5rem;
-        margin: 0;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    aside .btn_perfil img {
-        height: 1.5rem;
-        width: 1.5rem;
-        margin: 0;
-        padding: 0;
-    }
-
-    .conteudo_principal {
-        gap: 1.5rem;
-    }
-
-    .bloco {
-        padding: 1.2rem;
-        border-radius: 1rem;
-    }
-
-    .inforcentro {
-        gap: 1rem;
-    }
-    
-    .topo {
-        flex-direction: row;
-        flex-wrap: wrap;
-        gap: 1.5rem;
-    }
-    
-    .topico {
-        width: auto;
-        min-width: 100px;
-    }
-
-    .titulo {
-        font-size: 1.3rem;
-    }
-
-    .infor,
-    .descricao {
-        font-size: 1.1rem;
-    }
-
-    .data {
+        padding: 0.5rem 0.9rem;
         font-size: 1rem;
     }
-
-    .cancelar,
-    .concluir, 
-    .concluido {
-        width: 7rem;
-        height: 2.2rem;
-        font-size: 0.75rem;
-    }
-    
-    .grupo-botoes {
-        gap: 0.6rem;
-    }
 }
 
-/* Tablets pequenos */
 @media (max-width: 650px) {
     .topo {
         gap: 1.2rem;
     }
-    
     .topico {
         min-width: 85px;
     }
-    
     .titulo {
         font-size: 1.1rem;
     }
-    
     .infor {
         font-size: 0.95rem;
     }
 }
 
-/* Antes da quebra para coluna */
 @media (max-width: 580px) {
     .topo {
         gap: 1rem;
         justify-content: space-between;
     }
-
-          strong{
-    font-size: 1rem;
-    font-weight: bold;
-}
-    
     .topico {
         min-width: 75px;
         flex: 1;
     }
-    
     .titulo {
         font-size: 1rem;
     }
-    
     .infor {
         font-size: 0.85rem;
-        word-break: break-word;
     }
 }
 
-/* Topo muda para coluna */
 @media (max-width: 520px) {
     .topo {
         flex-direction: column;
-        gap: 1.2rem;
+        gap: 1rem;
     }
-    
     .topico {
         width: 100%;
         min-width: unset;
-        gap: .2rem;
+        gap: 0.2rem;
     }
-    
     .limpar-busca {
-        padding: 0.4rem .9rem;
-        font-size: 1rem;
+        padding: 0.4rem 0.8rem;
+        font-size: 0.95rem;
     }
-
     .lado-direito {
         flex-direction: row;
         align-items: stretch;
         gap: 0.8rem;
     }
-    
-    .data {
-        text-align: center;
-    }
-    
     .grupo-botoes {
         justify-content: center;
         gap: 0.8rem;
     }
-    
-    .cancelar,
-    .concluir , 
-    .concluido{
+    .cancelar, .concluir, .concluido {
         width: auto;
-        min-width: 100px;
-        height: 2.2rem;
-        font-size: 0.7rem;
-    }
-}
-
-/* Celular */
-@media (max-width: 480px) {
-    .conteudo_superior {
-        padding: 0.8rem;
-        margin: 0 0.5rem 2rem 0.5rem;
-    }
-
-          strong{
-    font-size: 0.7rem;
-    font-weight: bold;
-    padding-left: 1rem;
-}
-
-    h1 {
-        font-size: 1.2rem;
-    }
-
-    .procurar {
-        width: 5rem;
-        font-size: 0.85rem;
-        height: 2.3rem;
-    }
-
-    input {
-        padding-left: 2.2rem;
-        font-size: 0.7rem;
-        height: 2.3rem;
-    }
-
-    .conteudo_superior img {
-        width: 1.1rem;
-        height: 1.1rem;
-        left: 0.6rem;
-    }
-
-    aside {
-        padding: 0.6rem 0.4rem;
-    }
-
-    aside button {
-        padding: 0.5rem;
-        margin-bottom: 0.6rem;
-    }
-
-    aside img {
-        height: 1.5rem;
-        width: 1.5rem;
-    }
-
-    aside .circuloperfil {
-        height: 2.2rem;
-        width: 2.2rem;
-        margin: 0;
-    }
-
-    aside .btn_perfil img {
-        height: 1.3rem;
-        width: 1.3rem;
-    }
-
-    .bloco {
-        padding: 0.8rem;
-    }
-
-    .topico{
-        gap: .2rem;
-    }
-
-    .titulo {
-        font-size: 1.1rem;
-    }
-
-    .infor,
-    .descricao {
-        font-size: 0.9rem;
-    }
-
-    .data {
-        font-size: 0.85rem;
-    }
-    
-    .cancelar,
-    .concluir, 
-    .concluido {
-        min-width: 85px;
+        min-width: 90px;
         height: 2rem;
         font-size: 0.7rem;
     }
 }
 
-/* Celular pequeno */
 @media (max-width: 400px) {
     .procurar {
-        width: 4.5rem;
+        width: 4rem;
+        font-size: 0.75rem;
+        height: 2rem;
+    }
+    input {
+        padding-left: 1.8rem;
+        font-size: 0.7rem;
+        height: 2rem;
+    }
+    .conteudo_superior img {
+        width: 0.9rem;
+        height: 0.9rem;
+        left: 0.5rem;
+    }
+    .bloco {
+        padding: 1.3rem;
+    }
+    .inforcentro {
+        gap: 0.7rem;
+    }
+    .titulo {
+        font-size: 0.95rem;
+    }
+    .infor, .descricao {
+        font-size: 0.8rem;
+    }
+    .data {
+        font-size: 0.75rem;
+    }
+    .cancelar, .concluir, .concluido {
+        min-width: 70px;
+        height: 1.8rem;
+        font-size: 0.6rem;
+    }
+    .grupo-botoes {
+        gap: 0.5rem;
+    }
+}
+
+/* Ajuste específico para telas entre 480px e 600px */
+@media (max-width: 600px) {
+    .conteudo_superior {
+        padding: 0.8rem;
+    }
+    .procurar {
+        width: 5rem;
         font-size: 0.8rem;
         height: 2.2rem;
     }
-
+    .limpar-busca {
+        padding: 0.3rem 0.6rem;
+        font-size: 0.8rem;
+    }
     input {
         padding-left: 2rem;
+        font-size: 0.7rem;
+        height: 2.2rem;
     }
-
     .conteudo_superior img {
         width: 1rem;
         height: 1rem;
         left: 0.5rem;
-    }
-
-    .bloco {
-        padding: 0.7rem;
-    }
-
-    .inforcentro {
-        gap: 0.7rem;
-    }
-
-    .titulo {
-        font-size: 1rem;
-    }
-
-    .infor,
-    .descricao {
-        font-size: 0.85rem;
-    }
-
-    .data {
-        font-size: 0.8rem;
-    }
-
-    .cancelar,
-    .concluir, 
-    .concluido {
-        min-width: 75px;
-        height: 1.9rem;
-        font-size: 0.65rem;
-    }
-    
-    .grupo-botoes {
-        gap: 0.6rem;
-    }
-    
-    aside .circuloperfil {
-        height: 2rem;
-        width: 2rem;
-    }
-    
-    aside .btn_perfil img {
-        height: 1.2rem;
-        width: 1.2rem;
-    }
-}
-
-/* Celular extra pequeno */
-@media (max-width: 340px) {
-    body {
-        padding-top: 0.5rem;
-    }
-
-    .conteudo_superior {
-        padding: 0.5rem;
-        margin: 0 0.3rem 0.8rem 0.3rem;
-        border-radius: 0.8rem;
-    }
-
-    h1 {
-        font-size: 1rem;
-    }
-
-    form {
-        gap: 0.3rem;
-    }
-
-    .procurar {
-        width: 4rem;
-        font-size: 0.7rem;
-        height: 2rem;
-    }
-
-    input {
-        padding-left: 1.8rem;
-        font-size: 0.6rem;
-        height: 2rem;
-    }
-
-    .conteudo_superior img {
-        width: 0.9rem;
-        height: 0.9rem;
-        left: 0.45rem;
-    }
-
-    aside {
-        padding: 0.5rem 0.3rem;
-        border-radius: 0.6rem;
-    }
-
-    aside button {
-        padding: 0.4rem;
-        margin-bottom: 0.5rem;
-        border-radius: 0.5rem;
-    }
-
-    aside img {
-        height: 1.3rem;
-        width: 1.3rem;
-    }
-
-    aside .circuloperfil {
-        height: 2rem;
-        width: 2rem;
-        margin: 0;
-    }
-
-    aside .btn_perfil img {
-        height: 1.2rem;
-        width: 1.2rem;
-    }
-
-    .conteudo_principal {
-        gap: 1rem;
-    }
-
-    .bloco {
-        padding: 0.5rem;
-        border-radius: 0.7rem;
-    }
-
-    .inforcentro {
-        gap: 0.5rem;
-    }
-
-    .topo {
-        gap: 0.5rem;
-    }
-
-    .titulo {
-        font-size: 0.9rem;
-    }
-
-    .infor,
-    .descricao {
-        font-size: 0.75rem;
-    }
-
-    .data {
-        font-size: 0.7rem;
-    }
-
-    .cancelar,
-    .concluir, 
-    .concluido{
-        min-width: 65px;
-        height: 1.7rem;
-        font-size: 0.6rem;
-    }
-    
-    .grupo-botoes {
-        gap: 0.5rem;
-    }
-}
-
-/* Telas muito pequenas */
-@media (max-width: 280px) {
-    .conteudo_superior {
-        padding: 0.4rem;
-    }
-
-    h1 {
-        font-size: 0.9rem;
-    }
-
-    .procurar {
-        width: 3.5rem;
-        font-size: 0.65rem;
-        height: 1.8rem;
-    }
-
-    input {
-        font-size: 0.55rem;
-        height: 1.8rem;
-        padding-left: 1.6rem;
-    }
-
-    .conteudo_superior img {
-        width: 0.8rem;
-        height: 0.8rem;
-        left: 0.4rem;
-    }
-
-    aside img {
-        height: 1.1rem;
-        width: 1.1rem;
-    }
-
-    aside .circuloperfil {
-        height: 1.8rem;
-        width: 1.8rem;
-    }
-
-    .bloco {
-        padding: 0.4rem;
-    }
-
-    .titulo {
-        font-size: 0.8rem;
-    }
-
-    .infor,
-    .descricao {
-        font-size: 0.7rem;
-    }
-
-    .cancelar,
-    .concluir, 
-    .concluido {
-        min-width: 55px;
-        height: 1.5rem;
-        font-size: 0.55rem;
     }
 }

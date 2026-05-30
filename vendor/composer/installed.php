@@ -3,7 +3,7 @@
         'name' => 'linkadevs/sigem',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => '609ad044f9e43ef5a25080f2a15354786cb9f3b5',
+        'reference' => 'cc92de80af13532d79a46c39e400186ee1bcb445',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -40,7 +40,7 @@
         'linkadevs/sigem' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '609ad044f9e43ef5a25080f2a15354786cb9f3b5',
+            'reference' => 'cc92de80af13532d79a46c39e400186ee1bcb445',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

@@ -1,9 +1,11 @@
 @import 'global.css';
 
+/* ============================================
+   CONFIGURAÇÕES GERAIS
+   ============================================ */
 body {
     background-color: #F4F4F4;
     display: flex;
-    flex-direction: row;
     gap: 3.7rem;
     padding-top: 2rem;
     padding-bottom: 4.2rem;
@@ -11,22 +13,9 @@ body {
     align-items: stretch;
 }
 
-main {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 0 1rem;
-    flex: 1;
-    min-width: 0;
-}
-
-.container {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    max-width: 1400px;
-}
-
+/* ============================================
+   MENU LATERAL (PADRÃO – INALTERADO)
+   ============================================ */
 aside {
     background-color: #FFFFFF;
     display: flex;
@@ -118,217 +107,252 @@ aside .btn_chamados p {
     color: #024265;
 }
 
-.conteudo_superior {
-    background: linear-gradient(to right, #80C4E9, #094C71);
-    border-radius: 1rem;
-    padding: 2.5rem 4rem;
+/* ============================================
+   MAIN E CONTAINER
+   ============================================ */
+main {
     display: flex;
     flex-direction: column;
-    gap: 2rem;
-    margin-bottom: 2rem;
-    width: 100%;
-}
-
-.conteudo_superior h1 {
-    font-size: 3.2rem;
-    color: #FFF;
-    font-weight: 500;
-}
-
-.pesquisa_wrapper {
-    display: flex;
-    gap: 1.5rem;
-    width: 100%;
-}
-
-.input-container {
-    position: relative;
+    align-items: center;
+    width: auto;
+    padding: 0 1rem;
     flex: 1;
 }
 
-.input-container input {
+.container {
     width: 100%;
-    height: 4rem;
-    background-color: rgba(9, 77, 113, 0.44);
-    border: none;
-    border-radius: 0.8rem;
-    padding-left: 4.5rem;
-    color: #FFF;
-    font-size: 1.5rem;
-    outline: none;
-}
-
-.input-container input::placeholder {
-    color: #FFFFFF;
-    opacity: 0.8;
-}
-
-.input-container img {
-    position: absolute;
-    left: 1.5rem;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 2rem;
-}
-
-.procurar {
-    width: 14rem;
-    height: 4rem;
-    background: transparent;
-    border: 1px solid #FFF;
-    border-radius: 0.8rem;
-    color: #FFF;
-    font-size: 1.5rem;
-    font-weight: bold;
-    cursor: pointer;
-    transition: transform 0.2s;
-}
-
-.procurar:hover {
-    transform: scale(1.02);
-}
-
-.informacoes_chamado {
+    max-width: 1400px;
     display: flex;
     flex-direction: column;
-    gap: 2rem;
-    width: 100%;
-    margin-bottom: 3rem;
-}
-
-.card_info {
-    background-color: #FFFFFF;
-    border-radius: 1.5rem;
-    padding: 3rem;
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-    box-shadow: 0 0.3rem 1rem rgba(0, 0, 0, 0.05);
-}
-
-.linha_form {
-    display: flex;
     align-items: center;
-    gap: 1.5rem;
 }
 
-.linha_form.dupla {
+/* ============================================
+   TOPO – IGUAL AO TÉCNICO
+   ============================================ */
+.conteudo_superior {
+    width: 100%;
+    background: linear-gradient(to right, #DFC7FF, #B7E6FF);
+    border-radius: 1rem;
+    padding: 1.5rem 2.8rem;
+    margin-bottom: 2rem;
+}
+
+.topo {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 2rem;
+}
+
+.voltar {
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.voltar:hover {
+    transform: scale(1.05);
+}
+
+.voltar img {
+    width: 2.5rem;
+    height: auto;
+}
+
+.titulo_chamados {
+    width: 100%;
+}
+
+h1 {
+    font-weight: normal;
+    font-size: 2.8rem;
+    color: #094C71;
+    margin: 0;
+}
+
+/* ============================================
+   TABELA (MESMO ESTILO DO TÉCNICO)
+   ============================================ */
+.informacoes {
+    background-color: #ffffff;
+    border-radius: 1.5rem;
+    padding: 0;
+    margin-bottom: 2rem;
+    overflow: hidden;
+    box-shadow: 0 0.3rem 1rem rgba(0, 0, 0, 0.08);
+    width: 100%;
+}
+
+.sobreochamado {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.linha {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 3rem;
-}
-
-.coluna {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    min-width: 0;
-}
-
-.coluna_desc {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 1rem;
-}
-
-.justify_end {
-    justify-content: flex-end;
-}
-
-.label {
-    font-size: 1.6rem;
-    color: #094C71;
-    font-weight: 600;
-    white-space: nowrap;
-}
-
-.card_info.rosa .label {
-    color: #B4009E;
-}
-
-.titulo_quebra {
-    line-height: 1.2;
-}
-
-.valor {
-    background-color: #B3E5FC;
-    color: #094C71;
-    font-size: 1.5rem;
-    font-weight: 500;
-    padding: 0.8rem 1.5rem;
-    border-radius: 0.5rem;
-    flex: 1;
-    min-width: 0;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-}
-
-.valor.center {
-    text-align: center;
-}
-
-.valor.destaque {
-    background-color: #EAF7FE;
-    border: 1px solid #00A3E0;
-}
-
-.card_info.rosa .valor {
-    background-color: #FCE4EC;
-    color: #B4009E;
-}
-
-.codigo_valor {
-    flex: none;
-    width: 12rem;
-}
-
-.contato .valor {
-    flex: none;
-    width: 25rem;
-}
-
-.desc_problema {
-    background-color: #FCE4EC;
-    color: #B4009E;
-    font-size: 1.5rem;
-    font-weight: 500;
-    padding: 1.5rem;
-    border-radius: 0.5rem;
     width: 100%;
+}
+
+.cliente,
+.data,
+.status,
+.cnpj,
+.uf,
+.localizacao,
+.cidade,
+.contato,
+.nomemaquina,
+.codigo {
+    display: flex;
+    padding: 1.2rem 2rem;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.linha:nth-child(odd) .cliente,
+.linha:nth-child(odd) .data,
+.linha:nth-child(odd) .status,
+.linha:nth-child(odd) .cnpj,
+.linha:nth-child(odd) .uf,
+.linha:nth-child(odd) .localizacao,
+.linha:nth-child(odd) .cidade,
+.linha:nth-child(odd) .contato,
+.linha:nth-child(odd) .nomemaquina,
+.linha:nth-child(odd) .codigo {
+    background-color: #F8F9FA;
+}
+
+.linha:nth-child(even) .cliente,
+.linha:nth-child(even) .data,
+.linha:nth-child(even) .status,
+.linha:nth-child(even) .cnpj,
+.linha:nth-child(even) .uf,
+.linha:nth-child(even) .localizacao,
+.linha:nth-child(even) .cidade,
+.linha:nth-child(even) .contato,
+.linha:nth-child(even) .nomemaquina,
+.linha:nth-child(even) .codigo {
+    background-color: #fcdbfb97;
+}
+
+.linha:hover .cliente,
+.linha:hover .data,
+.linha:hover .status,
+.linha:hover .cnpj,
+.linha:hover .uf,
+.linha:hover .localizacao,
+.linha:hover .cidade,
+.linha:hover .contato,
+.linha:hover .nomemaquina,
+.linha:hover .codigo {
+    background-color: #f0f1f1;
+    transition: background-color 0.3s ease;
+}
+
+.titulo {
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: #094C71;
+    margin: 0;
+    width: 40%;
+    min-width: 160px;
+    word-wrap: break-word;
+    word-break: break-word;
+}
+
+.campo {
+    font-size: 1.5rem;
+    color: #333333;
+    margin: 0;
+    width: 60%;
+    word-wrap: break-word;
+    word-break: break-word;
+    line-height: 1.4;
+}
+
+.linha_descricao {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.descricao {
+    display: flex;
+    padding: 1.2rem 2rem;
+    border-bottom: 1px solid #e0e0e0;
+    background-color: #fcdbfb97;
+}
+
+.descricao:hover {
+    background-color: #f0f1f1;
+    transition: background-color 0.3s ease;
+}
+
+.titulo_descricao {
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: #094C71;
+    margin: 0;
+    width: 40%;
+    min-width: 160px;
+    word-wrap: break-word;
+    word-break: break-word;
+}
+
+.campodescricao {
+    font-size: 1.5rem;
+    color: #333333;
+    margin: 0;
+    width: 60%;
+    word-wrap: break-word;
+    word-break: break-word;
     line-height: 1.5;
 }
 
-.card_galeria {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2.5rem;
-    background-color: #FFFFFF;
-    padding: 3rem;
+/* ============================================
+   GALERIA DE FOTOS
+   ============================================ */
+.fotos {
+    display: flex;
+    background: #ffffff;
     border-radius: 1.5rem;
-    box-shadow: 0 0.3rem 1rem rgba(0, 0, 0, 0.05);
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 0.3rem 1rem rgba(0, 0, 0, 0.08);
+    gap: 2rem;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
     width: 100%;
 }
 
-.card_galeria figure {
+.fotos figure {
     margin: 0;
-    width: 100%;
-    aspect-ratio: 1/1;
 }
 
-.card_galeria img {
-    width: 100%;
-    height: 100%;
+.fotos img {
+    width: 12rem;
+    height: 12rem;
+    max-width: 100%;
     border-radius: 1rem;
     object-fit: cover;
-    cursor: pointer;
     transition: transform 0.3s ease;
+    box-shadow: 0 0.2rem 0.5rem rgba(0, 0, 0, 0.1);
+    cursor: pointer;
 }
 
-.card_galeria img:hover {
-    transform: scale(1.03);
+.fotos img:hover {
+    transform: scale(1.02);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
 }
 
+/* ============================================
+   MODAL (AMPLIAR IMAGEM)
+   ============================================ */
 .modal {
     display: none;
     position: fixed;
@@ -338,205 +362,292 @@ aside .btn_chamados p {
     height: 100%;
     background-color: rgba(0, 0, 0, 0.9);
     z-index: 9999;
+    cursor: pointer;
     justify-content: center;
     align-items: center;
 }
 
 .modal-img {
+    display: block;
     max-width: 90%;
     max-height: 90%;
+    margin: auto;
     border-radius: 0.5rem;
+    box-shadow: 0 0 2rem rgba(255, 255, 255, 0.2);
+    animation: zoomIn 0.3s ease;
+}
+
+@keyframes zoomIn {
+    from {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
 }
 
 .modal-close {
     position: absolute;
     top: 2rem;
     right: 3rem;
-    color: #FFF;
+    color: #ffffff;
     font-size: 3rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    z-index: 10000;
     background: none;
     border: none;
-    cursor: pointer;
 }
 
-/* Media Queries */
+.modal-close:hover {
+    transform: scale(1.1);
+    color: #ff6b6b;
+}
+
+/* ============================================
+   RESPONSIVIDADE – MESMA DO TÉCNICO
+   ============================================ */
 @media (max-width: 1280px) {
-    aside {
-        width: 25rem;
+    .conteudo_superior {
+        padding: 1rem 2rem;
+    }
+    .titulo, .titulo_descricao {
+        font-size: 1.3rem;
+        min-width: 140px;
+    }
+    .campo, .campodescricao {
+        font-size: 1.3rem;
+    }
+    .cliente, .data, .status, .cnpj, .uf, .localizacao, .cidade, .contato, .nomemaquina, .codigo {
+        padding: 1rem 1.5rem;
+    }
+    .descricao {
+        padding: 1rem 1.5rem;
+    }
+    .fotos img {
+        width: 10rem;
+        height: 10rem;
     }
 }
 
 @media (max-width: 1024px) {
     body {
-        padding: 1.5rem;
-        gap: 2rem;
+        padding: 1rem;
+        gap: 1.5rem;
     }
-
     aside {
         min-width: 180px;
         width: auto;
         margin-left: 0;
         padding: 1.5rem;
     }
-
     aside p {
         display: none;
     }
-
     aside button {
         justify-content: center;
         padding-left: 0;
     }
-
-    .card_galeria {
-        grid-template-columns: repeat(2, 1fr);
+    .conteudo_superior {
+        padding: 1rem;
     }
-
-    .linha_form.dupla {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
+    h1 {
+        font-size: 2rem;
     }
-
-    .justify_end {
-        justify-content: flex-start;
+    .topo {
+        margin-bottom: 1rem;
+    }
+    .voltar img {
+        width: 2rem;
     }
 }
 
 @media (max-width: 768px) {
     body {
-        padding: 1rem;
+        padding: 0.8rem;
         gap: 1rem;
     }
-
     aside {
         margin-left: 0;
-        width: 7rem;
-        min-width: 7rem;
-        padding: 1.5rem 0.5rem;
+        width: auto;
+        min-width: auto;
+        padding: 1rem 0.5rem;
         align-items: center;
         border-radius: 1rem;
-        height: calc(100vh - 2rem);
-        position: sticky;
-        top: 1rem;
-        overflow-y: auto;
     }
-
-    aside nav {
-        gap: 1.5rem;
-        align-items: center;
-    }
-
     aside button {
-        width: 4.5rem;
-        height: 4.5rem;
-        padding: 0;
-        margin-bottom: 0;
+        width: auto;
+        height: auto;
+        padding: 0.8rem;
+        margin-bottom: 1rem;
+        gap: 0;
         justify-content: center;
-        border-radius: 0.8rem;
     }
-
     aside img {
-        width: 2.2rem;
-        height: 2.2rem;
+        height: 2rem;
+        width: 2rem;
         margin: 0;
     }
-
+    aside .btn_perfil {
+        margin-bottom: 1.5rem;
+        padding: 0.5rem;
+    }
     aside .circuloperfil {
-        width: 3.5rem;
-        height: 3.5rem;
-        padding: 0;
+        height: 3rem;
+        width: 3rem;
     }
-
     aside .btn_perfil img {
-        width: 1.8rem;
         height: 1.8rem;
+        width: 1.8rem;
     }
-
-    .card_info {
-        padding: 1.5rem;
-        gap: 1rem;
+    main {
+        margin-right: 0;
+        flex: 1;
     }
-
-    .linha_form {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 0.5rem;
-    }
-
-    .linha_form.dupla {
-        gap: 1rem;
-    }
-
-    .coluna {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 0.5rem;
-        width: 100%;
-    }
-
-    .label {
-        font-size: 1.3rem;
-        min-width: auto;
-    }
-
-    .valor {
-        font-size: 1.2rem;
-        padding: 0.8rem 1rem;
-        width: 100%;
-        text-align: left;
-    }
-
-    .valor.center {
-        text-align: left;
-    }
-
-    .codigo_valor {
-        width: 100%;
-    }
-
-    .contato .valor {
-        width: 100%;
-    }
-
     .conteudo_superior {
-        padding: 1.5rem;
-        gap: 1.5rem;
+        padding: 0.8rem;
     }
-
-    .pesquisa_wrapper {
-        flex-direction: column;
+    .topo {
+        margin-bottom: 0.5rem;
     }
-
-    .procurar {
-        width: 100%;
+    .voltar img {
+        width: 1.8rem;
     }
-
-    .card_galeria {
+    h1 {
+        font-size: 1.5rem;
+    }
+    .linha {
         grid-template-columns: 1fr;
-        padding: 1.5rem;
-        gap: 1.5rem;
+    }
+    .cliente, .data, .status, .cnpj, .uf, .localizacao, .cidade, .contato, .nomemaquina, .codigo {
+        flex-direction: row;
+        align-items: center;
+        gap: 1rem;
+        padding: 0.8rem 1rem;
+        background-color: transparent;
+    }
+    .titulo {
+        width: 40%;
+        min-width: 120px;
+        font-size: 1.2rem;
+    }
+    .campo {
+        width: 60%;
+        font-size: 1.1rem;
+    }
+    .linha:nth-child(odd) .cliente,
+    .linha:nth-child(odd) .data,
+    .linha:nth-child(odd) .status,
+    .linha:nth-child(odd) .cnpj,
+    .linha:nth-child(odd) .uf,
+    .linha:nth-child(odd) .localizacao,
+    .linha:nth-child(odd) .cidade,
+    .linha:nth-child(odd) .contato,
+    .linha:nth-child(odd) .nomemaquina,
+    .linha:nth-child(odd) .codigo,
+    .linha:nth-child(even) .cliente,
+    .linha:nth-child(even) .data,
+    .linha:nth-child(even) .status,
+    .linha:nth-child(even) .cnpj,
+    .linha:nth-child(even) .uf,
+    .linha:nth-child(even) .localizacao,
+    .linha:nth-child(even) .cidade,
+    .linha:nth-child(even) .contato,
+    .linha:nth-child(even) .nomemaquina,
+    .linha:nth-child(even) .codigo {
+        background-color: transparent;
+    }
+    .descricao {
+        flex-direction: row;
+        align-items: flex-start;
+        gap: 1rem;
+        padding: 0.8rem 1rem;
+        background-color: transparent;
+    }
+    .descricao:hover {
+        background-color: transparent;
+    }
+    .titulo_descricao {
+        width: 40%;
+        min-width: 120px;
+        font-size: 1.2rem;
+    }
+    .campodescricao {
+        width: 60%;
+        font-size: 1.1rem;
+    }
+    .fotos {
+        justify-content: center;
+        gap: 1rem;
+        padding: 1rem;
+    }
+    .fotos img {
+        width: 8rem;
+        height: 8rem;
     }
 }
 
 @media (max-width: 480px) {
-    aside {
+    .conteudo_superior {
+        padding: 0.6rem;
+    }
+    .voltar img {
+        width: 1.5rem;
+    }
+    h1 {
+        font-size: 1.2rem;
+    }
+    .cliente, .data, .status, .cnpj, .uf, .localizacao, .cidade, .contato, .nomemaquina, .codigo {
+        padding: 0.6rem 0.8rem;
+    }
+    .descricao {
+        padding: 0.6rem 0.8rem;
+    }
+    .titulo, .titulo_descricao {
+        font-size: 1rem;
+        min-width: 100px;
+    }
+    .campo, .campodescricao {
+        font-size: 0.9rem;
+    }
+    .fotos img {
+        width: 6rem;
+        height: 6rem;
+    }
+}
+
+@media (max-width: 340px) {
+    .voltar img {
+        width: 1.2rem;
+    }
+    h1 {
+        font-size: 1rem;
+    }
+    .cliente, .data, .status, .cnpj, .uf, .localizacao, .cidade, .contato, .nomemaquina, .codigo {
+        padding: 0.5rem;
+    }
+    .descricao {
+        padding: 0.5rem;
+    }
+    .titulo, .titulo_descricao {
+        font-size: 0.85rem;
+        min-width: 80px;
+    }
+    .campo, .campodescricao {
+        font-size: 0.8rem;
+    }
+    .fotos img {
         width: 5rem;
-        min-width: 5rem;
-        padding: 1rem 0.3rem;
+        height: 5rem;
     }
+}
 
-    aside button {
-        width: 3.5rem;
-        height: 3.5rem;
-    }
-
-    aside img {
-        width: 1.8rem;
-        height: 1.8rem;
-    }
-
-    aside .circuloperfil {
-        width: 3rem;
-        height: 3rem;
+@media (max-width: 280px) {
+    .fotos img {
+        width: 4rem;
+        height: 4rem;
     }
 }

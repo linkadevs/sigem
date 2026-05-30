@@ -14,7 +14,7 @@ body {
     align-items: stretch;
 }
 
-/* ========== MENU LATERAL (INALTERADO) ========== */
+/* ========== MENU LATERAL  ========== */
 aside {
     background-color: #FFFFFF;
     display: flex;
@@ -27,10 +27,12 @@ aside {
     height: auto;
     align-self: stretch;
 }
+
 aside img {
     height: 4rem;
     width: 4rem;
 }
+
 aside button {
     width: 35.5rem;
     height: 6.2rem;
@@ -46,32 +48,40 @@ aside button {
     border-radius: .8rem;
     transition: all 0.3s ease;
 }
+
 aside button:hover {
     transform: translateX(5px);
     background-color: #f8f8f8;
 }
+
 aside p {
     font-size: 2rem;
     font-weight: normal;
     color: #CBCFD1;
 }
+
 aside .btn_maquinas {
     background-color: #EAF7FE;
 }
+
 aside .btn_maquinas p {
     color: #024265;
 }
+
 aside .btn_perfil {
     margin-bottom: 4rem;
 }
+
 aside .btn_perfil p {
     color: #094C71;
     font-weight: lighter;
 }
+
 aside .btn_perfil img {
     height: 3.5rem;
     width: 3.5rem;
 }
+
 aside .circuloperfil {
     display: flex;
     align-items: center;
@@ -81,6 +91,7 @@ aside .circuloperfil {
     background-color: #EAF7FE;
     border-radius: 50rem;
 }
+
 aside .btn_logout p {
     color: #094C71;
     font-weight: lighter;
@@ -95,6 +106,7 @@ main {
     padding: 0 1rem;
     flex: 1;
 }
+
 .container {
     gap: 3rem;
     width: 100%;
@@ -113,6 +125,7 @@ main {
     padding: 1.5rem 6.6rem 1.5rem 6.6rem;
     margin-bottom: 3.4rem;
 }
+
 .pesquisa {
     position: relative;
     display: flex;
@@ -121,11 +134,13 @@ main {
     gap: 1rem;
     width: 100%;
 }
+
 .input-container {
     position: relative;
     flex: 1;
     min-width: 0;
 }
+
 .conteudo_superior img {
     width: 2.2rem;
     height: 2.2rem;
@@ -136,10 +151,12 @@ main {
     pointer-events: none;
     z-index: 1;
 }
+
 h1 {
     font-weight: normal;
     font-size: 3rem;
 }
+
 input {
     background-color: #094d7170;
     border: none;
@@ -151,14 +168,17 @@ input {
     color: #FFFFFF;
     transition: all 0.3s ease;
 }
+
 input::placeholder {
     color: #FFFFFF;
     opacity: 0.8;
 }
+
 input:focus {
     outline: none;
     background-color: #094d7180;
 }
+
 .procurar {
     background: none;
     border: none;
@@ -173,9 +193,11 @@ input:focus {
     transition: all 0.3s ease;
     flex-shrink: 0;
 }
+
 .procurar:hover {
     transform: scale(1.02);
 }
+
 .procurar::before {
     content: '';
     position: absolute;
@@ -202,6 +224,7 @@ input:focus {
     border: none;
     cursor: pointer;
 }
+
 .limpar-busca:hover {
     background-color: #c0392b;
     transform: translateY(-2px);
@@ -221,6 +244,7 @@ input:focus {
     flex-wrap: wrap;
     gap: 1rem;
 }
+
 .resultado-busca strong {
     color: #1291D5;
 }
@@ -233,6 +257,7 @@ input:focus {
     min-height: 50vh;
     padding: 4rem 2rem;
 }
+
 .mensagem-vazia {
     text-align: center;
     background-color: #f9f9f9;
@@ -242,30 +267,42 @@ input:focus {
     box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.1);
     animation: fadeIn 0.5s ease;
 }
+
 @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
+
 .mensagem-vazia h2 {
     font-size: 2rem;
     color: #094C71;
     margin-bottom: 1rem;
     font-weight: 700;
 }
+
 .mensagem-vazia p {
     font-size: 1.4rem;
     color: #666;
     margin-bottom: 0.8rem;
 }
+
 .mensagem-vazia .sugestao {
     color: #1291D5;
     font-weight: 500;
 }
+
 .mensagem-vazia .sugestao a {
     color: #1291D5;
     text-decoration: none;
     font-weight: 600;
 }
+
 .mensagem-vazia .sugestao a:hover {
     text-decoration: underline;
 }
@@ -276,6 +313,7 @@ input:focus {
     justify-content: center;
     margin-bottom: 2rem;
 }
+
 .btn_nova_maquina {
     display: flex;
     align-items: center;
@@ -288,15 +326,18 @@ input:focus {
     box-shadow: 0 0.2rem 0.4rem rgba(0, 0, 0, 0.05);
     transition: all 0.3s ease;
 }
+
 .btn_nova_maquina:hover {
     transform: translateY(-2px);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
+
 .icone_mais {
     color: #8A38F5;
     font-size: 2rem;
     font-weight: bold;
 }
+
 .texto_nova_maquina {
     font-size: 1.5rem;
     color: #8A38F5;
@@ -310,6 +351,7 @@ input:focus {
     gap: 0.8rem;
     width: 100%;
 }
+
 .card_maquina {
     background-color: #F4FFFF;
     border-radius: 0.8rem;
@@ -320,10 +362,12 @@ input:focus {
     transition: all 0.2s ease;
     cursor: pointer;
 }
+
 .card_maquina:hover {
     background-color: #e8f8f8;
     transform: translateX(4px);
 }
+
 .badge_maquina {
     background-color: #C1F0FB;
     color: #024265;
@@ -334,11 +378,13 @@ input:focus {
     min-width: 12rem;
     text-align: center;
 }
+
 .descricao_maquina {
     font-size: 1.4rem;
     color: #024265;
     margin: 0;
 }
+
 .card_informacao {
     display: none;
     flex-direction: column;
@@ -349,6 +395,7 @@ input:focus {
     border-radius: 0.8rem;
     margin-bottom: 0.5rem;
 }
+
 .titulo {
     display: flex;
     align-items: center;
@@ -358,6 +405,7 @@ input:focus {
     border-bottom: 1px solid #ddd;
     padding-bottom: 0.6rem;
 }
+
 .codigo {
     background-color: #8A38F5;
     color: #DDF3FF;
@@ -367,42 +415,50 @@ input:focus {
     font-weight: bold;
     margin: 0;
 }
+
 .nomeP {
     font-size: 1.5rem;
     font-weight: 600;
     color: #094C71;
     margin: 0;
 }
+
 .lixeira img {
     width: 2.5rem;
     display: block;
 }
+
 .lixeiraBotao {
     background: transparent;
     border: none;
     cursor: pointer;
     padding: 0;
 }
+
 .informacoes {
     display: flex;
     flex-direction: column;
     gap: 0.6rem;
 }
+
 .linha {
     display: flex;
     gap: 1rem;
     align-items: baseline;
     flex-wrap: wrap;
 }
+
 .linha p {
     margin: 0;
     font-size: 1.2rem;
 }
+
 .linha p:first-child {
     font-weight: 600;
     color: #094C71;
     min-width: 12rem;
 }
+
 .linha p:last-child {
     background-color: #DDF3FF;
     padding: 0.3rem 0.8rem;
@@ -410,23 +466,28 @@ input:focus {
     color: #024265;
     flex: 1;
 }
+
 .linha2 {
     display: flex;
     gap: 1.5rem;
     flex-wrap: wrap;
 }
+
 .linha2 .linha {
     flex: 1;
 }
+
 .linha3 .linha {
     flex: 1;
 }
+
 .botoes {
     display: flex;
     gap: 1rem;
     justify-content: flex-end;
     margin-top: 0.5rem;
 }
+
 .botoes button {
     padding: 0.4rem 1rem;
     border-radius: 1rem;
@@ -438,201 +499,225 @@ input:focus {
     cursor: pointer;
     transition: all 0.2s;
 }
+
 .botoes button:hover {
     background-color: #094C71;
     color: white;
     transform: translateY(-2px);
 }
 
-/* ========== RESPONSIVIDADE (MANTÉM MENU E TOPO) ========== */
-@media (max-width: 1280px) {
+/* ========== MEDIA QUERIES (NOVO PADRÃO DE MENU) ========== */
+
+/* Tablet (até 1000px) */
+@media (max-width: 1000px) {
     body {
-        gap: 2rem;
-        padding: 1.5rem;
+        gap: 1.5rem;
+        padding: 1rem;
     }
+
     aside {
-        margin-left: 1.5rem;
+        margin-left: 0;
         padding: 1.5rem;
-        min-width: 220px;
+        width: auto;
+        min-width: 200px;
     }
+
     aside button {
         width: 100%;
-        height: 5rem;
-        gap: 1.2rem;
+        height: 4.5rem;
+        gap: 1rem;
         padding-left: 1rem;
     }
+
     aside p {
-        font-size: 1.6rem;
+        font-size: 1.2rem;
     }
+
     aside img {
-        height: 3rem;
-        width: 3rem;
+        height: 2.5rem;
+        width: 2.5rem;
     }
-    aside .circuloperfil {
-        height: 4rem;
-        width: 4rem;
+
+    aside .btn_perfil {
+        margin-bottom: 2rem;
     }
+
     aside .btn_perfil img {
         height: 2.5rem;
         width: 2.5rem;
     }
+
+    aside .circuloperfil {
+        height: 4rem;
+        width: 4rem;
+    }
+
+    main {
+        margin-right: 0;
+    }
+
+    /* Restante do conteúdo (original) */
     .container {
         max-width: 1100px;
     }
+
     .conteudo_superior {
         padding-left: 4rem;
         padding-right: 4rem;
     }
+
     h1 {
         font-size: 2.5rem;
     }
+
     .procurar {
         width: 12rem;
         font-size: 1.3rem;
         height: 3.3rem;
     }
+
     input {
         height: 3.1rem;
         font-size: 0.95rem;
     }
+
     .conteudo_superior img {
         width: 2rem;
         height: 2rem;
         left: 1rem;
     }
+
     .badge_maquina {
         font-size: 1.3rem;
         min-width: 10rem;
         padding: 0.4rem 0.8rem;
     }
+
     .descricao_maquina {
         font-size: 1.3rem;
     }
+
     .card_maquina {
         padding: 0.6rem 1rem;
         gap: 1rem;
     }
 }
-@media (max-width: 1024px) {
+
+/* Celular (até 768px) - menu ícones */
+@media (max-width: 768px) {
     body {
-        gap: 1.5rem;
-        padding: 1rem;
+        gap: 1rem;
+        padding: 0.8rem;
+        flex-direction: row;
+        align-items: stretch;
     }
+
     aside {
         margin-left: 0;
-        padding: 1.5rem;
-        min-width: 180px;
+        padding: 1rem 0.5rem;
+        border-radius: 1rem;
+        width: auto;
+        min-width: auto;
+        align-self: stretch;
     }
-    aside button {
-        width: 100%;
-        height: 4rem;
-        gap: 1rem;
-        padding-left: 1rem;
-    }
+
     aside p {
-        font-size: 1rem;
+        display: none;
     }
+
+    aside button {
+        width: auto;
+        height: auto;
+        padding: 0.8rem;
+        margin-bottom: 1rem;
+        gap: 0;
+        justify-content: center;
+        border-radius: 0.8rem;
+    }
+
+    aside button:hover {
+        transform: scale(1.05);
+    }
+
     aside img {
         height: 2rem;
         width: 2rem;
+        margin: 0;
     }
+
+    aside .btn_perfil {
+        margin-bottom: 1.5rem;
+        padding: 0.5rem;
+    }
+
     aside .circuloperfil {
         height: 3rem;
         width: 3rem;
     }
+
+    aside .btn_perfil img {
+        height: 1.8rem;
+        width: 1.8rem;
+    }
+
     main {
         margin-right: 0;
+        flex: 1;
     }
-    .conteudo_superior {
-        padding-left: 3rem;
-        padding-right: 3rem;
-    }
-    .procurar {
-        width: 10rem;
-        font-size: 1.2rem;
-    }
-    .conteudo_superior img {
-        width: 1.8rem;
-        height: 1.8rem;
-        left: 1rem;
-    }
-    input {
-        padding-left: 3rem;
-    }
-    .badge_maquina {
-        font-size: 1.2rem;
-        min-width: 9rem;
-    }
-    .descricao_maquina {
-        font-size: 1.2rem;
-    }
-}
-@media (max-width: 768px) {
-    body {
-        padding-top: 1rem;
-        gap: 1rem;
-    }
+
+    /* Conteúdo original */
     .conteudo_superior {
         padding: 1rem;
         margin: 0 1rem 1.5rem 1rem;
     }
+
     h1 {
         font-size: 1.3rem;
     }
+
     form {
         gap: 0.6rem;
     }
+
     .procurar {
         width: 6rem;
         font-size: 0.9rem;
         height: 2.5rem;
     }
+
     input {
         font-size: 0.8rem;
         height: 2.5rem;
         padding-left: 2.5rem;
     }
+
     .conteudo_superior img {
         width: 1.2rem;
         height: 1.2rem;
         left: 0.7rem;
     }
-    /* Menu lateral ícones */
-    aside {
-        margin-left: 0;
-        padding: 0.8rem 0.5rem;
-        width: auto;
-        min-width: auto;
-        align-self: stretch;
-    }
-    aside p {
-        display: none;
-    }
-    aside button {
-        width: auto;
-        height: auto;
-        padding: 0.6rem;
-        margin-bottom: 0.6rem;
-        gap: 0;
+
+    /* Botão nova máquina */
+    .container_nova_maquina {
         justify-content: center;
+        margin-bottom: 1.5rem;
     }
-    aside img {
-        height: 1.5rem;
-        width: 1.5rem;
+
+    .btn_nova_maquina {
+        padding: 0.5rem 1.5rem;
+        gap: 0.8rem;
+        border-radius: 1.8rem;
     }
-    aside .btn_perfil {
-        margin-bottom: 0.8rem;
-        padding: 0.3rem;
+
+    .icone_mais {
+        font-size: 1.6rem;
     }
-    aside .circuloperfil {
-        height: 2.2rem;
-        width: 2.2rem;
+
+    .texto_nova_maquina {
+        font-size: 1.2rem;
     }
-    aside .btn_perfil img {
-        height: 1.3rem;
-        width: 1.3rem;
-    }
-    /* Cards em coluna */
+
+    /* Cards */
     .card_maquina {
         flex-direction: column;
         align-items: stretch;
@@ -640,91 +725,245 @@ input:focus {
         gap: 0.5rem;
         padding: 0.8rem;
     }
+
     .badge_maquina {
         width: auto;
         text-align: center;
         font-size: 1.1rem;
     }
+
     .descricao_maquina {
         text-align: center;
         font-size: 1.1rem;
     }
+
     .titulo {
-        flex-direction: column;
-        align-items: flex-start;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 0.8rem;
     }
+
     .linha {
         flex-direction: column;
         align-items: flex-start;
         gap: 0.3rem;
     }
+
     .linha p:first-child {
         min-width: auto;
     }
+
     .linha p:last-child {
         width: 100%;
     }
+
     .linha2 {
         flex-direction: column;
         gap: 0.6rem;
     }
+
     .botoes {
         flex-direction: column;
         gap: 0.6rem;
         align-items: stretch;
     }
+
     .botoes button {
         width: 100%;
     }
 }
+
+/* Celular pequeno (até 480px) */
 @media (max-width: 480px) {
+    aside {
+        padding: 0.8rem 0.4rem;
+    }
+
+    aside button {
+        padding: 0.6rem;
+        margin-bottom: 0.8rem;
+    }
+
+    aside img {
+        height: 1.6rem;
+        width: 1.6rem;
+    }
+
+    aside .btn_perfil {
+        margin-bottom: 1rem;
+        padding: 0.4rem;
+    }
+
+    aside .circuloperfil {
+        height: 2.5rem;
+        width: 2.5rem;
+    }
+
+    aside .btn_perfil img {
+        height: 1.5rem;
+        width: 1.5rem;
+    }
+
+    /* Conteúdo original */
     .conteudo_superior {
         padding: 0.6rem;
         margin: 0 0.5rem 1rem 0.5rem;
     }
+
     h1 {
         font-size: 1.1rem;
     }
+
     .procurar {
         width: 4.5rem;
         font-size: 0.75rem;
         height: 2rem;
     }
+
     input {
         padding-left: 2rem;
         font-size: 0.65rem;
         height: 2rem;
     }
+
     .limpar-busca {
         padding: 0.4rem 0.8rem;
         font-size: 1rem;
     }
+
     .resultado-busca {
         font-size: 1rem;
         padding: 0.6rem 1rem;
     }
+
     .mensagem-vazia {
         padding: 2rem 1rem;
     }
+
     .mensagem-vazia h2 {
         font-size: 1.5rem;
     }
+
     .mensagem-vazia p {
         font-size: 1.2rem;
     }
+
     .badge_maquina {
         font-size: 1rem;
     }
+
     .descricao_maquina {
         font-size: 1rem;
     }
+
     .codigo {
         font-size: 1.1rem;
     }
+
     .nomeP {
         font-size: 1.2rem;
     }
+
     .linha p {
+        font-size: 1rem;
+    }
+}
+
+/* Celular muito pequeno (até 340px) */
+@media (max-width: 340px) {
+    body {
+        gap: 0.6rem;
+        padding: 0.5rem;
+        align-items: stretch;
+    }
+
+    aside {
+        padding: 0.6rem 0.3rem;
+        border-radius: 0.6rem;
+    }
+
+    aside button {
+        padding: 0.5rem;
+        margin-bottom: 0.6rem;
+        border-radius: 0.5rem;
+    }
+
+    aside img {
+        height: 1.4rem;
+        width: 1.4rem;
+    }
+
+    aside .btn_perfil {
+        margin-bottom: 0.8rem;
+        padding: 0.3rem;
+    }
+
+    aside .circuloperfil {
+        height: 2.2rem;
+        width: 2.2rem;
+    }
+
+    aside .btn_perfil img {
+        height: 1.3rem;
+        width: 1.3rem;
+    }
+}
+
+/* 280px - extra */
+@media (max-width: 280px) {
+    aside img {
+        height: 1.1rem;
+        width: 1.1rem;
+    }
+
+    aside .circuloperfil {
+        height: 1.8rem;
+        width: 1.8rem;
+    }
+}
+
+/* ========== TELAS MUITO PEQUENAS (ATÉ 390px e 320px) - ORIGINAL ========== */
+@media (max-width: 390px) {
+    .botoes {
+        gap: 0.4rem;
+    }
+
+    .botoes button {
+        padding: 0.4rem 0.6rem;
+        font-size: 1rem;
+        border-radius: 0.7rem;
+    }
+
+    .editarButton, .historicoButton {
+        font-size: 0.9rem;
+        padding: 0.3rem 0.5rem;
+    }
+}
+
+@media (max-width: 320px) {
+    .botoes button {
+        padding: 0.2rem 0.4rem;
+        font-size: 0.8rem;
+    }
+
+    .editarButton, .historicoButton {
+        font-size: 0.8rem;
+        padding: 0.2rem 0.4rem;
+    }
+
+    .card_informacao {
+        padding: 0.6rem 0.8rem;
+        gap: 0.5rem;
+    }
+
+    .titulo {
+        gap: 0.4rem;
+    }
+
+    .codigo, .nomeP {
         font-size: 1rem;
     }
 }

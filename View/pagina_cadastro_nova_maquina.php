@@ -30,7 +30,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
 if($_SESSION['cod_maquina'] === null) {
     $title = 'Cadastro de máquina';
     $h1 = 'Cadastrar nova máquina';
-    $p = 'Insira todas as informações abaixo para realizar o cadastro de uma nova máquina';
+    $p = 'Insira todas as informações para realizar o cadastro de uma nova máquina';
     $maquina = ['dados' => ['modelo' => '']];
     $nome_maquina_value = '';
     $capacidade_termica_value = '';
@@ -44,7 +44,7 @@ if($_SESSION['cod_maquina'] === null) {
     $maquina = $maquinaController->verMaquinasPorCodigo($cod_maquina);
     $title = 'Edição da máquina '. htmlspecialchars($cod_maquina);
     $h1 = 'Editar máquina ' . htmlspecialchars($cod_maquina);
-    $p = 'Edite todas as informações abaixo para realizar a edição da máquina';
+    $p = 'Altere as informações desejadas';
     $nome_maquina_value = $maquina['dados']['nome_maquina'];
     $capacidade_termica_value = $maquina['dados']['capacidade_termica_de_refrigeracao'];
     $localizacao_value = $maquina['dados']['localizacao'];
