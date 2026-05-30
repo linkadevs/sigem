@@ -26,41 +26,37 @@ class AdmController{
 
     public function updateAdm($nome_adm, $cpf_adm, $email_adm, $id_adm) {
 
-        if(
-            empty($nome_adm) ||
-            empty($cpf_adm) ||
-            empty($email_adm)
-        ) {
-            echo '<script>
-                    alert("Por favor, preencha todos os campos.");
-                    window.history.back();
-                </script>';
-            exit;
+        if($cpf_adm !== '') {
+            if (strlen($cpf_adm) !== 11) {
+                echo '<script>
+                        alert("O CPF deve conter exatamente 11 dígitos. (Insira apenas números)");
+                        window.history.back();
+                    </script>';
+                exit;
+            }
+    
+            // FORMATA O CPF 000.000.000-00
+            $cpf_adm = preg_replace(
+                "/(\d{3})(\d{3})(\d{3})(\d{2})/",
+                "$1.$2.$3-$4",
+                $cpf_adm
+            );
+    
+            if(
+                !empty($this->AdmModel->selecionarAdmPorCpf($cpf_adm)) ||
+                !empty($this->tecnicoModel->getTecByCpf($cpf_adm))
+            ) {
+                $error_message = urlencode("Erro: já existe usuário com esse CPF.");
+                header("Location: ../View/perfil_do_adm.php?error_message=$error_message");
+                exit;
+            }
         }
 
-        if (strlen($cpf_adm) !== 11) {
-            echo '<script>
-                    alert("O CPF deve conter exatamente 11 dígitos. (Insira apenas números)");
-                    window.history.back();
-                </script>';
-            exit;
-        }
+        $user = $this->AdmModel->selecionarAdmPorId($id_adm);
 
-        // FORMATA O CPF 000.000.000-00
-        $cpf_adm = preg_replace(
-            "/(\d{3})(\d{3})(\d{3})(\d{2})/",
-            "$1.$2.$3-$4",
-            $cpf_adm
-        );
-
-        if(
-            !empty($this->AdmModel->selecionarAdmPorCpf($cpf_adm)) ||
-            !empty($this->tecnicoModel->getTecByCpf($cpf_adm))
-        ) {
-            $error_message = urlencode("Erro: já existe usuário com esse CPF.");
-            header("Location: ../View/perfil_do_adm.php?error_message=$error_message");
-            exit;
-        }
+        if(empty($nome_adm)) $nome_adm = $user['nome'];
+        if(empty($cpf_adm)) $cpf_adm = $user['cpf'];
+        if(empty($email_adm)) $email_adm = $user['email'];
 
         $success = $this->AdmModel->updateUserAdm($nome_adm, $cpf_adm, $email_adm, $id_adm);
         if ($success) {

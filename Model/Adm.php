@@ -28,7 +28,7 @@ class Adm{
 
     public function selecionarAdmPorCpf($cpf) {
         try {
-            $sql = 'SELECT cpf FROM administrador WHERE cpf = :cpf';
+            $sql = 'SELECT cpf, id_administrador FROM administrador WHERE cpf = :cpf';
             $stmt = $this->db->prepare($sql);
             $stmt->execute([
                 ':cpf' => $cpf

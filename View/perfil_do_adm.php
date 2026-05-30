@@ -12,22 +12,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $id = $_SESSION['id_administrador'];
 
     if (
-        !empty($_POST['nome']) &&
-        !empty($_POST['cpf']) &&
+        !empty($_POST['nome']) ||
+        !empty($_POST['cpf']) ||
         !empty($_POST['email'])
     ) {
+        $cpf = preg_replace('/\D/', '', $_POST['cpf']);
         $admController->updateAdm(
             $_POST['nome'],
-            $_POST['cpf'],
+            $cpf,
             $_POST['email'],
             $id
         );
     }
 
     if (
-        !empty($_POST['nova_senha']) &&
+        !empty($_POST['nova_senha']) ||
         !empty($_POST['confirmar_senha'])
     ) {
+        $_SESSION['error_message'] = '';
         $admController->updatePassword(
             $id,
             $_POST['nova_senha'],
@@ -84,19 +86,19 @@ if(isset($_GET['error_message'])) {
                     <div class="linha_info">
                         <p class="rotulo">Nome</p>
                         <!-- <p class="valor">UNEB</p> -->
-                        <input type="text" name="nome" class="valor" value="<?php echo htmlspecialchars($administrador['nome'] ?? '', ENT_QUOTES, 'UTF-8');?>">
+                        <input type="text" name="nome" class="valor" placeholder="<?php echo htmlspecialchars($administrador['nome'] ?? '', ENT_QUOTES, 'UTF-8');?>">
                     </div>
                     
                     <div class="linha_info">
                         <p class="rotulo">CPF</p>
                         <!-- <p class="valor">AB.123.CDE/0001-XY</p> -->
-                        <input type="text" name="cpf" class="valor" value="<?php echo htmlspecialchars($administrador['cpf'] ?? '', ENT_QUOTES, 'UTF-8'); ?>">
+                        <input type="text" name="cpf" class="valor" placeholder="<?php echo htmlspecialchars($administrador['cpf'] ?? '', ENT_QUOTES, 'UTF-8'); ?>">
                     </div>
                     
                     <div class="linha_info">
                         <p class="rotulo">E-mail</p>
                         <!-- <p class="valor">abcdef.ghi@gmail.com</p> -->
-                        <input type="text" name="email" class="valor" value="<?php echo htmlspecialchars($administrador['email'] ?? '', ENT_QUOTES, 'UTF-8'); ?>">
+                        <input type="text" name="email" class="valor" placeholder="<?php echo htmlspecialchars($administrador['email'] ?? '', ENT_QUOTES, 'UTF-8'); ?>">
                     </div>
                     
                     <div class="linha_info" id="linha_senha">
@@ -111,6 +113,10 @@ if(isset($_GET['error_message'])) {
                         <input type="password" name="nova_senha" placeholder="Digite a nova senha">
                         <input type="password" name="confirmar_senha" placeholder="Repita a nova senha">
                     </div>
+                    <?php if(isset($_SESSION['error_message']) && !empty($_SESSION['error_message'])):?>
+                        <p class="erro"><?= $_SESSION['error_message']?></p>
+                        <?php $_SESSION['error_message'] = '';?>
+                    <?php endif;?>
                 </div>
                 
                 <div class="botoes_acao">

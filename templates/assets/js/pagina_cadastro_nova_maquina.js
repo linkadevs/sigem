@@ -2,6 +2,11 @@ const form = document.querySelector('form')
 const btu = document.getElementById('capacidade_termica')
 const inputs = document.querySelectorAll('input, select')
 const cancelar = document.querySelector('.cancelar')
+const voltar = document.querySelector('.voltar_header')
+
+voltar.addEventListener('click', () => {
+    window.location.href = 'gerenciamento_de_maquinas_adm.php'
+})
 
 btu.addEventListener('input', () => {
 
