@@ -2,7 +2,7 @@
 
 session_start();
 
-if(empty(!isset($_SESSION['id_administrador']))) {
+if(empty($_SESSION['id_administrador']) || !isset($_SESSION['id_administrador'])) {
     $_SESSION['id_administrador'] = $_GET['id_administrador'];
 }
 

@@ -42,25 +42,25 @@ $cliente = $gerenciamentoClienteController->buscarClientePorId($id_cliente);
                     <div class="inputs">
                         <div class="input">
                             <label for="cliente">Nome</label>
-                            <input type="text" name="nome" id="nome" placeholder="Insira o nome do cliente" value="<?= $cliente['nome']?>">
+                            <input type="text" name="nome" id="nome" value="<?= $cliente['nome']?>" disabled>
                         </div>
                         <div class="dataUf">
                             <div class="input">
                                 <label for="data">Data</label>
-                                <input type="date" name="data" id="data" value="<?= date('Y-m-d')?>">
+                                <input type="date" name="data" id="data" value="<?= date('Y-m-d')?>" disabled>
                             </div>
                             <div class="input">
                                 <label for="uf">UF</label>
-                                <input type="text" name="uf" id="uf" maxlength="2" placeholder="Estado" value="<?= $cliente['uf']?>">
+                                <input type="text" name="uf" id="uf" placeholder="Estado" value="<?= $cliente['uf']?>" disabled>
                             </div>
                         </div>
                         <div class="input">
                             <label for="cidade">Cidade</label>
-                            <input type="text" name="cidade" id="cidade" placeholder="Insira a cidade do chamado" value="<?= $cliente['cidade']?>">
+                            <input type="text" name="cidade" id="cidade" placeholder="Insira a cidade do chamado" value="<?= $cliente['cidade']?>" disabled>
                         </div>
                         <div class="input">
                             <label for="localizacao">Localização</label>
-                            <input type="text" name="localizacao" id="localizacao" placeholder="Insira o local do chamado" value="<?= $maquina['localizacao']?>">
+                            <input type="text" name="localizacao" id="localizacao" placeholder="Insira o local do chamado" value="<?= $maquina['localizacao']?>" disabled>
                         </div>
                         <div class="input">
                             <label for="descricao">Descrição</label>
