@@ -6,7 +6,7 @@ const selectCidade = document.getElementById('cidade');
 // Botão de voltar
 if (btnVoltar) {
     btnVoltar.addEventListener('click', () => {
-        window.history.back();
+        window.location.href = 'pagina_gerenciamento_de_clientes_adm.php';
     });
 }
 

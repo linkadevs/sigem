@@ -6,7 +6,7 @@ const camposenha = document.querySelector('#senha')
 
 if (voltar) {
     voltar.addEventListener('click', () => {
-        window.location.href = ''
+        window.location.href = 'pagina_gerenciamento_de_tecnicos_adm.php'
     })
 }
 

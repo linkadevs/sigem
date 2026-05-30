@@ -1,7 +1,7 @@
 const btnVoltar = document.querySelector('.voltar');
 if (btnVoltar) {
     btnVoltar.addEventListener('click', () => {
-        window.history.back();
+        window.location.href = 'pagina_acompanhamento_de_chamados_adm.php';
     });
 }
 

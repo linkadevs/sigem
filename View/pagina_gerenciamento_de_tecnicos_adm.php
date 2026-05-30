@@ -117,7 +117,7 @@ $tecnicos = $controller->pesquisarTecnicos($busca);
                 <?php foreach ($tecnicos as $tecnico): ?>
                     <div class="card">
                         <h2 class="nome"><?= htmlspecialchars($tecnico['nome']) ?></h2>
-                        <p class="email">Example@gmail.com</p>
+                        <p class="email"><?= htmlspecialchars($tecnico['email'])?></p>
                         <div class="container_informacoes">
                             <div class="informacoes">
                                 <div class="container_cpf">
