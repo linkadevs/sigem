@@ -1,5 +1,9 @@
 @import url('global.css');
 
+:root {
+    font-size: 50%;
+}
+
 figure img {
     display: block;
 }
@@ -49,23 +53,22 @@ header{
 }
 
 main{
+    min-height: 90vh;
     display: flex;
     flex-direction: column;
     align-items: center; /* Centraliza horizontalmente */
     justify-content: center; /* Centraliza verticalmente */
-    min-height: 100vh; /* Garante que o main ocupe toda a altura da tela */
     background-image: url('../img/fundo-edicao.jpg');
     background-repeat: no-repeat;
     background-size: cover;
-    border-bottom-right-radius: 26rem;
-    border-bottom-left-radius: 26rem;
-    padding: 0; /* Remove padding desnecessário */
+    padding-top: 12rem;
+    padding-bottom: 8rem;
 }
 
 .card_main{
     height: 48rem;
     width: 50rem;
-    padding: 4rem 4rem 0 2rem;
+    padding: 4rem 4rem 2rem 2rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -337,7 +340,7 @@ main{
     }
 
     .card_main p {
-        font-size: .9rem;
+        font-size: 1.1rem;
     }
     
     .botoes_card button {

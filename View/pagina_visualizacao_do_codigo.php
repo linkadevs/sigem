@@ -12,7 +12,7 @@ require_once __DIR__ . '/../Controller/MaquinaController.php';
 $maquinaController = new MaquinaController();
 
 if($_SESSION['nome_maquina'] === null) {
-    // header('Location: gerenciamento_de_maquinas_adm.php');
+    header('Location: gerenciamento_de_maquinas_adm.php');
     exit();
 }
 $cod_maquina = $_SESSION['cod_maquina'];
@@ -52,13 +52,6 @@ $qrCode = new QrCode($result['dados']);
 $writer = new PngWriter();
 $resultQr = $writer->write($qrCode);
 
-$_SESSION['nome_maquina'] = null;
-$_SESSION['localizacao'] = null;
-$_SESSION['marca'] = null;
-$_SESSION['modelo'] = null;
-$_SESSION['fluido_refrigerante'] = null;
-$_SESSION['capacidade_termica'] = null;
-$_SESSION['id_cliente'] = null;
 
 ?>
 
@@ -67,7 +60,7 @@ $_SESSION['id_cliente'] = null;
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../templates/assets/css/pagina_visualizacao_do_codigo.css">
+    <link rel="stylesheet" href="../templates/assets/css/pagina_visualizacao_do_codigo.css?v=<?= time() ?>">
     <title>Cadastro de Máquina</title>
 </head>
 <body>
@@ -108,7 +101,7 @@ $_SESSION['id_cliente'] = null;
             </div>
             
         </div>
-        </main>
-        <script src="../templates/assets/js/pagina_visualizacao_do_codigo.js"></script>
-    </body>
+    </main>
+    <script src="../templates/assets/js/pagina_visualizacao_do_codigo.js"></script>
+</body>
 </html>
