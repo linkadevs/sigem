@@ -148,7 +148,7 @@ input[type=number] {
     gap: 0.4rem;
     margin-bottom: 2.9rem;
     width: 100%;
-    align-items: right;
+    align-items: center;
 }
 
 .input_cpf label,
@@ -157,6 +157,7 @@ input[type=number] {
     font-weight: 600;
     color: #094C71;
     width: 40.5rem;
+    text-align: left;
 }
 
 .input_cpf input,
@@ -172,7 +173,6 @@ input[type=number] {
 
 .input_senha {
     position: relative;
-    align-items: center;
 }
 
 /* Placeholder */
@@ -185,9 +185,7 @@ input[type=number] {
 .input_senha .olho1,
 .input_senha .olho2 {
     position: absolute;
-    right: calc(50% - 19rem);
-    top: 70%;
-    transform: translateY(-50%);
+    right: 1rem;
     cursor: pointer;
     z-index: 2;
 }
@@ -209,13 +207,12 @@ input[type=number] {
     display: none;
 }
 
-/* Ajuste para telas maiores */
-@media screen and (min-width: 1024px) {
-
-    .input_senha .olho1,
-    .input_senha .olho2 {
-        right: calc(50% - 18rem);
-    }
+/* Desktop – centralização vertical no input*/
+.input_senha .olho1,
+.input_senha .olho2 {
+    top: calc(2.3rem + 0.4rem + 0.5rem + 2.2rem); 
+    top: 5.4rem;
+    transform: translateY(-50%);
 }
 
 .btn_login {
@@ -242,7 +239,7 @@ input[type=number] {
     background-color: #1191D7;
 }
 
-/* ========== MEDIA QUERIES ========== */
+/* ========== MEDIA QUERIES (COM AJUSTE DO OLHO PARA CADA) ========== */
 
 /* Tablet - 768px a 1026px */
 @media screen and (min-width: 768px) and (max-width: 1026px) {
@@ -250,35 +247,31 @@ input[type=number] {
         width: 50rem;
         height: 57rem;
     }
-
     .Cform_login h1 {
         font-size: 2.0rem;
     }
-
     .Cform_login h2 {
         font-size: 1.5rem;
     }
-
     .Cform_login>figure:nth-of-type(2) img {
         width: 48rem;
     }
-
     .input_cpf label,
     .input_senha label {
         font-size: 1.6rem;
         width: 44.5rem;
     }
-
     .input_cpf input,
     .input_senha input {
         width: 44.5rem;
+        height: 4rem;
+        padding-right: 3rem;
     }
-
     .input_senha .olho1,
     .input_senha .olho2 {
-        right: calc(50% - 21rem);
+        top: 4.8rem;
+        transform: translateY(-50%);
     }
-
     .btn_login button {
         width: 44.5rem;
         font-size: 1.6rem;
@@ -288,282 +281,231 @@ input[type=number] {
 /* Tablets pequenos - 568px a 768px */
 @media screen and (min-width: 568px) and (max-width: 768px) {
     .Cform_login {
-        width: 37rem;
-        height: 50rem;
+        width: 48rem;
+        height: auto;
+        min-height: 54rem;
+        padding: 2rem;
     }
-
     .Cform_login h1 {
-        font-size: 1.8rem;
+        font-size: 2.2rem;
     }
-
     .Cform_login h2 {
-        font-size: 1.3rem;
+        font-size: 1.6rem;
     }
-
     .Cform_login>figure:nth-of-type(2) img {
-        width: 32.7rem;
+        width: 40rem;
     }
-
     .input_cpf label,
     .input_senha label {
-        font-size: 1.4rem;
-        width: 31.5rem;
+        font-size: 1.6rem;
+        width: 38rem;
     }
-
     .input_cpf input,
     .input_senha input {
-        width: 31.5rem;
+        width: 38rem;
+        height: 4rem;
+        font-size: 1.4rem;
+        padding-right: 3rem;
     }
-
     .input_senha .olho1,
     .input_senha .olho2 {
-        right: calc(50% - 15rem);
-        top: 69%;
+        top: 4.8rem;
+        transform: translateY(-50%);
     }
-
-    .olho1 img,
-    .olho2 img {
-        width: 1.8rem;
-    }
-
     .btn_login button {
-        width: 31.5rem;
-        font-size: 1.4rem;
+        width: 38rem;
+        font-size: 1.6rem;
+        height: 4rem;
     }
-
     .Cform_login>figure:first-child img {
-        width: 3rem;
-        height: 3rem;
-        object-fit: contain;
+        width: 3.5rem;
+        height: 3.5rem;
     }
-
     .input_cpf input::placeholder,
     .input_senha input::placeholder {
-        font-size: 1.1rem;
+        font-size: 1.2rem;
     }
 }
 
 /* Mobile grande - 440px a 567px */
 @media screen and (min-width: 440px) and (max-width: 567px) {
     .Cform_login {
-        width: 29rem;
-        height: 40rem;
+        width: 38rem;
+        height: auto;
+        min-height: 46rem;
+        padding: 1.8rem;
     }
-
     .Cform_login h1 {
-        font-size: 1.7rem;
+        font-size: 2rem;
     }
-
     .Cform_login h2 {
-        font-size: 1.2rem;
+        font-size: 1.4rem;
     }
-
     .Cform_login>figure:nth-of-type(2) img {
-        width: 24.7rem;
+        width: 32rem;
     }
-
     .input_cpf label,
     .input_senha label {
-        font-size: 1.2rem;
-        width: 23.5rem;
+        font-size: 1.5rem;
+        width: 30rem;
     }
-
-    .input_cpf input::placeholder,
-    .input_senha input::placeholder {
-        font-size: 0.9rem;
-    }
-
     .input_cpf input,
     .input_senha input {
-        width: 23.5rem;
-        height: 3.4rem;
+        width: 30rem;
+        height: 3.8rem;
+        font-size: 1.3rem;
+        padding-right: 2.8rem;
     }
-
     .input_senha .olho1,
     .input_senha .olho2 {
-        right: calc(50% - 11rem);
-        top: 68%;
+        top: 4.6rem;
+        transform: translateY(-50%);
     }
-
-    .olho1 img,
-    .olho2 img {
-        width: 1.6rem;
+    .input_cpf input::placeholder,
+    .input_senha input::placeholder {
+        font-size: 1rem;
     }
-
     .btn_login button {
-        width: 23.5rem;
-        font-size: 1.2rem;
-        height: 3.4rem;
+        width: 30rem;
+        font-size: 1.4rem;
+        height: 3.8rem;
     }
-
     .Cform_login>figure:first-child img {
-        width: 2.9rem;
-        height: 2.9rem;
-        object-fit: contain;
+        width: 3.2rem;
+        height: 3.2rem;
     }
 }
 
 /* Mobile médio - até 439px */
 @media screen and (max-width: 439px) {
     .Cform_login {
-        width: 25rem;
-        height: 38rem;
+        width: 32rem;
+        height: auto;
+        min-height: 42rem;
+        padding: 1.5rem;
     }
-
     .Cform_login h1 {
-        font-size: 1.7rem;
+        font-size: 1.8rem;
     }
-
     .Cform_login h2 {
-        font-size: 1.0rem;
+        font-size: 1.2rem;
     }
-
     .Cform_login>figure:nth-of-type(2) img {
-        width: 21.7rem;
+        width: 26rem;
     }
-
     .input_cpf label,
     .input_senha label {
-        font-size: 1.2rem;
-        width: 19.5rem;
+        font-size: 1.4rem;
+        width: 24rem;
     }
-
-    .input_cpf input::placeholder,
-    .input_senha input::placeholder {
-        font-size: 0.8rem;
-    }
-
     .input_cpf input,
     .input_senha input {
-        width: 19.5rem;
-        height: 3rem;
+        width: 24rem;
+        height: 3.5rem;
+        font-size: 1.2rem;
+        padding-right: 2.5rem;
     }
-
     .input_senha .olho1,
     .input_senha .olho2 {
-        right: calc(50% - 9rem);
-        top: 67%;
+        top: 4.35rem;
+        transform: translateY(-50%);
     }
-
-    .olho1 img,
-    .olho2 img {
-        width: 1.5rem;
+    .input_cpf input::placeholder,
+    .input_senha input::placeholder {
+        font-size: 0.95rem;
     }
-
     .btn_login button {
-        width: 19.5rem;
-        font-size: 1rem;
-        height: 3rem;
+        width: 24rem;
+        font-size: 1.2rem;
+        height: 3.5rem;
     }
-
     .Cform_login>figure:first-child img {
-        width: 2.9rem;
-        height: 2.9rem;
-        object-fit: contain;
+        width: 3rem;
+        height: 3rem;
     }
 }
 
 /* Mobile pequeno - até 330px */
 @media screen and (max-width: 330px) {
     .Cform_login>figure:first-child img {
-        width: 2rem;
-        height: 2rem;
+        width: 2.8rem;
+        height: 2.8rem;
     }
-
     .Cform_login {
-        width: 22rem;
-        height: 36rem;
-        padding: 1rem;
+        width: 28rem;
+        height: auto;
+        min-height: 40rem;
+        padding: 1.2rem;
     }
-
     .Cform_login h1 {
-        font-size: 1.4rem;
+        font-size: 1.6rem;
     }
-
     .Cform_login h2 {
-        font-size: 0.9rem;
+        font-size: 1.1rem;
     }
-
     .Cform_login>figure:nth-of-type(2) img {
-        width: 18rem;
+        width: 22rem;
     }
-
     .input_cpf label,
     .input_senha label {
-        font-size: 1rem;
-        width: 17rem;
+        font-size: 1.3rem;
+        width: 20rem;
     }
-
-    .input_cpf input::placeholder,
-    .input_senha input::placeholder {
-        font-size: 0.85rem;
-    }
-
     .input_cpf input,
     .input_senha input {
-        width: 17rem;
-        height: 2.8rem;
-        font-size: 0.9rem;
+        width: 20rem;
+        height: 3.2rem;
+        font-size: 1.1rem;
+        padding-right: 2.5rem;
     }
-
     .input_senha .olho1,
     .input_senha .olho2 {
-        right: calc(50% - 7.8rem);
-        top: 66%;
+        top: 4.05rem;
+        transform: translateY(-50%);
     }
-
-    .olho1 img,
-    .olho2 img {
-        width: 1.4rem;
-    }
-
-    .btn_login button {
-        width: 17rem;
+    .input_cpf input::placeholder,
+    .input_senha input::placeholder {
         font-size: 0.9rem;
-        height: 2.8rem;
+    }
+    .btn_login button {
+        width: 20rem;
+        font-size: 1.1rem;
+        height: 3.2rem;
     }
 }
 
 /* Mobile muito pequeno - até 320px */
 @media screen and (max-width: 320px) {
     .Cform_login {
-        width: 20rem;
-        height: 34rem;
-        padding: 0.8rem;
+        width: 26rem;
+        height: auto;
+        min-height: 38rem;
+        padding: 1rem;
     }
-
     .Cform_login h1 {
-        font-size: 1.3rem;
+        font-size: 1.5rem;
     }
-
     .Cform_login h2 {
-        font-size: 0.85rem;
+        font-size: 1rem;
     }
-
     .Cform_login>figure:nth-of-type(2) img {
-        width: 16rem;
+        width: 20rem;
     }
-
     .input_cpf input,
     .input_senha input {
-        width: 15.5rem;
-        height: 2.6rem;
-        font-size: 0.85rem;
+        width: 18rem;
+        height: 3rem;
+        font-size: 1rem;
+        padding-right: 2rem;
     }
-
     .input_senha .olho1,
     .input_senha .olho2 {
-        right: calc(50% - 7rem);
+        top: 3.6rem;
+        transform: translateY(-50%);
     }
-
-    .olho1 img,
-    .olho2 img {
-        width: 1.3rem;
-    }
-
     .btn_login button {
-        width: 15.5rem;
-        font-size: 0.85rem;
-        height: 2.6rem;
+        width: 18rem;
+        font-size: 1rem;
+        height: 3rem;
     }
 }
