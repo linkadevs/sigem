@@ -119,7 +119,6 @@ input:focus {
     background-color: #094d7180;
 }
 
-/* Botão Procurar */
 .procurar {
     background: none;
     border: none;
@@ -151,7 +150,6 @@ input:focus {
     pointer-events: none;
 }
 
-/* Botão Limpar (aparece apenas quando necessário) */
 .limpar-filtro {
     background: none;
     border: none;
@@ -168,7 +166,6 @@ input:focus {
     background-color: rgba(255, 255, 255, 0.2);
     backdrop-filter: blur(2px);
     display: none;
-    /* inicialmente escondido */
     align-items: center;
     justify-content: center;
 }
@@ -190,7 +187,25 @@ input:focus {
     pointer-events: none;
 }
 
-/* Grid de cards */
+.resultado-busca {
+    background-color: #e8f4fd;
+    padding: 0.8rem 1.5rem;
+    border-radius: 1rem;
+    margin-bottom: 1.5rem;
+    font-size: 1.3rem;
+    color: #094C71;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    width: 100%;
+}
+
+.resultado-busca strong {
+    color: #1291D5;
+}
+
 .grid_cards {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -199,6 +214,62 @@ input:focus {
     margin: 0 auto;
 }
 
+/* ===== MENSAGEM DE NENHUMA MÁQUINA (centralizada no grid) ===== */
+.grid_cards .nenhuma-maquina {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 50vh;
+    padding: 4rem 2rem;
+    width: 100%;
+}
+
+.mensagem-vazia {
+    text-align: center;
+    background-color: #f9f9f9;
+    border-radius: 2rem;
+    padding: 3rem 2rem;
+    max-width: 45rem;
+    margin: 0 auto;
+    box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.1);
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.mensagem-vazia h2 {
+    font-size: 2rem;
+    color: #094C71;
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.mensagem-vazia p {
+    font-size: 1.4rem;
+    color: #666;
+    margin-bottom: 0.8rem;
+}
+
+.mensagem-vazia .sugestao {
+    color: #1291D5;
+    font-weight: 500;
+}
+
+.mensagem-vazia .sugestao a {
+    color: #1291D5;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.mensagem-vazia .sugestao a:hover {
+    text-decoration: underline;
+}
+
+/* card styles (mantidos) */
 .card {
     background-color: #FFFFFF;
     border-radius: 1rem;
@@ -376,39 +447,32 @@ input:focus {
     color: #FFFFFF;
 }
 
-/* ========== RESPONSIVIDADE (incluindo botão Limpar) ========== */
+/* RESPONSIVIDADE (com ajustes da mensagem) */
 @media (max-width: 1024px) {
     .grid_cards {
         grid-template-columns: repeat(3, 1fr);
         gap: 1.2rem;
         padding: 0 1rem;
     }
-
     .conteudo_superior {
         padding: 1.5rem 3rem;
     }
-
     .procurar {
         width: 10rem;
         font-size: 1.3rem;
     }
-
     h1 {
         font-size: 2.5rem;
     }
-
     .maquina {
         font-size: 1.7rem;
     }
-
     .codigo {
         font-size: 1.7rem;
     }
-
     .manutencao {
         font-size: 1.4rem;
     }
-
     .dados {
         font-size: 1.2rem;
     }
@@ -418,51 +482,42 @@ input:focus {
     .conteudo_superior {
         padding: 1.5rem 2rem;
     }
-
     .procurar {
         width: 8rem;
         font-size: 1.2rem;
         height: 3.2rem;
     }
-
     .limpar-filtro {
         width: 7rem;
         font-size: 1.1rem;
         height: 3.2rem;
     }
-
     input {
         padding-left: 3.5rem;
         height: 3rem;
         font-size: 1rem;
     }
-
     .conteudo_superior img {
         width: 1.8rem;
         height: 1.8rem;
         left: 1.2rem;
     }
-
     .grid_cards {
         grid-template-columns: repeat(2, 1fr);
         gap: 1rem;
     }
-
     .maquina {
         font-size: 1.6rem;
         margin-bottom: 1.2rem;
     }
-
     .codigo {
         font-size: 1.6rem;
         min-height: 3.5rem;
     }
-
     .manutencao {
         font-size: 1.3rem;
         margin-bottom: 1rem;
     }
-
     .dados {
         gap: 0.7rem;
         font-size: 1.1rem;
@@ -474,72 +529,58 @@ input:focus {
     body {
         padding-top: 1rem;
     }
-
     .voltar {
         margin-left: 1rem;
         margin-bottom: 1rem;
         width: 3.5rem;
         height: 3.5rem;
     }
-
     .voltar img {
         width: 3rem;
     }
-
     .conteudo_superior {
         padding: 1.2rem;
         margin: 0 1rem 2rem 1rem;
     }
-
     h1 {
         font-size: 1.9rem;
     }
-
     form {
         gap: 0.8rem;
     }
-
     .procurar {
         width: 7rem;
         font-size: 1.1rem;
         height: 3rem;
     }
-
     .limpar-filtro {
         width: 6rem;
         font-size: 1rem;
         height: 3rem;
     }
-
     input {
         font-size: 0.95rem;
     }
-
     .grid_cards {
         grid-template-columns: repeat(2, 1fr);
         gap: 1rem;
         padding: 0 1rem;
     }
-
     .card {
         padding: 1rem;
     }
-
     .codigo {
         font-size: 1.5rem;
         min-height: 3.2rem;
     }
-
     .maquina {
         font-size: 1.5rem;
         margin-bottom: 1rem;
     }
-
     .manutencao {
         font-size: 1.3rem;
         margin-bottom: 1rem;
     }
-
     .dados {
         font-size: 1.1rem;
         gap: 0.7rem;
@@ -551,58 +592,47 @@ input:focus {
     body {
         gap: 0;
     }
-
     .conteudo_superior {
         padding: 1rem;
     }
-
     form {
         gap: 0.6rem;
     }
-
     .procurar {
         width: 6rem;
         font-size: 1rem;
         height: 2.8rem;
     }
-
     .limpar-filtro {
         width: 5rem;
         font-size: 0.9rem;
         height: 2.8rem;
     }
-
     input {
         padding-left: 3rem;
         font-size: 0.9rem;
         height: 2.8rem;
     }
-
     .conteudo_superior img {
         width: 1.5rem;
         height: 1.5rem;
         left: 1rem;
     }
-
     .card {
         padding: 0.8rem;
     }
-
     .codigo {
         font-size: 1.4rem;
         min-height: 2.8rem;
     }
-
     .dados {
         gap: 0.6rem;
         font-size: 1rem;
     }
-
     .informacao p,
     .informacaoazul p {
         font-size: 0.95rem;
     }
-
     .card button {
         font-size: 0.95rem;
         min-height: 2.6rem;
@@ -616,81 +646,81 @@ input:focus {
         margin: 0 0.5rem 1.5rem 0.5rem;
         gap: 1rem;
     }
-
     h1 {
         font-size: 1.5rem;
         text-align: center;
     }
-
     form {
         gap: 0.5rem;
     }
-
     .procurar {
         width: 5rem;
         font-size: 0.95rem;
         height: 2.5rem;
     }
-
     .limpar-filtro {
         width: 4.5rem;
         font-size: 0.85rem;
         height: 2.5rem;
     }
-
     input {
         padding-left: 2.5rem;
         font-size: 0.85rem;
         height: 2.5rem;
     }
-
     .conteudo_superior img {
         width: 1.3rem;
         height: 1.3rem;
         left: 0.8rem;
     }
-
     .grid_cards {
         grid-template-columns: 1fr;
         gap: 1rem;
         padding: 0 0.5rem;
     }
-
     .card {
         padding: 0.8rem;
     }
-
     .codigo {
         font-size: 1.3rem;
         min-height: 2.6rem;
         width: 80%;
     }
-
     .maquina {
         font-size: 1.4rem;
         margin-bottom: 0.8rem;
     }
-
     .manutencao {
         font-size: 1.2rem;
         margin-bottom: 0.8rem;
     }
-
     .dados {
         gap: 0.6rem;
         font-size: 1rem;
         margin-bottom: 1rem;
     }
-
     .informacao p,
     .informacaoazul p {
         font-size: 0.9rem;
     }
-
     .card button {
         width: 8rem;
         min-height: 2.5rem;
         font-size: 0.9rem;
+    }
+    .grid_cards .nenhuma-maquina {
+        padding: 2rem 1rem;
+        min-height: auto;
+    }
+    .mensagem-vazia {
+        padding: 2rem 1.5rem;
+        max-width: 90%;
+    }
+    .mensagem-vazia h2 {
+        font-size: 1.6rem;
+    }
+    .mensagem-vazia p {
+        font-size: 1.2rem;
     }
 }
 
@@ -700,53 +730,43 @@ input:focus {
         height: 3rem;
         margin-left: 0.8rem;
     }
-
     .voltar img {
         width: 2.5rem;
     }
-
     .conteudo_superior {
         padding: 0.7rem;
         margin: 0 0.5rem 1.2rem 0.5rem;
         gap: 0.8rem;
     }
-
     h1 {
         font-size: 1.3rem;
     }
-
     form {
         gap: 0.4rem;
     }
-
     .procurar {
         width: 4.5rem;
         font-size: 0.85rem;
         height: 2.3rem;
     }
-
     .limpar-filtro {
         width: 4rem;
         font-size: 0.8rem;
         height: 2.3rem;
     }
-
     input {
         padding-left: 2.2rem;
         font-size: 0.8rem;
         height: 2.3rem;
     }
-
     .grid_cards {
         padding: 0 0.5rem;
         gap: 0.8rem;
     }
-
     .card {
         padding: 0.6rem;
         border-radius: 0.8rem;
     }
-
     .codigo {
         font-size: 1.2rem;
         min-height: 2.2rem;
@@ -754,42 +774,47 @@ input:focus {
         padding: 0.3rem 0.8rem;
         margin-bottom: 0.6rem;
     }
-
     .maquina {
         font-size: 1.2rem;
         margin-bottom: 0.6rem;
     }
-
     .manutencao {
         font-size: 1rem;
         margin-bottom: 0.6rem;
     }
-
     .dados {
         gap: 0.4rem;
         font-size: 0.9rem;
         padding: 0 0.5rem;
         margin-bottom: 0.8rem;
     }
-
     .informacao p,
     .informacaoazul p {
         font-size: 0.9rem;
     }
-
     .card button {
         width: 6.5rem;
         min-height: 2.2rem;
         font-size: 0.8rem;
         padding: 0.4rem;
     }
-
     .botoes {
         gap: 0.4rem;
     }
-
     .card hr {
         margin: 0.5rem auto;
+    }
+    .grid_cards .nenhuma-maquina {
+        padding: 1.5rem 1rem;
+    }
+    .mensagem-vazia {
+        padding: 1.5rem;
+    }
+    .mensagem-vazia h2 {
+        font-size: 1.3rem;
+    }
+    .mensagem-vazia p {
+        font-size: 1rem;
     }
 }
 
@@ -798,71 +823,62 @@ input:focus {
         padding: 0.6rem;
         gap: 0.7rem;
     }
-
     h1 {
         font-size: 1.2rem;
     }
-
     .procurar {
         width: 4rem;
         font-size: 0.8rem;
         height: 2.2rem;
     }
-
     .limpar-filtro {
         width: 3.8rem;
         font-size: 0.75rem;
         height: 2.2rem;
     }
-
     input {
         padding-left: 2rem;
         font-size: 0.75rem;
         height: 2.2rem;
     }
-
     .conteudo_superior img {
         width: 1rem;
         height: 1rem;
         left: 0.6rem;
     }
-
     .grid_cards {
         padding: 0 0.4rem;
         gap: 0.7rem;
     }
-
     .card {
         padding: 0.5rem;
     }
-
     .codigo {
         font-size: 1.1rem;
         min-height: 2rem;
         width: 75%;
     }
-
     .maquina {
         font-size: 1.1rem;
         margin-bottom: 0.5rem;
     }
-
     .manutencao {
         font-size: 0.95rem;
         margin-bottom: 0.5rem;
     }
-
     .dados {
         gap: 0.4rem;
         font-size: 0.85rem;
         padding: 0 0.4rem;
         margin-bottom: 0.7rem;
     }
-
     .card button {
         width: 6rem;
         min-height: 2rem;
         font-size: 0.75rem;
+    }
+    .mensagem-vazia {
+        padding: 1.2rem;
     }
 }
 
@@ -870,66 +886,54 @@ input:focus {
     body {
         padding-top: 0.5rem;
     }
-
     .voltar {
         width: 2.5rem;
         height: 2.5rem;
         margin-left: 0.5rem;
         margin-bottom: 0.5rem;
     }
-
     .voltar img {
         width: 2rem;
     }
-
     .conteudo_superior {
         padding: 0.5rem;
         margin: 0 0.3rem 1rem 0.3rem;
         border-radius: 0.8rem;
         gap: 0.6rem;
     }
-
     h1 {
         font-size: 1.1rem;
     }
-
     form {
         gap: 0.3rem;
     }
-
     .procurar {
         width: 3.8rem;
         font-size: 0.75rem;
         height: 2rem;
     }
-
     .limpar-filtro {
         width: 3.5rem;
         font-size: 0.7rem;
         height: 2rem;
     }
-
     input {
         padding-left: 1.8rem;
         font-size: 0.7rem;
         height: 2rem;
     }
-
     .grid_cards {
         gap: 0.6rem;
         padding: 0 0.3rem;
     }
-
     .card {
         padding: 0.5rem;
         border-radius: 0.7rem;
     }
-
     .maquina {
         font-size: 1rem;
         margin-bottom: 0.4rem;
     }
-
     .codigo {
         font-size: 1rem;
         min-height: 1.8rem;
@@ -937,31 +941,38 @@ input:focus {
         padding: 0.2rem 0.6rem;
         margin-bottom: 0.5rem;
     }
-
     .manutencao {
         font-size: 0.9rem;
         margin-bottom: 0.5rem;
     }
-
     .dados {
         gap: 0.35rem;
         font-size: 0.8rem;
         padding: 0 0.3rem;
         margin-bottom: 0.6rem;
     }
-
     .card button {
         width: 5.5rem;
         min-height: 1.8rem;
         font-size: 0.7rem;
     }
-
     .botoes {
         gap: 0.3rem;
     }
-
     .card hr {
         margin: 0.4rem auto;
+    }
+    .grid_cards .nenhuma-maquina {
+        padding: 1rem;
+    }
+    .mensagem-vazia {
+        padding: 1rem;
+    }
+    .mensagem-vazia h2 {
+        font-size: 1.1rem;
+    }
+    .mensagem-vazia p {
+        font-size: 0.9rem;
     }
 }
 
@@ -970,68 +981,65 @@ input:focus {
         padding: 0.4rem;
         gap: 0.5rem;
     }
-
     h1 {
         font-size: 1rem;
     }
-
     .procurar {
         width: 3.5rem;
         font-size: 0.7rem;
         height: 1.9rem;
     }
-
     .limpar-filtro {
         width: 3rem;
         font-size: 0.65rem;
         height: 1.9rem;
     }
-
     input {
         padding-left: 1.6rem;
         font-size: 0.65rem;
         height: 1.9rem;
     }
-
     .grid_cards {
         padding: 0 0.2rem;
         gap: 0.5rem;
     }
-
     .card {
         padding: 0.4rem;
     }
-
     .codigo {
         font-size: 0.9rem;
         min-height: 1.6rem;
         width: 65%;
     }
-
     .maquina {
         font-size: 0.9rem;
         margin-bottom: 0.3rem;
     }
-
     .manutencao {
         font-size: 0.8rem;
         margin-bottom: 0.4rem;
     }
-
     .dados {
         font-size: 0.75rem;
         gap: 0.3rem;
         margin-bottom: 0.5rem;
     }
-
     .informacao p,
     .informacaoazul p {
         font-size: 0.65rem;
     }
-
     .card button {
         width: 5rem;
         min-height: 1.6rem;
         font-size: 0.65rem;
+    }
+    .mensagem-vazia {
+        padding: 0.8rem;
+    }
+    .mensagem-vazia h2 {
+        font-size: 1rem;
+    }
+    .mensagem-vazia p {
+        font-size: 0.8rem;
     }
 }

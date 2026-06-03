@@ -13,10 +13,11 @@ require_once __DIR__ . '/../vendor/autoload.php';
 
 $chamadoController = new ChamadoController();
 
-if (!empty($_GET['search']) && isset($_GET['search'])) {
-    $pesquisa = $_GET['search'];
+$busca = isset($_GET['search']) ? trim($_GET['search']) : '';
+
+if (!empty($busca)) {
     $chamados = $chamadoController->pesquisarChamadoCliente(
-        $pesquisa,
+        $busca,
         $id_cliente
     );
 } else {
@@ -33,14 +34,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gerenciamento de clientes</title>
+    <title>Acompanhamento de chamados</title>
     <link rel="stylesheet" href="../templates/assets/css/pagina_acompanhamento_chamados_cliente.css">
 </head>
-
 <body>
     <button class="voltar">
         <figure>
@@ -58,7 +57,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         </figure>
                         <input type="text" class="pesquisar" name="search" id="searchInput"
                             placeholder="Busque pela data, Código ou nome da Máquina!" autocomplete="off"
-                            value="<?php echo isset($_GET['search']) ? htmlspecialchars($_GET['search']) : ''; ?>">
+                            value="<?= htmlspecialchars($busca) ?>">
                     </div>
                     <button class="procurar" type="submit">Procurar</button>
                     <button type="button" class="limpar-filtro" id="limparBtn"
@@ -66,58 +65,72 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </form>
             </div>
 
+            <!-- MENSAGEM DE RESULTADO DA BUSCA -->
+            <?php if ($busca && !empty($busca)): ?>
+                <div class="resultado-busca">
+                    <span>🔍 Resultados da busca por: <strong>"<?= htmlspecialchars($busca) ?>"</strong> - <?= count($chamados) ?> chamado(s) encontrado(s)</span>
+                </div>
+            <?php endif; ?>
+
             <div class="cards">
-                <?php if (empty($chamados) || !isset($chamados)): ?>
-                    <strong>Nenhum chamado encontrado</strong>
-                <?php endif; ?>
-                <?php foreach ($chamados as $chamado): ?>
-                    <div class="card">
-                        <div class="d1">
-                            <p class="status">Status: <span>
+                <?php if (empty($chamados)): ?>
+                    <!-- MENSAGEM PADRÃO DE NENHUM CHAMADO -->
+                    <div class="nenhum-chamado">
+                        <div class="mensagem-vazia">
+                            <?php if ($busca): ?>
+                                <h2>Nenhum chamado encontrado</h2>
+                                <p>Não encontramos resultados para "<?= htmlspecialchars($busca) ?>"</p>
+                                <p class="sugestao">Tente buscar por outro termo ou <a href="?">limpar a busca</a></p>
+                            <?php else: ?>
+                                <h2>Nenhum chamado registrado</h2>
+                                <p>Você ainda não possui chamados.</p>
+                                <p class="sugestao">Novos chamados aparecerão aqui.</p>
+                            <?php endif; ?>
+                        </div>
+                    </div>
+                <?php else: ?>
+                    <?php foreach ($chamados as $chamado): ?>
+                        <div class="card">
+                            <div class="d1">
+                                <p class="status">Status: <span>
                                     <?php
                                     switch ($chamado['status_chamado']) {
-                                        case 'aberto':
-                                            echo 'Em aberto';
-                                            break;
-                                        case 'em_andamento':
-                                            echo 'Em andamento';
-                                            break;
-                                        case 'resolvido':
-                                            echo 'Resolvido';
-                                            break;
+                                        case 'aberto': echo 'Em aberto'; break;
+                                        case 'em_andamento': echo 'Em andamento'; break;
+                                        case 'resolvido': echo 'Resolvido'; break;
                                     }
                                     ?>
                                 </span></p>
-                            <p class="data">Data: <?= htmlspecialchars($chamado['data_chamado']) ?></p>
+                                <p class="data">Data: <?= htmlspecialchars($chamado['data_chamado']) ?></p>
+                            </div>
+                            <div class="d2">
+                                <p class="codigo">Código da máquina: <?= htmlspecialchars($chamado['cod_maquina']) ?></p>
+                                <p class="nomeDaMaquina"><?= htmlspecialchars($chamado['nome_maquina']) ?></p>
+                            </div>
+                            <p class="tituloDescricao">Descrição do Problema</p>
+                            <div class="d3">
+                                <p class="descricao"><?= htmlspecialchars($chamado['descricao_chamado']) ?></p>
+                                <form method="POST">
+                                    <button class="cancelar" name="cancelar" value="<?= $chamado['id_chamado'] ?>"
+                                        onclick="return confirm('Tem certeza que deseja apagar esse chamado? Essa ação não poderá ser desfeita.')">Cancelar</button>
+                                </form>
+                            </div>
+                            <div class="grid">
+                                <?php
+                                $fotos = json_decode($chamado['fotos_chamado'], true);
+                                foreach ($fotos as $foto) {
+                                    echo '<figure><img src="../' . $foto . '"></figure>';
+                                }
+                                ?>
+                            </div>
                         </div>
-                        <div class="d2">
-                            <p class="codigo">Código da máquina: <?= htmlspecialchars($chamado['cod_maquina']) ?></p>
-                            <p class="nomeDaMaquina"> <?= htmlspecialchars($chamado['nome_maquina']) ?></p>
-                        </div>
-                        <p class="tituloDescricao">Descrição do Problema</p>
-                        <div class="d3">
-                            <p class="descricao"><?= htmlspecialchars($chamado['descricao_chamado']) ?></p>
-                            <form method="POST">
-                                <button class="cancelar" name="cancelar" value="<?= $chamado['id_chamado'] ?>"
-                                    onclick="return confirm('Tem certeza que deseja apagar esse chamado? Essa ação não poderá ser desfeita.')">Cancelar</button>
-                            </form>
-                        </div>
-                        <div class="grid">
-                            <?php
-                            $fotos = json_decode($chamado['fotos_chamado'], true);
-                            foreach ($fotos as $foto) {
-                                echo '<figure><img src="../' . $foto . '"></figure>';
-                            }
-                            ?>
-                        </div>
-                    </div>
-                <?php endforeach; ?>
+                    <?php endforeach; ?>
+                <?php endif; ?>
             </div>
         </div>
     </main>
 
     <script>
-        // Controle do botão Limpar (aparece apenas quando há texto no input)
         const searchInput = document.getElementById('searchInput');
         const limparBtn = document.getElementById('limparBtn');
 
@@ -129,11 +142,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             }
         }
 
-        // Executa ao carregar e ao digitar
         toggleLimparBtn();
         searchInput.addEventListener('input', toggleLimparBtn);
 
-        // Botão voltar
         const voltar = document.querySelector('.voltar');
         if (voltar) {
             voltar.addEventListener('click', () => {
@@ -142,5 +153,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     </script>
 </body>
-
 </html>

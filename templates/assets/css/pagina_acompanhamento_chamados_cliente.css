@@ -172,7 +172,7 @@ input:focus {
     flex-shrink: 0;
     background-color: rgba(255, 255, 255, 0.2);
     backdrop-filter: blur(2px);
-    display: none; /* inicialmente escondido */
+    display: none;
     align-items: center;
     justify-content: center;
 }
@@ -211,6 +211,89 @@ input:focus {
 .criarCliente figure img {
     width: 2.5rem;
     height: 2.5rem;
+}
+
+/* ===== MENSAGEM DE RESULTADO DA BUSCA ===== */
+.resultado-busca {
+    background-color: #e8f4fd;
+    padding: 0.8rem 1.5rem;
+    border-radius: 1rem;
+    margin-bottom: 1.5rem;
+    font-size: 1.3rem;
+    color: #094C71;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    width: 100%;
+}
+
+.resultado-busca strong {
+    color: #1291D5;
+}
+
+/* ===== MENSAGEM DE NENHUM REGISTRO (PADRÃO) ===== */
+/* Força a mensagem a ocupar toda a largura do grid e centralizar */
+.cards > strong,
+.cards > .nenhum-chamado {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 50vh;
+    padding: 4rem 2rem;
+    width: 100%;
+}
+
+.mensagem-vazia,
+.cards > strong {
+    text-align: center;
+    background-color: #f9f9f9;
+    border-radius: 2rem;
+    padding: 3rem 2rem;
+    max-width: 45rem;
+    margin: 0 auto;
+    box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.1);
+    animation: fadeIn 0.5s ease;
+    font-size: 2rem;
+    color: #094C71;
+    font-weight: 700;
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.mensagem-vazia h2,
+.cards > strong {
+    font-size: 2rem;
+    color: #094C71;
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.mensagem-vazia p {
+    font-size: 1.4rem;
+    color: #666;
+    margin-bottom: 0.8rem;
+}
+
+.mensagem-vazia .sugestao {
+    color: #1291D5;
+    font-weight: 500;
+}
+
+.mensagem-vazia .sugestao a {
+    color: #1291D5;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.mensagem-vazia .sugestao a:hover {
+    text-decoration: underline;
 }
 
 /* ===== CARDS MAIS COMPACTOS ===== */
@@ -376,6 +459,19 @@ input:focus {
         height: 2.8rem;
         font-size: 1.2rem;
     }
+
+    .cards > strong,
+    .cards > .nenhum-chamado {
+        padding: 2rem 1rem;
+        min-height: auto;
+    }
+
+    .mensagem-vazia,
+    .cards > strong {
+        padding: 2rem 1.5rem;
+        max-width: 90%;
+        font-size: 1.6rem;
+    }
 }
 
 @media (max-width: 480px) {
@@ -405,6 +501,17 @@ input:focus {
         width: 6rem;
         height: 2.5rem;
         font-size: 1rem;
+    }
+
+    .cards > strong,
+    .cards > .nenhum-chamado {
+        padding: 1.5rem 1rem;
+    }
+
+    .mensagem-vazia,
+    .cards > strong {
+        padding: 1.5rem;
+        font-size: 1.3rem;
     }
 }
 
@@ -729,5 +836,24 @@ input:focus {
         width: 0.9rem;
         height: 0.9rem;
         left: 0.45rem;
+    }
+
+    .cards > strong,
+    .cards > .nenhum-chamado {
+        padding: 1rem;
+    }
+
+    .mensagem-vazia,
+    .cards > strong {
+        padding: 1rem;
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 280px) {
+    .mensagem-vazia,
+    .cards > strong {
+        font-size: 0.9rem;
+        padding: 0.8rem;
     }
 }
