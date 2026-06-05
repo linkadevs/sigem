@@ -29,7 +29,7 @@ class ClienteController{
            throw new Exception("Ocorreu um erro ao alterar a senha.");
         }
         $_SESSION['error_message'] = null;
-        header('Location: perfil_cliente');
+        header('Location: perfil_cliente.php');
         exit;
     }
 }

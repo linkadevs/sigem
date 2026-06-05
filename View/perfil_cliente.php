@@ -24,6 +24,7 @@ $contato = $cliente['contato'];
 $email = $cliente['email'];
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $_SESSION['error_message'] = '';
     $clienteController->updatePassword(
         $id_cliente,
         $_POST['nova_senha'] ?? null,
@@ -97,12 +98,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     </div>
                     <?php if(isset($_SESSION['error_message']) && !empty($_SESSION['error_message'])):?>
                         <p class="erro"><?= $_SESSION['error_message']?></p>
+                        <?php $_SESSION['error_message'] = null;?>
                     <?php endif;?>
                 </div>
 
                 <div class="botoes_acao">
-                    <button class="btn_cancelar">Cancelar</button>
-                    <button class="btn_salvar" onclick="return confirm('Tem certeza que deseja mudar a senha?')">Salvar</button>
+                    <button type="button" class="btn_cancelar">Cancelar</button>
+                    <button type="submit" class="btn_salvar" onclick="return confirm('Tem certeza que deseja mudar a senha?')">Salvar</button>
                 </div>
             </form>
         </section>

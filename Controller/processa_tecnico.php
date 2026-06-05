@@ -68,8 +68,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             empty($nome) ||
             empty($cpf) ||
             empty($funcao) ||
-            empty($email) ||
-            empty($senha)
+            empty($email)
         ) {
 
             echo '<script>

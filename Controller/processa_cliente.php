@@ -103,8 +103,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             empty($uf) ||
             empty($cidade) ||
             empty($contato) ||
-            empty($email) ||
-            empty($senha)
+            empty($email)
         ) {
 
             echo '<script>
